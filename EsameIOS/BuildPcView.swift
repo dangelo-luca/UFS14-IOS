@@ -90,7 +90,6 @@ struct ComponentCardView: View {
     }
 }
 
-
 #Preview {
     BuildPcView()
 }
