@@ -3,6 +3,7 @@ import SwiftUI
 struct ComponentePC: Identifiable {
     let id = UUID()
     let nome: String
+    let immagine: String
     var colore: Color = .gray
 }
 
@@ -12,14 +13,13 @@ struct BuildPcView: View {
     @State private var componenteSelezionato: ComponentePC?
     
     let componenti: [ComponentePC] = [
-        ComponentePC(nome: "CPU"),
-        ComponentePC(nome: "Motherboard"),
-        ComponentePC(nome: "GPU"),
-        ComponentePC(nome: "RAM"),
-        ComponentePC(nome: "Power Supplie"),
-        ComponentePC(nome: "Storage"),
-        ComponentePC(nome: "Case"),
-        
+        ComponentePC(nome: "CPU", immagine: "cpu"),
+        ComponentePC(nome: "Motherboard", immagine: "rectangle.3.group"),
+        ComponentePC(nome: "GPU", immagine: "display"),
+        ComponentePC(nome: "RAM", immagine: "memorychip"),
+        ComponentePC(nome: "Power Supply", immagine: "powerplug"),
+        ComponentePC(nome: "Storage", immagine: "internaldrive"),
+        ComponentePC(nome: "Case", immagine: "pc", colore: .blue)
     ]
     
     var body: some View {
@@ -61,10 +61,12 @@ struct ComponentCardView: View {
         Button(action: action) {
             VStack(alignment: .leading, spacing: 8) {
                    HStack(spacing: 16) {
-                    Rectangle()
-                        .fill(Color.white.opacity(0.2))
-                        .frame(width: 70, height: 70)
-                        .cornerRadius(12)
+                       Image(systemName: componente.immagine)
+                           .font(.system(size: 32))
+                           .foregroundColor(.white)
+                           .frame(width: 70, height: 70)
+                           .background(Color.white.opacity(0.2))
+                           .cornerRadius(12)
                         
                     Text(componente.nome)
                         .font(.title)

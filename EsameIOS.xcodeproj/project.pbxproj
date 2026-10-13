@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		1874ACED307E6AB4000B773E /* FontAwesome in Frameworks */ = {isa = PBXBuildFile; productRef = 1874ACEC307E6AB4000B773E /* FontAwesome */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		188441DB307E2B0D00FC5957 /* EsameIOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EsameIOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -23,6 +27,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1874ACED307E6AB4000B773E /* FontAwesome in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +70,7 @@
 			);
 			name = EsameIOS;
 			packageProductDependencies = (
+				1874ACEC307E6AB4000B773E /* FontAwesome */,
 			);
 			productName = EsameIOS;
 			productReference = 188441DB307E2B0D00FC5957 /* EsameIOS.app */;
@@ -94,6 +100,9 @@
 			);
 			mainGroup = 188441D2307E2B0D00FC5957;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				1874ACEB307E6AB4000B773E /* XCRemoteSwiftPackageReference "FontAwesome" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 188441DC307E2B0D00FC5957 /* Products */;
 			projectDirPath = "";
@@ -322,6 +331,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		1874ACEB307E6AB4000B773E /* XCRemoteSwiftPackageReference "FontAwesome" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/thii/FontAwesome.swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.9.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1874ACEC307E6AB4000B773E /* FontAwesome */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1874ACEB307E6AB4000B773E /* XCRemoteSwiftPackageReference "FontAwesome" */;
+			productName = FontAwesome;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 188441D3307E2B0D00FC5957 /* Project object */;
 }
