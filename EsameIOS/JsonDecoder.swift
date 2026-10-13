@@ -38,8 +38,8 @@ struct Ups: Codable, Identifiable {
     var id: String { self.name }
     let name: String
     let price: Double?
-    let capacity_w: Int
-    let capacity_va: Int
+    let capacity_w: Int?
+    let capacity_va: Int?
 }
 
 func caricaJson<T: Decodable>(_ nomeFile:String) -> T{
