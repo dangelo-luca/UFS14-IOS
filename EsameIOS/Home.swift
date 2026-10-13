@@ -28,7 +28,7 @@ enum FiltroComponenti: String, CaseIterable {
 
 // MARK: - Home
 
-struct ContentView: View {
+struct Home: View {
     @State var testo: String = ""
     @State var risultati: [Risultato] = []
     @State var filtro: FiltroComponenti = .piuAcquistati   // default: il 3°
@@ -194,5 +194,5 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    Home()
 }

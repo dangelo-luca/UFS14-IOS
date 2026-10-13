@@ -1,3 +1,4 @@
+/*
 //
 //  EsamwIOS.swift
 //  EsameIOS
@@ -56,3 +57,4 @@ func caricaJson<T: Decodable>(_ nomeFile:String) -> T{
         fatalError("Errore durante la decodifica di \(nomeFile)")
     }
 }
+*/
