@@ -1,4 +1,4 @@
-//
+/*//
 //  ContentView.swift
 //  EsameIOS
 //
@@ -80,3 +80,4 @@ struct ups: View {
 #Preview {
     ups()
 }
+*/

@@ -1,3 +1,4 @@
+/*
 //
 //  ContentView.swift
 //  EsameIOS
@@ -84,3 +85,4 @@ struct os: View {
 #Preview {
     os()
 }
+*/
