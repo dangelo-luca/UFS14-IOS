@@ -56,7 +56,7 @@ struct ProductView : View {
     @State var isShowingDetails : Bool = false;
     
     var nome: String;
-    var prezzo: Int;
+    var prezzo: Int?;
     
     var details: [String: Any];
     
@@ -71,7 +71,7 @@ struct ProductView : View {
                     }
                     Spacer()
                     HStack {
-                        Text("Prezzo: \(prezzo)€")
+                        Text("Prezzo: \(prezzo ?? 0)€")
                         Spacer()
                     }
                     
