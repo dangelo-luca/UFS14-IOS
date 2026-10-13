@@ -3,18 +3,20 @@ import SwiftUI
 struct ComponentePC: Identifiable, Hashable {
     let id: UUID
     let nome: String
+    let immagine: String
     var colore: Color
-    
-    init(id: UUID = UUID(), nome: String, colore: Color = .gray) {
+
+    init(id: UUID = UUID(), nome: String, immagine: String = "square.dashed", colore: Color = .gray) {
         self.id = id
         self.nome = nome
+        self.immagine = immagine
         self.colore = colore
     }
-    
+
     static func == (lhs: ComponentePC, rhs: ComponentePC) -> Bool {
         lhs.id == rhs.id
     }
-    
+
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)
     }
@@ -22,19 +24,21 @@ struct ComponentePC: Identifiable, Hashable {
 
 struct BuildPcView: View {
     @State private var componenteSelezionato: ComponentePC?
-    
+    @State var testo: String = ""
+    @State var risultati: [Risultato] = []
+
     let componenti: [ComponentePC] = [
-        ComponentePC(nome: "CPU"),
-        ComponentePC(nome: "Motherboard"),
-        ComponentePC(nome: "GPU"),
-        ComponentePC(nome: "RAM"),
-        ComponentePC(nome: "Power Supply"),
-        ComponentePC(nome: "Storage"),
-        ComponentePC(nome: "Case"),
-        ComponentePC(nome: "os"),
-        ComponentePC(nome: "ups")
+        ComponentePC(nome: "CPU", immagine: "cpu"),
+        ComponentePC(nome: "Motherboard", immagine: "rectangle.3.group"),
+        ComponentePC(nome: "GPU", immagine: "display"),
+        ComponentePC(nome: "RAM", immagine: "memorychip"),
+        ComponentePC(nome: "Power Supply", immagine: "powerplug"),
+        ComponentePC(nome: "Storage", immagine: "internaldrive"),
+        ComponentePC(nome: "Case", immagine: "pc", colore: .blue),
+        ComponentePC(nome: "os", immagine: "desktopcomputer"),
+        ComponentePC(nome: "ups", immagine: "bolt.shield")
     ]
-    
+
     var body: some View {
         NavigationStack {
             ScrollView {
@@ -67,8 +71,13 @@ struct BuildPcView: View {
                 vistaDettaglio(per: componente)
             }
         }
+        NavBar(placeholder: "Cerca componenti",
+               cerca: [],
+               style: .build,
+               testo: $testo,
+               risultati: $risultati)
     }
-    
+
     @ViewBuilder
     private func vistaDettaglio(per componente: ComponentePC) -> some View {
         switch componente.nome.lowercased() {
@@ -84,13 +93,13 @@ struct BuildPcView: View {
 
 struct DettaglioComponenteView: View {
     let componente: ComponentePC
-    
+
     var body: some View {
         VStack(spacing: 16) {
             Text(componente.nome)
                 .font(.largeTitle)
                 .bold()
-            
+
             Text("Seleziona \(componente.nome)")
                 .font(.subheadline)
                 .foregroundColor(.secondary)
@@ -104,21 +113,23 @@ struct DettaglioComponenteView: View {
 struct ComponentCardView: View {
     let componente: ComponentePC
     let action: () -> Void
-        
+
     var body: some View {
         Button(action: action) {
             VStack(alignment: .leading, spacing: 8) {
                 HStack(spacing: 16) {
-                    Rectangle()
-                        .fill(Color.white.opacity(0.2))
+                    Image(systemName: componente.immagine)
+                        .font(.system(size: 32))
+                        .foregroundColor(.white)
                         .frame(width: 70, height: 70)
+                        .background(Color.white.opacity(0.2))
                         .cornerRadius(12)
-                        
+
                     Text(componente.nome)
                         .font(.title)
                         .bold()
                 }
-                    
+
                 HStack(spacing: 6) {
                     Image(systemName: "plus")
                     Text("Scegli un \(componente.nome)")

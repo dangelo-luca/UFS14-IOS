@@ -10,9 +10,33 @@
 		188441DB307E2B0D00FC5957 /* EsameIOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EsameIOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		14ED8597307E3A12001B261E /* Exceptions for "EsameIOS" folder in "EsameIOS" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				.swift,
+			);
+			target = 188441DA307E2B0D00FC5957 /* EsameIOS */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
+		14ED8598307E3A12001B261E /* Exceptions for "EsameIOS" folder in "Compile Sources" phase from "EsameIOS" target */ = {
+			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
+			buildPhase = 188441D7307E2B0D00FC5957 /* Sources */;
+			membershipExceptions = (
+				.swift,
+			);
+		};
+/* End PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		188441DD307E2B0D00FC5957 /* EsameIOS */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				14ED8597307E3A12001B261E /* Exceptions for "EsameIOS" folder in "EsameIOS" target */,
+				14ED8598307E3A12001B261E /* Exceptions for "EsameIOS" folder in "Compile Sources" phase from "EsameIOS" target */,
+			);
 			path = EsameIOS;
 			sourceTree = "<group>";
 		};
