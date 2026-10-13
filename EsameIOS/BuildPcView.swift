@@ -1,14 +1,26 @@
 import SwiftUI
 
-struct ComponentePC: Identifiable {
-    let id = UUID()
+struct ComponentePC: Identifiable, Hashable {
+    let id: UUID
     let nome: String
-    var colore: Color = .gray
+    var colore: Color
+    
+    init(id: UUID = UUID(), nome: String, colore: Color = .gray) {
+        self.id = id
+        self.nome = nome
+        self.colore = colore
+    }
+    
+    static func == (lhs: ComponentePC, rhs: ComponentePC) -> Bool {
+        lhs.id == rhs.id
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
 }
 
-
 struct BuildPcView: View {
-    @State private var apriDettaglio = false
     @State private var componenteSelezionato: ComponentePC?
     
     let componenti: [ComponentePC] = [
@@ -16,40 +28,76 @@ struct BuildPcView: View {
         ComponentePC(nome: "Motherboard"),
         ComponentePC(nome: "GPU"),
         ComponentePC(nome: "RAM"),
-        ComponentePC(nome: "Power Supplie"),
+        ComponentePC(nome: "Power Supply"),
         ComponentePC(nome: "Storage"),
         ComponentePC(nome: "Case"),
-        
+        ComponentePC(nome: "os"),
+        ComponentePC(nome: "ups")
     ]
     
     var body: some View {
-        NavigationStack{
-            ScrollView{
-                LazyVStack(spacing: 16){
+        NavigationStack {
+            ScrollView {
+                LazyVStack(spacing: 16) {
                     ForEach(componenti) { comp in
-                        ComponentCardView(componente:comp){
+                        ComponentCardView(componente: comp) {
                             componenteSelezionato = comp
-                            apriDettaglio = true
                         }
                     }
                 }
                 .padding(.horizontal)
-                .padding(.top,16)
+                .padding(.top, 16)
             }
             .navigationTitle("Crea la tua build")
             .navigationBarTitleDisplayMode(.inline)
-            .navigationBarItems(leading: Button(action: { }) {
-                Image(systemName: "chevron.backward.circle.fill")
-            }.accentColor(.gray).font(.title)
-                                , trailing: Button("Salva Build", action: { })
-                .accentColor(.pink)
-            )
-            .navigationDestination(isPresented: $apriDettaglio) {
-                    components()
+            .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    Button(action: { }) {
+                        Image(systemName: "chevron.backward.circle.fill")
+                    }
+                    .accentColor(.gray)
                     .font(.title)
+                }
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button("Salva Build", action: { })
+                        .accentColor(.pink)
+                }
             }
-            
+            .navigationDestination(item: $componenteSelezionato) { componente in
+                vistaDettaglio(per: componente)
+            }
         }
+    }
+    
+    @ViewBuilder
+    private func vistaDettaglio(per componente: ComponentePC) -> some View {
+        switch componente.nome.lowercased() {
+        case "os":
+            os()
+        case "ups":
+            ups()
+        default:
+            DettaglioComponenteView(componente: componente)
+        }
+    }
+}
+
+struct DettaglioComponenteView: View {
+    let componente: ComponentePC
+    
+    var body: some View {
+        VStack(spacing: 16) {
+            Text(componente.nome)
+                .font(.largeTitle)
+                .bold()
+            
+            Text("Seleziona \(componente.nome)")
+                .font(.subheadline)
+                .foregroundColor(.secondary)
+        }
+        .padding()
+        .navigationTitle(componente.nome)
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
@@ -60,7 +108,7 @@ struct ComponentCardView: View {
     var body: some View {
         Button(action: action) {
             VStack(alignment: .leading, spacing: 8) {
-                   HStack(spacing: 16) {
+                HStack(spacing: 16) {
                     Rectangle()
                         .fill(Color.white.opacity(0.2))
                         .frame(width: 70, height: 70)
@@ -73,7 +121,7 @@ struct ComponentCardView: View {
                     
                 HStack(spacing: 6) {
                     Image(systemName: "plus")
-                    Text("Seleziona il componente")
+                    Text("Scegli un \(componente.nome)")
                 }
                 .font(.subheadline)
             }
@@ -87,7 +135,6 @@ struct ComponentCardView: View {
         }
     }
 }
-
 
 #Preview {
     BuildPcView()
