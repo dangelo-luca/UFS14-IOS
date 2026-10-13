@@ -63,8 +63,6 @@ struct ProductView : View {
     var body : some View {
         VStack(){
             HStack{
-                Image(systemName: "square").resizable().frame(width: 100, height: 100)
-                Spacer()
                 VStack{
                     Spacer()
                     HStack{
