@@ -10,7 +10,9 @@ struct ComponentePC: Identifiable {
 
 struct BuildPcView: View {
     @State private var apriDettaglio = false
-    @State private var componenteSelezionato: ComponentePC?
+    @State private var componenteSelezionato:ComponentePC?
+    @State var testo: String = ""
+    @State var risultati: [Risultato] = []
     
     let componenti: [ComponentePC] = [
         ComponentePC(nome: "CPU", immagine: "cpu"),
@@ -38,10 +40,7 @@ struct BuildPcView: View {
             }
             .navigationTitle("Crea la tua build")
             .navigationBarTitleDisplayMode(.inline)
-            .navigationBarItems(leading: Button(action: { }) {
-                Image(systemName: "chevron.backward.circle.fill")
-            }.accentColor(.gray).font(.title)
-                                , trailing: Button("Salva Build", action: { })
+            .navigationBarItems(trailing: Button("Salva Build", action: { })
                 .accentColor(.pink)
             )
             .navigationDestination(isPresented: $apriDettaglio) {
@@ -50,6 +49,11 @@ struct BuildPcView: View {
             }
             
         }
+        NavBar(placeholder: "Cerca componenti",
+                cerca: [],
+                style: .build,
+                testo: $testo,
+                risultati: $risultati)
     }
 }
 
