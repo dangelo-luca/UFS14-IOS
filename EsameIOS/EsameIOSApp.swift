@@ -12,6 +12,7 @@ struct EsameIOSApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+            
         }
     }
 }
