@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct components: View {
     @State private var os: [Os] = []
     var body: some View {
         VStack {

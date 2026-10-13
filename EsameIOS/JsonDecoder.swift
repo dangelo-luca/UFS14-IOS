@@ -41,15 +41,6 @@ struct Ups: Codable, Identifiable {
     let capacity_va: Int
 }
 
-@main
-struct EsameIOS: App {
-    var body: some Scene {
-        WindowGroup {
-            ContentView()
-        }
-    }
-}
-
 func caricaJson<T: Decodable>(_ nomeFile:String) -> T{
     guard let url  = Bundle.main.url(forResource: nomeFile, withExtension: nil) else{
         fatalError("impossibile leggere il file \(nomeFile)")
