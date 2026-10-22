@@ -14,7 +14,7 @@ enum Scheda: Int, CaseIterable {
         }
     }
 
-    // Icona "vuota" (non selezionata) e "piena" (selezionata), come nell'app Orologio
+    // Icona "vuota" (non selezionata) e "piena" (selezionata)
     var icona: String {
         switch self {
         case .nuova: return "plus.circle"
@@ -57,23 +57,30 @@ struct MainTabView: View {
 
     var body: some View {
         TabView(selection: $selezione) {
-            BuildPcView()
-                .tag(Scheda.nuova)
-                .toolbar(.hidden, for: .tabBar)   // nascondo la barra di sistema
+            NavigationStack {
+                BuildPcView()
+            }
+            .tag(Scheda.nuova)
+            .toolbar(.hidden, for: .tabBar)
 
-            HomeView()
-                .tag(Scheda.home)
-                .toolbar(.hidden, for: .tabBar)
+            NavigationStack {
+                HomeView()
+            }
+            .tag(Scheda.home)
+            .toolbar(.hidden, for: .tabBar)
 
-            BuildSavedView()
-                .tag(Scheda.salvati)
-                .toolbar(.hidden, for: .tabBar)
+            NavigationStack {
+                BuildSavedView()
+            }
+            .tag(Scheda.salvati)
+            .toolbar(.hidden, for: .tabBar)
 
-            ProfiloView()
-                .tag(Scheda.profilo)
-                .toolbar(.hidden, for: .tabBar)
+            NavigationStack {
+                ProfiloView()
+            }
+            .tag(Scheda.profilo)
+            .toolbar(.hidden, for: .tabBar)
         }
-        // La barra personalizzata sta sotto a tutte le schede
         .safeAreaInset(edge: .bottom) {
             barra
         }
