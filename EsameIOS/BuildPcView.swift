@@ -1,11 +1,30 @@
 import SwiftUI
 
+
+enum ComponentType: String, CaseIterable, Identifiable {
+    case cpu = "CPU"
+    case motherboard = "Motherboard"
+    case gpu = "GPU"
+    case ram = "RAM"
+    case psu = "Power Supply"
+    case storage = "Storage"
+    case case_ = "Case"
+    case cooler = "Cooler"
+
+    var id: String { rawValue }
+
+}
 struct ComponentePC: Identifiable {
     let id = UUID()
     let nome: String
     let immagine: String
     var colore: Color = .gray
     var fonti: [Fonte] = []
+}
+
+struct SelectedPart {
+    let name: String
+    let price: Double
 }
 
 
@@ -41,17 +60,48 @@ struct BuildPcView: View {
                 .padding(.horizontal)
                 .padding(.top, 16)
             }
+            .safeAreaInset(edge: .top, spacing: 0) {
+                PriceHeader(count: selection.count,
+                              total: ComponentType.allCases.count,
+                              price: total,
+                              progress: progress)
+                    .padding(.horizontal, 20)
+                    .padding(.top, 8)
+                    .padding(.bottom, 12)
+                    .background(.bar)
+            }
             .navigationTitle("Crea la tua build")
-            .navigationBarTitleDisplayMode(.inline)
-            .navigationBarItems(trailing: Button("Salva Build", action: { })
-                .accentColor(.pink)
-            )
+            .navigationBarTitleDisplayMode(.large)
+            .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    Button { dismiss() } label: {
+                        Label("Indietro", systemImage: "chevron.left")
+                    }
+                }
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button("Salva") { /* salva */ }
+                        .fontWeight(.semibold)
+                        .buttonStyle(.borderedProminent)
+                        .buttonBorderShape(.capsule)
+                        .tint(.pink)
+                        .controlSize(.small)
+                        .disabled(selection.isEmpty)
+                }
+            }
             .navigationDestination(isPresented: $apriDettaglio) {
                 if let comp = componenteSelezionato {
                     Components(titolo: comp.nome, fonti: comp.fonti) { r in
                         scelti[comp.nome] = r
                     }
                 }
+                Spacer()
+                Text("\(count)/\(total)")
+                    .font(.subheadline.weight(.semibold))
+                    .monospacedDigit()
+                    .padding(.horizontal, 10)
+                    .padding(.vertical, 5)
+                    .background(.pink.opacity(0.12), in: Capsule())
+                    .foregroundStyle(.pink)
             }
         }
     }
