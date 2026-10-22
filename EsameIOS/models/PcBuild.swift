@@ -8,19 +8,20 @@
 import Foundation
 
 class PcBuild {
-    var os : Os!;
-    var cpu: CPU!;
-    var cpu_fan: CPU_Fan!;
-    var harddrive: HardDrive!;
-    var motherboard: Motherboard!;
-    var pc_case: Case!;
-    var psu: PSU!;
-    var ram: RAM!;
-    var soundcard: SoundCard!;
-    var gpu: VideoCard!;
-    var wificard: WirelessNetworkCard!;
+    let id = UUID()
+    var os : Os?;
+    var cpu: CPU?;
+    var cpu_fan: CPU_Fan?;
+    var harddrive: HardDrive?;
+    var motherboard: Motherboard?;
+    var pc_case: Case?;
+    var psu: PSU?;
+    var ram: RAM?;
+    var soundcard: SoundCard?;
+    var gpu: VideoCard?;
+    var wificard: WirelessNetworkCard?;
     
-    init(os: Os!, cpu: CPU!, cpu_fan: CPU_Fan!, harddrive: HardDrive!, motherboard: Motherboard!, pc_case: Case!, psu: PSU!, ram: RAM!, soundcard: SoundCard!, gpu: VideoCard!, wificard: WirelessNetworkCard!) {
+    init(os: Os? = nil, cpu: CPU? = nil, cpu_fan: CPU_Fan? = nil, harddrive: HardDrive? = nil, motherboard: Motherboard? = nil, pc_case: Case? = nil, psu: PSU? = nil, ram: RAM? = nil, soundcard: SoundCard? = nil, gpu: VideoCard? = nil, wificard: WirelessNetworkCard? = nil) {
         self.os = os
         self.cpu = cpu
         self.cpu_fan = cpu_fan
