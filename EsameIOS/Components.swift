@@ -1,20 +1,6 @@
-//
-//  Components.swift
-//  EsameIOS
-//
-
 import SwiftUI
 
 // MARK: - Pagina con la lista dei componenti di UNA categoria
-//
-// Uso (da BuildPcView, quando premi il bottone CPU):
-//   Components(titolo: "CPU", fonti: [Fonte("cpu.json", CPU.self)]) { risultato in
-//       // chiamata quando premi "Seleziona" su un prodotto
-//   }
-//
-// Al caricamento legge tutti i dati dei json passati in `fonti`,
-// poi la barra in basso filtra la lista mentre scrivi.
-
 struct Components: View {
     var titolo: String = "Componenti"
     var fonti: [Fonte] = RicercaView.tutte
@@ -24,56 +10,80 @@ struct Components: View {
     @State private var testo: String = ""
     @State private var tutti: [Risultato] = []
     @State private var caricato = false
+    @State private var ordine: OrdineRicerca = .nomeAZ
+    private let massimo = 100
 
-    private let massimo = 100   // massimo prodotti mostrati, per tenere la lista leggera
+    private func ordinaRisultati(_ dati: [Risultato]) -> [Risultato] {
+        dati.sorted { r1, r2 in
+            switch ordine {
+            case .nomeAZ:
+                return r1.nome.localizedCaseInsensitiveCompare(r2.nome) == .orderedAscending
+            case .nomeZA:
+                return r1.nome.localizedCaseInsensitiveCompare(r2.nome) == .orderedDescending
+            case .prezzoCrescente:
+                return (r1.prezzo ?? 0) < (r2.prezzo ?? 0)
+            case .prezzoDecrescente:
+                return (r1.prezzo ?? 0) > (r2.prezzo ?? 0)
+            }
+        }
+    }
 
     var body: some View {
         let query = testo.trimmingCharacters(in: .whitespaces)
         let filtrati = query.isEmpty ? tutti : tutti.filter { $0.nome.localizedCaseInsensitiveContains(query) }
-        let lista = Array(filtrati.prefix(massimo))
-        BarraRicerca(testo: $testo, placeholder: "Cerca in \(titolo)")
-        Group {
-            if !caricato {
-                ProgressView("Caricamento...")
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-            } else if lista.isEmpty {
-                Text("Nessun risultato")
-                    .foregroundStyle(.secondary)
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-            } else {
-                ScrollView {
-                    LazyVStack(spacing: 12) {
-                        ForEach(lista) { r in
-                            ProductView(
-                                nome: r.nome,
-                                prezzo: r.prezzo,
-                                details: r.dettagli,
-                                onSelect: alSelezionare == nil ? nil : {
-                                    alSelezionare?(r)
-                                    dismiss()
-                                }
-                            )
+        let ordinati = ordinaRisultati(filtrati)
+        let lista = Array(ordinati.prefix(massimo))
+
+        VStack(spacing: 12) {
+            // Barra di ricerca e Filtro separati e affiancati
+            HStack(spacing: 12) {
+                BarraRicerca(testo: $testo, placeholder: "Cerca in \(titolo)")
+                PulsanteFiltro(ordine: $ordine)
+            }
+            .padding(.horizontal)
+
+            Group {
+                if !caricato {
+                    ProgressView("Caricamento...")
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                } else if lista.isEmpty {
+                    Text("Nessun risultato")
+                        .foregroundStyle(.secondary)
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                } else {
+                    ScrollView {
+                        LazyVStack(spacing: 12) {
+                            ForEach(lista) { r in
+                                ProductView(
+                                    nome: r.nome,
+                                    prezzo: r.prezzo,
+                                    details: r.dettagli,
+                                    titoloBottone: "Aggiungi",
+                                    onSelect: alSelezionare == nil ? nil : {
+                                        alSelezionare?(r)
+                                        dismiss()
+                                    }
+                                )
+                            }
+
+                            if filtrati.count > massimo {
+                                Text("Mostrati i primi \(massimo) di \(filtrati.count): scrivi per restringere")
+                                    .font(.caption)
+                                    .foregroundStyle(.secondary)
+                                    .padding(.bottom, 8)
+                            }
                         }
-                        if filtrati.count > massimo {
-                            Text("Mostrati i primi \(massimo) di \(filtrati.count): scrivi per restringere")
-                                .font(.caption)
-                                .foregroundStyle(.secondary)
-                                .padding(.bottom, 8)
-                        }
+                        .padding(.horizontal)
                     }
-                    .padding(.horizontal)
                 }
             }
         }
         .navigationTitle(titolo)
         .navigationBarTitleDisplayMode(.inline)
-        .safeAreaInset(edge: .bottom) {
-           
-        }
         .task {
             guard !caricato else { return }
-            await Task.yield()                 // lascia disegnare la pagina prima di leggere i file
-            tutti = caricaRisultati(da: fonti) // <- qui si caricano i dati
+            await Task.yield()
+            tutti = caricaRisultati(da: fonti)
             caricato = true
         }
     }
@@ -81,14 +91,12 @@ struct Components: View {
 
 // MARK: - Scheda di un prodotto
 struct ProductView: View {
-    
-
     @State private var isShowingDetails: Bool = false
 
     var nome: String
     var prezzo: Double?
     var details: [String: Any]
-    var titoloBottone: String = "aggiungi"
+    var titoloBottone: String = "Aggiungi"
     var onSelect: (() -> Void)? = nil
 
     var body: some View {
@@ -110,7 +118,13 @@ struct ProductView: View {
             if isShowingDetails {
                 VStack(alignment: .leading, spacing: 6) {
                     ForEach(details.sorted(by: { $0.key < $1.key }), id: \.key) { key, value in
-                        Text("\(key): \(formattaValore(value))")
+                        HStack {
+                            Text(key)
+                                .foregroundStyle(.secondary)
+                            Spacer()
+                            Text(formattaValore(value))
+                        }
+                        .font(.caption)
                     }
                 }
                 Divider()
@@ -122,15 +136,17 @@ struct ProductView: View {
                         .buttonStyle(.borderedProminent)
                         .tint(.blue)
                 }
+
                 Spacer()
+
                 Button(action: { isShowingDetails.toggle() }) {
                     HStack {
                         Text(isShowingDetails ? "Nascondi dettagli" : "Mostra dettagli")
                         Image(systemName: isShowingDetails ? "chevron.up" : "chevron.down")
                     }
-                }.foregroundColor(.blue)
+                }
+                .foregroundStyle(.blue)
             }
-            
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding()
