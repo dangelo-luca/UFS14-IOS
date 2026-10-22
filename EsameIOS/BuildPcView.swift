@@ -9,7 +9,7 @@ enum ComponentType: String, CaseIterable, Identifiable {
     case psu = "Power Supply"
     case storage = "Storage"
     case case_ = "Case"
-    case cooler = "Cooler"
+    case cpu_cooler = "CPU Cooler"
 
     var id: String { rawValue }
 
@@ -33,24 +33,36 @@ struct BuildPcView: View {
     @State private var componenteSelezionato: ComponentePC?
     @State var testo: String = ""
     @State var risultati: [Risultato] = []
-    @State private var scelti: [String: Risultato] = [:]
-    @Environment(\.dismiss) private var dismiss
-    @State private var selection: [ComponentType: SelectedPart] = [:]
     
-    private var total: Double { selection.values.reduce(0) { $0 + $1.price } }
-        private var progress: Double {
-            Double(selection.count) / Double(ComponentType.allCases.count)
-        }
+    // Unico dizionario per tenere traccia dei componenti scelti
+    @State private var scelti: [String: Risultato] = [:]
+    
+    @Environment(\.dismiss) private var dismiss
+    
+    // Calcolo del totale direttamente da `scelti`
+    private var total: Double {
+        scelti.values.compactMap { $0.prezzo }.reduce(0, +)
+    }
+    
+    // Progresso basato sul numero di componenti selezionati
+    private var progress: Double {
+        guard !componenti.isEmpty else { return 0 }
+        return Double(scelti.count) / Double(componenti.count)
+    }
     
     let componenti: [ComponentePC] = [
         ComponentePC(nome: "CPU", immagine: "cpu", colore: .blue.opacity(0.8), fonti: RicercaView.fonti("cpu.json")),
+        ComponentePC(nome: "CPU Cooler", immagine: "desktopcomputer", colore: .blue.opacity(0.8), fonti: RicercaView.fonti("cpu-cooler.json")),
         ComponentePC(nome: "Motherboard", immagine: "rectangle.3.group", colore: .blue.opacity(0.8), fonti: RicercaView.fonti("motherboard.json")),
         ComponentePC(nome: "GPU", immagine: "display", colore: .blue.opacity(0.8), fonti: RicercaView.fonti("video-card.json")),
         ComponentePC(nome: "RAM", immagine: "memorychip", colore: .blue.opacity(0.8), fonti: RicercaView.fonti("memory.json")),
         ComponentePC(nome: "Power Supply", immagine: "powerplug", colore: .blue.opacity(0.8), fonti: RicercaView.fonti("power-supply.json")),
         ComponentePC(nome: "Storage", immagine: "internaldrive", colore: .blue.opacity(0.8), fonti: RicercaView.fonti("internal-hard-drive.json")),
         ComponentePC(nome: "Case", immagine: "pc", colore: .blue.opacity(0.8), fonti: RicercaView.fonti("case.json")),
-        ComponentePC(nome: "OS", immagine: "desktopcomputer", colore: .blue.opacity(0.8), fonti: RicercaView.fonti("os.json"))
+        ComponentePC(nome: "OS", immagine: "desktopcomputer", colore: .blue.opacity(0.8), fonti: RicercaView.fonti("os.json")),
+        ComponentePC(nome: "Sound Card", immagine: "desktopcomputer", colore: .blue.opacity(0.8), fonti: RicercaView.fonti("sound-card.json")),
+        ComponentePC(nome: "Wireless Network Card", immagine: "desktopcomputer", colore: .blue.opacity(0.8), fonti: RicercaView.fonti("wireless-network-card.json"))
+        
     ]
     
     var body: some View {
@@ -68,14 +80,16 @@ struct BuildPcView: View {
                 .padding(.top, 16)
             }
             .safeAreaInset(edge: .top, spacing: 0) {
-                PriceHeader(count: selection.count,
-                              total: ComponentType.allCases.count,
-                              price: total,
-                              progress: progress)
-                    .padding(.horizontal, 20)
-                    .padding(.top, 8)
-                    .padding(.bottom, 12)
-                    .background(.bar)
+                PriceHeader(
+                    count: scelti.count,
+                    total: componenti.count,
+                    price: total,
+                    progress: progress
+                )
+                .padding(.horizontal, 20)
+                .padding(.top, 8)
+                .padding(.bottom, 12)
+                .background(.bar)
             }
             .navigationTitle("Crea la tua build")
             .navigationBarTitleDisplayMode(.large)
@@ -92,7 +106,7 @@ struct BuildPcView: View {
                         .buttonBorderShape(.capsule)
                         .tint(.pink)
                         .controlSize(.small)
-                        .disabled(selection.isEmpty)
+                        .disabled(scelti.isEmpty) // Abilitato quando c'è almeno un componente selezionato
                 }
             }
             .navigationDestination(isPresented: $apriDettaglio) {
