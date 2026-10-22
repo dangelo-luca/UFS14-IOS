@@ -1,4 +1,3 @@
-
 //
 //  CPU_Fan.swift
 //  EsameIOS
@@ -6,11 +5,11 @@
 //  Created by s6 on 13/10/26.
 //
 class CPU_Fan : Model, Codable, Identifiable {
-    var id: String {self.name}
+    var id: String { self.name }
     let name: String
     let price: Double?
-    let rpm: RPM
-    let noise_level: NoiseLevel
+    let rpm: RPM?                    // nel JSON può essere null
+    let noise_level: NoiseLevel?     // nel JSON può essere null
     let color: String?
     let size: Double?
     
@@ -18,8 +17,8 @@ class CPU_Fan : Model, Codable, Identifiable {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.name = try container.decode(String.self, forKey: .name)
         self.price = try container.decodeIfPresent(Double.self, forKey: .price)
-        self.rpm = try container.decode(RPM.self, forKey: .rpm)
-        self.noise_level = try container.decode(NoiseLevel.self, forKey: .noise_level)
+        self.rpm = try container.decodeIfPresent(RPM.self, forKey: .rpm)
+        self.noise_level = try container.decodeIfPresent(NoiseLevel.self, forKey: .noise_level)
         self.color = try container.decodeIfPresent(String.self, forKey: .color)
         self.size = try container.decodeIfPresent(Double.self, forKey: .size)
     }
@@ -27,20 +26,26 @@ class CPU_Fan : Model, Codable, Identifiable {
     func getDetails() -> [String : Any] {
         var details = [String: Any]()
         
-        switch(rpm){
-        case .singolo(let valore):
-            details["RPM"] = valore
-            
-        case .multiplo(let valore):
-            details["RPM"] = "\(valore[0]) - \(valore[1])"
+        if let rpm = rpm {
+            switch rpm {
+            case .singolo(let valore):
+                details["RPM"] = valore
+            case .multiplo(let valori):
+                details["RPM"] = valori.map { "\($0)" }.joined(separator: " - ")
+            }
+        } else {
+            details["RPM"] = "N/D"
         }
         
-        switch(noise_level){
-        case .singolo(let valore):
-            details["Livello di rumore"] = valore
-            
-        case .multiplo(let valore):
-            details["Livello di rumore"] = "\(valore[0]) - \(valore[1])"
+        if let noise = noise_level {
+            switch noise {
+            case .singolo(let valore):
+                details["Livello di rumore"] = valore
+            case .multiplo(let valori):
+                details["Livello di rumore"] = valori.map { "\($0)" }.joined(separator: " - ")
+            }
+        } else {
+            details["Livello di rumore"] = "N/D"
         }
         
         details["Colore"] = color ?? "N/D"
@@ -63,7 +68,7 @@ enum NoiseLevel: Codable {
             self = .multiplo(arrayValori)
         }
         else {
-            throw DecodingError.typeMismatch(OsMode.self, DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Atteso Double o [Double]"))
+            throw DecodingError.typeMismatch(NoiseLevel.self, DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Atteso Double o [Double]"))
         }
     }
 }
@@ -81,7 +86,7 @@ enum RPM: Codable {
             self = .multiplo(arrayValori)
         }
         else {
-            throw DecodingError.typeMismatch(OsMode.self, DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Atteso Int o [Int]"))
+            throw DecodingError.typeMismatch(RPM.self, DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Atteso Int o [Int]"))
         }
     }
 }
