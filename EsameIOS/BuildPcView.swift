@@ -49,7 +49,7 @@ struct BuildPcView: View {
         ComponentePC(nome: "Case", immagine: "macpro.gen3", colore: .blue.opacity(0.8), fonti: RicercaView.fonti("case.json")),
         ComponentePC(nome: "OS", immagine: "gearshape.2", colore: .blue.opacity(0.8), fonti: RicercaView.fonti("os.json")),
         ComponentePC(nome: "Sound Card", immagine: "waveform", colore: .blue.opacity(0.8), fonti: RicercaView.fonti("sound-card.json")),
-        ComponentePC(nome: "Wireless Network Card", immagine: "wifi", colore: .blue.opacity(0.8), fonti: RicercaView.fonti("wireless-network-card.json"))
+        ComponentePC(nome: "Network Card", immagine: "wifi", colore: .blue.opacity(0.8), fonti: RicercaView.fonti("wireless-network-card.json"))
     ]
     
     var body: some View {
@@ -114,26 +114,29 @@ struct ComponentCardView: View {
     
     var body: some View {
         Button(action: action) {
-            VStack(alignment: .leading, spacing: 8) {
-                HStack(spacing: 16) {
+            VStack(alignment: .leading, spacing: 6) {
+                HStack(spacing: 26) {
                     Image(systemName: componente.immagine)
                         .font(.system(size: 32))
                         .foregroundColor(.white)
                         .frame(width: 70, height: 70)
-                        .background(Color.white.opacity(0.2))
-                        .cornerRadius(12)
+                        .background(Color.cyan.opacity(0.9))
+                        .cornerRadius(100)
                     
-                    Text(componente.nome)
-                        .font(.title)
-                        .bold()
+                    VStack(spacing: 6) {
+                        Text(componente.nome)
+                            .font(.title)
+                            .bold()
+                       
+                        Text(scelto?.nome ?? "Seleziona il componente")
+                            .multilineTextAlignment(.leading)
+                    }
+                    
+                    
+                    
                 }
                 
-                HStack(spacing: 6) {
-                    Image(systemName: scelto == nil ? "plus" : "checkmark.circle.fill")
-                    Text(scelto?.nome ?? "Seleziona il componente")
-                        .multilineTextAlignment(.leading)
-                }
-                .font(.subheadline)
+                
             }
             .foregroundColor(.white)
             .padding()
