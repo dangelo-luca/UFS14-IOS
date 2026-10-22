@@ -11,7 +11,7 @@ import SwiftUI
 struct EsameIOSApp: App {
     var body: some Scene {
         WindowGroup {
-            Home()
+            HomeView()
             
         }
     }

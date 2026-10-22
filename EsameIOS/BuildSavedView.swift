@@ -28,11 +28,7 @@ struct BuildSavedView: View {
         .navigationTitle("Build salvate")
         .safeAreaInset(edge: .bottom) {
             // .saved = senza il pulsante salvati a sinistra
-            NavBar(placeholder: "Cerca build",
-                   cerca: [],
-                   style: .saved,
-                   testo: $testo,
-                   risultati: $risultati)
+           
         }
     }
 }
