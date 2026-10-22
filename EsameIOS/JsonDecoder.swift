@@ -1,60 +1,96 @@
-/*
 //
-//  EsamwIOS.swift
+//  JsonDecoder.swift
 //  EsameIOS
-//
-//  Created by s17 on 06/10/26.
 //
 
 import SwiftUI
 
-enum OsMode: Codable {
-    case singolo(Int)
-    case multiplo([Int])
-    
-    init(from decoder: Decoder) throws {
-        let container = try decoder.singleValueContainer()
-        if let valoreSingolo = try? container.decode(Int.self) {
-            self = .singolo(valoreSingolo)
-        }
-        else if let arrayValori = try? container.decode([Int].self) {
-            self = .multiplo(arrayValori)
-        }
-        else {
-            throw DecodingError.typeMismatch(OsMode.self, DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Atteso Int o [Int]"))
-        }
+// MARK: - Lettura base di un file json (ritorna T, di solito un array)
+// Uso:  let cpu: [CPU] = caricaJson("cpu.json")
+func caricaJson<T: Decodable>(_ nomeFile: String) -> T {
+    guard let url = Bundle.main.url(forResource: nomeFile, withExtension: nil) else {
+        fatalError("impossibile trovare il file \(nomeFile) nel progetto")
     }
-}
-
-struct Os: Codable, Identifiable {
-    var id: String { self.name }
-    let name: String
-    let price: Double?
-    let mode: OsMode
-    let max_memory: Int
-}
-
-struct Ups: Codable, Identifiable {
-    var id: String { self.name }
-    let name: String
-    let price: Double?
-    let capacity_w: Int?
-    let capacity_va: Int?
-}
-
-func caricaJson<T: Decodable>(_ nomeFile:String) -> T{
-    guard let url  = Bundle.main.url(forResource: nomeFile, withExtension: nil) else{
+    guard let dati = try? Data(contentsOf: url) else {
         fatalError("impossibile leggere il file \(nomeFile)")
     }
-    guard let dati = try? Data(contentsOf: url) else{
-        fatalError("impossibile leggere il file")
-    }
     do {
-        let decoder = JSONDecoder()
-        let datiDecodificati = try decoder.decode(T.self, from: dati)
-        return datiDecodificati
+        return try JSONDecoder().decode(T.self, from: dati)
     } catch {
-        fatalError("Errore durante la decodifica di \(nomeFile)")
+        fatalError("Errore durante la decodifica di \(nomeFile): \(error)")
     }
 }
-*/
+
+// MARK: - UN file -> TUTTI i dati (vettore)
+// Uso:  let cpu: [CPU] = caricaTutti("cpu.json")
+func caricaTutti<T: Decodable>(_ nomeFile: String) -> [T] {
+    return caricaJson(nomeFile)
+}
+
+// Come caricaTutti, ma se il file non si legge o non rispetta il modello
+// NON chiude l'app: stampa l'errore in console (righe "RICERCA:") e ritorna [].
+func caricaSicuro<T: Decodable>(_ nomeFile: String) -> [T] {
+    guard let url = Bundle.main.url(forResource: nomeFile, withExtension: nil),
+          let dati = try? Data(contentsOf: url) else {
+        print("RICERCA: file \(nomeFile) non trovato nel progetto")
+        return []
+    }
+    do {
+        return try JSONDecoder().decode([T].self, from: dati)
+    } catch {
+        print("RICERCA: errore in \(nomeFile): \(error)")
+        return []
+    }
+}
+
+// MARK: - Fonte = un file json + la classe con cui si legge
+// Uso:  Fonte("cpu.json", CPU.self)
+// Il file viene letto UNA volta sola, la prima volta che serve, poi resta in memoria.
+final class Fonte {
+    let file: String
+    let categoria: String
+    private let leggi: () -> [any Model]
+
+    // Gli oggetti letti dal json
+    lazy var dati: [any Model] = leggi()
+
+    // Gli stessi oggetti come Risultato (nome e prezzo già estratti, id stabili)
+    lazy var risultati: [Risultato] = creaRisultati()
+
+    init<T: Model & Decodable>(_ file: String, _ tipo: T.Type) {
+        self.file = file
+        self.categoria = file.replacingOccurrences(of: ".json", with: "")
+        self.leggi = { () -> [any Model] in
+            let lista: [T] = caricaSicuro(file)
+            return lista.map { $0 as any Model }
+        }
+    }
+
+    private func creaRisultati() -> [Risultato] {
+        dati.compactMap { elemento in
+            guard let nome: String = leggiCampo(elemento, "name") else { return nil }
+            let prezzo: Double? = leggiCampo(elemento, "price")
+            return Risultato(categoria: categoria, nome: nome, prezzo: prezzo, modello: elemento)
+        }
+    }
+}
+
+// MARK: - PIÙ file -> TUTTI i dati (vettore)
+// Da usare al caricamento di una pagina (es. Components):
+//   let tutti = caricaRisultati(da: [Fonte("cpu.json", CPU.self)])
+func caricaRisultati(da fonti: [Fonte]) -> [Risultato] {
+    return fonti.flatMap { $0.risultati }
+}
+
+// MARK: - PIÙ file -> SOLO quelli cercati
+// Uso:  let trovati = cercaNeiFile("ryzen", in: [Fonte("cpu.json", CPU.self)])
+func cercaNeiFile(_ testo: String, in fonti: [Fonte]) -> [Risultato] {
+    let query = testo.trimmingCharacters(in: .whitespaces)
+    guard !query.isEmpty else { return [] }
+    return caricaRisultati(da: fonti).filter { $0.nome.localizedCaseInsensitiveContains(query) }
+}
+
+// Legge il campo `nome` di un qualsiasi oggetto (es. "name", "price")
+func leggiCampo<V>(_ oggetto: Any, _ nome: String) -> V? {
+    Mirror(reflecting: oggetto).children.first { $0.label == nome }?.value as? V
+}

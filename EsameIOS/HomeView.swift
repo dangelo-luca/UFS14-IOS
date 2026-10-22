@@ -2,21 +2,19 @@ import SwiftUI
 
 // MARK: - Modelli (dati di esempio)
 
-struct Promo: Identifiable {
-    let id = UUID()
-    let titolo: String
-    let descrizione: String
-}
-
-struct BuildRecente: Identifiable {
-    let id = UUID()
-    let nome: String
-    let dettaglio: String
-}
-
 struct Componente: Identifiable {
     let id = UUID()
     let nome: String
+}
+
+// Slide del carosello: ognuna ha il suo colore che tinge lo sfondo
+struct SlideCarosello: Identifiable {
+    let id = UUID()
+    let titolo: String
+    let sottotitolo: String
+    let icona: String
+    let colore: Color
+    let coloreTesto: Color
 }
 
 // I 3 filtri della sezione Componenti
@@ -29,123 +27,140 @@ enum FiltroComponenti: String, CaseIterable {
 // MARK: - Home
 
 struct HomeView: View {
-    @State var testo: String = ""
-    @State var risultati: [Risultato] = []
     @State var filtro: FiltroComponenti = .piuAcquistati   // default: il 3°
-
-    // Sezione 1: news / promo
-    let promo = [
-        Promo(titolo: "Offerta della settimana", descrizione: "-20% su schede video"),
-        Promo(titolo: "Novità", descrizione: "Nuove CPU disponibili"),
-        Promo(titolo: "Guida", descrizione: "Come scegliere la RAM")
-    ]
-
-    // Sezione 2: ultime build (2/3)
-    let ultimeBuild = [
-        BuildRecente(nome: "Build Gaming", dettaglio: "8 componenti"),
-        BuildRecente(nome: "Build Ufficio", dettaglio: "6 componenti"),
-        BuildRecente(nome: "Build Video", dettaglio: "9 componenti")
+    @State var pagina: Int = 0                              // slide corrente del carosello
+   
+    // Sezione 1: carosello (il colore di sfondo cambia con la slide)
+    let slide = [
+        SlideCarosello(titolo: "Offerte", sottotitolo: "-20% su schede video",
+                       icona: "tag.fill", colore: .red, coloreTesto: .white),
+        SlideCarosello(titolo: "I più acquistati", sottotitolo: "I componenti preferiti dagli utenti",
+                       icona: "star.fill", colore: .blue, coloreTesto: .white),
+        SlideCarosello(titolo: "Componenti più costosi", sottotitolo: "Il top di gamma",
+                       icona: "eurosign.circle.fill", colore: .yellow, coloreTesto: .black),
+        SlideCarosello(titolo: "Componenti più efficienti", sottotitolo: "Più prestazioni, meno consumi",
+                       icona: "leaf.fill", colore: .green, coloreTesto: .white)
     ]
 
     // Sezione 3: componenti (i primi 10 secondo il filtro)
     @State var componenti: [Componente] = (1...10).map { Componente(nome: "Componente \($0)") }
 
-    // File json in cui cerca la barra
-    let categorie = ["case", "case-accessory", "case-fan", "cpu", "cpu-cooler",
-                     "external-hard-drive", "fan-controller", "headphones",
-                     "internal-hard-drive", "keyboard", "memory", "monitor",
-                     "motherboard", "mouse", "optical-drive", "os", "power-supply",
-                     "sound-card", "speakers", "thermal-paste", "ups", "video-card",
-                     "webcam", "wired-network-card", "wireless-network-card"]
-
     var body: some View {
         NavigationStack {
-            ScrollView {
-                VStack(alignment: .leading, spacing: 20) {
-                    intestazione
-                    sezionePromo
-                    sezioneBuild
-                    sezioneComponenti
+            
+            ZStack(alignment: .top) {
+                sfondo
+
+                ScrollView {
+                    VStack(alignment: .leading, spacing: 20) {
+                        sezioneCarosello
+                        sezioneBuild
+                        sezioneComponenti
+                    }
+                    .padding(.top, 8)
                 }
-            }
-            .safeAreaInset(edge: .bottom) {
-                NavBar(placeholder: "Cerca componenti",
-                       cerca: categorie,
-                       testo: $testo,
-                       risultati: $risultati)
             }
         }
     }
 
-    // MARK: - Intestazione (titolo + cerchio)
-    var intestazione: some View {
-        HStack {
-            Text("Home")
-                .font(.largeTitle)
-                .bold()
-            Spacer()
-            Button(action: {
-                print("Profilo")
-            }) {
-                Image(systemName: "person.fill")
-                    .padding()
-                    .background(Color.gray.opacity(0.2))
-                    .clipShape(Circle())
+    // MARK: - Sfondo colorato con effetto sfocatura (cambia con la slide)
+    var sfondo: some View {
+        let c = slide[pagina].colore
+        return ZStack(alignment: .top) {
+            LinearGradient(colors: [c.opacity(0.55), c.opacity(0.0)],
+                           startPoint: .top, endPoint: .bottom)
+                .frame(height: 420)
+
+            Circle()
+                .fill(c.opacity(0.5))
+                .frame(width: 280, height: 280)
+                .blur(radius: 70)
+                .offset(x: -90, y: -70)
+
+            Circle()
+                .fill(c.opacity(0.4))
+                .frame(width: 220, height: 220)
+                .blur(radius: 60)
+                .offset(x: 120, y: 40)
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
+        .ignoresSafeArea()
+        .animation(.easeInOut(duration: 0.6), value: pagina)
+    }
+
+    // MARK: - Sezione 1: carosello (rosso / blu / giallo / verde)
+    var sezioneCarosello: some View {
+        TabView(selection: $pagina) {
+            ForEach(Array(slide.enumerated()), id: \.element.id) { indice, s in
+                ZStack(alignment: .bottomTrailing) {
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text(s.titolo)
+                            .font(.title2)
+                            .bold()
+                        Text(s.sottotitolo)
+                            .font(.subheadline)
+                    }
+                    .foregroundStyle(s.coloreTesto)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+
+                    Image(systemName: s.icona)
+                        .font(.system(size: 60))
+                        .foregroundStyle(s.coloreTesto.opacity(0.35))
+                }
+                .padding(20)
+                .background(s.colore.gradient)
+                .clipShape(RoundedRectangle(cornerRadius: 30))
+                .padding(.horizontal)
+                .padding(.bottom, 30)       // spazio per i puntini della pagina
+                .tag(indice)
             }
+        }
+        .tabViewStyle(.page(indexDisplayMode: .always))
+        .frame(height: 240)
+    }
+
+    // MARK: - Sezione 2: Ultima Build + Test Build
+    var sezioneBuild: some View {
+        HStack(alignment: .top, spacing: 16) {
+            cartaBuild(titolo: "Ultima Build",
+                       nome: "Build Gaming",
+                       dettaglio: "8 componenti",
+                       colore: .blue)
+            cartaBuild(titolo: "Test Build",
+                       nome: "Build Test",
+                       dettaglio: "6 componenti",
+                       colore: .green)
         }
         .padding(.horizontal)
     }
 
-    // MARK: - Sezione 1: news / promo (si scorre di lato)
-    var sezionePromo: some View {
-        TabView {
-            ForEach(promo) { p in
-                VStack(alignment: .leading, spacing: 8) {
-                    Text(p.titolo).font(.title2).bold()
-                    Text(p.descrizione)
-                }
-                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
-                .padding()
-                .background(Color.pink.opacity(0.2))
-                .cornerRadius(25)
-                .padding(.horizontal)
-            }
-        }
-        .tabViewStyle(.page)
-        .frame(height: 200)
-    }
+    func cartaBuild(titolo: String, nome: String, dettaglio: String, colore: Color) -> some View {
+        VStack(alignment: .leading, spacing: 8) {
+            Text(titolo)
+                .font(.headline)
 
-    // MARK: - Sezione 2: ultime build
-    var sezioneBuild: some View {
-        VStack(alignment: .leading) {
-            Text("Build")
-                .font(.title2)
-                .bold()
-                .padding(.horizontal)
-
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack {
-                    ForEach(ultimeBuild) { b in
-                        VStack(alignment: .leading, spacing: 8) {
-                            Image(systemName: "desktopcomputer")
-                                .font(.title)
-                            Text(b.nome).font(.headline)
-                            Text(b.dettaglio).font(.caption)
-                        }
-                        .frame(width: 160, alignment: .leading)
-                        .padding()
-                        .background(Color.gray.opacity(0.2))
-                        .cornerRadius(20)
-                    }
-                }
-                .padding(.horizontal)
+            VStack(alignment: .leading, spacing: 6) {
+                Image(systemName: "desktopcomputer")
+                    .font(.title)
+                Spacer()
+                Text(nome).font(.headline)
+                Text(dettaglio).font(.caption)
             }
+            .foregroundStyle(.white)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding()
+            .aspectRatio(1, contentMode: .fit)
+            .background(
+                LinearGradient(colors: [colore.opacity(0.95), colore.opacity(0.45)],
+                               startPoint: .topLeading, endPoint: .bottomTrailing)
+            )
+            .clipShape(RoundedRectangle(cornerRadius: 25))
         }
     }
 
     // MARK: - Sezione 3: componenti con filtro
     var sezioneComponenti: some View {
-        VStack(alignment: .leading) {
+        VStack(alignment: .leading, spacing: 12) {
             HStack {
                 Text("Componenti")
                     .font(.title2)
@@ -163,21 +178,29 @@ struct HomeView: View {
                         .font(.subheadline)
                 }
             }
-            .padding(.horizontal)
 
             LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]) {
                 ForEach(componenti) { c in
                     VStack {
                         RoundedRectangle(cornerRadius: 15)
-                            .fill(Color.gray.opacity(0.2))
+                            .fill(Color.white.opacity(0.25))
                             .frame(height: 80)
                         Text(c.nome)
                             .font(.caption)
                     }
                 }
             }
-            .padding(.horizontal)
         }
+        .foregroundStyle(.white)
+        .tint(.white)
+        .padding()
+        // Contenitore viola sfumato rosa
+        .background(
+            LinearGradient(colors: [Color.purple, Color.pink.opacity(0.85)],
+                           startPoint: .topLeading, endPoint: .bottomTrailing)
+        )
+        .clipShape(RoundedRectangle(cornerRadius: 30))
+        .padding(.horizontal)
         // Quando cambia il filtro (e all'apertura) carica i primi 10
         .onChange(of: filtro) { _, nuovo in
             caricaComponenti(nuovo)
@@ -193,6 +216,7 @@ struct HomeView: View {
     }
 }
 
+// La barra vive in MainTabView, quindi la preview parte da lì
 #Preview {
-    HomeView()
+    MainTabView()
 }
