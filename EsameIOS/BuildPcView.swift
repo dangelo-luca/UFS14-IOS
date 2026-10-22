@@ -1,19 +1,7 @@
 import SwiftUI
 
 
-enum ComponentType: String, CaseIterable, Identifiable {
-    case cpu = "CPU"
-    case motherboard = "Motherboard"
-    case gpu = "GPU"
-    case ram = "RAM"
-    case psu = "Power Supply"
-    case storage = "Storage"
-    case case_ = "Case"
-    case cpu_cooler = "CPU Cooler"
 
-    var id: String { rawValue }
-
-}
 struct ComponentePC: Identifiable {
     let id = UUID()
     let nome: String
@@ -52,17 +40,16 @@ struct BuildPcView: View {
     
     let componenti: [ComponentePC] = [
         ComponentePC(nome: "CPU", immagine: "cpu", colore: .blue.opacity(0.8), fonti: RicercaView.fonti("cpu.json")),
-        ComponentePC(nome: "CPU Cooler", immagine: "desktopcomputer", colore: .blue.opacity(0.8), fonti: RicercaView.fonti("cpu-cooler.json")),
+        ComponentePC(nome: "CPU Cooler", immagine: "fan", colore: .blue.opacity(0.8), fonti: RicercaView.fonti("cpu-cooler.json")),
         ComponentePC(nome: "Motherboard", immagine: "rectangle.3.group", colore: .blue.opacity(0.8), fonti: RicercaView.fonti("motherboard.json")),
         ComponentePC(nome: "GPU", immagine: "display", colore: .blue.opacity(0.8), fonti: RicercaView.fonti("video-card.json")),
         ComponentePC(nome: "RAM", immagine: "memorychip", colore: .blue.opacity(0.8), fonti: RicercaView.fonti("memory.json")),
-        ComponentePC(nome: "Power Supply", immagine: "powerplug", colore: .blue.opacity(0.8), fonti: RicercaView.fonti("power-supply.json")),
+        ComponentePC(nome: "Power Supply", immagine: "powerplug.fill", colore: .blue.opacity(0.8), fonti: RicercaView.fonti("power-supply.json")),
         ComponentePC(nome: "Storage", immagine: "internaldrive", colore: .blue.opacity(0.8), fonti: RicercaView.fonti("internal-hard-drive.json")),
-        ComponentePC(nome: "Case", immagine: "pc", colore: .blue.opacity(0.8), fonti: RicercaView.fonti("case.json")),
-        ComponentePC(nome: "OS", immagine: "desktopcomputer", colore: .blue.opacity(0.8), fonti: RicercaView.fonti("os.json")),
-        ComponentePC(nome: "Sound Card", immagine: "desktopcomputer", colore: .blue.opacity(0.8), fonti: RicercaView.fonti("sound-card.json")),
-        ComponentePC(nome: "Wireless Network Card", immagine: "desktopcomputer", colore: .blue.opacity(0.8), fonti: RicercaView.fonti("wireless-network-card.json"))
-        
+        ComponentePC(nome: "Case", immagine: "macpro.gen3", colore: .blue.opacity(0.8), fonti: RicercaView.fonti("case.json")),
+        ComponentePC(nome: "OS", immagine: "gearshape.2", colore: .blue.opacity(0.8), fonti: RicercaView.fonti("os.json")),
+        ComponentePC(nome: "Sound Card", immagine: "waveform", colore: .blue.opacity(0.8), fonti: RicercaView.fonti("sound-card.json")),
+        ComponentePC(nome: "Wireless Network Card", immagine: "wifi", colore: .blue.opacity(0.8), fonti: RicercaView.fonti("wireless-network-card.json"))
     ]
     
     var body: some View {
