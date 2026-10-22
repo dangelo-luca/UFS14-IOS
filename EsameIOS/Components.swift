@@ -81,12 +81,14 @@ struct Components: View {
 
 // MARK: - Scheda di un prodotto
 struct ProductView: View {
+    
 
     @State private var isShowingDetails: Bool = false
 
     var nome: String
     var prezzo: Double?
     var details: [String: Any]
+    var titoloBottone: String = "aggiungi"
     var onSelect: (() -> Void)? = nil
 
     var body: some View {
@@ -116,8 +118,9 @@ struct ProductView: View {
 
             HStack {
                 if let onSelect = onSelect {
-                    Button("Seleziona", action: onSelect)
+                    Button(titoloBottone, action: onSelect)
                         .buttonStyle(.borderedProminent)
+                        .tint(.blue)
                 }
                 Spacer()
                 Button(action: { isShowingDetails.toggle() }) {
@@ -125,9 +128,9 @@ struct ProductView: View {
                         Text(isShowingDetails ? "Nascondi dettagli" : "Mostra dettagli")
                         Image(systemName: isShowingDetails ? "chevron.up" : "chevron.down")
                     }
-                }
+                }.foregroundColor(.blue)
             }
-            .foregroundColor(.blue)
+            
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding()
