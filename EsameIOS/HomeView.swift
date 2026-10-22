@@ -17,20 +17,12 @@ struct SlideCarosello: Identifiable {
     let coloreTesto: Color
 }
 
-// I 3 filtri della sezione Componenti
-enum FiltroComponenti: String, CaseIterable {
-    case prezzoBasso = "Prezzo più basso"
-    case prezzoAlto = "Prezzo più alto"
-    case piuAcquistati = "Preferiti / più acquistati"
-}
-
 // MARK: - Home
 
 struct HomeView: View {
-    @State var filtro: FiltroComponenti = .piuAcquistati   // default: il 3°
-    @State var pagina: Int = 0                              // slide corrente del carosello
+    @State var pagina: Int = 0 // slide corrente del carosello
    
-    // Sezione 1: carosello (il colore di sfondo cambia con la slide)
+    // Sezione 1: carosello
     let slide = [
         SlideCarosello(titolo: "Offerte", sottotitolo: "-20% su schede video",
                        icona: "tag.fill", colore: .red, coloreTesto: .white),
@@ -42,34 +34,34 @@ struct HomeView: View {
                        icona: "leaf.fill", colore: .green, coloreTesto: .white)
     ]
 
-    // Sezione 3: componenti (i primi 10 secondo il filtro)
-    @State var componenti: [Componente] = (1...10).map { Componente(nome: "Componente \($0)") }
+    // Lista delle tue build per la sezione "Esporta"
+    @State var mieBuild: [String] = ["Build Gaming", "Build Ufficio", "Build Rendering", "Build Economica"]
 
     var body: some View {
         NavigationStack {
-            
             ZStack(alignment: .top) {
                 sfondo
 
                 ScrollView {
-                    VStack(alignment: .leading, spacing: 20) {
+                    VStack(alignment: .leading, spacing: 24) {
                         sezioneCarosello
-                        sezioneBuild
-                        sezioneComponenti
+                        sezioneAzioniBuild
+                        sezioneEsporta
                     }
                     .padding(.top, 8)
+                    .padding(.bottom, 20)
                 }
             }
         }
     }
 
-    // MARK: - Sfondo colorato con effetto sfocatura (cambia con la slide)
+    // MARK: - Sfondo colorato con effetto sfocatura
     var sfondo: some View {
         let c = slide[pagina].colore
         return ZStack(alignment: .top) {
             LinearGradient(colors: [c.opacity(0.55), c.opacity(0.0)],
                            startPoint: .top, endPoint: .bottom)
-                .frame(height: 420)
+                .frame(height: 480)
 
             Circle()
                 .fill(c.opacity(0.5))
@@ -88,7 +80,7 @@ struct HomeView: View {
         .animation(.easeInOut(duration: 0.6), value: pagina)
     }
 
-    // MARK: - Sezione 1: carosello (rosso / blu / giallo / verde)
+    // MARK: - Sezione 1: Carosello
     var sezioneCarosello: some View {
         TabView(selection: $pagina) {
             ForEach(Array(slide.enumerated()), id: \.element.id) { indice, s in
@@ -104,119 +96,123 @@ struct HomeView: View {
                     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
 
                     Image(systemName: s.icona)
-                        .font(.system(size: 60))
+                        .font(.system(size: 70))
                         .foregroundStyle(s.coloreTesto.opacity(0.35))
                 }
                 .padding(20)
                 .background(s.colore.gradient)
                 .clipShape(RoundedRectangle(cornerRadius: 30))
                 .padding(.horizontal)
-                .padding(.bottom, 30)       // spazio per i puntini della pagina
+                .padding(.bottom, 30)
                 .tag(indice)
             }
         }
         .tabViewStyle(.page(indexDisplayMode: .always))
-        .frame(height: 240)
+        .frame(height: 320)
     }
 
-    // MARK: - Sezione 2: Ultima Build + Test Build
-    var sezioneBuild: some View {
+    // MARK: - Sezione 2: Ultima build + Importa (con titoli sopra e card quadrate)
+    var sezioneAzioniBuild: some View {
         HStack(alignment: .top, spacing: 16) {
-            cartaBuild(titolo: "Ultima Build",
-                       nome: "Build Gaming",
-                       dettaglio: "8 componenti",
-                       colore: .blue)
-            cartaBuild(titolo: "Test Build",
-                       nome: "Build Test",
-                       dettaglio: "6 componenti",
-                       colore: .green)
+            // Carta 1: Ultima build
+            VStack(alignment: .leading, spacing: 8) {
+                Text("Ultima build")
+                    .font(.headline)
+                    .foregroundStyle(.primary)
+
+                Button {
+                    // Azione
+                } label: {
+                    VStack {
+                        Spacer()
+                        Image(systemName: "desktopcomputer")
+                            .font(.system(size: 40))
+                        Spacer()
+                    }
+                    .foregroundStyle(.white)
+                    .frame(maxWidth: .infinity)
+                    .aspectRatio(1, contentMode: .fit) // Rende la card quadrata
+                    .background(Color(red: 0.5, green: 0.2, blue: 0.95))
+                    .clipShape(RoundedRectangle(cornerRadius: 25))
+                    .shadow(color: Color(red: 0.5, green: 0.2, blue: 0.95).opacity(0.3), radius: 10, y: 5)
+                }
+                .buttonStyle(.plain)
+            }
+
+            // Carta 2: Importa
+            VStack(alignment: .leading, spacing: 8) {
+                Text("Importa")
+                    .font(.headline)
+                    .foregroundStyle(.primary)
+
+                Button {
+                    // Azione
+                } label: {
+                    VStack {
+                        Spacer()
+                        Image(systemName: "square.and.arrow.down.fill")
+                            .font(.system(size: 40))
+                        Spacer()
+                    }
+                    .foregroundStyle(.white)
+                    .frame(maxWidth: .infinity)
+                    .aspectRatio(1, contentMode: .fit) // Rende la card quadrata
+                    .background(Color.blue)
+                    .clipShape(RoundedRectangle(cornerRadius: 25))
+                    .shadow(color: Color.blue.opacity(0.3), radius: 10, y: 5)
+                }
+                .buttonStyle(.plain)
+            }
         }
         .padding(.horizontal)
     }
 
-    func cartaBuild(titolo: String, nome: String, dettaglio: String, colore: Color) -> some View {
+    // MARK: - Sezione 3: Esporta
+    var sezioneEsporta: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text(titolo)
+            Text("Esporta")
                 .font(.headline)
+                .foregroundStyle(.primary)
+                .padding(.horizontal)
 
-            VStack(alignment: .leading, spacing: 6) {
-                Image(systemName: "desktopcomputer")
-                    .font(.title)
-                Spacer()
-                Text(nome).font(.headline)
-                Text(dettaglio).font(.caption)
+            VStack(spacing: 12) {
+                ForEach(mieBuild, id: \.self) { build in
+                    HStack {
+                        VStack(alignment: .leading, spacing: 4) {
+                            Text(build)
+                                .font(.headline)
+                            Text("Tocca per esportare")
+                                .font(.caption)
+                                .foregroundStyle(.white.opacity(0.8))
+                        }
+                        
+                        Spacer()
+                        
+                        Image(systemName: "arrow.up.forward.app")
+                            .font(.title2)
+                    }
+                    .padding()
+                    .frame(maxWidth: .infinity)
+                    .background(Color.white.opacity(0.2))
+                    .clipShape(RoundedRectangle(cornerRadius: 18))
+                }
             }
             .foregroundStyle(.white)
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .padding()
-            .aspectRatio(1, contentMode: .fit)
+            .padding(20)
             .background(
-                LinearGradient(colors: [colore.opacity(0.95), colore.opacity(0.45)],
-                               startPoint: .topLeading, endPoint: .bottomTrailing)
+                LinearGradient(
+                    colors: [Color(red: 0.95, green: 0.3, blue: 0.25), Color.orange],
+                    startPoint: .topLeading,
+                    endPoint: .bottomTrailing
+                )
             )
-            .clipShape(RoundedRectangle(cornerRadius: 25))
+            .clipShape(RoundedRectangle(cornerRadius: 30))
+            .padding(.horizontal)
+            .shadow(color: Color.orange.opacity(0.3), radius: 10, y: 5)
         }
-    }
-
-    // MARK: - Sezione 3: componenti con filtro
-    var sezioneComponenti: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            HStack {
-                Text("Componenti")
-                    .font(.title2)
-                    .bold()
-
-                // Filtro selezionabile
-                Menu {
-                    Picker("Filtro", selection: $filtro) {
-                        ForEach(FiltroComponenti.allCases, id: \.self) { f in
-                            Text(f.rawValue).tag(f)
-                        }
-                    }
-                } label: {
-                    Label(filtro.rawValue, systemImage: "line.3.horizontal.decrease.circle")
-                        .font(.subheadline)
-                }
-            }
-
-            LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]) {
-                ForEach(componenti) { c in
-                    VStack {
-                        RoundedRectangle(cornerRadius: 15)
-                            .fill(Color.white.opacity(0.25))
-                            .frame(height: 80)
-                        Text(c.nome)
-                            .font(.caption)
-                    }
-                }
-            }
-        }
-        .foregroundStyle(.white)
-        .tint(.white)
-        .padding()
-        // Contenitore viola sfumato rosa
-        .background(
-            LinearGradient(colors: [Color.purple, Color.pink.opacity(0.85)],
-                           startPoint: .topLeading, endPoint: .bottomTrailing)
-        )
-        .clipShape(RoundedRectangle(cornerRadius: 30))
-        .padding(.horizontal)
-        // Quando cambia il filtro (e all'apertura) carica i primi 10
-        .onChange(of: filtro) { _, nuovo in
-            caricaComponenti(nuovo)
-        }
-        .onAppear {
-            caricaComponenti(filtro)
-        }
-    }
-
-    // Prende i primi 10 componenti in base al filtro: per ora vuota
-    func caricaComponenti(_ filtro: FiltroComponenti) {
-
     }
 }
 
-// La barra vive in MainTabView, quindi la preview parte da lì
 #Preview {
     MainTabView()
 }
