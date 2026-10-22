@@ -32,7 +32,7 @@ class Motherboard : Model, Codable, Identifiable {
         details["Socket"] = socket ?? "N/A"
         details["Form Factor"] = form_factor ?? "N/A"
         details["Memoria massima"] = max_memory != nil ? "\(Int(max_memory!)) GB" : "N/A"
-        details["Slot di memoria"] = memory_slots != nil ? "\(Int(memory_slots!))"
+        details["Slot di memoria"] = memory_slots != nil ? "\(Int(memory_slots!))" : "N/A"
         details["Colore"] = color ?? "N/A"
         
         return details;
