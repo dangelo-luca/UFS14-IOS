@@ -12,13 +12,13 @@
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>186</string>
+					<string>189</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>186</string>
+					<string>189</string>
 					<key>Timestamp</key>
-					<string>814364497.842406</string>
+					<string>814367368.6929049</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -36,14 +36,11 @@
 				<key>focused</key>
 				<string></string>
 				<key>leading</key>
-				<string>    }
-
+				<string>    BuildPcView()
+}
 </string>
 				<key>trailing</key>
-				<string>   /* @ViewBuilder
-    private func vistaDettaglio(per componente: ComponentePC) -&gt; some View {
-        switch componente.nome.lowercased() {
-</string>
+				<string></string>
 			</dict>
 			<key>type</key>
 			<string>bookmark</string>

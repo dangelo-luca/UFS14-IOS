@@ -34,16 +34,23 @@ struct BuildPcView: View {
     @State var testo: String = ""
     @State var risultati: [Risultato] = []
     @State private var scelti: [String: Risultato] = [:]
+    @Environment(\.dismiss) private var dismiss
+    @State private var selection: [ComponentType: SelectedPart] = [:]
+    
+    private var total: Double { selection.values.reduce(0) { $0 + $1.price } }
+        private var progress: Double {
+            Double(selection.count) / Double(ComponentType.allCases.count)
+        }
     
     let componenti: [ComponentePC] = [
-        ComponentePC(nome: "CPU", immagine: "cpu", fonti: RicercaView.fonti("cpu.json")),
-        ComponentePC(nome: "Motherboard", immagine: "rectangle.3.group", fonti: RicercaView.fonti("motherboard.json")),
-        ComponentePC(nome: "GPU", immagine: "display", fonti: RicercaView.fonti("video-card.json")),
-        ComponentePC(nome: "RAM", immagine: "memorychip", fonti: RicercaView.fonti("memory.json")),
-        ComponentePC(nome: "Power Supply", immagine: "powerplug", fonti: RicercaView.fonti("power-supply.json")),
-        ComponentePC(nome: "Storage", immagine: "internaldrive", fonti: RicercaView.fonti("internal-hard-drive.json")),
-        ComponentePC(nome: "Case", immagine: "pc", colore: .blue, fonti: RicercaView.fonti("case.json")),
-        ComponentePC(nome: "OS", immagine: "desktopcomputer", fonti: RicercaView.fonti("os.json"))
+        ComponentePC(nome: "CPU", immagine: "cpu", colore: .blue.opacity(0.8), fonti: RicercaView.fonti("cpu.json")),
+        ComponentePC(nome: "Motherboard", immagine: "rectangle.3.group", colore: .blue.opacity(0.8), fonti: RicercaView.fonti("motherboard.json")),
+        ComponentePC(nome: "GPU", immagine: "display", colore: .blue.opacity(0.8), fonti: RicercaView.fonti("video-card.json")),
+        ComponentePC(nome: "RAM", immagine: "memorychip", colore: .blue.opacity(0.8), fonti: RicercaView.fonti("memory.json")),
+        ComponentePC(nome: "Power Supply", immagine: "powerplug", colore: .blue.opacity(0.8), fonti: RicercaView.fonti("power-supply.json")),
+        ComponentePC(nome: "Storage", immagine: "internaldrive", colore: .blue.opacity(0.8), fonti: RicercaView.fonti("internal-hard-drive.json")),
+        ComponentePC(nome: "Case", immagine: "pc", colore: .blue.opacity(0.8), fonti: RicercaView.fonti("case.json")),
+        ComponentePC(nome: "OS", immagine: "desktopcomputer", colore: .blue.opacity(0.8), fonti: RicercaView.fonti("os.json"))
     ]
     
     var body: some View {
@@ -94,14 +101,6 @@ struct BuildPcView: View {
                         scelti[comp.nome] = r
                     }
                 }
-                Spacer()
-                Text("\(count)/\(total)")
-                    .font(.subheadline.weight(.semibold))
-                    .monospacedDigit()
-                    .padding(.horizontal, 10)
-                    .padding(.vertical, 5)
-                    .background(.pink.opacity(0.12), in: Capsule())
-                    .foregroundStyle(.pink)
             }
         }
     }
@@ -143,6 +142,45 @@ struct ComponentCardView: View {
                     .fill(componente.colore)
             )
         }
+    }
+}
+
+struct PriceHeader: View {
+    let count: Int
+    let total: Int
+    let price: Double
+    let progress: Double
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 14) {
+            HStack(alignment: .firstTextBaseline) {
+                VStack(alignment: .leading, spacing: 2) {
+                    Text("Totale stimato")
+                        .font(.subheadline)
+                        .foregroundStyle(.secondary)
+                    Text(price, format: .currency(code: "EUR"))
+                        .font(.system(size: 34, weight: .bold, design: .rounded))
+                        .contentTransition(.numericText())
+                }
+                Spacer()
+                Text("\(count)/\(total)")
+                    .font(.subheadline.weight(.semibold))
+                    .monospacedDigit()
+                    .padding(.horizontal, 10)
+                    .padding(.vertical, 5)
+                    .background(.pink.opacity(0.12), in: Capsule())
+                    .foregroundStyle(.pink)
+            }
+
+            ProgressView(value: progress)
+                .tint(.pink)
+                .scaleEffect(x: 1, y: 1.6, anchor: .center)
+                .animation(.spring, value: progress)
+        }
+        .padding(20)
+        .background(Color(.secondarySystemGroupedBackground),
+                    in: RoundedRectangle(cornerRadius: 26, style: .continuous))
+        .shadow(color: .black.opacity(0.05), radius: 12, y: 4)
     }
 }
 
