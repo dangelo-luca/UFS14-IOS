@@ -12,13 +12,13 @@
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>15</string>
+					<string>186</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>14</string>
+					<string>186</string>
 					<key>Timestamp</key>
-					<string>813591368.278674</string>
+					<string>814364497.842406</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -34,15 +34,15 @@
 			<key>text-context</key>
 			<dict>
 				<key>focused</key>
-				<string>    </string>
+				<string></string>
 				<key>leading</key>
-				<string>    @State private var componenteSelezionato: ComponentePC?
-    
+				<string>    }
+
 </string>
 				<key>trailing</key>
-				<string>let componenti: [ComponentePC] = [
-        ComponentePC(nome: "CPU", immagine: "cpu"),
-        ComponentePC(nome: "Motherboard", immagine: "rectangle.3.group"),
+				<string>   /* @ViewBuilder
+    private func vistaDettaglio(per componente: ComponentePC) -&gt; some View {
+        switch componente.nome.lowercased() {
 </string>
 			</dict>
 			<key>type</key>
