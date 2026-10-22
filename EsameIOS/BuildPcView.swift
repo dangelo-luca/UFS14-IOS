@@ -49,11 +49,7 @@ struct BuildPcView: View {
             }
             
         }
-        NavBar(placeholder: "Cerca componenti",
-                cerca: [],
-                style: .build,
-                testo: $testo,
-                risultati: $risultati)
+       
     }
 }
 
