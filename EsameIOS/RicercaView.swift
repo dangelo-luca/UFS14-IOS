@@ -47,16 +47,13 @@ struct BarraRicerca: View {
             }
             Image(systemName: "magnifyingglass")
         }
-        .padding()
+        .padding(.horizontal, 16)
+        .frame(height: 56)
         .background(Color.gray.opacity(0.2))
-        .cornerRadius(25)
-        // CONTENITORE arrotondato con effetto sfocatura
-        .padding(.horizontal, 10)
-        .padding(.vertical, 14)
-        .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 40))
-        .shadow(color: .black.opacity(0.15), radius: 20, y: 5)
-        .padding(.horizontal)
-        .padding(.bottom, 8)
+        .clipShape(Capsule())
+        .padding(.horizontal, 30)
+       
+       
     }
 }
 
@@ -111,7 +108,7 @@ struct RicercaView: View {
                 }
             }
         }
-        .padding(.horizontal)
+        
     }
 
     func messaggio(_ testo: String) -> some View {
