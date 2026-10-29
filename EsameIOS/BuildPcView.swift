@@ -16,14 +16,13 @@ struct SelectedPart {
 struct BuildPcView: View {
     @Environment(BuildManager.self) private var buildManager
     var onSalvato: () -> Void = {}   // <- nuova
-    
+    @State private var mostraNomeBuild = false
+    @State private var nomeBuild = ""
     @State private var apriDettaglio = false
     @State private var componenteSelezionato: ComponentePC?
     @State var testo: String = ""
     @State var risultati: [Risultato] = []
-    
     @State private var scelti: [String: Risultato] = [:]
-    
     private var total: Double {
         scelti.values.compactMap { $0.prezzo }.reduce(0, +)
     }
@@ -80,9 +79,9 @@ struct BuildPcView: View {
                 // non c'è nulla a cui tornare, la navigazione si fa con la barra in basso
                 ToolbarItem(placement: .topBarTrailing) {
                     Button("Salva") {
-                        buildManager.aggiungiBuild(scelti: scelti)
-                        scelti = [:]      // azzera la selezione
-                        onSalvato()       // vai alla Home
+                        nomeBuild = ""
+                        mostraNomeBuild = true
+                        
                     }
                     .fontWeight(.semibold)
                     .buttonStyle(.borderedProminent)
@@ -90,6 +89,21 @@ struct BuildPcView: View {
                     .tint(.pink)
                     .controlSize(.small)
                     .disabled(scelti.isEmpty)
+                    .alert("Nome della build", isPresented: $mostraNomeBuild) {
+                        TextField("Build #\(buildManager.savedBuilds.count + 1)", text: $nomeBuild)
+                            .textInputAutocapitalization(.words)
+
+                        Button("Annulla", role: .cancel) { }
+
+                        Button("Salva") {
+                            let nome = nomeBuild.trimmingCharacters(in: .whitespacesAndNewlines)
+                            buildManager.aggiungiBuild(scelti: scelti, nomeCustom: nome)
+                            scelti = [:]
+                            onSalvato()
+                        }
+                    } message: {
+                        Text("Scegli un nome per riconoscerla tra le build salvate.")
+                    }
                 }
             }
         .navigationDestination(isPresented: $apriDettaglio) {
