@@ -6,6 +6,7 @@ struct ComponentePC: Identifiable {
     let immagine: String
     var colore: Color = .gray
     var fonti: [Fonte] = []
+    var maxQuantita: Int = 1
 }
 
 struct SelectedPart {
@@ -22,9 +23,10 @@ struct BuildPcView: View {
     @State private var componenteSelezionato: ComponentePC?
     @State var testo: String = ""
     @State var risultati: [Risultato] = []
-    @State private var scelti: [String: Risultato] = [:]
+    @State private var scelti: [String: Selezione] = [:]
+
     private var total: Double {
-        scelti.values.compactMap { $0.prezzo }.reduce(0, +)
+        scelti.values.map(\.subtotale).reduce(0, +)
     }
     
     private var progress: Double {
@@ -33,17 +35,17 @@ struct BuildPcView: View {
     }
     
     let componenti: [ComponentePC] = [
-        ComponentePC(nome: "CPU", immagine: "cpu", colore: .blue.opacity(0.8), fonti: RicercaView.fonti("cpu.json")),
-        ComponentePC(nome: "CPU Cooler", immagine: "fan", colore: .blue.opacity(0.8), fonti: RicercaView.fonti("cpu-cooler.json")),
-        ComponentePC(nome: "Motherboard", immagine: "rectangle.3.group", colore: .blue.opacity(0.8), fonti: RicercaView.fonti("motherboard.json")),
-        ComponentePC(nome: "GPU", immagine: "display", colore: .blue.opacity(0.8), fonti: RicercaView.fonti("video-card.json")),
-        ComponentePC(nome: "RAM", immagine: "memorychip", colore: .blue.opacity(0.8), fonti: RicercaView.fonti("memory.json")),
-        ComponentePC(nome: "Power Supply", immagine: "powerplug.fill", colore: .blue.opacity(0.8), fonti: RicercaView.fonti("power-supply.json")),
-        ComponentePC(nome: "Storage", immagine: "internaldrive", colore: .blue.opacity(0.8), fonti: RicercaView.fonti("internal-hard-drive.json")),
-        ComponentePC(nome: "Case", immagine: "macpro.gen3", colore: .blue.opacity(0.8), fonti: RicercaView.fonti("case.json")),
-        ComponentePC(nome: "OS", immagine: "gearshape.2", colore: .blue.opacity(0.8), fonti: RicercaView.fonti("os.json")),
-        ComponentePC(nome: "Sound Card", immagine: "waveform", colore: .blue.opacity(0.8), fonti: RicercaView.fonti("sound-card.json")),
-        ComponentePC(nome: "Network Card", immagine: "wifi", colore: .blue.opacity(0.8), fonti: RicercaView.fonti("wireless-network-card.json"))
+        ComponentePC(nome: "CPU", immagine: "cpu", colore: .blue.opacity(0.8), fonti: RicercaView.fonti("cpu.json"),maxQuantita: 1),
+        ComponentePC(nome: "CPU Cooler", immagine: "fan", colore: .blue.opacity(0.8), fonti: RicercaView.fonti("cpu-cooler.json"),maxQuantita: 1),
+        ComponentePC(nome: "Motherboard", immagine: "rectangle.3.group", colore: .blue.opacity(0.8), fonti: RicercaView.fonti("motherboard.json"),maxQuantita: 1),
+        ComponentePC(nome: "GPU", immagine: "display", colore: .blue.opacity(0.8), fonti: RicercaView.fonti("video-card.json"),maxQuantita: 4),
+        ComponentePC(nome: "RAM", immagine: "memorychip", colore: .blue.opacity(0.8), fonti: RicercaView.fonti("memory.json"),maxQuantita: 4),
+        ComponentePC(nome: "Power Supply", immagine: "powerplug.fill", colore: .blue.opacity(0.8), fonti: RicercaView.fonti("power-supply.json"),maxQuantita: 1),
+        ComponentePC(nome: "Storage", immagine: "internaldrive", colore: .blue.opacity(0.8), fonti: RicercaView.fonti("internal-hard-drive.json"),maxQuantita: 10),
+        ComponentePC(nome: "Case", immagine: "macpro.gen3", colore: .blue.opacity(0.8), fonti: RicercaView.fonti("case.json"),maxQuantita: 1),
+        ComponentePC(nome: "OS", immagine: "gearshape.2", colore: .blue.opacity(0.8), fonti: RicercaView.fonti("os.json"),maxQuantita: 1),
+        ComponentePC(nome: "Sound Card", immagine: "waveform", colore: .blue.opacity(0.8), fonti: RicercaView.fonti("sound-card.json"),maxQuantita: 1),
+        ComponentePC(nome: "Network Card", immagine: "wifi", colore: .blue.opacity(0.8), fonti: RicercaView.fonti("wireless-network-card.json"),maxQuantita: 1)
     ]
     
     var body: some View {
@@ -51,7 +53,7 @@ struct BuildPcView: View {
         ScrollView {
             LazyVStack(spacing: 16) {
                 ForEach(componenti) { comp in
-                    ComponentCardView(componente: comp, scelto: scelti[comp.nome]) {
+                    ComponentCardView(componente: comp, scelto: scelti[comp.nome],onQuantita: { scelti[comp.nome]?.quantita = $0 }) {
                         componenteSelezionato = comp
                         apriDettaglio = true
                     }
@@ -109,7 +111,8 @@ struct BuildPcView: View {
         .navigationDestination(isPresented: $apriDettaglio) {
             if let comp = componenteSelezionato {
                 Components(titolo: comp.nome, fonti: comp.fonti) { r in
-                    scelti[comp.nome] = r
+                    let quantita = scelti[comp.nome]?.quantita ?? 1
+                    scelti[comp.nome] = Selezione(risultato: r, quantita: quantita)
                 }
             }
         }
@@ -118,12 +121,13 @@ struct BuildPcView: View {
 
 struct ComponentCardView: View {
     let componente: ComponentePC
-    var scelto: Risultato? = nil
+    var scelto: Selezione? = nil
+    var onQuantita: (Int) -> Void = { _ in }
     let action: () -> Void
-    
+
     var body: some View {
-        Button(action: action) {
-            VStack(alignment: .leading, spacing: 6) {
+        VStack(spacing: 12) {
+            Button(action: action) {
                 HStack(spacing: 26) {
                     Image(systemName: componente.immagine)
                         .font(.system(size: 32))
@@ -131,30 +135,38 @@ struct ComponentCardView: View {
                         .frame(width: 70, height: 70)
                         .background(Color.cyan.opacity(0.9))
                         .cornerRadius(100)
-                    
+
                     VStack(spacing: 6) {
                         Text(componente.nome)
                             .font(.title)
                             .bold()
-                       
-                        Text(scelto?.nome ?? "Seleziona il componente")
+
+                        Text(scelto?.risultato.nome ?? "Seleziona il componente")
                             .multilineTextAlignment(.leading)
                     }
-                    
-                    
-                    
                 }
-                
-                
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .contentShape(Rectangle())
             }
-            .foregroundColor(.white)
-            .padding()
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .background(
-                RoundedRectangle(cornerRadius: 20)
-                    .fill(componente.colore)
-            )
+            .buttonStyle(.plain)
+
+            if let scelto, componente.maxQuantita > 1 {
+                Stepper(
+                    value: Binding(get: { scelto.quantita }, set: onQuantita),
+                    in: 1...componente.maxQuantita
+                ) {
+                    Text("Quantità: \(scelto.quantita)")
+                        .fontWeight(.semibold)
+                }
+            }
         }
+        .foregroundColor(.white)
+        .padding()
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(
+            RoundedRectangle(cornerRadius: 20)
+                .fill(componente.colore)
+        )
     }
 }
 

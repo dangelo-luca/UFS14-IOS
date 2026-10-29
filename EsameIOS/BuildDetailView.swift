@@ -9,14 +9,14 @@ struct BuildDetailView: View {
         "Storage", "Case", "OS", "Sound Card", "Network Card"
     ]
 
-    private var righe: [(categoria: String, componente: Risultato)] {
+    private var righe: [(categoria: String, selezione: Selezione)] {
         build.componenti
             .sorted { a, b in
                 let ia = Self.ordine.firstIndex(of: a.key) ?? Int.max
                 let ib = Self.ordine.firstIndex(of: b.key) ?? Int.max
                 return ia < ib
             }
-            .map { (categoria: $0.key, componente: $0.value) }
+            .map { (categoria: $0.key, selezione: $0.value) }
     }
 
     var body: some View {
@@ -29,16 +29,22 @@ struct BuildDetailView: View {
                             .foregroundStyle(.secondary)
 
                         HStack(alignment: .firstTextBaseline) {
-                            Text(riga.componente.nome)
+                            Text(riga.selezione.quantita > 1
+                                 ? "\(riga.selezione.quantita) × \(riga.selezione.risultato.nome)"
+                                 : riga.selezione.risultato.nome)
                                 .font(.headline)
 
                             Spacer()
 
-                            if let prezzo = riga.componente.prezzo {
-                                Text(prezzo, format: .currency(code: "EUR"))
-                                    .font(.subheadline.weight(.semibold))
-                                    .monospacedDigit()
-                            }
+                            Text(riga.selezione.subtotale, format: .currency(code: "EUR"))
+                                .font(.subheadline.weight(.semibold))
+                                .monospacedDigit()
+                        }
+
+                        if riga.selezione.quantita > 1, let unitario = riga.selezione.risultato.prezzo {
+                            Text("\(unitario, format: .currency(code: "EUR")) cad.")
+                                .font(.caption)
+                                .foregroundStyle(.secondary)
                         }
                     }
                     .padding(.vertical, 4)

@@ -1,23 +1,31 @@
 import SwiftUI
 
-// Modello di una build salvata
+struct Selezione {
+    var risultato: Risultato
+    var quantita: Int = 1
+
+    var subtotale: Double { (risultato.prezzo ?? 0) * Double(quantita) }
+}
+
 struct SavedBuild: Identifiable {
     let id = UUID()
     var nome: String
     var dataCreazione: Date = Date()
-    var componenti: [String: Risultato] // Dizionario dei componenti scelti
-    
+    var componenti: [String: Selezione]          // era [String: Risultato]
+
     var totale: Double {
-        componenti.values.compactMap { $0.prezzo }.reduce(0, +)
+        componenti.values.map(\.subtotale).reduce(0, +)
+    }
+
+    var numeroPezzi: Int {
+        componenti.values.map(\.quantita).reduce(0, +)
     }
 }
-
-// Gestore centralizzato condiviso
 @Observable
 class BuildManager {
     var savedBuilds: [SavedBuild] = []
     
-    func aggiungiBuild(scelti: [String: Risultato], nomeCustom: String? = nil) {
+    func aggiungiBuild(scelti: [String: Selezione], nomeCustom: String? = nil) {
         let numero = savedBuilds.count + 1
         let titolo = nomeCustom?.isEmpty == false ? nomeCustom! : "Build #\(numero)"
         let nuovaBuild = SavedBuild(nome: titolo, componenti: scelti)
