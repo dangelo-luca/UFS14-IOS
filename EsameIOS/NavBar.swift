@@ -58,7 +58,11 @@ struct MainTabView: View {
     var body: some View {
         TabView(selection: $selezione) {
             NavigationStack {
-                BuildPcView()
+                BuildPcView {
+                    withAnimation(.spring(duration: 0.35)) {
+                        selezione = .home
+                    }
+                }
             }
             .tag(Scheda.nuova)
             .toolbar(.hidden, for: .tabBar)
@@ -153,4 +157,5 @@ struct MainTabView: View {
 
 #Preview {
     MainTabView()
+        .environment(BuildManager())
 }

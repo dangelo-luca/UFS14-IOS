@@ -1,7 +1,5 @@
 import SwiftUI
 
-
-
 struct ComponentePC: Identifiable {
     let id = UUID()
     let nome: String
@@ -15,24 +13,21 @@ struct SelectedPart {
     let price: Double
 }
 
-
 struct BuildPcView: View {
+    @Environment(BuildManager.self) private var buildManager
+    var onSalvato: () -> Void = {}   // <- nuova
+    
     @State private var apriDettaglio = false
     @State private var componenteSelezionato: ComponentePC?
     @State var testo: String = ""
     @State var risultati: [Risultato] = []
     
-    // Unico dizionario per tenere traccia dei componenti scelti
     @State private var scelti: [String: Risultato] = [:]
     
-    @Environment(\.dismiss) private var dismiss
-    
-    // Calcolo del totale direttamente da `scelti`
     private var total: Double {
         scelti.values.compactMap { $0.prezzo }.reduce(0, +)
     }
     
-    // Progresso basato sul numero di componenti selezionati
     private var progress: Double {
         guard !componenti.isEmpty else { return 0 }
         return Double(scelti.count) / Double(componenti.count)
@@ -53,54 +48,54 @@ struct BuildPcView: View {
     ]
     
     var body: some View {
-        NavigationStack {
-            ScrollView {
-                LazyVStack(spacing: 16) {
-                    ForEach(componenti) { comp in
-                        ComponentCardView(componente: comp, scelto: scelti[comp.nome]) {
-                            componenteSelezionato = comp
-                            apriDettaglio = true
-                        }
+        // Rimosso NavigationStack da qui
+        ScrollView {
+            LazyVStack(spacing: 16) {
+                ForEach(componenti) { comp in
+                    ComponentCardView(componente: comp, scelto: scelti[comp.nome]) {
+                        componenteSelezionato = comp
+                        apriDettaglio = true
                     }
                 }
-                .padding(.horizontal)
-                .padding(.top, 16)
             }
-            .safeAreaInset(edge: .top, spacing: 0) {
-                PriceHeader(
-                    count: scelti.count,
-                    total: componenti.count,
-                    price: total,
-                    progress: progress
-                )
-                .padding(.horizontal, 20)
-                .padding(.top, 8)
-                .padding(.bottom, 12)
-                .background(.bar)
-            }
-            .navigationTitle("Crea la tua build")
-            .navigationBarTitleDisplayMode(.large)
+            .padding(.horizontal)
+            .padding(.top, 16)
+        }
+        .safeAreaInset(edge: .top, spacing: 0) {
+            PriceHeader(
+                count: scelti.count,
+                total: componenti.count,
+                price: total,
+                progress: progress
+            )
+            .padding(.horizontal, 20)
+            .padding(.top, 8)
+            .padding(.bottom, 12)
+            .background(.bar)
+        }
+        .navigationTitle("Crea la tua build")
+        .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                ToolbarItem(placement: .topBarLeading) {
-                    Button { dismiss() } label: {
-                        Label("Indietro", systemImage: "chevron.left")
-                    }
-                }
+                // ToolbarItem "Indietro" RIMOSSO: essendo la radice dello stack
+                // non c'è nulla a cui tornare, la navigazione si fa con la barra in basso
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button("Salva") { /* salva */ }
-                        .fontWeight(.semibold)
-                        .buttonStyle(.borderedProminent)
-                        .buttonBorderShape(.capsule)
-                        .tint(.pink)
-                        .controlSize(.small)
-                        .disabled(scelti.isEmpty) // Abilitato quando c'è almeno un componente selezionato
+                    Button("Salva") {
+                        buildManager.aggiungiBuild(scelti: scelti)
+                        scelti = [:]      // azzera la selezione
+                        onSalvato()       // vai alla Home
+                    }
+                    .fontWeight(.semibold)
+                    .buttonStyle(.borderedProminent)
+                    .buttonBorderShape(.capsule)
+                    .tint(.pink)
+                    .controlSize(.small)
+                    .disabled(scelti.isEmpty)
                 }
             }
-            .navigationDestination(isPresented: $apriDettaglio) {
-                if let comp = componenteSelezionato {
-                    Components(titolo: comp.nome, fonti: comp.fonti) { r in
-                        scelti[comp.nome] = r
-                    }
+        .navigationDestination(isPresented: $apriDettaglio) {
+            if let comp = componenteSelezionato {
+                Components(titolo: comp.nome, fonti: comp.fonti) { r in
+                    scelti[comp.nome] = r
                 }
             }
         }
@@ -190,4 +185,5 @@ struct PriceHeader: View {
 
 #Preview {
     BuildPcView()
+        .environment(BuildManager())
 }
