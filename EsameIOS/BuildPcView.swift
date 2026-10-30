@@ -7,12 +7,6 @@ struct ComponentePC: Identifiable {
     var colore: Color = .gray
     var fonti: [Fonte] = []
     var maxQuantita: Int = 1
-
-    // Colore della modalità "colorata": lo stesso della pagina della categoria
-    // (vedi ColoreCategoria in Components.swift)
-    var coloreVivace: Color {
-        fonti.count == 1 ? ColoreCategoria.colore(per: fonti[0].categoria) : .blue
-    }
 }
 
 struct SelectedPart {
@@ -30,7 +24,6 @@ struct BuildPcView: View {
     @State var testo: String = ""
     @State var risultati: [Risultato] = []
     @State private var scelti: [String: Selezione] = [:]
-    @State private var colorato = false   // false = tutte blu (come prima), true = un colore per sezione
 
     private var total: Double {
         scelti.values.map(\.subtotale).reduce(0, +)
@@ -60,12 +53,7 @@ struct BuildPcView: View {
         ScrollView {
             LazyVStack(spacing: 16) {
                 ForEach(componenti) { comp in
-                    ComponentCardView(
-                        componente: comp,
-                        scelto: scelti[comp.nome],
-                        colorato: colorato,
-                        onQuantita: { scelti[comp.nome]?.quantita = $0 }
-                    ) {
+                    ComponentCardView(componente: comp, scelto: scelti[comp.nome],onQuantita: { scelti[comp.nome]?.quantita = $0 }) {
                         componenteSelezionato = comp
                         apriDettaglio = true
                     }
@@ -89,20 +77,8 @@ struct BuildPcView: View {
         .navigationTitle("Crea la tua build")
         .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                // In alto a sinistra: pulsante che accende/spegne i colori delle sezioni.
-                // (Il "Indietro" non serve: questa è la radice dello stack.)
-                ToolbarItem(placement: .topBarLeading) {
-                    Button {
-                        withAnimation(.easeInOut(duration: 0.35)) {
-                            colorato.toggle()
-                        }
-                    } label: {
-                        Image(systemName: colorato ? "paintpalette.fill" : "paintpalette")
-                            .foregroundStyle(colorato ? Color.pink : Color.primary)
-                    }
-                    .accessibilityLabel(colorato ? "Colori sezioni attivi" : "Colora le sezioni")
-                }
-
+                // ToolbarItem "Indietro" RIMOSSO: essendo la radice dello stack
+                // non c'è nulla a cui tornare, la navigazione si fa con la barra in basso
                 ToolbarItem(placement: .topBarTrailing) {
                     Button("Salva") {
                         nomeBuild = ""
@@ -146,14 +122,8 @@ struct BuildPcView: View {
 struct ComponentCardView: View {
     let componente: ComponentePC
     var scelto: Selezione? = nil
-    var colorato: Bool = false          // false = blu come prima, true = colore della sezione
     var onQuantita: (Int) -> Void = { _ in }
     let action: () -> Void
-
-    // Il giallo con testo bianco si legge male: in quel caso testo scuro
-    private var coloreTesto: Color {
-        colorato && componente.coloreVivace == .yellow ? Color.black.opacity(0.8) : .white
-    }
 
     var body: some View {
         VStack(spacing: 12) {
@@ -161,9 +131,9 @@ struct ComponentCardView: View {
                 HStack(spacing: 26) {
                     Image(systemName: componente.immagine)
                         .font(.system(size: 32))
-                        .foregroundColor(coloreTesto)
+                        .foregroundColor(.white)
                         .frame(width: 70, height: 70)
-                        .background(colorato ? coloreTesto.opacity(0.18) : Color.cyan.opacity(0.9))
+                        .background(Color.cyan.opacity(0.9))
                         .cornerRadius(100)
 
                     VStack(spacing: 6) {
@@ -190,12 +160,12 @@ struct ComponentCardView: View {
                 }
             }
         }
-        .foregroundColor(coloreTesto)
+        .foregroundColor(.white)
         .padding()
         .frame(maxWidth: .infinity, alignment: .leading)
         .background(
             RoundedRectangle(cornerRadius: 20)
-                .fill(colorato ? componente.coloreVivace.opacity(0.85) : componente.colore)
+                .fill(componente.colore)
         )
     }
 }
@@ -240,8 +210,6 @@ struct PriceHeader: View {
 }
 
 #Preview {
-    NavigationStack {
-        BuildPcView()
-    }
-    .environment(BuildManager())
+    BuildPcView()
+        .environment(BuildManager())
 }
