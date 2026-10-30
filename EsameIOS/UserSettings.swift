@@ -22,8 +22,6 @@ class UserSettings : ObservableObject {
 }
 
 struct Options {
-    @Environment(\.colorScheme) var colorScheme
-    
     @AppStorage("theme") var theme = "auto"
     var themesAvaiable = ["auto", "light", "dark"]
     
@@ -31,7 +29,8 @@ struct Options {
         switch theme {
             case "light": return .light
             case "dark":  return .dark
-            default:  return colorScheme
-            }
+            default:
+                let stileSistema = UITraitCollection.current.userInterfaceStyle
+                return stileSistema == .dark ? .dark : .light}
     }
 }
