@@ -17,7 +17,7 @@ struct Settings: View {
                 Section("Utente"){
                     if(impostazioni.user_id == ""){
                         NavigationLink(destination: LoginView()) {
-                            Text("Accedi o Registrati").foregroundColor(.cyan)
+                            Text("Accedi o Registrati").foregroundColor(.blue)
                         }
                     } else {
                         NavigationLink(destination: LoginView()){
