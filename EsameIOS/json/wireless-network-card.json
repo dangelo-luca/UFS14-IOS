@@ -64,7 +64,7 @@
   },
   {
     "name": "TP-Link Archer TX55E",
-    "price": 29,
+    "price": 29.0,
     "protocol": "Wi-Fi 6",
     "interface": "PCIe x1",
     "color": null
@@ -85,7 +85,7 @@
   },
   {
     "name": "TP-Link Archer TX50E",
-    "price": null,
+    "price": 36.99,
     "protocol": "Wi-Fi 6",
     "interface": "PCIe x1",
     "color": "Black"
@@ -204,7 +204,7 @@
   },
   {
     "name": "Netgear Nighthawk AXE3000",
-    "price": 69,
+    "price": 69.0,
     "protocol": "Wi-Fi 6E",
     "interface": "USB Type-A 3.2 Gen 1",
     "color": "Black"
@@ -218,7 +218,7 @@
   },
   {
     "name": "Ziyituod ZYT-AX200",
-    "price": null,
+    "price": 36.99,
     "protocol": "Wi-Fi 6",
     "interface": "PCIe x1",
     "color": "Green"
@@ -246,7 +246,7 @@
   },
   {
     "name": "Gigabyte GC-WBAX200",
-    "price": null,
+    "price": 36.99,
     "protocol": "Wi-Fi 6",
     "interface": "PCIe x1",
     "color": "Black / Silver"
@@ -274,7 +274,7 @@
   },
   {
     "name": "Asus PCE-AC68",
-    "price": null,
+    "price": 24.99,
     "protocol": "Wi-Fi 5",
     "interface": "PCIe x1",
     "color": null
@@ -323,14 +323,14 @@
   },
   {
     "name": "Asus PCE-AC88",
-    "price": null,
+    "price": 24.99,
     "protocol": "Wi-Fi 5",
     "interface": "PCIe x1",
     "color": null
   },
   {
     "name": "TP-Link TL-WN781ND",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "PCIe x1",
     "color": null
@@ -344,7 +344,7 @@
   },
   {
     "name": "Gigabyte GC-WB1733D-I",
-    "price": null,
+    "price": 24.99,
     "protocol": "Wi-Fi 5",
     "interface": "PCIe x1",
     "color": "Black"
@@ -365,14 +365,14 @@
   },
   {
     "name": "Ubit AX210",
-    "price": null,
+    "price": 36.99,
     "protocol": "Wi-Fi 6E",
     "interface": "PCIe x1",
     "color": "Black"
   },
   {
     "name": "TP-Link TL-WN821N",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "USB Type-A 2.0",
     "color": null
@@ -400,21 +400,21 @@
   },
   {
     "name": "EDUP EP-9651GS",
-    "price": null,
+    "price": 36.99,
     "protocol": "Wi-Fi 6E",
     "interface": "PCIe x1",
     "color": "Black"
   },
   {
     "name": "Intel 7260HMWDTX1",
-    "price": 110,
+    "price": 110.0,
     "protocol": "Wi-Fi 5",
     "interface": "PCIe x1",
     "color": null
   },
   {
     "name": "Asus USB-AC53 NANO",
-    "price": 29,
+    "price": 29.0,
     "protocol": "Wi-Fi 5",
     "interface": "USB Type-A 2.0",
     "color": null
@@ -428,14 +428,14 @@
   },
   {
     "name": "BrosTrend AC5",
-    "price": null,
+    "price": 24.99,
     "protocol": "Wi-Fi 5",
     "interface": "USB Type-A 2.0",
     "color": "Black"
   },
   {
     "name": "D-Link DWA-582",
-    "price": null,
+    "price": 24.99,
     "protocol": "Wi-Fi 5",
     "interface": "PCIe x1",
     "color": null
@@ -484,7 +484,7 @@
   },
   {
     "name": "Ubit G10H-AX210S",
-    "price": null,
+    "price": 36.99,
     "protocol": "Wi-Fi 6E",
     "interface": "PCIe x1",
     "color": null
@@ -498,7 +498,7 @@
   },
   {
     "name": "fenvi FV-AX3000",
-    "price": null,
+    "price": 36.99,
     "protocol": "Wi-Fi 6",
     "interface": "PCIe x1",
     "color": "Red / Black"
@@ -512,7 +512,7 @@
   },
   {
     "name": "Asus PCE-AC55BT B1",
-    "price": null,
+    "price": 24.99,
     "protocol": "Wi-Fi 5",
     "interface": "PCIe x1",
     "color": null
@@ -526,7 +526,7 @@
   },
   {
     "name": "TP-Link TL-WN722N",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "USB Type-A 2.0",
     "color": null
@@ -540,7 +540,7 @@
   },
   {
     "name": "Asus PCE-N15",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "PCIe x1",
     "color": null
@@ -554,7 +554,7 @@
   },
   {
     "name": "Rosewill RNX-AC1300PCEv2",
-    "price": 23,
+    "price": 23.0,
     "protocol": "Wi-Fi 5",
     "interface": "PCIe x1",
     "color": "Black"
@@ -575,7 +575,7 @@
   },
   {
     "name": "Asus PCE-AC58BT",
-    "price": null,
+    "price": 24.99,
     "protocol": "Wi-Fi 5",
     "interface": "PCIe x1",
     "color": "Blue"
@@ -596,14 +596,14 @@
   },
   {
     "name": "Gigabyte GC-WB867D-I REV 4.2",
-    "price": null,
+    "price": 24.99,
     "protocol": "Wi-Fi 5",
     "interface": "PCIe x1",
     "color": null
   },
   {
     "name": "Intel 8265.NGWMG.S",
-    "price": null,
+    "price": 24.99,
     "protocol": "Wi-Fi 5",
     "interface": "M.2",
     "color": "Green"
@@ -624,14 +624,14 @@
   },
   {
     "name": "Asus PCE-AC55BT",
-    "price": null,
+    "price": 24.99,
     "protocol": "Wi-Fi 5",
     "interface": "PCIe x1",
     "color": null
   },
   {
     "name": "D-Link DWA-X1850",
-    "price": null,
+    "price": 36.99,
     "protocol": "Wi-Fi 6",
     "interface": "USB Type-A 3.2 Gen 1",
     "color": null
@@ -659,7 +659,7 @@
   },
   {
     "name": "Netgear A6210-100PAS",
-    "price": null,
+    "price": 24.99,
     "protocol": "Wi-Fi 5",
     "interface": "USB Type-A 3.2 Gen 1",
     "color": null
@@ -673,21 +673,21 @@
   },
   {
     "name": "fenvi FV-AXE3000",
-    "price": null,
+    "price": 36.99,
     "protocol": "Wi-Fi 6",
     "interface": "PCIe x1",
     "color": "Red / Black"
   },
   {
     "name": "NEC NP05LM1",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "USB Type-A 2.0",
     "color": "White"
   },
   {
     "name": "Wavlink WL-WN675X2",
-    "price": null,
+    "price": 36.99,
     "protocol": "Wi-Fi 6",
     "interface": "PCIe x1",
     "color": "Red"
@@ -701,7 +701,7 @@
   },
   {
     "name": "Asus PCE-N10",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "PCIe x1",
     "color": null
@@ -729,14 +729,14 @@
   },
   {
     "name": "MSI AC905C",
-    "price": null,
+    "price": 24.99,
     "protocol": "Wi-Fi 5",
     "interface": "PCIe x1",
     "color": "Black"
   },
   {
     "name": "fenvi FV-AXE210NG",
-    "price": null,
+    "price": 36.99,
     "protocol": "Wi-Fi 6E",
     "interface": "M.2",
     "color": null
@@ -749,22 +749,15 @@
     "color": null
   },
   {
-    "name": "Intel 7260HMWDTX1",
-    "price": null,
-    "protocol": "Wi-Fi 5",
-    "interface": "PCIe x1",
-    "color": null
-  },
-  {
     "name": "AVM FRITZ! WLAN Stick AC 430 MU-MIMO",
-    "price": null,
+    "price": 24.99,
     "protocol": "Wi-Fi 5",
     "interface": "USB Type-A 2.0",
     "color": "White / Red"
   },
   {
     "name": "Intel 9560.NGWG.NVR",
-    "price": null,
+    "price": 24.99,
     "protocol": "Wi-Fi 5",
     "interface": "M.2",
     "color": "Silver"
@@ -778,14 +771,14 @@
   },
   {
     "name": "TP-Link TL-WN851ND",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "PCI",
     "color": null
   },
   {
     "name": "D-Link DWA-131",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "USB Type-A 2.0",
     "color": null
@@ -799,14 +792,14 @@
   },
   {
     "name": "Cisco AIR-PI21AG-A-K9",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 3",
     "interface": "PCI",
     "color": null
   },
   {
     "name": "Intel 6235AN.HMWWB",
-    "price": 14,
+    "price": 14.0,
     "protocol": "Wi-Fi 4",
     "interface": "Half Mini-PCIe",
     "color": null
@@ -827,14 +820,14 @@
   },
   {
     "name": "fenvi FV-AXE3000RGB",
-    "price": null,
+    "price": 36.99,
     "protocol": "Wi-Fi 6E",
     "interface": "PCIe x1",
     "color": "Red / Silver"
   },
   {
     "name": "MSI AC905C-V2",
-    "price": null,
+    "price": 24.99,
     "protocol": "Wi-Fi 5",
     "interface": "PCIe x1",
     "color": "Black"
@@ -848,29 +841,36 @@
   },
   {
     "name": "HP FH971AA",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "PCIe x1",
     "color": null
   },
   {
     "name": "TRENDnet TEW-648UBM",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "USB Type-A 2.0",
     "color": null
   },
   {
     "name": "Asus USB-AC56",
-    "price": null,
+    "price": 24.99,
     "protocol": "Wi-Fi 5",
     "interface": "USB Type-A 3.2 Gen 1",
     "color": null
   },
   {
     "name": "Intel 7260",
-    "price": 35,
+    "price": 35.0,
     "protocol": "Wi-Fi 5",
+    "interface": "Mini-PCIe",
+    "color": null
+  },
+  {
+    "name": "Intel 7260",
+    "price": 19.98,
+    "protocol": "Wi-Fi 4",
     "interface": "Mini-PCIe",
     "color": null
   },
@@ -883,42 +883,42 @@
   },
   {
     "name": "Rosewill N900PCE",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "PCIe x1",
     "color": null
   },
   {
     "name": "TP-Link TL-WDN3800",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "PCIe x1",
     "color": null
   },
   {
     "name": "Feb Smart FS-N600 Basic Edition",
-    "price": null,
+    "price": 24.99,
     "protocol": "Wi-Fi 5",
     "interface": "PCIe x1",
     "color": null
   },
   {
     "name": "Rosewill RNX-AC600PCEv3",
-    "price": null,
+    "price": 24.99,
     "protocol": "Wi-Fi 5",
     "interface": "PCIe x1",
     "color": "Black"
   },
   {
     "name": "Rosewill RNX-AC1200PCEv2",
-    "price": null,
+    "price": 24.99,
     "protocol": "Wi-Fi 5",
     "interface": "PCIe x1",
     "color": "Green"
   },
   {
     "name": "HP 9260",
-    "price": null,
+    "price": 24.99,
     "protocol": "Wi-Fi 5",
     "interface": "PCIe x1",
     "color": "Green / Black"
@@ -932,14 +932,14 @@
   },
   {
     "name": "Ziyituod ZYT-7265",
-    "price": null,
+    "price": 24.99,
     "protocol": "Wi-Fi 5",
     "interface": "PCIe x1",
     "color": "Green"
   },
   {
     "name": "fenvi Wi-Fi 7 FV-BE8800Pro",
-    "price": null,
+    "price": 59.99,
     "protocol": "Wi-Fi 7",
     "interface": "PCIe x1",
     "color": "Red / Black"
@@ -953,7 +953,7 @@
   },
   {
     "name": "Intel 62205AN.HMWWB",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "Half Mini-PCIe",
     "color": null
@@ -967,7 +967,7 @@
   },
   {
     "name": "TRENDnet TBW-108UB",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "USB Type-A 2.0",
     "color": "Black"
@@ -988,14 +988,14 @@
   },
   {
     "name": "Edimax EW-7811DAC",
-    "price": null,
+    "price": 24.99,
     "protocol": "Wi-Fi 5",
     "interface": "USB Type-A 2.0",
     "color": null
   },
   {
     "name": "Encore ENUWI-1XN45",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "USB Type-A 2.0",
     "color": null
@@ -1009,7 +1009,7 @@
   },
   {
     "name": "TP-Link TL-WN8200ND",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "USB Type-A 2.0",
     "color": null
@@ -1023,28 +1023,28 @@
   },
   {
     "name": "Syba SY-PEX23063",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "PCIe x1",
     "color": null
   },
   {
     "name": "Rosewill RNX-AC1900PCEv2",
-    "price": null,
+    "price": 24.99,
     "protocol": "Wi-Fi 5",
     "interface": "PCIe x1",
     "color": "Red / Black"
   },
   {
     "name": "fenvi FV-2030T",
-    "price": null,
+    "price": 24.99,
     "protocol": "Wi-Fi 5",
     "interface": "PCIe x1",
     "color": "Red"
   },
   {
     "name": "Asus USB-N13 C1",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "USB Type-A",
     "color": null
@@ -1107,42 +1107,42 @@
   },
   {
     "name": "Asus PCE-AC66",
-    "price": null,
+    "price": 24.99,
     "protocol": "Wi-Fi 5",
     "interface": "PCIe x1",
     "color": null
   },
   {
     "name": "Asus USB-N13",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "USB Type-A 2.0",
     "color": null
   },
   {
     "name": "Encore ENUWI-G2",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 3",
     "interface": "USB Type-A 2.0",
     "color": null
   },
   {
     "name": "Linksys WMP600N",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "PCI",
     "color": null
   },
   {
     "name": "Rosewill RNX-G300LX",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 3",
     "interface": "PCI",
     "color": null
   },
   {
     "name": "Asus PCE-N53",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "PCIe x1",
     "color": null
@@ -1156,70 +1156,84 @@
   },
   {
     "name": "Intel 2200BNHMWDTX1",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "PCIe x1",
     "color": null
   },
   {
     "name": "Rosewill RNX-N600UBE",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "USB Type-A 2.0",
     "color": null
   },
   {
     "name": "TRENDnet TEW-424UB",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 3",
     "interface": "USB Type-A 2.0",
     "color": null
   },
   {
     "name": "Netgear WNA3100-100ENS",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "USB Type-A 2.0",
     "color": null
   },
   {
     "name": "Netgear WNDA3100-100NAS",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "USB Type-A 2.0",
     "color": null
   },
   {
     "name": "TP-Link TL-WDN3200",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "USB Type-A 2.0",
     "color": null
   },
   {
     "name": "TP-Link TL-WN723N",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "USB Type-A 2.0",
     "color": null
   },
   {
     "name": "Intel 7260HMW",
-    "price": null,
+    "price": 24.99,
     "protocol": "Wi-Fi 5",
     "interface": "Half Mini-PCIe",
     "color": null
   },
   {
+    "name": "Intel 7260HMW",
+    "price": 24.99,
+    "protocol": "Wi-Fi 5 (5 GHz only)",
+    "interface": "Mini-PCIe",
+    "color": null
+  },
+  {
+    "name": "Intel 7260HMW",
+    "price": 29.99,
+    "protocol": "Wi-Fi 4",
+    "interface": "Mini-PCIe",
+    "color": null
+  },
+  {
     "name": "TP-Link TL-WN7200ND",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "USB Type-A 2.0",
     "color": null
   },
   {
     "name": "Asus USB-AC53",
-    "price": null,
+    "price": 24.99,
     "protocol": "Wi-Fi 5",
     "interface": "USB Type-A 2.0",
     "color": null
@@ -1233,7 +1247,7 @@
   },
   {
     "name": "TP-Link TL-WN721N",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "USB Type-A 2.0",
     "color": null
@@ -1247,14 +1261,14 @@
   },
   {
     "name": "Rosewill AC1200UBE",
-    "price": null,
+    "price": 24.99,
     "protocol": "Wi-Fi 5",
     "interface": "USB Type-A 3.2 Gen 1",
     "color": null
   },
   {
     "name": "Asus USB-AC51",
-    "price": null,
+    "price": 24.99,
     "protocol": "Wi-Fi 5",
     "interface": "USB Type-A 2.0",
     "color": null
@@ -1267,36 +1281,29 @@
     "color": null
   },
   {
-    "name": "Intel 7260HMW",
-    "price": null,
-    "protocol": "Wi-Fi 5 (5 GHz only)",
-    "interface": "Mini-PCIe",
-    "color": null
-  },
-  {
     "name": "Asus USB-AC55",
-    "price": null,
+    "price": 24.99,
     "protocol": "Wi-Fi 5",
     "interface": "USB Type-A 3.2 Gen 1",
     "color": null
   },
   {
     "name": "Rosewill RNX-AC1200PCE",
-    "price": null,
+    "price": 24.99,
     "protocol": "Wi-Fi 5",
     "interface": "PCIe x1",
     "color": null
   },
   {
     "name": "StarTech PEX867WAC22",
-    "price": 42,
+    "price": 42.0,
     "protocol": "Wi-Fi 5",
     "interface": "PCIe x1",
     "color": null
   },
   {
     "name": "Rosewill RNX-N150NUB",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "USB Type-A 2.0",
     "color": null
@@ -1310,14 +1317,14 @@
   },
   {
     "name": "Inamax 4332804407",
-    "price": null,
+    "price": 24.99,
     "protocol": "Wi-Fi 5",
     "interface": "USB Type-A 3.2 Gen 1",
     "color": "Black"
   },
   {
     "name": "BrosTrend AC6",
-    "price": null,
+    "price": 24.99,
     "protocol": "Wi-Fi 5",
     "interface": "PCIe x1",
     "color": "Red / Black"
@@ -1331,49 +1338,42 @@
   },
   {
     "name": "TP-Link ARCHER T4UHP",
-    "price": null,
+    "price": 24.99,
     "protocol": "Wi-Fi 5",
     "interface": "USB Type-A 3.2 Gen 1",
     "color": "Black"
   },
   {
     "name": "InFocus INA-WIFIUSB-4",
-    "price": null,
+    "price": 24.99,
     "protocol": "Wi-Fi 5",
     "interface": "USB Type-A 2.0",
     "color": "Black"
   },
   {
     "name": "HP 8265",
-    "price": null,
+    "price": 24.99,
     "protocol": "Wi-Fi 5",
     "interface": "PCIe x1",
     "color": "Green / Black"
   },
   {
     "name": "fenvi FV8303",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "PCIe x1",
     "color": null
   },
   {
     "name": "Intel 8265.NGWMG.DTX1",
-    "price": null,
+    "price": 24.99,
     "protocol": "Wi-Fi 5",
     "interface": "M.2",
     "color": null
   },
   {
-    "name": "Intel AX210",
-    "price": null,
-    "protocol": "Wi-Fi 6E",
-    "interface": "M.2 PCIe",
-    "color": "Green"
-  },
-  {
     "name": "Gigabyte GC-WBAX1200",
-    "price": null,
+    "price": 36.99,
     "protocol": "Wi-Fi 6E",
     "interface": "PCIe x1",
     "color": "Black"
@@ -1387,7 +1387,7 @@
   },
   {
     "name": "Rosewill RNX-AC3000",
-    "price": null,
+    "price": 36.99,
     "protocol": "Wi-Fi 6",
     "interface": "PCIe x1",
     "color": "Black"
@@ -1401,7 +1401,7 @@
   },
   {
     "name": "D-Link DWA-121",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "USB Type-A 2.0",
     "color": null
@@ -1415,7 +1415,7 @@
   },
   {
     "name": "D-Link DWA-171",
-    "price": 36,
+    "price": 36.0,
     "protocol": "Wi-Fi 5",
     "interface": "USB Type-A 2.0",
     "color": null
@@ -1443,14 +1443,14 @@
   },
   {
     "name": "Netgear A6100-10000S",
-    "price": 25,
+    "price": 25.0,
     "protocol": "Wi-Fi 5",
     "interface": "USB Type-A 2.0",
     "color": "Black"
   },
   {
     "name": "Asus USB-N10",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "USB Type-A 2.0",
     "color": null
@@ -1464,154 +1464,154 @@
   },
   {
     "name": "Encore ENEWI-1XN42",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "PCIe x1",
     "color": null
   },
   {
     "name": "IOGEAR GWU625",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "USB Type-A 2.0",
     "color": null
   },
   {
     "name": "Intel 2200BNHMWDTX1G",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "PCIe x1",
     "color": null
   },
   {
     "name": "Intel 633AN.HMWWB",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "Half Mini-PCIe",
     "color": null
   },
   {
     "name": "Rosewill RNX-MiniN2(RWLD-11002)",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "USB Type-A 2.0",
     "color": null
   },
   {
     "name": "Rosewill RNX-N150PCe",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "PCIe x1",
     "color": null
   },
   {
     "name": "Rosewill RNX-N150UBE",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "USB Type-A 2.0",
     "color": null
   },
   {
     "name": "Rosewill RNX-N180UB",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "USB Type-A 2.0",
     "color": null
   },
   {
     "name": "Rosewill RNX-N180UBE",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "USB Type-A 2.0",
     "color": null
   },
   {
     "name": "Rosewill RNX-N250UBE",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "USB Type-A 2.0",
     "color": null
   },
   {
     "name": "StarTech USB300WN2X2D",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "USB Type-A 2.0",
     "color": null
   },
   {
     "name": "Syba CL-ADA23032",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "USB Type-A 2.0",
     "color": null
   },
   {
     "name": "Syba CL-ADA24004",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "USB Type-A 2.0",
     "color": null
   },
   {
     "name": "Syba SY-ADA23026",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "USB Type-A 2.0",
     "color": null
   },
   {
     "name": "TRENDnet TEW-648UB",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "USB Type-A 2.0",
     "color": null
   },
   {
     "name": "TRENDnet TEW-646UBH",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "USB Type-A 2.0",
     "color": null
   },
   {
     "name": "TRENDnet TEW-703PIL",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "PCI",
     "color": null
   },
   {
     "name": "TRENDnet TEW-703PI",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "PCI",
     "color": null
   },
   {
     "name": "Rosewill N900UBE",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "USB Type-A 2.0",
     "color": null
   },
   {
     "name": "Asus USB-N53",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "USB Type-A 2.0",
     "color": null
   },
   {
     "name": "Asus USB-N66",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "USB Type-A 2.0",
     "color": null
   },
   {
     "name": "Linksys AE1200-NP",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "USB Type-A 2.0",
     "color": null
@@ -1625,14 +1625,14 @@
   },
   {
     "name": "Rosewill RNWD-N1501UB",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "USB Type-A 2.0",
     "color": null
   },
   {
     "name": "Linksys AE3000-NP",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "USB Type-A 2.0",
     "color": null
@@ -1646,154 +1646,154 @@
   },
   {
     "name": "Rosewill RNX-N250PC2",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "PCI",
     "color": null
   },
   {
     "name": "Rosewill RNX-N150HG",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "USB Type-A 2.0",
     "color": null
   },
   {
     "name": "Linksys AE2500-NP",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "USB Type-A 2.0",
     "color": null
   },
   {
     "name": "Rosewill RNWD-N1502UBE",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "USB Type-A 2.0",
     "color": null
   },
   {
     "name": "Belkin E9L1500",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "USB Type-A 2.0",
     "color": null
   },
   {
     "name": "Belkin E9L3000",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "USB Type-A 2.0",
     "color": null
   },
   {
     "name": "Belkin E9L6000",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "USB Type-A 2.0",
     "color": null
   },
   {
     "name": "Belkin E9L7500",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "USB Type-A 2.0",
     "color": null
   },
   {
     "name": "Diamond WL700NXS",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "USB Type-A 2.0",
     "color": null
   },
   {
     "name": "Encore ENUWI-1XN42",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "USB Type-A 2.0",
     "color": null
   },
   {
     "name": "Encore ENUWI-1XN4M",
-    "price": 21,
+    "price": 21.0,
     "protocol": "Wi-Fi 4",
     "interface": "USB Type-A 2.0",
     "color": null
   },
   {
     "name": "Encore ENUWI-2XN42",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "USB Type-A 2.0",
     "color": null
   },
   {
     "name": "Encore ENUWI-2XN45",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "USB Type-A 2.0",
     "color": null
   },
   {
     "name": "IOGEAR GWU627W6",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "USB Type-A 2.0",
     "color": null
   },
   {
     "name": "Patriot PCUSBW1150",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "USB Type-A 2.0",
     "color": null
   },
   {
     "name": "TRENDnet TEW-684UB",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "USB Type-A 2.0",
     "color": null
   },
   {
     "name": "TRENDnet TEW-649UB",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "USB Type-A 2.0",
     "color": null
   },
   {
     "name": "Encore ENEWI-1XN45",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "PCIe x1",
     "color": null
   },
   {
     "name": "Encore ENEWI-2XN42",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "PCIe x1",
     "color": null
   },
   {
     "name": "Encore ENEWI-2XN45",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "PCIe x1",
     "color": null
   },
   {
     "name": "Rosewill N600PCE",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "PCIe x1",
     "color": null
   },
   {
     "name": "TRENDnet TEW-623PI",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "PCI",
     "color": null
@@ -1807,7 +1807,7 @@
   },
   {
     "name": "D-Link DWA-130",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "USB Type-A 2.0",
     "color": null
@@ -1821,7 +1821,7 @@
   },
   {
     "name": "D-Link DWA-182",
-    "price": 48,
+    "price": 48.0,
     "protocol": "Wi-Fi 5",
     "interface": "USB Type-A 2.0",
     "color": null
@@ -1835,140 +1835,133 @@
   },
   {
     "name": "Netgear WN311B-100NAS",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "PCI",
     "color": null
   },
   {
     "name": "Netgear WNA1000M-100ENS",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "USB Type-A 2.0",
     "color": null
   },
   {
     "name": "Netgear WNA1100-100ENS",
-    "price": 62,
+    "price": 62.0,
     "protocol": "Wi-Fi 4",
     "interface": "USB Type-A 2.0",
     "color": null
   },
   {
     "name": "TP-Link TL-WN350GD",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 3",
     "interface": "PCI",
     "color": null
   },
   {
     "name": "TP-Link TL-WN727N",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "USB Type-A 2.0",
     "color": null
   },
   {
     "name": "Intel 6235ANHMW",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "Half Mini-PCIe",
     "color": null
   },
   {
+    "name": "Intel 6235ANHMW",
+    "price": 29.99,
+    "protocol": "Wi-Fi 4",
+    "interface": "Mini-PCIe",
+    "color": null
+  },
+  {
     "name": "Intel 105",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "Mini-PCIe",
     "color": null
   },
   {
     "name": "Intel 135",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "Mini-PCIe",
     "color": null
   },
   {
     "name": "Intel 2200BNHMW",
-    "price": null,
-    "protocol": "Wi-Fi 4",
-    "interface": "Mini-PCIe",
-    "color": null
-  },
-  {
-    "name": "Intel 7260HMW",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "Mini-PCIe",
     "color": null
   },
   {
     "name": "Intel 7260HMW BN",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "Mini-PCIe",
     "color": null
   },
   {
     "name": "Linksys AE6000",
-    "price": null,
+    "price": 24.99,
     "protocol": "Wi-Fi 5",
     "interface": "USB Type-A 2.0",
     "color": null
   },
   {
     "name": "Orico ORICO WRA150",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "USB Type-A 2.0",
     "color": null
   },
   {
     "name": "Orico ORICO WRB150",
-    "price": null,
-    "protocol": "Wi-Fi 4",
-    "interface": "USB Type-A 2.0",
-    "color": null
-  },
-  {
-    "name": "Orico ORICO WRB150",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "USB Type-A 2.0",
     "color": null
   },
   {
     "name": "Orico ORICO WRD150",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "USB Type-A 2.0",
     "color": null
   },
   {
     "name": "Orico WRD150BLK",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "USB Type-A 2.0",
     "color": null
   },
   {
     "name": "Samsung WIS12ABGNX/XAA",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "USB Type-A 2.0",
     "color": null
   },
   {
     "name": "StarTech PCI300WN2X2",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "PCI",
     "color": null
   },
   {
     "name": "TRENDnet TEW-624UB",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "USB Type-A 2.0",
     "color": null
@@ -1982,7 +1975,7 @@
   },
   {
     "name": "TRENDnet TEW-726EC",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "PCIe x1",
     "color": null
@@ -1996,28 +1989,28 @@
   },
   {
     "name": "D-Link DWA-180",
-    "price": null,
+    "price": 24.99,
     "protocol": "Wi-Fi 5",
     "interface": "USB Type-A 2.0",
     "color": null
   },
   {
     "name": "D-Link DWA-525",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "PCI",
     "color": null
   },
   {
     "name": "Edimax EW-7811Un",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "USB Type-A 2.0",
     "color": null
   },
   {
     "name": "Edimax EW-7128Gn",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "PCI",
     "color": null
@@ -2031,14 +2024,14 @@
   },
   {
     "name": "Edimax EW-7711USN",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "USB Type-A 2.0",
     "color": null
   },
   {
     "name": "Edimax EW-7722In",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "PCI",
     "color": null
@@ -2052,105 +2045,105 @@
   },
   {
     "name": "Edimax EW-7722PnD",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "PCIe x1",
     "color": null
   },
   {
     "name": "Edimax EW-7722UnD",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "USB Type-A 2.0",
     "color": null
   },
   {
     "name": "Hawking Technology HAWNU1",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "USB Type-A 2.0",
     "color": null
   },
   {
     "name": "Hawking Technology HAWNU2",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "USB Type-A 2.0",
     "color": null
   },
   {
     "name": "Hawking Technology HD45U",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "USB Type-A 2.0",
     "color": null
   },
   {
     "name": "Hawking Technology HWDN3",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "USB Type-A 2.0",
     "color": null
   },
   {
     "name": "Hawking Technology HWUG1",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 3",
     "interface": "USB Type-A 2.0",
     "color": null
   },
   {
     "name": "Hawking Technology HWUN4",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "USB Type-A 2.0",
     "color": null
   },
   {
     "name": "IOGEAR GWU523",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 3",
     "interface": "USB Type-A 2.0",
     "color": null
   },
   {
     "name": "Patriot PCBOWAU2-N",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "USB Type-A 2.0",
     "color": null
   },
   {
     "name": "Rosewill RNX-G300EX",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 3",
     "interface": "PCI",
     "color": null
   },
   {
     "name": "SIIG CN-WR0811-S1",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "PCIe x1",
     "color": null
   },
   {
     "name": "Belkin F9L1002",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "USB Type-A 2.0",
     "color": null
   },
   {
     "name": "Belkin F9L1103",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "USB Type-A 2.0",
     "color": null
   },
   {
     "name": "Belkin F9L1109-OM",
-    "price": null,
+    "price": 24.99,
     "protocol": "Wi-Fi 5",
     "interface": "USB Type-A 3.2 Gen 1",
     "color": null
@@ -2164,42 +2157,35 @@
   },
   {
     "name": "Belkin F7D1102",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "USB Type-A 2.0",
     "color": null
   },
   {
     "name": "Buffalo Technology WI-U2-433DM",
-    "price": null,
+    "price": 24.99,
     "protocol": "Wi-Fi 5",
     "interface": "USB Type-A 2.0",
     "color": null
   },
   {
     "name": "Cisco AM10",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "USB Type-A 2.0",
     "color": null
   },
   {
     "name": "D-Link N69506",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "USB Type-A 2.0",
     "color": null
   },
   {
-    "name": "D-Link DWA-548",
-    "price": null,
-    "protocol": "Wi-Fi 4",
-    "interface": "PCIe x1",
-    "color": null
-  },
-  {
     "name": "Encore ENLWI-N3",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "PCI",
     "color": null
@@ -2213,91 +2199,77 @@
   },
   {
     "name": "SIIG JU-WR0012-S1",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "USB Type-A 2.0",
     "color": null
   },
   {
     "name": "SIIG JU-WR0212-S1",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "USB Type-A 2.0",
     "color": null
   },
   {
     "name": "TRENDnet TEW-804UB",
-    "price": null,
+    "price": 24.99,
     "protocol": "Wi-Fi 5",
     "interface": "USB Type-A 2.0",
     "color": null
   },
   {
     "name": "SIIG JU-WR0112-S1",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "USB Type-A 2.0",
     "color": null
   },
   {
     "name": "TP-Link TL-WDN4200",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "USB Type-A 2.0",
     "color": null
   },
   {
     "name": "Cisco AE3000",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "USB Type-A 2.0",
     "color": null
   },
   {
     "name": "Intel 6205",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "Mini-PCIe",
-    "color": null
-  },
-  {
-    "name": "Intel 6235ANHMW",
-    "price": null,
-    "protocol": "Wi-Fi 4",
-    "interface": "Mini-PCIe",
-    "color": null
-  },
-  {
-    "name": "Asus USB-N13",
-    "price": null,
-    "protocol": "Wi-Fi 4",
-    "interface": "USB Type-A 2.0",
     "color": null
   },
   {
     "name": "Belkin AE3000",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "USB Type-A 2.0",
     "color": null
   },
   {
     "name": "Belkin F7D2102TT",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "USB Type-A 2.0",
     "color": null
   },
   {
     "name": "BenQ WDRT8192",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "USB Type-A 2.0",
     "color": null
   },
   {
     "name": "Cisco AE1200",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "USB Type-A 2.0",
     "color": null
@@ -2311,294 +2283,238 @@
   },
   {
     "name": "Hawking Technology HD65U",
-    "price": null,
+    "price": 24.99,
     "protocol": "Wi-Fi 5",
     "interface": "USB Type-A 2.0",
     "color": null
   },
   {
     "name": "Hawking Technology HW7ACU",
-    "price": null,
+    "price": 24.99,
     "protocol": "Wi-Fi 5",
     "interface": "USB Type-A 2.0",
     "color": null
   },
   {
     "name": "IOGEAR GWU735",
-    "price": null,
+    "price": 24.99,
     "protocol": "Wi-Fi 5",
     "interface": "USB Type-A 3.2 Gen 1",
     "color": null
   },
   {
     "name": "Rosewill RNX-AC1200UBE2",
-    "price": null,
+    "price": 24.99,
     "protocol": "Wi-Fi 5",
     "interface": "USB Type-A 3.2 Gen 1",
     "color": null
   },
   {
     "name": "Rosewill RNX-N600UB",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "USB Type-A 2.0",
     "color": null
   },
   {
     "name": "StarTech USB300WN2X2C",
-    "price": 18,
+    "price": 18.0,
     "protocol": "Wi-Fi 4",
     "interface": "USB Type-A 2.0",
     "color": null
   },
   {
     "name": "Edimax EW-7711MAC",
-    "price": null,
+    "price": 24.99,
     "protocol": "Wi-Fi 5",
     "interface": "USB Type-A 2.0",
     "color": null
   },
   {
     "name": "Intel 3160.NGWG",
-    "price": null,
+    "price": 24.99,
     "protocol": "Wi-Fi 5",
     "interface": "Mini-PCIe",
     "color": null
   },
   {
     "name": "Intel 6300",
-    "price": null,
-    "protocol": "Wi-Fi 4",
-    "interface": "Mini-PCIe",
-    "color": null
-  },
-  {
-    "name": "Intel 7260",
-    "price": 19.98,
-    "protocol": "Wi-Fi 4",
-    "interface": "Mini-PCIe",
-    "color": null
-  },
-  {
-    "name": "Intel 7260",
-    "price": null,
-    "protocol": "Wi-Fi 4",
-    "interface": "Mini-PCIe",
-    "color": null
-  },
-  {
-    "name": "Intel 7260",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "Mini-PCIe",
     "color": null
   },
   {
     "name": "Asus USB-AC68",
-    "price": null,
+    "price": 24.99,
     "protocol": "Wi-Fi 5",
     "interface": "USB Type-A 3.2 Gen 1",
     "color": null
   },
   {
     "name": "AUKEY WF-R12",
-    "price": null,
+    "price": 24.99,
     "protocol": "Wi-Fi 5",
     "interface": "USB Type-A 3.2 Gen 1",
     "color": null
   },
   {
     "name": "Athenatech NE-WN3201D",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "USB Type-A 2.0",
     "color": null
   },
   {
     "name": "D-Link DWA-192",
-    "price": null,
+    "price": 24.99,
     "protocol": "Wi-Fi 5",
     "interface": "USB Type-A 3.2 Gen 1",
     "color": null
   },
   {
     "name": "Rosewill RNX-N600PCE_v2.0",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "PCIe x1",
     "color": null
   },
   {
     "name": "Rosewill RNX-N300UB",
-    "price": null,
-    "protocol": "Wi-Fi 4",
-    "interface": "USB Type-A 2.0",
-    "color": null
-  },
-  {
-    "name": "Rosewill RNX-N150NUB",
-    "price": null,
-    "protocol": "Wi-Fi 4",
-    "interface": "USB Type-A 2.0",
-    "color": null
-  },
-  {
-    "name": "Rosewill RNX-N150NUB",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "USB Type-A 2.0",
     "color": null
   },
   {
     "name": "TRENDnet TEW-807ECH",
-    "price": null,
+    "price": 24.99,
     "protocol": "Wi-Fi 5",
     "interface": "PCIe x1",
     "color": null
   },
   {
     "name": "Linksys AE2500-CA",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "USB Type-A 2.0",
     "color": null
   },
   {
     "name": "Netgear WF2190",
-    "price": null,
+    "price": 24.99,
     "protocol": "Wi-Fi 5",
     "interface": "USB Type-A 3.2 Gen 1",
     "color": null
   },
   {
     "name": "Hawking Technology HW17ACU",
-    "price": null,
+    "price": 24.99,
     "protocol": "Wi-Fi 5",
     "interface": "USB Type-A 2.0",
     "color": "Black"
   },
   {
     "name": "Rosewill RNX-AC1200UBv2",
-    "price": null,
+    "price": 24.99,
     "protocol": "Wi-Fi 5",
     "interface": "USB Type-A 3.2 Gen 1",
     "color": "Black"
   },
   {
     "name": "Rosewill RNX-AC600HGUBEv2",
-    "price": null,
+    "price": 24.99,
     "protocol": "Wi-Fi 5",
     "interface": "USB Type-A 2.0",
     "color": "Black"
   },
   {
     "name": "Rosewill RNX-AC600NUBv2",
-    "price": null,
+    "price": 24.99,
     "protocol": "Wi-Fi 5",
     "interface": "USB Type-A 2.0",
     "color": "Black"
   },
   {
     "name": "Asus USB-AC55 B1",
-    "price": null,
+    "price": 24.99,
     "protocol": "Wi-Fi 5",
     "interface": "USB Type-A 3.2 Gen 1",
     "color": "Black"
   },
   {
     "name": "TRENDnet TEW-808UBM",
-    "price": null,
+    "price": 24.99,
     "protocol": "Wi-Fi 5",
     "interface": "USB Type-A 2.0",
     "color": "Black"
   },
   {
     "name": "Rosewill RNX-AC2030PCE",
-    "price": null,
+    "price": 24.99,
     "protocol": "Wi-Fi 5",
     "interface": "PCIe x1",
     "color": "Red / Black"
   },
   {
     "name": "Rosewill RNX-AC1900UB",
-    "price": null,
+    "price": 24.99,
     "protocol": "Wi-Fi 5",
     "interface": "USB Type-A 3.2 Gen 1",
     "color": "Black"
   },
   {
     "name": "Hawking Technology HW12ACU",
-    "price": null,
+    "price": 24.99,
     "protocol": "Wi-Fi 5",
     "interface": "USB Type-A 2.0",
     "color": "Black"
   },
   {
     "name": "Syba SY-PEX23059",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "PCIe x1",
     "color": "Green / Black"
   },
   {
     "name": "Sabrent USBG802",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 3",
     "interface": "USB Type-A 2.0",
     "color": "Black"
   },
   {
     "name": "Sabrent USB-802N",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "USB Type-A 2.0",
     "color": "Black"
   },
   {
     "name": "Belkin Linksys AE1200-NP",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "USB Type-A 3.2 Gen 1",
     "color": "Black"
   },
   {
     "name": "Hommie N900",
-    "price": null,
+    "price": 29.99,
     "protocol": "Wi-Fi 4",
     "interface": "PCIe x1",
     "color": null
   },
   {
     "name": "fenvi FV-AX3000R",
-    "price": null,
+    "price": 36.99,
     "protocol": "Wi-Fi 6",
     "interface": "PCIe x1",
     "color": "Red / Black"
   },
   {
-    "name": "Intel AX210 w/vPro",
-    "price": null,
-    "protocol": "Wi-Fi 6E",
-    "interface": "M.2 PCIe",
-    "color": "Green"
-  },
-  {
-    "name": "Intel AX210",
-    "price": null,
-    "protocol": "Wi-Fi 6E",
-    "interface": "M.2 PCIe",
-    "color": "Green"
-  },
-  {
-    "name": "Intel AX210 w/vPro",
-    "price": null,
-    "protocol": "Wi-Fi 6E",
-    "interface": "M.2 PCIe",
-    "color": "Green"
-  },
-  {
     "name": "fenvi Wi-Fi 7 FV-BE8800",
-    "price": null,
+    "price": 59.99,
     "protocol": "Wi-Fi 7",
     "interface": "PCIe x1",
     "color": "Red / Black"
@@ -2612,7 +2528,7 @@
   },
   {
     "name": "D-Link DWA-X3000",
-    "price": null,
+    "price": 36.99,
     "protocol": "Wi-Fi 6",
     "interface": "PCIe x1",
     "color": "Black"

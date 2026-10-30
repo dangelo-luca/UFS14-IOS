@@ -7,7 +7,7 @@
   },
   {
     "name": "APC SURT20KRMXLT",
-    "price": 24100,
+    "price": 24100.0,
     "capacity_w": 16000,
     "capacity_va": 20000
   },
@@ -25,7 +25,7 @@
   },
   {
     "name": "APC SRT10KRMXLI",
-    "price": 11700,
+    "price": 11700.0,
     "capacity_w": 10000,
     "capacity_va": 10000
   },
@@ -55,7 +55,7 @@
   },
   {
     "name": "APC SRT10KXLT",
-    "price": 5600,
+    "price": 5600.0,
     "capacity_w": 10000,
     "capacity_va": 10000
   },
@@ -79,7 +79,7 @@
   },
   {
     "name": "APC SRT10KXLI",
-    "price": null,
+    "price": 2500.0,
     "capacity_w": 10000,
     "capacity_va": 10000
   },
@@ -91,7 +91,7 @@
   },
   {
     "name": "CyberPower UT850EG",
-    "price": null,
+    "price": 139.99,
     "capacity_w": 425,
     "capacity_va": 850
   },
@@ -121,7 +121,7 @@
   },
   {
     "name": "APC SUA5000RMI5U",
-    "price": 9600,
+    "price": 9600.0,
     "capacity_w": 4000,
     "capacity_va": 5000
   },
@@ -133,7 +133,7 @@
   },
   {
     "name": "PowerWalker Basic VI 2200 STL UK",
-    "price": null,
+    "price": 449.99,
     "capacity_w": 1320,
     "capacity_va": 2200
   },
@@ -163,7 +163,7 @@
   },
   {
     "name": "APC Back-UPS Pro 1500VA for Gaming",
-    "price": null,
+    "price": 219.99,
     "capacity_w": 900,
     "capacity_va": 1500
   },
@@ -211,19 +211,19 @@
   },
   {
     "name": "CyberPower CP1350AVRLCD",
-    "price": null,
+    "price": 219.99,
     "capacity_w": 810,
     "capacity_va": 1350
   },
   {
     "name": "APC SRT5KXLI",
-    "price": 7200,
+    "price": 7200.0,
     "capacity_w": 4500,
     "capacity_va": 5000
   },
   {
     "name": "Trust Paxxon",
-    "price": null,
+    "price": 219.99,
     "capacity_w": 900,
     "capacity_va": 1500
   },
@@ -247,7 +247,7 @@
   },
   {
     "name": "APC SUM3000RMXLI2U",
-    "price": null,
+    "price": 699.99,
     "capacity_w": 2850,
     "capacity_va": 3000
   },
@@ -265,7 +265,7 @@
   },
   {
     "name": "APC SMT2200I",
-    "price": null,
+    "price": 449.99,
     "capacity_w": 1980,
     "capacity_va": 2200
   },
@@ -282,8 +282,26 @@
     "capacity_va": 850
   },
   {
+    "name": "VERTIV Liebert PST5",
+    "price": 64.98,
+    "capacity_w": 200,
+    "capacity_va": 350
+  },
+  {
+    "name": "VERTIV Liebert PST5",
+    "price": 44.69,
+    "capacity_w": 300,
+    "capacity_va": 500
+  },
+  {
+    "name": "VERTIV Liebert PST5",
+    "price": 84.99,
+    "capacity_w": 400,
+    "capacity_va": 660
+  },
+  {
     "name": "Tripp Lite SU10KRT3U",
-    "price": null,
+    "price": 2500.0,
     "capacity_w": 7000,
     "capacity_va": 10000
   },
@@ -312,14 +330,8 @@
     "capacity_va": 2200
   },
   {
-    "name": "APC Back-UPS Pro 1500VA for Gaming",
-    "price": null,
-    "capacity_w": 900,
-    "capacity_va": 1500
-  },
-  {
     "name": "APC Easy UPS BV1000I-MS 230V",
-    "price": null,
+    "price": 139.99,
     "capacity_w": 600,
     "capacity_va": 1000
   },
@@ -348,14 +360,8 @@
     "capacity_va": 3000
   },
   {
-    "name": "VERTIV Liebert PST5",
-    "price": 64.98,
-    "capacity_w": 200,
-    "capacity_va": 350
-  },
-  {
     "name": "HP AF450A",
-    "price": 195,
+    "price": 195.0,
     "capacity_w": 950,
     "capacity_va": 1400
   },
@@ -415,7 +421,7 @@
   },
   {
     "name": "APC SMT1500US",
-    "price": null,
+    "price": 219.99,
     "capacity_w": 1000,
     "capacity_va": 1440
   },
@@ -433,7 +439,7 @@
   },
   {
     "name": "CyberPower CP900EPFCLCD",
-    "price": null,
+    "price": 139.99,
     "capacity_w": 540,
     "capacity_va": 900
   },
@@ -445,7 +451,7 @@
   },
   {
     "name": "APC SRT5KXLT",
-    "price": 3340,
+    "price": 3340.0,
     "capacity_w": 4250,
     "capacity_va": 5000
   },
@@ -469,7 +475,7 @@
   },
   {
     "name": "CyberPower CP1500EPFCLCD",
-    "price": null,
+    "price": 219.99,
     "capacity_w": 900,
     "capacity_va": 1500
   },
@@ -493,7 +499,7 @@
   },
   {
     "name": "APC SMX2200RMLV2U",
-    "price": 1450,
+    "price": 1450.0,
     "capacity_w": 1980,
     "capacity_va": 2200
   },
@@ -505,19 +511,19 @@
   },
   {
     "name": "APC SMT3000",
-    "price": 2148,
+    "price": 2148.0,
     "capacity_w": 2700,
     "capacity_va": 3000
   },
   {
     "name": "APC SRT8KRMXLI",
-    "price": null,
+    "price": 2000.0,
     "capacity_w": 8000,
     "capacity_va": 8000
   },
   {
     "name": "APC SURTA1500RMXL2U",
-    "price": 699,
+    "price": 699.0,
     "capacity_w": 1050,
     "capacity_va": 1500
   },
@@ -547,27 +553,21 @@
   },
   {
     "name": "APC SMX3000RMLV2U",
-    "price": 1685,
+    "price": 1685.0,
     "capacity_w": 2700,
     "capacity_va": 3000
   },
   {
     "name": "Tripp Lite SUINT2000XL",
-    "price": null,
+    "price": 449.99,
     "capacity_w": 1400,
     "capacity_va": 2000
   },
   {
     "name": "CyberPower CP1300EPFCLCD",
-    "price": null,
+    "price": 219.99,
     "capacity_w": 780,
     "capacity_va": 1300
-  },
-  {
-    "name": "VERTIV Liebert PST5",
-    "price": 44.69,
-    "capacity_w": 300,
-    "capacity_va": 500
   },
   {
     "name": "CyberPower AVRG900U",
@@ -577,7 +577,7 @@
   },
   {
     "name": "APC SMX3000RMHV2UNC",
-    "price": 3576,
+    "price": 3576.0,
     "capacity_w": 2700,
     "capacity_va": 3000
   },
@@ -601,7 +601,7 @@
   },
   {
     "name": "APC SMT3000I",
-    "price": 2148,
+    "price": 2148.0,
     "capacity_w": 2700,
     "capacity_va": 3000
   },
@@ -666,8 +666,20 @@
     "capacity_va": 1440
   },
   {
+    "name": "VERTIV Liebert PSl5",
+    "price": 194.11,
+    "capacity_w": 675,
+    "capacity_va": 750
+  },
+  {
+    "name": "VERTIV Liebert PSl5",
+    "price": 410.93,
+    "capacity_w": 990,
+    "capacity_va": 1100
+  },
+  {
     "name": "APC BK325I",
-    "price": null,
+    "price": 79.99,
     "capacity_w": 210,
     "capacity_va": 325
   },
@@ -733,7 +745,7 @@
   },
   {
     "name": "APC BX600CI-IN",
-    "price": null,
+    "price": 79.99,
     "capacity_w": 360,
     "capacity_va": 600
   },
@@ -751,7 +763,7 @@
   },
   {
     "name": "APC SMC1500I",
-    "price": null,
+    "price": 219.99,
     "capacity_w": 900,
     "capacity_va": 1500
   },
@@ -763,7 +775,7 @@
   },
   {
     "name": "APC SRT5KRMXLW-HW",
-    "price": null,
+    "price": 1250.0,
     "capacity_w": 4500,
     "capacity_va": 5000
   },
@@ -787,25 +799,25 @@
   },
   {
     "name": "APC BN1080G",
-    "price": null,
+    "price": 219.99,
     "capacity_w": 650,
     "capacity_va": 1080
   },
   {
     "name": "APC BR1000G",
-    "price": 229,
+    "price": 229.0,
     "capacity_w": 600,
     "capacity_va": 1000
   },
   {
     "name": "APC BX1000G",
-    "price": null,
+    "price": 139.99,
     "capacity_w": 600,
     "capacity_va": 1000
   },
   {
     "name": "APC SMC1000I",
-    "price": null,
+    "price": 139.99,
     "capacity_w": 600,
     "capacity_va": 1000
   },
@@ -817,7 +829,7 @@
   },
   {
     "name": "APC SY12KEXBX120",
-    "price": null,
+    "price": 3000.0,
     "capacity_w": 8400,
     "capacity_va": 12000
   },
@@ -829,31 +841,31 @@
   },
   {
     "name": "CyberPower PR1500LCDRT2U",
-    "price": null,
+    "price": 219.99,
     "capacity_w": 1350,
     "capacity_va": 1500
   },
   {
     "name": "CyberPower PR2200LCDRT2UTAA",
-    "price": null,
+    "price": 449.99,
     "capacity_w": 1600,
     "capacity_va": 2170
   },
   {
     "name": "IBM 53959KX",
-    "price": null,
+    "price": 2750.0,
     "capacity_w": 10000,
     "capacity_va": 11000
   },
   {
     "name": "CyberPower LX1500GU-FC",
-    "price": null,
+    "price": 219.99,
     "capacity_w": 900,
     "capacity_va": 1500
   },
   {
     "name": "APC BR1500MS",
-    "price": null,
+    "price": 219.99,
     "capacity_w": 900,
     "capacity_va": 1500
   },
@@ -862,12 +874,6 @@
     "price": 289.95,
     "capacity_w": 900,
     "capacity_va": 1500
-  },
-  {
-    "name": "VERTIV Liebert PST5",
-    "price": 84.99,
-    "capacity_w": 400,
-    "capacity_va": 660
   },
   {
     "name": "Tripp Lite OMNI1500LCDT",
@@ -889,13 +895,13 @@
   },
   {
     "name": "APC BK350EI",
-    "price": null,
+    "price": 79.99,
     "capacity_w": 210,
     "capacity_va": 350
   },
   {
     "name": "APC SC450RMI1U",
-    "price": 409,
+    "price": 409.0,
     "capacity_w": 280,
     "capacity_va": 450
   },
@@ -930,6 +936,24 @@
     "capacity_va": 1500
   },
   {
+    "name": "VERTIV Liebert PSA5",
+    "price": 144.99,
+    "capacity_w": 600,
+    "capacity_va": 1000
+  },
+  {
+    "name": "VERTIV Liebert PSA5",
+    "price": 178.0,
+    "capacity_w": 420,
+    "capacity_va": 700
+  },
+  {
+    "name": "VERTIV Liebert PSA5",
+    "price": 74.98,
+    "capacity_w": 300,
+    "capacity_va": 500
+  },
+  {
     "name": "APC SMC1500",
     "price": 555.89,
     "capacity_w": 900,
@@ -943,7 +967,7 @@
   },
   {
     "name": "APC SMT3000RM2U",
-    "price": 1899,
+    "price": 1899.0,
     "capacity_w": 2700,
     "capacity_va": 3000
   },
@@ -961,7 +985,7 @@
   },
   {
     "name": "HP AF461A",
-    "price": 2945,
+    "price": 2945.0,
     "capacity_w": 4500,
     "capacity_va": 5000
   },
@@ -972,26 +996,14 @@
     "capacity_va": 675
   },
   {
-    "name": "VERTIV Liebert PSA5",
-    "price": 144.99,
-    "capacity_w": 600,
-    "capacity_va": 1000
-  },
-  {
-    "name": "VERTIV Liebert PSA5",
-    "price": 178,
-    "capacity_w": 420,
-    "capacity_va": 700
-  },
-  {
     "name": "APC BE750G",
-    "price": null,
+    "price": 139.99,
     "capacity_w": 450,
     "capacity_va": 750
   },
   {
     "name": "APC DLT1500RMI2U",
-    "price": null,
+    "price": 219.99,
     "capacity_w": 1000,
     "capacity_va": 1500
   },
@@ -1003,7 +1015,7 @@
   },
   {
     "name": "APC SRT5KRMXLT",
-    "price": 3105,
+    "price": 3105.0,
     "capacity_w": 4250,
     "capacity_va": 5000
   },
@@ -1057,19 +1069,19 @@
   },
   {
     "name": "CyberPower CP550SL",
-    "price": null,
+    "price": 79.99,
     "capacity_w": 330,
     "capacity_va": 550
   },
   {
     "name": "CyberPower PR2200LCDRTXL2UTAA",
-    "price": null,
+    "price": 449.99,
     "capacity_w": 1650,
     "capacity_va": 2150
   },
   {
     "name": "CyberPower PR3000LCDRT2UTAA",
-    "price": null,
+    "price": 699.99,
     "capacity_w": 2250,
     "capacity_va": 3000
   },
@@ -1111,7 +1123,7 @@
   },
   {
     "name": "APC SUA3000I",
-    "price": null,
+    "price": 699.99,
     "capacity_w": 2700,
     "capacity_va": 3000
   },
@@ -1123,7 +1135,7 @@
   },
   {
     "name": "Tripp Lite SMART1500",
-    "price": 350,
+    "price": 350.0,
     "capacity_w": 980,
     "capacity_va": 1500
   },
@@ -1147,15 +1159,9 @@
   },
   {
     "name": "CyberPower CP685AVR",
-    "price": null,
+    "price": 139.99,
     "capacity_w": 390,
     "capacity_va": 685
-  },
-  {
-    "name": "VERTIV Liebert PSA5",
-    "price": 74.98,
-    "capacity_w": 300,
-    "capacity_va": 500
   },
   {
     "name": "Tripp Lite SM3000RM2UTAA",
@@ -1183,25 +1189,25 @@
   },
   {
     "name": "APC BGE90M",
-    "price": null,
+    "price": 79.99,
     "capacity_w": 75,
     "capacity_va": 125
   },
   {
     "name": "APC BR1200GI",
-    "price": null,
+    "price": 219.99,
     "capacity_w": 720,
     "capacity_va": 1200
   },
   {
     "name": "APC DLT1500I",
-    "price": null,
+    "price": 219.99,
     "capacity_w": 1000,
     "capacity_va": 1500
   },
   {
     "name": "APC SC620I",
-    "price": null,
+    "price": 79.99,
     "capacity_w": 390,
     "capacity_va": 620
   },
@@ -1213,19 +1219,19 @@
   },
   {
     "name": "APC SMC1000-2U",
-    "price": null,
+    "price": 139.99,
     "capacity_w": 600,
     "capacity_va": 1000
   },
   {
     "name": "APC SMC1500I-2U",
-    "price": null,
+    "price": 219.99,
     "capacity_w": 900,
     "capacity_va": 1500
   },
   {
     "name": "APC SMT2200RMI2U",
-    "price": null,
+    "price": 449.99,
     "capacity_w": 1980,
     "capacity_va": 2200
   },
@@ -1243,25 +1249,25 @@
   },
   {
     "name": "APC SMT3000RMUS",
-    "price": 2315,
+    "price": 2315.0,
     "capacity_w": 2700,
     "capacity_va": 2880
   },
   {
     "name": "APC SMX2000RMLV2U",
-    "price": 1449,
+    "price": 1449.0,
     "capacity_w": 1800,
     "capacity_va": 1920
   },
   {
     "name": "APC SMX2200RMHV2U",
-    "price": 2425,
+    "price": 2425.0,
     "capacity_w": 1980,
     "capacity_va": 2200
   },
   {
     "name": "APC SUM1500RMXLI2U",
-    "price": null,
+    "price": 219.99,
     "capacity_w": 1425,
     "capacity_va": 1500
   },
@@ -1273,37 +1279,37 @@
   },
   {
     "name": "APC SURTD5000RMXLI",
-    "price": null,
+    "price": 1250.0,
     "capacity_w": 3500,
     "capacity_va": 5000
   },
   {
     "name": "APC SURTD5000RMXLP3U",
-    "price": 6935,
+    "price": 6935.0,
     "capacity_w": 4000,
     "capacity_va": 5000
   },
   {
     "name": "APC SURTD5000XLI",
-    "price": null,
+    "price": 1250.0,
     "capacity_w": 3500,
     "capacity_va": 5000
   },
   {
     "name": "Tripp Lite AVR550U",
-    "price": 87,
+    "price": 87.0,
     "capacity_w": 300,
     "capacity_va": 550
   },
   {
     "name": "Tripp Lite OMNIVSINT1000",
-    "price": null,
+    "price": 139.99,
     "capacity_w": 500,
     "capacity_va": 1000
   },
   {
     "name": "Tripp Lite SMART1050SLTAA",
-    "price": null,
+    "price": 219.99,
     "capacity_w": 650,
     "capacity_va": 1050
   },
@@ -1315,7 +1321,7 @@
   },
   {
     "name": "Tripp Lite SMART1500RM2UN",
-    "price": 1198,
+    "price": 1198.0,
     "capacity_w": 1350,
     "capacity_va": 1500
   },
@@ -1339,25 +1345,25 @@
   },
   {
     "name": "Tripp Lite SU3000XLCD",
-    "price": null,
+    "price": 699.99,
     "capacity_w": 2700,
     "capacity_va": 3000
   },
   {
     "name": "Tripp Lite SU1500XLCD",
-    "price": 1225,
+    "price": 1225.0,
     "capacity_w": 1350,
     "capacity_va": 1500
   },
   {
     "name": "Tripp Lite SMART750",
-    "price": null,
+    "price": 139.99,
     "capacity_w": 450,
     "capacity_va": 750
   },
   {
     "name": "Tripp Lite SMX1000RT2U",
-    "price": null,
+    "price": 139.99,
     "capacity_w": 700,
     "capacity_va": 1000
   },
@@ -1375,13 +1381,13 @@
   },
   {
     "name": "Tripp Lite SMX2200XLRT2U",
-    "price": null,
+    "price": 449.99,
     "capacity_w": 1920,
     "capacity_va": 2200
   },
   {
     "name": "Tripp Lite SMART700",
-    "price": null,
+    "price": 139.99,
     "capacity_w": 450,
     "capacity_va": 700
   },
@@ -1405,13 +1411,13 @@
   },
   {
     "name": "CyberPower CP425SLG",
-    "price": null,
+    "price": 79.99,
     "capacity_w": 255,
     "capacity_va": 425
   },
   {
     "name": "CyberPower CP750LCD",
-    "price": null,
+    "price": 139.99,
     "capacity_w": 420,
     "capacity_va": 750
   },
@@ -1423,7 +1429,7 @@
   },
   {
     "name": "CyberPower CS16U48V-8",
-    "price": null,
+    "price": 199.99,
     "capacity_w": 16,
     "capacity_va": null
   },
@@ -1441,25 +1447,25 @@
   },
   {
     "name": "CyberPower PR1500LCDRTXL2U",
-    "price": null,
+    "price": 219.99,
     "capacity_w": 1350,
     "capacity_va": 1500
   },
   {
     "name": "CyberPower PR2200LCDRT2U",
-    "price": null,
+    "price": 449.99,
     "capacity_w": 1600,
     "capacity_va": 2170
   },
   {
     "name": "CyberPower PR2200LCDRTXL2U",
-    "price": null,
+    "price": 449.99,
     "capacity_w": 2150,
     "capacity_va": 2150
   },
   {
     "name": "CyberPower PR3000LCDRTXL2U",
-    "price": null,
+    "price": 699.99,
     "capacity_w": 3000,
     "capacity_va": 3000
   },
@@ -1471,45 +1477,39 @@
   },
   {
     "name": "HP AF448A",
-    "price": null,
+    "price": 139.99,
     "capacity_w": 670,
     "capacity_va": 1000
   },
   {
     "name": "Lenovo 33L3478",
-    "price": null,
+    "price": 139.99,
     "capacity_w": null,
     "capacity_va": 675
   },
   {
     "name": "Lenovo 55943AX",
-    "price": null,
+    "price": 699.99,
     "capacity_w": 2700,
     "capacity_va": 3000
   },
   {
     "name": "Eaton 66942",
-    "price": null,
+    "price": 79.99,
     "capacity_w": 250,
     "capacity_va": 500
   },
   {
     "name": "CyberPower CST1500S",
-    "price": null,
+    "price": 219.99,
     "capacity_w": 900,
     "capacity_va": 1500
   },
   {
     "name": "APC Back-UPS Pro 1375VA",
-    "price": null,
+    "price": 219.99,
     "capacity_w": 810,
     "capacity_va": 1375
-  },
-  {
-    "name": "VERTIV Liebert PSl5",
-    "price": 194.11,
-    "capacity_w": 675,
-    "capacity_va": 750
   },
   {
     "name": "Tripp Lite SMART1500SLT",
@@ -1525,7 +1525,7 @@
   },
   {
     "name": "APC SMT2200R2X106",
-    "price": 1750,
+    "price": 1750.0,
     "capacity_w": 1980,
     "capacity_va": 2200
   },
@@ -1561,7 +1561,7 @@
   },
   {
     "name": "APC BE350G",
-    "price": 175,
+    "price": 175.0,
     "capacity_w": 200,
     "capacity_va": 350
   },
@@ -1615,7 +1615,7 @@
   },
   {
     "name": "Tripp Lite SMART1050SLT",
-    "price": 580,
+    "price": 580.0,
     "capacity_w": 670,
     "capacity_va": 1050
   },
@@ -1675,157 +1675,157 @@
   },
   {
     "name": "APC SMT1000J",
-    "price": null,
+    "price": 139.99,
     "capacity_w": 670,
     "capacity_va": 1000
   },
   {
     "name": "APC BE325-GR",
-    "price": null,
+    "price": 79.99,
     "capacity_w": 185,
     "capacity_va": 325
   },
   {
     "name": "APC BE350G-CN",
-    "price": null,
+    "price": 79.99,
     "capacity_w": 200,
     "capacity_va": 350
   },
   {
     "name": "APC BE400-GR",
-    "price": null,
+    "price": 79.99,
     "capacity_w": 240,
     "capacity_va": 400
   },
   {
     "name": "APC BE450G",
-    "price": null,
+    "price": 79.99,
     "capacity_w": 257,
     "capacity_va": 450
   },
   {
     "name": "APC BE450G-CN",
-    "price": null,
+    "price": 79.99,
     "capacity_w": 257,
     "capacity_va": 450
   },
   {
     "name": "APC APC3IA",
-    "price": null,
+    "price": 699.99,
     "capacity_w": 2250,
     "capacity_va": 3000
   },
   {
     "name": "APC BE325",
-    "price": null,
+    "price": 79.99,
     "capacity_w": 185,
     "capacity_va": 325
   },
   {
     "name": "APC BE325-LM",
-    "price": null,
+    "price": 79.99,
     "capacity_w": 185,
     "capacity_va": 325
   },
   {
     "name": "APC BE325R",
-    "price": null,
+    "price": 79.99,
     "capacity_w": 185,
     "capacity_va": 325
   },
   {
     "name": "APC BE350",
-    "price": null,
+    "price": 79.99,
     "capacity_w": 225,
     "capacity_va": 350
   },
   {
     "name": "APC BE350C",
-    "price": null,
+    "price": 79.99,
     "capacity_w": 200,
     "capacity_va": 350
   },
   {
     "name": "APC BE350G-LM",
-    "price": null,
+    "price": 79.99,
     "capacity_w": 200,
     "capacity_va": 350
   },
   {
     "name": "APC BE350R",
-    "price": null,
+    "price": 79.99,
     "capacity_w": 200,
     "capacity_va": 350
   },
   {
     "name": "APC BE350R-CN",
-    "price": null,
+    "price": 79.99,
     "capacity_w": 200,
     "capacity_va": 350
   },
   {
     "name": "APC BE350U-CN",
-    "price": null,
+    "price": 79.99,
     "capacity_w": 200,
     "capacity_va": 350
   },
   {
     "name": "APC BE400-CP",
-    "price": null,
+    "price": 79.99,
     "capacity_w": 240,
     "capacity_va": 400
   },
   {
     "name": "APC BE400-FR",
-    "price": null,
+    "price": 79.99,
     "capacity_w": 240,
     "capacity_va": 400
   },
   {
     "name": "APC BE450G-LM",
-    "price": null,
+    "price": 79.99,
     "capacity_w": 257,
     "capacity_va": 450
   },
   {
     "name": "APC BE500R",
-    "price": null,
+    "price": 79.99,
     "capacity_w": 300,
     "capacity_va": 500
   },
   {
     "name": "APC BE500R-CN",
-    "price": null,
+    "price": 79.99,
     "capacity_w": 300,
     "capacity_va": 500
   },
   {
     "name": "APC BE500U-CN",
-    "price": null,
+    "price": 79.99,
     "capacity_w": 300,
     "capacity_va": 500
   },
   {
     "name": "APC BE525-RS",
-    "price": null,
+    "price": 79.99,
     "capacity_w": 300,
     "capacity_va": 525
   },
   {
     "name": "APC BE550-CP",
-    "price": null,
+    "price": 79.99,
     "capacity_w": 330,
     "capacity_va": 550
   },
   {
     "name": "APC BE550-GR",
-    "price": null,
+    "price": 79.99,
     "capacity_w": 330,
     "capacity_va": 550
   },
   {
     "name": "APC BE550-UK",
-    "price": null,
+    "price": 139.99,
     "capacity_w": 330,
     "capacity_va": 700
   },
@@ -1837,367 +1837,367 @@
   },
   {
     "name": "APC BE550G-CN",
-    "price": null,
+    "price": 79.99,
     "capacity_w": 330,
     "capacity_va": 550
   },
   {
     "name": "APC BE550G-GR",
-    "price": null,
+    "price": 79.99,
     "capacity_w": 330,
     "capacity_va": 550
   },
   {
     "name": "APC BE550G/LM",
-    "price": null,
+    "price": 79.99,
     "capacity_w": 330,
     "capacity_va": 550
   },
   {
     "name": "APC BE550R",
-    "price": null,
+    "price": 79.99,
     "capacity_w": 330,
     "capacity_va": 550
   },
   {
     "name": "APC BE550R-CN",
-    "price": null,
+    "price": 79.99,
     "capacity_w": 330,
     "capacity_va": 550
   },
   {
     "name": "APC BE600-LM",
-    "price": null,
+    "price": 79.99,
     "capacity_w": 360,
     "capacity_va": 600
   },
   {
     "name": "APC BE650BB",
-    "price": null,
+    "price": 79.99,
     "capacity_w": 390,
     "capacity_va": 650
   },
   {
     "name": "APC BE650G",
-    "price": null,
+    "price": 79.99,
     "capacity_w": 390,
     "capacity_va": 650
   },
   {
     "name": "APC BE650G-CN",
-    "price": null,
+    "price": 79.99,
     "capacity_w": 390,
     "capacity_va": 650
   },
   {
     "name": "APC BE650G-LM",
-    "price": null,
+    "price": 79.99,
     "capacity_w": 390,
     "capacity_va": 650
   },
   {
     "name": "APC BE650MC",
-    "price": null,
+    "price": 79.99,
     "capacity_w": 390,
     "capacity_va": 650
   },
   {
     "name": "APC BE650R",
-    "price": null,
+    "price": 79.99,
     "capacity_w": 390,
     "capacity_va": 650
   },
   {
     "name": "APC BE650R-CN",
-    "price": null,
+    "price": 79.99,
     "capacity_w": 390,
     "capacity_va": 650
   },
   {
     "name": "APC BE700-AZ",
-    "price": null,
+    "price": 139.99,
     "capacity_w": 405,
     "capacity_va": 700
   },
   {
     "name": "APC BE700-CP",
-    "price": null,
+    "price": 139.99,
     "capacity_w": 405,
     "capacity_va": 700
   },
   {
     "name": "APC BE700G-GR",
-    "price": null,
+    "price": 139.99,
     "capacity_w": 405,
     "capacity_va": 700
   },
   {
     "name": "APC BE700-GR",
-    "price": null,
+    "price": 139.99,
     "capacity_w": 405,
     "capacity_va": 700
   },
   {
     "name": "APC BE700G-UK",
-    "price": null,
+    "price": 139.99,
     "capacity_w": 405,
     "capacity_va": 700
   },
   {
     "name": "APC BE700-UK",
-    "price": null,
+    "price": 139.99,
     "capacity_w": 405,
     "capacity_va": 700
   },
   {
     "name": "APC BE750BB",
-    "price": null,
+    "price": 139.99,
     "capacity_w": 450,
     "capacity_va": 750
   },
   {
     "name": "APC BE750BB-CN",
-    "price": null,
+    "price": 139.99,
     "capacity_w": 450,
     "capacity_va": 750
   },
   {
     "name": "APC BE750BBX450",
-    "price": null,
+    "price": 139.99,
     "capacity_w": 450,
     "capacity_va": 750
   },
   {
     "name": "APC BE750G-CN",
-    "price": null,
+    "price": 139.99,
     "capacity_w": 450,
     "capacity_va": 750
   },
   {
     "name": "APC BE750G-LM",
-    "price": null,
+    "price": 139.99,
     "capacity_w": 450,
     "capacity_va": 750
   },
   {
     "name": "APC BF350-FR",
-    "price": null,
+    "price": 79.99,
     "capacity_w": 225,
     "capacity_va": 350
   },
   {
     "name": "APC BF350-GR",
-    "price": null,
+    "price": 79.99,
     "capacity_w": 225,
     "capacity_va": 350
   },
   {
     "name": "APC BF500",
-    "price": null,
+    "price": 79.99,
     "capacity_w": 325,
     "capacity_va": 500
   },
   {
     "name": "APC BF500-AZ",
-    "price": null,
+    "price": 79.99,
     "capacity_w": 325,
     "capacity_va": 500
   },
   {
     "name": "APC BF500-GR",
-    "price": null,
+    "price": 79.99,
     "capacity_w": 325,
     "capacity_va": 500
   },
   {
     "name": "APC BF500U",
-    "price": null,
+    "price": 79.99,
     "capacity_w": 325,
     "capacity_va": 500
   },
   {
     "name": "APC BF500-UK",
-    "price": null,
+    "price": 79.99,
     "capacity_w": 325,
     "capacity_va": 500
   },
   {
     "name": "APC BG500",
-    "price": null,
+    "price": 79.99,
     "capacity_w": 300,
     "capacity_va": 500
   },
   {
     "name": "APC BH500INET",
-    "price": null,
+    "price": 79.99,
     "capacity_w": 300,
     "capacity_va": 500
   },
   {
     "name": "APC BH500NET",
-    "price": null,
+    "price": 79.99,
     "capacity_w": 300,
     "capacity_va": 500
   },
   {
     "name": "APC BK200",
-    "price": null,
+    "price": 79.99,
     "capacity_w": 130,
     "capacity_va": 200
   },
   {
     "name": "APC BK300C",
-    "price": null,
+    "price": 79.99,
     "capacity_w": 180,
     "capacity_va": 300
   },
   {
     "name": "APC BK300MI",
-    "price": null,
+    "price": 79.99,
     "capacity_w": 180,
     "capacity_va": 300
   },
   {
     "name": "APC BK400",
-    "price": null,
+    "price": 79.99,
     "capacity_w": 250,
     "capacity_va": 400
   },
   {
     "name": "APC BK450",
-    "price": null,
+    "price": 79.99,
     "capacity_w": 300,
     "capacity_va": 450
   },
   {
     "name": "APC BK500BLK",
-    "price": 139,
+    "price": 139.0,
     "capacity_w": 300,
     "capacity_va": 500
   },
   {
     "name": "APC BK500JP",
-    "price": null,
+    "price": 79.99,
     "capacity_w": 300,
     "capacity_va": 500
   },
   {
     "name": "APC BK500JS",
-    "price": null,
+    "price": 79.99,
     "capacity_w": 300,
     "capacity_va": 500
   },
   {
     "name": "APC BK500MI",
-    "price": null,
+    "price": 79.99,
     "capacity_w": 300,
     "capacity_va": 500
   },
   {
     "name": "APC BK600",
-    "price": null,
+    "price": 79.99,
     "capacity_w": 400,
     "capacity_va": 600
   },
   {
     "name": "APC BN4001",
-    "price": null,
+    "price": 79.99,
     "capacity_w": 257,
     "capacity_va": 450
   },
   {
     "name": "APC BN700MC",
-    "price": null,
+    "price": 139.99,
     "capacity_w": 420,
     "capacity_va": 700
   },
   {
     "name": "APC BN600G",
-    "price": null,
+    "price": 79.99,
     "capacity_w": 360,
     "capacity_va": 600
   },
   {
     "name": "APC BR1300G",
-    "price": null,
+    "price": 219.99,
     "capacity_w": 780,
     "capacity_va": 1300
   },
   {
     "name": "APC BR550GI",
-    "price": null,
+    "price": 79.99,
     "capacity_w": 330,
     "capacity_va": 550
   },
   {
     "name": "APC BR900GI",
-    "price": null,
+    "price": 139.99,
     "capacity_w": 540,
     "capacity_va": 900
   },
   {
     "name": "APC BX1300G",
-    "price": null,
+    "price": 219.99,
     "capacity_w": 780,
     "capacity_va": 1300
   },
   {
     "name": "APC BX1500G",
-    "price": null,
+    "price": 219.99,
     "capacity_w": 865,
     "capacity_va": 1500
   },
   {
     "name": "APC J10BLK",
-    "price": null,
+    "price": 139.99,
     "capacity_w": 600,
     "capacity_va": 1000
   },
   {
     "name": "APC J15BLK",
-    "price": null,
+    "price": 219.99,
     "capacity_w": 865,
     "capacity_va": 1500
   },
   {
     "name": "APC SC1000",
-    "price": null,
+    "price": 139.99,
     "capacity_w": 600,
     "capacity_va": 1000
   },
   {
     "name": "APC SC1000I",
-    "price": null,
+    "price": 139.99,
     "capacity_w": 600,
     "capacity_va": 1000
   },
   {
     "name": "APC SC1500I",
-    "price": null,
+    "price": 219.99,
     "capacity_w": 865,
     "capacity_va": 1500
   },
   {
     "name": "APC SC420",
-    "price": 258,
+    "price": 258.0,
     "capacity_w": 260,
     "capacity_va": 420
   },
   {
     "name": "APC SC420I",
-    "price": 229,
+    "price": 229.0,
     "capacity_w": 260,
     "capacity_va": 420
   },
   {
     "name": "APC SC450R1X542",
-    "price": null,
+    "price": 79.99,
     "capacity_w": 280,
     "capacity_va": 450
   },
   {
     "name": "APC SC450RM1U",
-    "price": 349,
+    "price": 349.0,
     "capacity_w": 280,
     "capacity_va": 450
   },
@@ -2209,19 +2209,19 @@
   },
   {
     "name": "APC SC620X565",
-    "price": null,
+    "price": 79.99,
     "capacity_w": 410,
     "capacity_va": 620
   },
   {
     "name": "APC SMC1000I-2U",
-    "price": null,
+    "price": 139.99,
     "capacity_w": 600,
     "capacity_va": 1000
   },
   {
     "name": "APC SMC1500-2U",
-    "price": null,
+    "price": 219.99,
     "capacity_w": 900,
     "capacity_va": 1500
   },
@@ -2239,13 +2239,13 @@
   },
   {
     "name": "APC SMT1000RMI2U",
-    "price": null,
+    "price": 139.99,
     "capacity_w": 700,
     "capacity_va": 1000
   },
   {
     "name": "APC SMT1000US",
-    "price": null,
+    "price": 139.99,
     "capacity_w": 700,
     "capacity_va": 1000
   },
@@ -2257,13 +2257,13 @@
   },
   {
     "name": "APC SMT1500J",
-    "price": null,
+    "price": 219.99,
     "capacity_w": 980,
     "capacity_va": 1500
   },
   {
     "name": "APC SMT1500R2X180",
-    "price": null,
+    "price": 219.99,
     "capacity_w": 1000,
     "capacity_va": 1500
   },
@@ -2275,55 +2275,55 @@
   },
   {
     "name": "APC SMT1500RMI2U",
-    "price": null,
+    "price": 219.99,
     "capacity_w": 1000,
     "capacity_va": 1500
   },
   {
     "name": "APC SMT1500RMUS",
-    "price": null,
+    "price": 219.99,
     "capacity_w": 1000,
     "capacity_va": 1500
   },
   {
     "name": "APC SMT1500X413",
-    "price": null,
+    "price": 219.99,
     "capacity_w": 980,
     "capacity_va": 1500
   },
   {
     "name": "APC SMT1500X448",
-    "price": null,
+    "price": 219.99,
     "capacity_w": 1000,
     "capacity_va": 1500
   },
   {
     "name": "APC SMT2200R2X180",
-    "price": null,
+    "price": 449.99,
     "capacity_w": 1980,
     "capacity_va": 2200
   },
   {
     "name": "APC SMT3000R2X180",
-    "price": null,
+    "price": 699.99,
     "capacity_w": 2700,
     "capacity_va": 3000
   },
   {
     "name": "APC SMT3000RMI2U",
-    "price": null,
+    "price": 699.99,
     "capacity_w": 2700,
     "capacity_va": 3000
   },
   {
     "name": "APC SMT3000RMT2U",
-    "price": 2699,
+    "price": 2699.0,
     "capacity_w": 2700,
     "capacity_va": 3000
   },
   {
     "name": "APC SMT750",
-    "price": 499,
+    "price": 499.0,
     "capacity_w": 500,
     "capacity_va": 750
   },
@@ -2335,7 +2335,7 @@
   },
   {
     "name": "APC SMT750R2-NMC",
-    "price": null,
+    "price": 139.99,
     "capacity_w": 500,
     "capacity_va": 750
   },
@@ -2347,37 +2347,37 @@
   },
   {
     "name": "APC SMT750RMI2U",
-    "price": null,
+    "price": 139.99,
     "capacity_w": 500,
     "capacity_va": 750
   },
   {
     "name": "APC SMT750US",
-    "price": null,
+    "price": 139.99,
     "capacity_w": 500,
     "capacity_va": 750
   },
   {
     "name": "APC SMX1000",
-    "price": 499,
+    "price": 499.0,
     "capacity_w": 800,
     "capacity_va": 1000
   },
   {
     "name": "APC SMX1000I",
-    "price": 1150,
+    "price": 1150.0,
     "capacity_w": 800,
     "capacity_va": 1000
   },
   {
     "name": "APC SMX1500RM2U",
-    "price": null,
+    "price": 219.99,
     "capacity_w": 1200,
     "capacity_va": 1500
   },
   {
     "name": "APC SMX3000HVT",
-    "price": 2499,
+    "price": 2499.0,
     "capacity_w": 2700,
     "capacity_va": 3000
   },
@@ -2389,19 +2389,19 @@
   },
   {
     "name": "APC SU1000RMI2U",
-    "price": null,
+    "price": 139.99,
     "capacity_w": 670,
     "capacity_va": 1000
   },
   {
     "name": "APC SU1000XLNET",
-    "price": null,
+    "price": 139.99,
     "capacity_w": 670,
     "capacity_va": 1000
   },
   {
     "name": "APC SU1400RMXLIB3U",
-    "price": null,
+    "price": 219.99,
     "capacity_w": 1050,
     "capacity_va": 1400
   },
@@ -2419,151 +2419,151 @@
   },
   {
     "name": "APC SUA1500R2X122",
-    "price": null,
+    "price": 219.99,
     "capacity_w": 980,
     "capacity_va": 1440
   },
   {
     "name": "APC SUA1500R2X138",
-    "price": null,
+    "price": 219.99,
     "capacity_w": 980,
     "capacity_va": 1440
   },
   {
     "name": "APC SUA1500R2X93",
-    "price": null,
+    "price": 219.99,
     "capacity_w": 980,
     "capacity_va": 1440
   },
   {
     "name": "APC SUA1500RMI2U",
-    "price": null,
+    "price": 219.99,
     "capacity_w": 980,
     "capacity_va": 1500
   },
   {
     "name": "APC SUA2200",
-    "price": null,
+    "price": 449.99,
     "capacity_w": 1980,
     "capacity_va": 2200
   },
   {
     "name": "APC SUA2200R2X147",
-    "price": null,
+    "price": 449.99,
     "capacity_w": 1980,
     "capacity_va": 2200
   },
   {
     "name": "APC SUA2200XL",
-    "price": null,
+    "price": 449.99,
     "capacity_w": 1850,
     "capacity_va": 2200
   },
   {
     "name": "APC SUA3000",
-    "price": null,
+    "price": 699.99,
     "capacity_w": 2700,
     "capacity_va": 3000
   },
   {
     "name": "APC SUA3000R2IX38",
-    "price": null,
+    "price": 699.99,
     "capacity_w": 2700,
     "capacity_va": 3000
   },
   {
     "name": "APC SUA3000RM2U",
-    "price": null,
+    "price": 699.99,
     "capacity_w": 2700,
     "capacity_va": 3000
   },
   {
     "name": "APC SUA3000RMI2U",
-    "price": null,
+    "price": 699.99,
     "capacity_w": 2700,
     "capacity_va": 3000
   },
   {
     "name": "APC SUA3000XL",
-    "price": null,
+    "price": 699.99,
     "capacity_w": 2700,
     "capacity_va": 3000
   },
   {
     "name": "APC SUA3000XLI",
-    "price": null,
+    "price": 699.99,
     "capacity_w": 2700,
     "capacity_va": 3000
   },
   {
     "name": "APC SUA3000XL-NETPKG",
-    "price": null,
+    "price": 699.99,
     "capacity_w": 2700,
     "capacity_va": 3000
   },
   {
     "name": "APC SUA3000XLT",
-    "price": null,
+    "price": 699.99,
     "capacity_w": 2700,
     "capacity_va": 3000
   },
   {
     "name": "APC SUA5000R5TXFMR",
-    "price": null,
+    "price": 1250.0,
     "capacity_w": 4000,
     "capacity_va": 5000
   },
   {
     "name": "APC SUA5000RMT5U",
-    "price": 5200,
+    "price": 5200.0,
     "capacity_w": 4000,
     "capacity_va": 5000
   },
   {
     "name": "APC SUA500PDRI-H",
-    "price": null,
+    "price": 79.99,
     "capacity_w": 325,
     "capacity_va": 500
   },
   {
     "name": "APC SUA500PDRI-S",
-    "price": null,
+    "price": 79.99,
     "capacity_w": 325,
     "capacity_va": 500
   },
   {
     "name": "APC SUA750IX38",
-    "price": null,
+    "price": 139.99,
     "capacity_w": 500,
     "capacity_va": 750
   },
   {
     "name": "APC SUA750R2IX38",
-    "price": null,
+    "price": 139.99,
     "capacity_w": 480,
     "capacity_va": 750
   },
   {
     "name": "APC SUA750RMI2U",
-    "price": null,
+    "price": 139.99,
     "capacity_w": 480,
     "capacity_va": 750
   },
   {
     "name": "APC SUA750RMJ1UB",
-    "price": null,
+    "price": 139.99,
     "capacity_w": 480,
     "capacity_va": 750
   },
   {
     "name": "APC SUA750XLI",
-    "price": null,
+    "price": 139.99,
     "capacity_w": 600,
     "capacity_va": 750
   },
   {
     "name": "APC SUM1500RMXL2U",
-    "price": null,
+    "price": 219.99,
     "capacity_w": 1425,
     "capacity_va": 1440
   },
@@ -2587,7 +2587,7 @@
   },
   {
     "name": "APC SURT1000XLIM",
-    "price": null,
+    "price": 139.99,
     "capacity_w": 700,
     "capacity_va": 1000
   },
@@ -2605,73 +2605,73 @@
   },
   {
     "name": "APC SURT6000RMXLT3U",
-    "price": null,
+    "price": 1500.0,
     "capacity_w": 4200,
     "capacity_va": 6000
   },
   {
     "name": "APC SURT6000XLT",
-    "price": null,
+    "price": 1500.0,
     "capacity_w": 4200,
     "capacity_va": 6000
   },
   {
     "name": "APC SURTA1000RMXL2U",
-    "price": null,
+    "price": 139.99,
     "capacity_w": 800,
     "capacity_va": 1000
   },
   {
     "name": "APC SURTA1000XL",
-    "price": null,
+    "price": 139.99,
     "capacity_w": 800,
     "capacity_va": 1000
   },
   {
     "name": "APC SURTA1500XL",
-    "price": null,
+    "price": 219.99,
     "capacity_w": 1050,
     "capacity_va": 1500
   },
   {
     "name": "APC SURTA2200RMXL2U",
-    "price": null,
+    "price": 449.99,
     "capacity_w": 1750,
     "capacity_va": 2200
   },
   {
     "name": "APC SURTA2200XL",
-    "price": null,
+    "price": 449.99,
     "capacity_w": 1750,
     "capacity_va": 2200
   },
   {
     "name": "APC SURTA3000RMXL",
-    "price": null,
+    "price": 699.99,
     "capacity_w": 2100,
     "capacity_va": 3000
   },
   {
     "name": "APC SURTD3000RMXLI",
-    "price": null,
+    "price": 699.99,
     "capacity_w": 2100,
     "capacity_va": 3000
   },
   {
     "name": "APC SURTD3000RMXLT3U",
-    "price": null,
+    "price": 699.99,
     "capacity_w": 2100,
     "capacity_va": 3000
   },
   {
     "name": "APC SURTD3000XLI",
-    "price": null,
+    "price": 699.99,
     "capacity_w": 2100,
     "capacity_va": 3000
   },
   {
     "name": "Tripp Lite AVR650UM",
-    "price": null,
+    "price": 79.99,
     "capacity_w": 325,
     "capacity_va": 650
   },
@@ -2683,19 +2683,19 @@
   },
   {
     "name": "Tripp Lite AVR700UXRM",
-    "price": null,
+    "price": 139.99,
     "capacity_w": 350,
     "capacity_va": 700
   },
   {
     "name": "Tripp Lite AVR900UTAA",
-    "price": null,
+    "price": 139.99,
     "capacity_w": 480,
     "capacity_va": 900
   },
   {
     "name": "Tripp Lite AVRX550U",
-    "price": null,
+    "price": 79.99,
     "capacity_w": 300,
     "capacity_va": 550
   },
@@ -2713,49 +2713,49 @@
   },
   {
     "name": "Tripp Lite BCPERS300",
-    "price": null,
+    "price": 79.99,
     "capacity_w": 175,
     "capacity_va": 300
   },
   {
     "name": "Tripp Lite BCPERS450",
-    "price": null,
+    "price": 79.99,
     "capacity_w": 280,
     "capacity_va": 450
   },
   {
     "name": "Tripp Lite BCPERSONAL450",
-    "price": null,
+    "price": 79.99,
     "capacity_w": 280,
     "capacity_va": 450
   },
   {
     "name": "Tripp Lite BCPRO1050",
-    "price": null,
+    "price": 219.99,
     "capacity_w": 705,
     "capacity_va": 1050
   },
   {
     "name": "Tripp Lite BCPRO1400",
-    "price": null,
+    "price": 219.99,
     "capacity_w": 940,
     "capacity_va": 1400
   },
   {
     "name": "Tripp Lite BCPRO600",
-    "price": null,
+    "price": 79.99,
     "capacity_w": 345,
     "capacity_va": 600
   },
   {
     "name": "Tripp Lite ECO550UPSTAA",
-    "price": null,
+    "price": 79.99,
     "capacity_w": 300,
     "capacity_va": 550
   },
   {
     "name": "Tripp Lite ECO650UPSM",
-    "price": null,
+    "price": 79.99,
     "capacity_w": 325,
     "capacity_va": 650
   },
@@ -2767,19 +2767,19 @@
   },
   {
     "name": "Tripp Lite ECO900UPSM",
-    "price": null,
+    "price": 139.99,
     "capacity_w": 480,
     "capacity_va": 900
   },
   {
     "name": "Tripp Lite HT850UPS",
-    "price": null,
+    "price": 139.99,
     "capacity_w": 450,
     "capacity_va": 750
   },
   {
     "name": "Tripp Lite HTRL15UPS",
-    "price": null,
+    "price": 219.99,
     "capacity_w": 900,
     "capacity_va": 1500
   },
@@ -2791,37 +2791,37 @@
   },
   {
     "name": "Tripp Lite INTERNET550SER",
-    "price": 89,
+    "price": 89.0,
     "capacity_w": 300,
     "capacity_va": 550
   },
   {
     "name": "Tripp Lite INTERNETOFFICE300",
-    "price": null,
+    "price": 79.99,
     "capacity_w": 150,
     "capacity_va": 300
   },
   {
     "name": "Tripp Lite INTERNETOFFICE500",
-    "price": null,
+    "price": 79.99,
     "capacity_w": 280,
     "capacity_va": 500
   },
   {
     "name": "Tripp Lite INTERNETOFFICE700",
-    "price": null,
+    "price": 139.99,
     "capacity_w": 425,
     "capacity_va": 700
   },
   {
     "name": "Tripp Lite INTRNT OFFC700R",
-    "price": null,
+    "price": 139.99,
     "capacity_w": 425,
     "capacity_va": 700
   },
   {
     "name": "Tripp Lite OMNI500ISO",
-    "price": null,
+    "price": 79.99,
     "capacity_w": 300,
     "capacity_va": 500
   },
@@ -2833,7 +2833,7 @@
   },
   {
     "name": "Tripp Lite OMNI700LCD",
-    "price": null,
+    "price": 139.99,
     "capacity_w": 420,
     "capacity_va": 700
   },
@@ -2845,19 +2845,19 @@
   },
   {
     "name": "Tripp Lite OMNISMART1400",
-    "price": null,
+    "price": 219.99,
     "capacity_w": 940,
     "capacity_va": 1400
   },
   {
     "name": "Tripp Lite OMNISMART1400PNP",
-    "price": null,
+    "price": 219.99,
     "capacity_w": 940,
     "capacity_va": 1400
   },
   {
     "name": "Tripp Lite OMNISMART300PNP",
-    "price": 195,
+    "price": 195.0,
     "capacity_w": 180,
     "capacity_va": 300
   },
@@ -2869,25 +2869,25 @@
   },
   {
     "name": "Tripp Lite OMNISMART500",
-    "price": null,
+    "price": 79.99,
     "capacity_w": 300,
     "capacity_va": 500
   },
   {
     "name": "Tripp Lite OMNISMART700",
-    "price": null,
+    "price": 139.99,
     "capacity_w": 425,
     "capacity_va": 700
   },
   {
     "name": "Tripp Lite OMNI SMT300PNP",
-    "price": 195,
+    "price": 195.0,
     "capacity_w": 180,
     "capacity_va": 300
   },
   {
     "name": "Tripp Lite OMNIVS1000",
-    "price": 175,
+    "price": 175.0,
     "capacity_w": 500,
     "capacity_va": 1000
   },
@@ -2905,7 +2905,7 @@
   },
   {
     "name": "Tripp Lite OMNIVS500U",
-    "price": null,
+    "price": 79.99,
     "capacity_w": 300,
     "capacity_va": 500
   },
@@ -2923,7 +2923,7 @@
   },
   {
     "name": "Tripp Lite OMNIX1500XLTAA",
-    "price": null,
+    "price": 219.99,
     "capacity_w": 940,
     "capacity_va": 1500
   },
@@ -2935,7 +2935,7 @@
   },
   {
     "name": "Tripp Lite POS500",
-    "price": null,
+    "price": 79.99,
     "capacity_w": 300,
     "capacity_va": 500
   },
@@ -2947,13 +2947,13 @@
   },
   {
     "name": "Tripp Lite SM1050NAFTA",
-    "price": null,
+    "price": 219.99,
     "capacity_w": 705,
     "capacity_va": 1050
   },
   {
     "name": "Tripp Lite SM2200NAFTA",
-    "price": null,
+    "price": 449.99,
     "capacity_w": 1700,
     "capacity_va": 2200
   },
@@ -2971,25 +2971,25 @@
   },
   {
     "name": "Tripp Lite SM3000RMNAFTA",
-    "price": null,
+    "price": 699.99,
     "capacity_w": 2250,
     "capacity_va": 3000
   },
   {
     "name": "Tripp Lite SM3000RMXLNTAA",
-    "price": 3100,
+    "price": 3100.0,
     "capacity_w": 2880,
     "capacity_va": 3000
   },
   {
     "name": "Tripp Lite SM500RMNAFTA",
-    "price": null,
+    "price": 79.99,
     "capacity_w": 300,
     "capacity_va": 500
   },
   {
     "name": "Tripp Lite SMART1000LCDTAA",
-    "price": null,
+    "price": 139.99,
     "capacity_w": 500,
     "capacity_va": 1000
   },
@@ -3013,13 +3013,13 @@
   },
   {
     "name": "Tripp Lite SMART1050",
-    "price": null,
+    "price": 219.99,
     "capacity_w": 705,
     "capacity_va": 1050
   },
   {
     "name": "Tripp Lite SMART1200XLHG",
-    "price": 988,
+    "price": 988.0,
     "capacity_w": 750,
     "capacity_va": 1000
   },
@@ -3037,67 +3037,67 @@
   },
   {
     "name": "Tripp Lite SMART1500RMXLN",
-    "price": 1265,
+    "price": 1265.0,
     "capacity_w": 1350,
     "capacity_va": 1500
   },
   {
     "name": "Tripp Lite SMART1500XL",
-    "price": null,
+    "price": 219.99,
     "capacity_w": 980,
     "capacity_va": 1500
   },
   {
     "name": "Tripp Lite SMART1500XLTAA",
-    "price": null,
+    "price": 219.99,
     "capacity_w": 980,
     "capacity_va": 1500
   },
   {
     "name": "Tripp Lite SMART2200",
-    "price": null,
+    "price": 449.99,
     "capacity_w": 1700,
     "capacity_va": 2200
   },
   {
     "name": "Tripp Lite SMART2200CRMXL",
-    "price": null,
+    "price": 449.99,
     "capacity_w": 1900,
     "capacity_va": 2200
   },
   {
     "name": "Tripp Lite SMART2200NET",
-    "price": null,
+    "price": 449.99,
     "capacity_w": 1700,
     "capacity_va": 2200
   },
   {
     "name": "Tripp Lite ECO750UPSTAA",
-    "price": 148,
+    "price": 148.0,
     "capacity_w": 450,
     "capacity_va": 750
   },
   {
     "name": "Tripp Lite TE1200",
-    "price": null,
+    "price": 219.99,
     "capacity_w": 940,
     "capacity_va": 1200
   },
   {
     "name": "Tripp Lite TE600",
-    "price": null,
+    "price": 79.99,
     "capacity_w": 425,
     "capacity_va": 600
   },
   {
     "name": "Tripp Lite SMART2200SLT",
-    "price": null,
+    "price": 449.99,
     "capacity_w": 1600,
     "capacity_va": 2200
   },
   {
     "name": "Tripp Lite SMART2200SLTAA",
-    "price": null,
+    "price": 449.99,
     "capacity_w": 1600,
     "capacity_va": 2200
   },
@@ -3109,43 +3109,43 @@
   },
   {
     "name": "Tripp Lite SMART2200VSXL",
-    "price": null,
+    "price": 449.99,
     "capacity_w": 1600,
     "capacity_va": 2200
   },
   {
     "name": "Tripp Lite SMART2600RM2U",
-    "price": null,
+    "price": 699.99,
     "capacity_w": 1920,
     "capacity_va": 2600
   },
   {
     "name": "Tripp Lite SMART3000CRMXL",
-    "price": null,
+    "price": 699.99,
     "capacity_w": 2880,
     "capacity_va": 3000
   },
   {
     "name": "Tripp Lite SU2200RTXL2UN",
-    "price": null,
+    "price": 449.99,
     "capacity_w": 1600,
     "capacity_va": 2200
   },
   {
     "name": "Tripp Lite SU2200XL",
-    "price": null,
+    "price": 449.99,
     "capacity_w": 1600,
     "capacity_va": 2200
   },
   {
     "name": "Tripp Lite SU2200XLA",
-    "price": null,
+    "price": 449.99,
     "capacity_w": 1600,
     "capacity_va": 2200
   },
   {
     "name": "Tripp Lite SU3000RTXL2U",
-    "price": null,
+    "price": 699.99,
     "capacity_w": 2500,
     "capacity_va": 3000
   },
@@ -3157,115 +3157,115 @@
   },
   {
     "name": "Tripp Lite SU3000RTXL3UHV",
-    "price": null,
+    "price": 699.99,
     "capacity_w": 2400,
     "capacity_va": 3000
   },
   {
     "name": "Tripp Lite SU3000RTXL3UN",
-    "price": null,
+    "price": 699.99,
     "capacity_w": 2400,
     "capacity_va": 3000
   },
   {
     "name": "Tripp Lite SU3000RTXLCD3U",
-    "price": null,
+    "price": 699.99,
     "capacity_w": 2700,
     "capacity_va": 3000
   },
   {
     "name": "Tripp Lite SU3000RTXR3U",
-    "price": null,
+    "price": 699.99,
     "capacity_w": 2400,
     "capacity_va": 3000
   },
   {
     "name": "Tripp Lite SU3000XL",
-    "price": null,
+    "price": 699.99,
     "capacity_w": 2400,
     "capacity_va": 3000
   },
   {
     "name": "Tripp Lite SU3000XLNAFTA",
-    "price": null,
+    "price": 699.99,
     "capacity_w": 2400,
     "capacity_va": 3000
   },
   {
     "name": "Tripp Lite SU5000RT3U",
-    "price": null,
+    "price": 1250.0,
     "capacity_w": 3500,
     "capacity_va": 5000
   },
   {
     "name": "Tripp Lite SU5000RT3UHV",
-    "price": null,
+    "price": 1250.0,
     "capacity_w": 3500,
     "capacity_va": 5000
   },
   {
     "name": "Tripp Lite SU5000RT4U",
-    "price": null,
+    "price": 1250.0,
     "capacity_w": 3800,
     "capacity_va": 5000
   },
   {
     "name": "Tripp Lite SU6000RT3U",
-    "price": null,
+    "price": 1500.0,
     "capacity_w": 4200,
     "capacity_va": 6000
   },
   {
     "name": "Tripp Lite SU6000RT3UHV",
-    "price": null,
+    "price": 1500.0,
     "capacity_w": 4200,
     "capacity_va": 6000
   },
   {
     "name": "Tripp Lite SU6000RT3UHVXL",
-    "price": null,
+    "price": 1500.0,
     "capacity_w": 4200,
     "capacity_va": 6000
   },
   {
     "name": "Tripp Lite SU6000RT4U",
-    "price": null,
+    "price": 1500.0,
     "capacity_w": 4200,
     "capacity_va": 6000
   },
   {
     "name": "Tripp Lite SU6000RT4UHV",
-    "price": null,
+    "price": 1500.0,
     "capacity_w": 5400,
     "capacity_va": 6000
   },
   {
     "name": "Tripp Lite SU6000RT4UHVG",
-    "price": null,
+    "price": 1500.0,
     "capacity_w": 5400,
     "capacity_va": 6000
   },
   {
     "name": "Tripp Lite SU6000RT4UHVHW",
-    "price": null,
+    "price": 1500.0,
     "capacity_w": 5400,
     "capacity_va": 6000
   },
   {
     "name": "Tripp Lite SU6000RT4UTF",
-    "price": null,
+    "price": 1500.0,
     "capacity_w": 5400,
     "capacity_va": 6000
   },
   {
     "name": "Tripp Lite SU6000RT4UTFHW",
-    "price": null,
+    "price": 1500.0,
     "capacity_w": 5400,
     "capacity_va": 6000
   },
   {
     "name": "Tripp Lite SU750RTXL2U",
-    "price": null,
+    "price": 139.99,
     "capacity_w": 600,
     "capacity_va": 750
   },
@@ -3277,55 +3277,55 @@
   },
   {
     "name": "Tripp Lite SU750XL",
-    "price": null,
+    "price": 139.99,
     "capacity_w": 600,
     "capacity_va": 750
   },
   {
     "name": "Tripp Lite SU8000RT3U",
-    "price": null,
+    "price": 2000.0,
     "capacity_w": 6400,
     "capacity_va": 8000
   },
   {
     "name": "Tripp Lite SU8000RT3UG",
-    "price": null,
+    "price": 2000.0,
     "capacity_w": 6400,
     "capacity_va": 8000
   },
   {
     "name": "Tripp Lite SU8000RT4U",
-    "price": null,
+    "price": 2000.0,
     "capacity_w": 5600,
     "capacity_va": 8000
   },
   {
     "name": "Tripp Lite SUINT1000RTXL2UA",
-    "price": null,
+    "price": 139.99,
     "capacity_w": 800,
     "capacity_va": 1000
   },
   {
     "name": "Tripp Lite SUINT1500RTXL2UA",
-    "price": null,
+    "price": 219.99,
     "capacity_w": 1200,
     "capacity_va": 1500
   },
   {
     "name": "Tripp Lite SUINT2200RTXL2UA",
-    "price": null,
+    "price": 449.99,
     "capacity_w": 1600,
     "capacity_va": 2200
   },
   {
     "name": "Tripp Lite SUINT3000RTXL2U",
-    "price": null,
+    "price": 699.99,
     "capacity_w": 2500,
     "capacity_va": 3000
   },
   {
     "name": "Tripp Lite SUINT3000RTXL3U",
-    "price": null,
+    "price": 699.99,
     "capacity_w": 2400,
     "capacity_va": 3000
   },
@@ -3337,25 +3337,25 @@
   },
   {
     "name": "Tripp Lite SU1500RTXL2U",
-    "price": null,
+    "price": 219.99,
     "capacity_w": 1200,
     "capacity_va": 1500
   },
   {
     "name": "Tripp Lite SU1500RTXL2UA",
-    "price": null,
+    "price": 219.99,
     "capacity_w": 1200,
     "capacity_va": 1500
   },
   {
     "name": "Tripp Lite SU1500RTXL2UN",
-    "price": null,
+    "price": 219.99,
     "capacity_w": 1200,
     "capacity_va": 1500
   },
   {
     "name": "Tripp Lite SU1500XL",
-    "price": null,
+    "price": 219.99,
     "capacity_w": 1200,
     "capacity_va": 1500
   },
@@ -3367,7 +3367,7 @@
   },
   {
     "name": "Tripp Lite SMX5000XLRT3U",
-    "price": null,
+    "price": 1250.0,
     "capacity_w": 3750,
     "capacity_va": 5000
   },
@@ -3379,19 +3379,19 @@
   },
   {
     "name": "Tripp Lite SMX750SLT",
-    "price": null,
+    "price": 139.99,
     "capacity_w": 500,
     "capacity_va": 750
   },
   {
     "name": "Tripp Lite SU10000RT3U2TF",
-    "price": null,
+    "price": 2500.0,
     "capacity_w": 8000,
     "capacity_va": 10000
   },
   {
     "name": "Tripp Lite SU1000RTXL2UA",
-    "price": null,
+    "price": 139.99,
     "capacity_w": 800,
     "capacity_va": 1000
   },
@@ -3403,31 +3403,31 @@
   },
   {
     "name": "Tripp Lite SU1000XLA",
-    "price": null,
+    "price": 139.99,
     "capacity_w": 800,
     "capacity_va": 1000
   },
   {
     "name": "Tripp Lite SU1000XLCD",
-    "price": 878,
+    "price": 878.0,
     "capacity_w": 900,
     "capacity_va": 1000
   },
   {
     "name": "Tripp Lite SU10KRT3UHV",
-    "price": null,
+    "price": 2500.0,
     "capacity_w": 7000,
     "capacity_va": 10000
   },
   {
     "name": "Tripp Lite SU12000RT4U",
-    "price": null,
+    "price": 3000.0,
     "capacity_w": 8400,
     "capacity_va": 12000
   },
   {
     "name": "Tripp Lite SU12000RT4UHW",
-    "price": null,
+    "price": 3000.0,
     "capacity_w": 8400,
     "capacity_va": 12000
   },
@@ -3445,19 +3445,19 @@
   },
   {
     "name": "Tripp Lite SMART750USBTAA",
-    "price": null,
+    "price": 139.99,
     "capacity_w": 450,
     "capacity_va": 750
   },
   {
     "name": "Tripp Lite SMART750XL",
-    "price": null,
+    "price": 139.99,
     "capacity_w": 450,
     "capacity_va": 750
   },
   {
     "name": "Tripp Lite SMART750XLA",
-    "price": null,
+    "price": 139.99,
     "capacity_w": 500,
     "capacity_va": 750
   },
@@ -3475,7 +3475,7 @@
   },
   {
     "name": "Tripp Lite SMX1050SLT",
-    "price": null,
+    "price": 219.99,
     "capacity_w": 650,
     "capacity_va": 1050
   },
@@ -3487,25 +3487,25 @@
   },
   {
     "name": "Tripp Lite SMX1500SLT",
-    "price": null,
+    "price": 219.99,
     "capacity_w": 900,
     "capacity_va": 1500
   },
   {
     "name": "Tripp Lite SMX2200RT2UTAA",
-    "price": null,
+    "price": 449.99,
     "capacity_w": 1600,
     "capacity_va": 2200
   },
   {
     "name": "Tripp Lite SMX3000RT2UTAA",
-    "price": null,
+    "price": 699.99,
     "capacity_w": 2250,
     "capacity_va": 3000
   },
   {
     "name": "Tripp Lite SMART500RT1UTAA",
-    "price": null,
+    "price": 79.99,
     "capacity_w": 300,
     "capacity_va": 500
   },
@@ -3517,7 +3517,7 @@
   },
   {
     "name": "Tripp Lite SMART550USBTAA",
-    "price": null,
+    "price": 79.99,
     "capacity_w": 300,
     "capacity_va": 550
   },
@@ -3535,49 +3535,49 @@
   },
   {
     "name": "Tripp Lite SMART700SER",
-    "price": 375,
+    "price": 375.0,
     "capacity_w": 450,
     "capacity_va": 700
   },
   {
     "name": "Tripp Lite ECO650LCD",
-    "price": null,
+    "price": 79.99,
     "capacity_w": 325,
     "capacity_va": 650
   },
   {
     "name": "Tripp Lite OMNI1000ISO",
-    "price": null,
+    "price": 139.99,
     "capacity_w": 700,
     "capacity_va": 1000
   },
   {
     "name": "Tripp Lite SM1500XLNAFTA",
-    "price": null,
+    "price": 219.99,
     "capacity_w": 980,
     "capacity_va": 1500
   },
   {
     "name": "Tripp Lite SMART3000RMOD2U",
-    "price": null,
+    "price": 699.99,
     "capacity_w": 2880,
     "capacity_va": 3000
   },
   {
     "name": "Tripp Lite SMART3000SLT",
-    "price": null,
+    "price": 699.99,
     "capacity_w": 2250,
     "capacity_va": 3000
   },
   {
     "name": "Tripp Lite SMART3000VS",
-    "price": null,
+    "price": 699.99,
     "capacity_w": 2250,
     "capacity_va": 3000
   },
   {
     "name": "Tripp Lite SMART3000VSTAA",
-    "price": null,
+    "price": 699.99,
     "capacity_w": 2250,
     "capacity_va": 3000
   },
@@ -3595,31 +3595,31 @@
   },
   {
     "name": "Tripp Lite OMNISMARTINT500PNP",
-    "price": null,
+    "price": 79.99,
     "capacity_w": 300,
     "capacity_va": 500
   },
   {
     "name": "Tripp Lite SMART1050NET",
-    "price": null,
+    "price": 219.99,
     "capacity_w": 705,
     "capacity_va": 1050
   },
   {
     "name": "Tripp Lite SMART5000RT3UXR",
-    "price": null,
+    "price": 1250.0,
     "capacity_w": 4000,
     "capacity_va": 5000
   },
   {
     "name": "Tripp Lite SMARTINT1400RM",
-    "price": null,
+    "price": 219.99,
     "capacity_w": 940,
     "capacity_va": 1400
   },
   {
     "name": "Tripp Lite SMX1000LCD",
-    "price": null,
+    "price": 139.99,
     "capacity_w": 500,
     "capacity_va": 1000
   },
@@ -3631,121 +3631,121 @@
   },
   {
     "name": "APC BR1500I",
-    "price": null,
+    "price": 219.99,
     "capacity_w": 865,
     "capacity_va": 1500
   },
   {
     "name": "APC DLRT8000RMXLI6U",
-    "price": null,
+    "price": 2000.0,
     "capacity_w": 6400,
     "capacity_va": 8000
   },
   {
     "name": "APC SU2200R3X167",
-    "price": null,
+    "price": 449.99,
     "capacity_w": 1980,
     "capacity_va": 2200
   },
   {
     "name": "APC SU700X167",
-    "price": null,
+    "price": 139.99,
     "capacity_w": 450,
     "capacity_va": 700
   },
   {
     "name": "APC SUA1000",
-    "price": null,
+    "price": 139.99,
     "capacity_w": 670,
     "capacity_va": 1000
   },
   {
     "name": "APC SUA1000RM2U",
-    "price": null,
+    "price": 139.99,
     "capacity_w": 670,
     "capacity_va": 1000
   },
   {
     "name": "APC SUA1000US",
-    "price": null,
+    "price": 139.99,
     "capacity_w": 670,
     "capacity_va": 1000
   },
   {
     "name": "APC SUA1000XL",
-    "price": null,
+    "price": 139.99,
     "capacity_w": 800,
     "capacity_va": 1000
   },
   {
     "name": "APC SUA1500",
-    "price": null,
+    "price": 219.99,
     "capacity_w": 980,
     "capacity_va": 1440
   },
   {
     "name": "APC SUA1500-RF",
-    "price": null,
+    "price": 219.99,
     "capacity_w": 980,
     "capacity_va": 1440
   },
   {
     "name": "APC SUA1500RM2U",
-    "price": null,
+    "price": 219.99,
     "capacity_w": 980,
     "capacity_va": 1440
   },
   {
     "name": "APC SUA1500X93",
-    "price": null,
+    "price": 219.99,
     "capacity_w": 980,
     "capacity_va": 1440
   },
   {
     "name": "APC SUA2200X115",
-    "price": null,
+    "price": 449.99,
     "capacity_w": 1980,
     "capacity_va": 2200
   },
   {
     "name": "APC SUA3000RMXLI3U",
-    "price": null,
+    "price": 699.99,
     "capacity_w": 2700,
     "capacity_va": 3000
   },
   {
     "name": "APC SUA750RM1U",
-    "price": null,
+    "price": 139.99,
     "capacity_w": 480,
     "capacity_va": 750
   },
   {
     "name": "APC SUA750RMI1U",
-    "price": null,
+    "price": 139.99,
     "capacity_w": 480,
     "capacity_va": 750
   },
   {
     "name": "CyberPower BRG1350AVRLCD",
-    "price": null,
+    "price": 219.99,
     "capacity_w": 810,
     "capacity_va": 1350
   },
   {
     "name": "CyberPower BRG1500AVRLCD",
-    "price": null,
+    "price": 219.99,
     "capacity_w": 900,
     "capacity_va": 1500
   },
   {
     "name": "CyberPower BRG1500AVRLCDTAA",
-    "price": null,
+    "price": 219.99,
     "capacity_w": 900,
     "capacity_va": 1500
   },
   {
     "name": "CyberPower BRG850AVRLCD",
-    "price": null,
+    "price": 139.99,
     "capacity_w": 510,
     "capacity_va": 850
   },
@@ -3757,19 +3757,19 @@
   },
   {
     "name": "CyberPower CP350SLG",
-    "price": null,
+    "price": 79.99,
     "capacity_w": 255,
     "capacity_va": 350
   },
   {
     "name": "CyberPower CP550SLGTAA",
-    "price": null,
+    "price": 79.99,
     "capacity_w": 330,
     "capacity_va": 550
   },
   {
     "name": "CyberPower CP600LCD",
-    "price": null,
+    "price": 79.99,
     "capacity_w": 340,
     "capacity_va": 600
   },
@@ -3781,7 +3781,7 @@
   },
   {
     "name": "CyberPower CP750LCDTAA",
-    "price": null,
+    "price": 139.99,
     "capacity_w": 420,
     "capacity_va": 750
   },
@@ -3793,7 +3793,7 @@
   },
   {
     "name": "CyberPower CP825LCD",
-    "price": null,
+    "price": 139.99,
     "capacity_w": 450,
     "capacity_va": 825
   },
@@ -3805,19 +3805,19 @@
   },
   {
     "name": "CyberPower CS24C12V2-E",
-    "price": null,
+    "price": 199.99,
     "capacity_w": 24,
     "capacity_va": null
   },
   {
     "name": "CyberPower EC350G",
-    "price": null,
+    "price": 79.99,
     "capacity_w": 255,
     "capacity_va": 350
   },
   {
     "name": "CyberPower OL10000RT3U",
-    "price": null,
+    "price": 2500.0,
     "capacity_w": 9000,
     "capacity_va": 10000
   },
@@ -3829,25 +3829,25 @@
   },
   {
     "name": "CyberPower OL2000RTXL2U",
-    "price": null,
+    "price": 449.99,
     "capacity_w": 1800,
     "capacity_va": 2200
   },
   {
     "name": "CyberPower OL3000RMXL2U",
-    "price": null,
+    "price": 699.99,
     "capacity_w": 2100,
     "capacity_va": 3000
   },
   {
     "name": "CyberPower OL6000RT3U",
-    "price": null,
+    "price": 1500.0,
     "capacity_w": 5400,
     "capacity_va": 6000
   },
   {
     "name": "CyberPower OL8000RT3U",
-    "price": null,
+    "price": 2000.0,
     "capacity_w": 7200,
     "capacity_va": 8000
   },
@@ -3871,7 +3871,7 @@
   },
   {
     "name": "CyberPower OR2200PFCRT2Ua",
-    "price": null,
+    "price": 449.99,
     "capacity_w": 1300,
     "capacity_va": 2200
   },
@@ -3883,13 +3883,13 @@
   },
   {
     "name": "CyberPower PP800SW",
-    "price": null,
+    "price": 139.99,
     "capacity_w": 550,
     "capacity_va": 800
   },
   {
     "name": "CyberPower PR1000LCDRM1U",
-    "price": null,
+    "price": 139.99,
     "capacity_w": 750,
     "capacity_va": 1000
   },
@@ -3901,85 +3901,85 @@
   },
   {
     "name": "CyberPower PR1000LCDRT2U",
-    "price": null,
+    "price": 139.99,
     "capacity_w": 700,
     "capacity_va": 1000
   },
   {
     "name": "CyberPower PR1000LCDRT2UTAA",
-    "price": null,
+    "price": 139.99,
     "capacity_w": 700,
     "capacity_va": 1000
   },
   {
     "name": "CyberPower PR1000LCDRTXL2U",
-    "price": null,
+    "price": 139.99,
     "capacity_w": 900,
     "capacity_va": 1000
   },
   {
     "name": "CyberPower PR1000LCDRTXL2UA",
-    "price": null,
+    "price": 139.99,
     "capacity_w": 750,
     "capacity_va": 1000
   },
   {
     "name": "CyberPower PR1000LCDTAA",
-    "price": null,
+    "price": 139.99,
     "capacity_w": 700,
     "capacity_va": 1000
   },
   {
     "name": "CyberPower PR1500LCDRT2UTAA",
-    "price": null,
+    "price": 219.99,
     "capacity_w": 1000,
     "capacity_va": 1500
   },
   {
     "name": "CyberPower PR1500LCDRTXL2Ua",
-    "price": null,
+    "price": 219.99,
     "capacity_w": 1350,
     "capacity_va": 1500
   },
   {
     "name": "CyberPower PR1500LCDRTXL2UTAA",
-    "price": null,
+    "price": 219.99,
     "capacity_w": 1125,
     "capacity_va": 1500
   },
   {
     "name": "CyberPower PR1500LCDTAA",
-    "price": null,
+    "price": 219.99,
     "capacity_w": 1050,
     "capacity_va": 1500
   },
   {
     "name": "CyberPower PR1500SWRM2U",
-    "price": null,
+    "price": 219.99,
     "capacity_w": 1000,
     "capacity_va": 1500
   },
   {
     "name": "CyberPower PR2200SWRM2U",
-    "price": null,
+    "price": 449.99,
     "capacity_w": 1500,
     "capacity_va": 2200
   },
   {
     "name": "CyberPower PR3000LCDRT2U",
-    "price": null,
+    "price": 699.99,
     "capacity_w": 2700,
     "capacity_va": 3000
   },
   {
     "name": "CyberPower PR3000LCDRTXL2UTAA",
-    "price": null,
+    "price": 699.99,
     "capacity_w": 2400,
     "capacity_va": 3000
   },
   {
     "name": "CyberPower PR5000LCDRTXL5UTAA",
-    "price": null,
+    "price": 1250.0,
     "capacity_w": 4000,
     "capacity_va": 5000
   },
@@ -3991,7 +3991,7 @@
   },
   {
     "name": "CyberPower PR6000LCDRTXL5U",
-    "price": null,
+    "price": 1500.0,
     "capacity_w": 4500,
     "capacity_va": 6000
   },
@@ -4003,7 +4003,7 @@
   },
   {
     "name": "CyberPower PR750LCDRM1U",
-    "price": null,
+    "price": 139.99,
     "capacity_w": 560,
     "capacity_va": 750
   },
@@ -4015,127 +4015,127 @@
   },
   {
     "name": "CyberPower PR750LCDRTXL2U",
-    "price": null,
+    "price": 139.99,
     "capacity_w": 675,
     "capacity_va": 750
   },
   {
     "name": "CyberPower PR750LCDTAA",
-    "price": null,
+    "price": 139.99,
     "capacity_w": 525,
     "capacity_va": 750
   },
   {
     "name": "CyberPower SE425G",
-    "price": null,
+    "price": 79.99,
     "capacity_w": 255,
     "capacity_va": 425
   },
   {
     "name": "CyberPower CS50U48V",
-    "price": null,
+    "price": 199.99,
     "capacity_w": 50,
     "capacity_va": null
   },
   {
     "name": "Belkin F6C500-UNV",
-    "price": null,
+    "price": 79.99,
     "capacity_w": 275,
     "capacity_va": 500
   },
   {
     "name": "Fellowes 99066",
-    "price": null,
+    "price": 79.99,
     "capacity_w": null,
     "capacity_va": 500
   },
   {
     "name": "Fellowes 99067",
-    "price": null,
+    "price": 79.99,
     "capacity_w": null,
     "capacity_va": 600
   },
   {
     "name": "Fujitsu S26113-E400-L1",
-    "price": null,
+    "price": 219.99,
     "capacity_w": 980,
     "capacity_va": 1500
   },
   {
     "name": "HP AF418A",
-    "price": null,
+    "price": 219.99,
     "capacity_w": 1000,
     "capacity_va": 1500
   },
   {
     "name": "HP AF446A",
-    "price": null,
+    "price": 139.99,
     "capacity_w": 500,
     "capacity_va": 750
   },
   {
     "name": "HP AF447A",
-    "price": null,
+    "price": 139.99,
     "capacity_w": 500,
     "capacity_va": 750
   },
   {
     "name": "HP AF449A",
-    "price": null,
+    "price": 139.99,
     "capacity_w": 670,
     "capacity_va": 1000
   },
   {
     "name": "HP AF451A",
-    "price": null,
+    "price": 219.99,
     "capacity_w": 950,
     "capacity_va": 1400
   },
   {
     "name": "HP AF460A",
-    "price": null,
+    "price": 1250.0,
     "capacity_w": 4500,
     "capacity_va": 5000
   },
   {
     "name": "HP AF463A",
-    "price": null,
+    "price": 1575.0,
     "capacity_w": 6300,
     "capacity_va": 6300
   },
   {
     "name": "HP AF466A",
-    "price": null,
+    "price": 699.99,
     "capacity_w": 2700,
     "capacity_va": 2880
   },
   {
     "name": "HP AF467A",
-    "price": null,
+    "price": 825.0,
     "capacity_w": 3000,
     "capacity_va": 3300
   },
   {
     "name": "HP AF468A",
-    "price": null,
+    "price": 825.0,
     "capacity_w": 3000,
     "capacity_va": 3300
   },
   {
     "name": "HP AF469A",
-    "price": null,
+    "price": 219.99,
     "capacity_w": 1000,
     "capacity_va": 1500
   },
   {
     "name": "HP AF471A",
-    "price": null,
+    "price": 219.99,
     "capacity_w": 1000,
     "capacity_va": 1500
   },
   {
     "name": "IBM 2130R6X",
-    "price": null,
+    "price": 219.99,
     "capacity_w": 1050,
     "capacity_va": 1500
   },
@@ -4147,55 +4147,55 @@
   },
   {
     "name": "IBM 53951KX",
-    "price": null,
+    "price": 219.99,
     "capacity_w": 1000,
     "capacity_va": 1500
   },
   {
     "name": "IBM 53952KX",
-    "price": null,
+    "price": 449.99,
     "capacity_w": 1920,
     "capacity_va": 2200
   },
   {
     "name": "IBM 53953KX",
-    "price": null,
+    "price": 699.99,
     "capacity_w": 2700,
     "capacity_va": 3000
   },
   {
     "name": "APC SU3000RMTX136",
-    "price": null,
+    "price": 699.99,
     "capacity_w": 2250,
     "capacity_va": 3000
   },
   {
     "name": "CyberPower BU800E-UK",
-    "price": null,
+    "price": 139.99,
     "capacity_w": 400,
     "capacity_va": 800
   },
   {
     "name": "CyberPower GX1325U",
-    "price": null,
+    "price": 219.99,
     "capacity_w": 810,
     "capacity_va": 1325
   },
   {
     "name": "CyberPower CST135UC",
-    "price": null,
+    "price": 219.99,
     "capacity_w": 810,
     "capacity_va": 1350
   },
   {
     "name": "CyberPower XC625",
-    "price": null,
+    "price": 79.99,
     "capacity_w": 375,
     "capacity_va": 625
   },
   {
     "name": "CyberPower CST150UC-FC",
-    "price": null,
+    "price": 219.99,
     "capacity_w": 900,
     "capacity_va": 1500
   },
@@ -4204,11 +4204,5 @@
     "price": 196.56,
     "capacity_w": 240,
     "capacity_va": 400
-  },
-  {
-    "name": "VERTIV Liebert PSl5",
-    "price": 410.93,
-    "capacity_w": 990,
-    "capacity_va": 1100
   }
 ]

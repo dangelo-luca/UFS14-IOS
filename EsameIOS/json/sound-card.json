@@ -81,7 +81,7 @@
   },
   {
     "name": "Asus STRIX RAID DLX",
-    "price": null,
+    "price": 119.99,
     "channels": 7.1,
     "digital_audio": 24,
     "snr": 124,
@@ -111,7 +111,7 @@
   },
   {
     "name": "Asus Xonar Essence STX",
-    "price": null,
+    "price": 119.99,
     "channels": 7.1,
     "digital_audio": 24,
     "snr": 124,
@@ -121,7 +121,7 @@
   },
   {
     "name": "Creative Labs Sound BlasterX AE-5 Plus Pure",
-    "price": null,
+    "price": 69.99,
     "channels": 5.1,
     "digital_audio": 32,
     "snr": 122,
@@ -151,7 +151,7 @@
   },
   {
     "name": "Creative Labs Sound Blaster Zx",
-    "price": null,
+    "price": 69.99,
     "channels": 5.1,
     "digital_audio": 24,
     "snr": 116,
@@ -161,7 +161,7 @@
   },
   {
     "name": "Creative Labs Sound Blaster X-Fi Titanium HD",
-    "price": null,
+    "price": 119.99,
     "channels": 7.1,
     "digital_audio": 24,
     "snr": 122,
@@ -171,7 +171,7 @@
   },
   {
     "name": "Creative Labs Sound Blaster Z w/Shield",
-    "price": null,
+    "price": 69.99,
     "channels": 5.1,
     "digital_audio": 24,
     "snr": 116,
@@ -181,7 +181,7 @@
   },
   {
     "name": "Creative Labs Sound Blaster Audigy Fx",
-    "price": null,
+    "price": 69.99,
     "channels": 5.1,
     "digital_audio": 24,
     "snr": 106,
@@ -191,7 +191,7 @@
   },
   {
     "name": "Asus Essence STX II",
-    "price": null,
+    "price": 69.99,
     "channels": 2,
     "digital_audio": 24,
     "snr": 124,
@@ -201,7 +201,7 @@
   },
   {
     "name": "EVGA NU AUDIO PRO",
-    "price": null,
+    "price": 69.99,
     "channels": 2,
     "digital_audio": 32,
     "snr": 123,
@@ -211,7 +211,7 @@
   },
   {
     "name": "Creative Labs Sound BlasterX AE-5",
-    "price": null,
+    "price": 69.99,
     "channels": 5.1,
     "digital_audio": 32,
     "snr": 122,
@@ -221,7 +221,7 @@
   },
   {
     "name": "EVGA NU",
-    "price": null,
+    "price": 69.99,
     "channels": 5.1,
     "digital_audio": 24,
     "snr": 123,
@@ -231,7 +231,7 @@
   },
   {
     "name": "Asus Xonar DGX",
-    "price": null,
+    "price": 69.99,
     "channels": 5.1,
     "digital_audio": 24,
     "snr": 105,
@@ -241,7 +241,7 @@
   },
   {
     "name": "Asus Essence STX II 7.1",
-    "price": null,
+    "price": 119.99,
     "channels": 7.1,
     "digital_audio": 24,
     "snr": 124,
@@ -251,7 +251,7 @@
   },
   {
     "name": "Creative Labs Sound Blaster Z",
-    "price": null,
+    "price": 69.99,
     "channels": 5.1,
     "digital_audio": 24,
     "snr": 116,
@@ -261,7 +261,7 @@
   },
   {
     "name": "Creative Labs Sound BlasterX AE-5 Pure",
-    "price": null,
+    "price": 69.99,
     "channels": 5.1,
     "digital_audio": 32,
     "snr": 122,
@@ -271,7 +271,7 @@
   },
   {
     "name": "Asus Xonar DX",
-    "price": null,
+    "price": 119.99,
     "channels": 7.1,
     "digital_audio": 24,
     "snr": 116,
@@ -281,7 +281,7 @@
   },
   {
     "name": "Asus Xonar D1",
-    "price": null,
+    "price": 119.99,
     "channels": 7.1,
     "digital_audio": 24,
     "snr": 116,
@@ -291,7 +291,7 @@
   },
   {
     "name": "Asus Xonar DSX",
-    "price": null,
+    "price": 119.99,
     "channels": 7.1,
     "digital_audio": 24,
     "snr": 107,
@@ -301,7 +301,7 @@
   },
   {
     "name": "SIIG DP SoundWave",
-    "price": null,
+    "price": 69.99,
     "channels": 5.1,
     "digital_audio": 24,
     "snr": null,
@@ -311,7 +311,7 @@
   },
   {
     "name": "Creative Labs Recon3D Fatal1ty Professional",
-    "price": null,
+    "price": 69.99,
     "channels": 5.1,
     "digital_audio": 24,
     "snr": 102,
@@ -321,7 +321,7 @@
   },
   {
     "name": "Creative Labs Sound Blaster X-Fi Xtreme Audio",
-    "price": null,
+    "price": 119.99,
     "channels": 7.1,
     "digital_audio": 24,
     "snr": 100,
@@ -330,8 +330,18 @@
     "interface": "PCIe x1"
   },
   {
+    "name": "Creative Labs Sound Blaster X-Fi Xtreme Audio",
+    "price": 119.99,
+    "channels": 7.1,
+    "digital_audio": 24,
+    "snr": 108,
+    "sample_rate": 96,
+    "chipset": null,
+    "interface": "PCI"
+  },
+  {
     "name": "Asus Xonar Phoebus",
-    "price": null,
+    "price": 119.99,
     "channels": 7.1,
     "digital_audio": 24,
     "snr": 118,
@@ -341,7 +351,7 @@
   },
   {
     "name": "Asus Xonar DG",
-    "price": null,
+    "price": 69.99,
     "channels": 5.1,
     "digital_audio": 24,
     "snr": 105,
@@ -351,7 +361,7 @@
   },
   {
     "name": "PowerColor DEVIL HDX 7.1",
-    "price": null,
+    "price": 119.99,
     "channels": 7.1,
     "digital_audio": null,
     "snr": 124,
@@ -361,7 +371,7 @@
   },
   {
     "name": "Creative Labs SB X-Fi Xtreme Audio",
-    "price": null,
+    "price": 119.99,
     "channels": 7.1,
     "digital_audio": 24,
     "snr": 100,
@@ -371,7 +381,7 @@
   },
   {
     "name": "HT Omega eClaro",
-    "price": null,
+    "price": 119.99,
     "channels": 7.1,
     "digital_audio": 24,
     "snr": null,
@@ -381,7 +391,7 @@
   },
   {
     "name": "Creative Labs Sound Blaster Audigy2 ZS",
-    "price": null,
+    "price": 69.99,
     "channels": 5.1,
     "digital_audio": 24,
     "snr": null,
@@ -391,7 +401,7 @@
   },
   {
     "name": "Creative Labs Recon3D PCIe",
-    "price": null,
+    "price": 69.99,
     "channels": 5.1,
     "digital_audio": 24,
     "snr": 102,
@@ -401,7 +411,7 @@
   },
   {
     "name": "Creative Labs Sound Blaster Z OEM",
-    "price": null,
+    "price": 69.99,
     "channels": 5.1,
     "digital_audio": 24,
     "snr": 116,
@@ -411,7 +421,7 @@
   },
   {
     "name": "Creative Labs Sound Blaster X-Fi",
-    "price": null,
+    "price": 119.99,
     "channels": 7.1,
     "digital_audio": 24,
     "snr": 109,
@@ -421,7 +431,7 @@
   },
   {
     "name": "Creative Labs Sound Blaster Audigy SE",
-    "price": null,
+    "price": 119.99,
     "channels": 7.1,
     "digital_audio": 24,
     "snr": null,
@@ -430,18 +440,8 @@
     "interface": "PCI"
   },
   {
-    "name": "Creative Labs Sound Blaster X-Fi Xtreme Audio",
-    "price": null,
-    "channels": 7.1,
-    "digital_audio": 24,
-    "snr": 108,
-    "sample_rate": 96,
-    "chipset": null,
-    "interface": "PCI"
-  },
-  {
     "name": "StarTech PCISOUND5CH",
-    "price": null,
+    "price": 69.99,
     "channels": 5.1,
     "digital_audio": 24,
     "snr": null,
@@ -451,7 +451,7 @@
   },
   {
     "name": "Asus Xonar Essence ST",
-    "price": null,
+    "price": 119.99,
     "channels": 7.1,
     "digital_audio": 24,
     "snr": 124,
@@ -461,7 +461,7 @@
   },
   {
     "name": "M-Audio US41500C",
-    "price": null,
+    "price": 69.99,
     "channels": 2,
     "digital_audio": 24,
     "snr": 104,
@@ -471,7 +471,7 @@
   },
   {
     "name": "Rosewill RC-703",
-    "price": null,
+    "price": 119.99,
     "channels": 7.1,
     "digital_audio": null,
     "snr": null,
@@ -481,7 +481,7 @@
   },
   {
     "name": "Creative Labs 70SB135A00002",
-    "price": null,
+    "price": 69.99,
     "channels": 5.1,
     "digital_audio": 24,
     "snr": 102,
@@ -491,7 +491,7 @@
   },
   {
     "name": "SIIG IC-510111-S2",
-    "price": null,
+    "price": 69.99,
     "channels": 5.1,
     "digital_audio": 24,
     "snr": 90,
@@ -501,7 +501,7 @@
   },
   {
     "name": "Syba SD-PEX63034",
-    "price": null,
+    "price": 119.99,
     "channels": 7.1,
     "digital_audio": 24,
     "snr": null,
@@ -511,7 +511,7 @@
   },
   {
     "name": "Diamond XtremeSound XS51",
-    "price": null,
+    "price": 69.99,
     "channels": 5.1,
     "digital_audio": 16,
     "snr": null,
@@ -521,7 +521,7 @@
   },
   {
     "name": "StarTech PCISOUND4CH",
-    "price": null,
+    "price": 69.99,
     "channels": 4,
     "digital_audio": 16,
     "snr": null,
@@ -531,7 +531,7 @@
   },
   {
     "name": "Encore ENM232-8VIA",
-    "price": null,
+    "price": 119.99,
     "channels": 7.1,
     "digital_audio": 24,
     "snr": null,
@@ -541,7 +541,7 @@
   },
   {
     "name": "Asus Xonar DS",
-    "price": null,
+    "price": 119.99,
     "channels": 7.1,
     "digital_audio": 24,
     "snr": 107,
@@ -551,7 +551,7 @@
   },
   {
     "name": "Creative Labs Recon3D Fatal1ty Champion",
-    "price": null,
+    "price": 69.99,
     "channels": 5.1,
     "digital_audio": 24,
     "snr": 102,
@@ -560,18 +560,8 @@
     "interface": "PCIe x1"
   },
   {
-    "name": "Asus Xonar DS",
-    "price": null,
-    "channels": 7.1,
-    "digital_audio": 24,
-    "snr": 107,
-    "sample_rate": 192,
-    "chipset": "ASUS AV200",
-    "interface": "PCI"
-  },
-  {
     "name": "Creative Labs Sound Blaster Audigy SE OEM",
-    "price": null,
+    "price": 119.99,
     "channels": 7.1,
     "digital_audio": 24,
     "snr": 100,
@@ -581,7 +571,7 @@
   },
   {
     "name": "Turtle Beach TBS-3429",
-    "price": null,
+    "price": 69.99,
     "channels": 5.1,
     "digital_audio": 24,
     "snr": null,
@@ -591,7 +581,7 @@
   },
   {
     "name": "SIIG IC-510012-S2",
-    "price": null,
+    "price": 69.99,
     "channels": 5.1,
     "digital_audio": 16,
     "snr": 68,
@@ -601,7 +591,7 @@
   },
   {
     "name": "HT Omega FENIX",
-    "price": null,
+    "price": 119.99,
     "channels": 7.1,
     "digital_audio": 24,
     "snr": null,
@@ -611,7 +601,7 @@
   },
   {
     "name": "Creative Labs Sound Blaster Audigy Rx OEM",
-    "price": null,
+    "price": 119.99,
     "channels": 7.1,
     "digital_audio": 24,
     "snr": 106,
@@ -621,7 +611,7 @@
   },
   {
     "name": "PPA International 1431v",
-    "price": null,
+    "price": 69.99,
     "channels": 5.1,
     "digital_audio": 16,
     "snr": null,
@@ -631,7 +621,7 @@
   },
   {
     "name": "Encore ENM232-6VIA",
-    "price": null,
+    "price": 69.99,
     "channels": 5.1,
     "digital_audio": 24,
     "snr": null,
@@ -641,7 +631,7 @@
   },
   {
     "name": "HT Omega STRIKER",
-    "price": null,
+    "price": 119.99,
     "channels": 7.1,
     "digital_audio": null,
     "snr": null,
@@ -651,7 +641,7 @@
   },
   {
     "name": "Vantec UGT-S100",
-    "price": null,
+    "price": 119.99,
     "channels": 7.1,
     "digital_audio": null,
     "snr": null,
@@ -661,7 +651,7 @@
   },
   {
     "name": "HT Omega CLARO II",
-    "price": null,
+    "price": 119.99,
     "channels": 7.1,
     "digital_audio": 24,
     "snr": 120,
@@ -671,7 +661,7 @@
   },
   {
     "name": "Rosewill RC-701",
-    "price": null,
+    "price": 69.99,
     "channels": 5.1,
     "digital_audio": null,
     "snr": null,
@@ -681,7 +671,7 @@
   },
   {
     "name": "Diamond XtremeSound XS71",
-    "price": null,
+    "price": 119.99,
     "channels": 7.1,
     "digital_audio": 16,
     "snr": null,
@@ -691,7 +681,7 @@
   },
   {
     "name": "Asus Xonar Essence",
-    "price": null,
+    "price": 119.99,
     "channels": 7.1,
     "digital_audio": 24,
     "snr": 124,
@@ -701,7 +691,7 @@
   },
   {
     "name": "HT Omega Claro Halo XT",
-    "price": null,
+    "price": 119.99,
     "channels": 7.1,
     "digital_audio": 24,
     "snr": null,
@@ -711,7 +701,7 @@
   },
   {
     "name": "HT Omega Claro Halo",
-    "price": null,
+    "price": 69.99,
     "channels": 5.1,
     "digital_audio": 24,
     "snr": null,
@@ -721,7 +711,7 @@
   },
   {
     "name": "Rosewill RC-702",
-    "price": null,
+    "price": 119.99,
     "channels": 7.1,
     "digital_audio": 16,
     "snr": null,
@@ -731,7 +721,7 @@
   },
   {
     "name": "StarTech PCISOUND4LP",
-    "price": null,
+    "price": 69.99,
     "channels": 4,
     "digital_audio": 16,
     "snr": null,
@@ -741,7 +731,7 @@
   },
   {
     "name": "M-Audio Audiophile 192",
-    "price": null,
+    "price": 69.99,
     "channels": 4,
     "digital_audio": 24,
     "snr": null,
@@ -751,7 +741,7 @@
   },
   {
     "name": "SIIG LP-000022-S2",
-    "price": null,
+    "price": 69.99,
     "channels": 5.1,
     "digital_audio": 24,
     "snr": 90,
@@ -761,7 +751,7 @@
   },
   {
     "name": "SIIG IC-710012-S2",
-    "price": null,
+    "price": 119.99,
     "channels": 7.1,
     "digital_audio": 24,
     "snr": 92,

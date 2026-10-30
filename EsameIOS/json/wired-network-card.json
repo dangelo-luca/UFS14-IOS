@@ -19,7 +19,7 @@
   },
   {
     "name": "Intel X540-T2",
-    "price": 87,
+    "price": 87.0,
     "interface": "PCIe x8",
     "color": null
   },
@@ -55,13 +55,13 @@
   },
   {
     "name": "Intel X540T1",
-    "price": 129,
+    "price": 129.0,
     "interface": "PCIe x8",
     "color": "Black / Green"
   },
   {
     "name": "Intel X520-DA1",
-    "price": 99,
+    "price": 99.0,
     "interface": "PCIe x8",
     "color": "Green"
   },
@@ -79,7 +79,7 @@
   },
   {
     "name": "Gigabyte GC-AQC107",
-    "price": null,
+    "price": 24.99,
     "interface": "PCIe x4",
     "color": "Black / White"
   },
@@ -91,7 +91,7 @@
   },
   {
     "name": "Intel E1G42ETBLK",
-    "price": 51,
+    "price": 51.0,
     "interface": "PCIe x4",
     "color": null
   },
@@ -139,7 +139,7 @@
   },
   {
     "name": "QNAP QXG5G1T111C",
-    "price": 99,
+    "price": 99.0,
     "interface": "PCIe x1",
     "color": "Blue / Silver"
   },
@@ -181,7 +181,7 @@
   },
   {
     "name": "QNAP QXG2G2TI225",
-    "price": 79,
+    "price": 79.0,
     "interface": "PCIe x2",
     "color": "Green / Copper"
   },
@@ -193,7 +193,7 @@
   },
   {
     "name": "Intel X520-T2",
-    "price": null,
+    "price": 24.99,
     "interface": "PCIe x8",
     "color": "Green / Black"
   },
@@ -211,13 +211,13 @@
   },
   {
     "name": "QNAP QXG-10G1T",
-    "price": 139,
+    "price": 139.0,
     "interface": "PCIe x4",
     "color": null
   },
   {
     "name": "Intel EXPI9404PTLBLK",
-    "price": null,
+    "price": 24.99,
     "interface": "PCIe x4",
     "color": null
   },
@@ -241,7 +241,7 @@
   },
   {
     "name": "Monoprice 112909",
-    "price": null,
+    "price": 24.99,
     "interface": "USB Type-C 3.2 Gen 2",
     "color": "White"
   },
@@ -259,7 +259,7 @@
   },
   {
     "name": "QLogic QLE3242-CU-CK",
-    "price": null,
+    "price": 24.99,
     "interface": "PCIe x8",
     "color": null
   },
@@ -277,7 +277,7 @@
   },
   {
     "name": "D-Link DXE-820T",
-    "price": null,
+    "price": 24.99,
     "interface": "PCIe x8",
     "color": null
   },
@@ -289,19 +289,19 @@
   },
   {
     "name": "Intel EXPI9404PTLBLK-1PK",
-    "price": null,
+    "price": 24.99,
     "interface": "PCIe x4",
     "color": null
   },
   {
     "name": "Intel E10G42BT",
-    "price": null,
+    "price": 129.99,
     "interface": "PCIe x8",
     "color": null
   },
   {
     "name": "Gigabyte GC-AQC113C 10G",
-    "price": null,
+    "price": 129.99,
     "interface": "PCIe x4",
     "color": "White / Silver"
   },
@@ -313,25 +313,25 @@
   },
   {
     "name": "Intel E1G44HT",
-    "price": 106,
+    "price": 106.0,
     "interface": "PCIe x4",
     "color": null
   },
   {
     "name": "Intel E1G42ET",
-    "price": null,
+    "price": 24.99,
     "interface": "PCIe x4",
     "color": null
   },
   {
     "name": "QNAP QXG-2G1T-I225",
-    "price": 69,
+    "price": 69.0,
     "interface": "PCIe x1",
     "color": "Green / Silver"
   },
   {
     "name": "Asus ROG AREION",
-    "price": null,
+    "price": 24.99,
     "interface": "PCIe x4",
     "color": "Black"
   },
@@ -355,13 +355,13 @@
   },
   {
     "name": "Intel EXPI9404PTL",
-    "price": null,
+    "price": 24.99,
     "interface": "PCIe x4",
     "color": null
   },
   {
     "name": "Intel PWLA8391GTBLK",
-    "price": 32,
+    "price": 32.0,
     "interface": "PCI",
     "color": null
   },
@@ -379,7 +379,7 @@
   },
   {
     "name": "Intel E1G44ET2",
-    "price": null,
+    "price": 24.99,
     "interface": "PCIe x4",
     "color": null
   },
@@ -403,7 +403,7 @@
   },
   {
     "name": "EDUP EP-9602GS",
-    "price": null,
+    "price": 24.99,
     "interface": "PCIe x1",
     "color": "Black"
   },
@@ -421,7 +421,7 @@
   },
   {
     "name": "VisionTek Bigfoot Killer 2100",
-    "price": null,
+    "price": 24.99,
     "interface": "PCIe x1",
     "color": null
   },
@@ -445,13 +445,13 @@
   },
   {
     "name": "Rosewill RC-NIC416Dual",
-    "price": null,
+    "price": 24.99,
     "interface": "PCIe x4",
     "color": "Black / Silver"
   },
   {
     "name": "Supermicro AOC-STG-i2T",
-    "price": null,
+    "price": 24.99,
     "interface": "PCIe x8",
     "color": null
   },
@@ -469,13 +469,13 @@
   },
   {
     "name": "Intel PWLA8490MTBLK",
-    "price": null,
+    "price": 24.99,
     "interface": "PCI-X",
     "color": null
   },
   {
     "name": "Supermicro AOC-SG-i2",
-    "price": null,
+    "price": 24.99,
     "interface": "PCIe x4",
     "color": null
   },
@@ -487,37 +487,37 @@
   },
   {
     "name": "Intel EXPI9402PT",
-    "price": null,
+    "price": 24.99,
     "interface": "PCIe x4",
     "color": null
   },
   {
     "name": "Intel PWLA8492MT",
-    "price": 92,
+    "price": 92.0,
     "interface": "PCI-X",
     "color": null
   },
   {
     "name": "Acer NP.OTH11.005",
-    "price": null,
+    "price": 24.99,
     "interface": "USB Type-A 2.0",
     "color": null
   },
   {
     "name": "TP-Link TG-3269",
-    "price": null,
+    "price": 24.99,
     "interface": "PCI",
     "color": null
   },
   {
     "name": "TP-Link TF-3239DL",
-    "price": null,
+    "price": 24.99,
     "interface": "PCI",
     "color": null
   },
   {
     "name": "Edimax EN-9130TXL",
-    "price": null,
+    "price": 24.99,
     "interface": "PCI",
     "color": null
   },
@@ -535,31 +535,31 @@
   },
   {
     "name": "Supermicro SGP-i4",
-    "price": null,
+    "price": 24.99,
     "interface": "PCIe x4",
     "color": "Green / Silver"
   },
   {
     "name": "Edimax EN-9320TX-E",
-    "price": null,
+    "price": 24.99,
     "interface": "PCIe x4",
     "color": "Silver / Green"
   },
   {
     "name": "Asus PCE-C2500",
-    "price": null,
+    "price": 24.99,
     "interface": "PCIe x1",
     "color": "Red"
   },
   {
     "name": "TP-Link UE305",
-    "price": null,
+    "price": 24.99,
     "interface": "USB Type-A 3.2 Gen 1",
     "color": "Black"
   },
   {
     "name": "StarTech ST10GSPEXNDP",
-    "price": null,
+    "price": 129.99,
     "interface": "PCIe x8",
     "color": "Black / Silver"
   },
@@ -571,13 +571,13 @@
   },
   {
     "name": "Intel PWLA8391GTLBLK",
-    "price": 50,
+    "price": 50.0,
     "interface": "PCI",
     "color": null
   },
   {
     "name": "Rosewill RC-400-LX",
-    "price": null,
+    "price": 24.99,
     "interface": "PCI",
     "color": null
   },
@@ -589,7 +589,7 @@
   },
   {
     "name": "Asus NX1101",
-    "price": null,
+    "price": 24.99,
     "interface": "PCI",
     "color": null
   },
@@ -601,7 +601,7 @@
   },
   {
     "name": "StarTech ST10000SPEX",
-    "price": null,
+    "price": 24.99,
     "interface": "PCIe x4",
     "color": null
   },
@@ -613,25 +613,25 @@
   },
   {
     "name": "V7 V7UCRJ45-BLK-1N",
-    "price": null,
+    "price": 24.99,
     "interface": "USB Type-C 3.2 Gen 1",
     "color": "Black"
   },
   {
     "name": "HP E0X95AA",
-    "price": null,
+    "price": 24.99,
     "interface": "PCIe x1",
     "color": "Green"
   },
   {
     "name": "Syba SD-PEX24065",
-    "price": null,
+    "price": 24.99,
     "interface": "PCIe x1",
     "color": "Green"
   },
   {
     "name": "Rosewill RC-20001",
-    "price": null,
+    "price": 24.99,
     "interface": "PCIe x1",
     "color": "Black"
   },
@@ -649,25 +649,25 @@
   },
   {
     "name": "Rosewill RC-400",
-    "price": null,
+    "price": 24.99,
     "interface": "PCI",
     "color": null
   },
   {
     "name": "Rosewill RC-404",
-    "price": null,
+    "price": 24.99,
     "interface": "PCI",
     "color": null
   },
   {
     "name": "Rosewill RNF-405U",
-    "price": null,
+    "price": 24.99,
     "interface": "USB Type-A 2.0",
     "color": null
   },
   {
     "name": "Rosewill RNG-406U",
-    "price": null,
+    "price": 24.99,
     "interface": "USB Type-A 3.2 Gen 1",
     "color": null
   },
@@ -679,73 +679,73 @@
   },
   {
     "name": "StarTech ST100S",
-    "price": null,
+    "price": 24.99,
     "interface": "PCI",
     "color": null
   },
   {
     "name": "StarTech USB21000S2",
-    "price": null,
+    "price": 24.99,
     "interface": "USB Type-A 2.0",
     "color": null
   },
   {
     "name": "Syba SY-ADA24024",
-    "price": null,
+    "price": 24.99,
     "interface": "USB Type-A 2.0",
     "color": null
   },
   {
     "name": "TRENDnet TE100-PCIWN",
-    "price": null,
+    "price": 24.99,
     "interface": "PCI",
     "color": null
   },
   {
     "name": "Intel EXPI9402PTBLK-1PK",
-    "price": null,
+    "price": 24.99,
     "interface": "PCIe x4",
     "color": null
   },
   {
     "name": "Intel PWLA8391GTBLK-1PK",
-    "price": null,
+    "price": 24.99,
     "interface": "PCI",
     "color": null
   },
   {
     "name": "Intel PWLA8492MTBLK5",
-    "price": null,
+    "price": 24.99,
     "interface": "PCI-X",
     "color": null
   },
   {
     "name": "SIIG CN-GP1011-S3",
-    "price": null,
+    "price": 24.99,
     "interface": "PCI",
     "color": null
   },
   {
     "name": "StarTech ST1000SPEXD2",
-    "price": null,
+    "price": 24.99,
     "interface": "PCIe x1",
     "color": null
   },
   {
     "name": "Syba SY-ADA24005",
-    "price": null,
+    "price": 24.99,
     "interface": "USB Type-A 2.0",
     "color": null
   },
   {
     "name": "StarTech ST1000SPEX",
-    "price": null,
+    "price": 24.99,
     "interface": "PCIe x1",
     "color": null
   },
   {
     "name": "SIIG CN-GP2011-S1",
-    "price": null,
+    "price": 24.99,
     "interface": "PCIe x1",
     "color": null
   },
@@ -757,25 +757,25 @@
   },
   {
     "name": "Belkin F4U047-RS",
-    "price": null,
+    "price": 24.99,
     "interface": "USB Type-A 2.0",
     "color": null
   },
   {
     "name": "Rosewill RC-401-EX",
-    "price": null,
+    "price": 24.99,
     "interface": "PCIe x1",
     "color": null
   },
   {
     "name": "Rosewill RC-402",
-    "price": null,
+    "price": 24.99,
     "interface": "PCI",
     "color": null
   },
   {
     "name": "D-Link DFE530TX+",
-    "price": 11,
+    "price": 11.0,
     "interface": "PCI",
     "color": null
   },
@@ -787,7 +787,7 @@
   },
   {
     "name": "D-Link DUB-E100",
-    "price": null,
+    "price": 24.99,
     "interface": "USB Type-A 2.0",
     "color": null
   },
@@ -799,31 +799,31 @@
   },
   {
     "name": "Edimax EU-4306",
-    "price": null,
+    "price": 24.99,
     "interface": "USB Type-A 3.2 Gen 1",
     "color": null
   },
   {
     "name": "Rosewill RC-411",
-    "price": null,
+    "price": 24.99,
     "interface": "PCIe x1",
     "color": null
   },
   {
     "name": "Rosewill RNG-407-Dual",
-    "price": null,
+    "price": 24.99,
     "interface": "PCIe x1",
     "color": null
   },
   {
     "name": "SIIG CN-GP4011-S1",
-    "price": null,
+    "price": 24.99,
     "interface": "PCIe x4",
     "color": null
   },
   {
     "name": "StarTech ST1000SPEXD3",
-    "price": null,
+    "price": 24.99,
     "interface": "PCIe x1",
     "color": null
   },
@@ -841,19 +841,19 @@
   },
   {
     "name": "Syba SD-ADA24032",
-    "price": null,
+    "price": 24.99,
     "interface": "USB Type-A 3.2 Gen 1",
     "color": null
   },
   {
     "name": "Cisco N2XX-ABPCI03-M3=",
-    "price": null,
+    "price": 24.99,
     "interface": "PCIe x4",
     "color": null
   },
   {
     "name": "SIIG JU-NE0511-S1",
-    "price": null,
+    "price": 24.99,
     "interface": "USB Type-A 3.2 Gen 1",
     "color": null
   },
@@ -871,13 +871,13 @@
   },
   {
     "name": "Syba SI-ADA24037",
-    "price": null,
+    "price": 24.99,
     "interface": "USB Type-A 3.2 Gen 1",
     "color": null
   },
   {
     "name": "SIIG CN-GP1111-S1",
-    "price": null,
+    "price": 24.99,
     "interface": "PCIe x4",
     "color": null
   },
@@ -889,37 +889,37 @@
   },
   {
     "name": "SIIG CN-GP4111-S1",
-    "price": null,
+    "price": 24.99,
     "interface": "PCIe x4",
     "color": null
   },
   {
     "name": "Syba SY-ADA24040",
-    "price": null,
+    "price": 24.99,
     "interface": "USB Type-A 3.2 Gen 1",
     "color": null
   },
   {
     "name": "SIIG JU-NE0711-S1",
-    "price": null,
+    "price": 24.99,
     "interface": "USB Type-A 3.2 Gen 1",
     "color": "Black"
   },
   {
     "name": "Linksys USB3GIG",
-    "price": null,
+    "price": 24.99,
     "interface": "USB Type-A 3.2 Gen 1",
     "color": "Black"
   },
   {
     "name": "Syba SY-PEX24056",
-    "price": null,
+    "price": 24.99,
     "interface": "PCIe x4",
     "color": "Green / Black"
   },
   {
     "name": "Rosewill RNG-408U",
-    "price": null,
+    "price": 24.99,
     "interface": "USB Type-C 3.2 Gen 1",
     "color": "Black"
   },
@@ -931,7 +931,7 @@
   },
   {
     "name": "SIIG JU-NE0621-S2",
-    "price": null,
+    "price": 24.99,
     "interface": "USB Type-A 3.2 Gen 1",
     "color": "White"
   },

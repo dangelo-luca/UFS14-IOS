@@ -5,9 +5,24 @@
     "amount": 3.5
   },
   {
+    "name": "Arctic Silver 5 High-Density Polysynthetic Silver",
+    "price": 25.99,
+    "amount": 12
+  },
+  {
     "name": "Thermal Grizzly Kryonaut",
     "price": 7.75,
     "amount": 1
+  },
+  {
+    "name": "Thermal Grizzly Kryonaut",
+    "price": 21.99,
+    "amount": 5.5
+  },
+  {
+    "name": "Thermal Grizzly Kryonaut",
+    "price": 27.75,
+    "amount": 11.1
   },
   {
     "name": "ARCTIC MX-6",
@@ -15,9 +30,24 @@
     "amount": 4
   },
   {
+    "name": "ARCTIC MX-6",
+    "price": 12.99,
+    "amount": 8
+  },
+  {
+    "name": "ARCTIC MX-6",
+    "price": 7.99,
+    "amount": 2
+  },
+  {
     "name": "Noctua NT-H2",
     "price": 14.95,
     "amount": 3.5
+  },
+  {
+    "name": "Noctua NT-H2",
+    "price": 17.99,
+    "amount": 10
   },
   {
     "name": "Thermal Grizzly Kryonaut Extreme",
@@ -25,9 +55,34 @@
     "amount": 2
   },
   {
+    "name": "Thermal Grizzly Kryonaut Extreme",
+    "price": 99.99,
+    "amount": 33.84
+  },
+  {
     "name": "Prolimatech PK-Zero",
     "price": 135.24,
     "amount": 300
+  },
+  {
+    "name": "Prolimatech PK-Zero",
+    "price": 13.99,
+    "amount": 5
+  },
+  {
+    "name": "Prolimatech PK-Zero",
+    "price": 27.99,
+    "amount": 600
+  },
+  {
+    "name": "Prolimatech PK-Zero",
+    "price": 8.99,
+    "amount": 1.5
+  },
+  {
+    "name": "Prolimatech PK-Zero",
+    "price": 27.99,
+    "amount": 30
   },
   {
     "name": "Corsair TM30",
@@ -40,9 +95,29 @@
     "amount": 4
   },
   {
+    "name": "ARCTIC MX-4 (2019)",
+    "price": 7.99,
+    "amount": 8
+  },
+  {
+    "name": "ARCTIC MX-4 (2019)",
+    "price": 24.99,
+    "amount": 45
+  },
+  {
+    "name": "ARCTIC MX-4 (2019)",
+    "price": 8.99,
+    "amount": 2
+  },
+  {
     "name": "Arctic Silver Ceramique 2 Tri-Linear",
     "price": 3.85,
     "amount": 2.7
+  },
+  {
+    "name": "Arctic Silver Ceramique 2 Tri-Linear",
+    "price": 14.0,
+    "amount": 25
   },
   {
     "name": "Corsair XTM70",
@@ -53,11 +128,6 @@
     "name": "Noctua NT-H1",
     "price": 8.94,
     "amount": 3.5
-  },
-  {
-    "name": "ARCTIC MX-6",
-    "price": 12.99,
-    "amount": 8
   },
   {
     "name": "Thermal Grizzly Duronaut",
@@ -75,19 +145,14 @@
     "amount": 2
   },
   {
-    "name": "ARCTIC MX-6",
-    "price": 7.99,
-    "amount": 2
-  },
-  {
-    "name": "Noctua NT-H2",
-    "price": null,
-    "amount": 10
-  },
-  {
     "name": "ARCTIC MX-4 w/ Spatula",
     "price": 7.99,
     "amount": 8
+  },
+  {
+    "name": "ARCTIC MX-4 w/ Spatula",
+    "price": 11.99,
+    "amount": 4
   },
   {
     "name": "Thermal Grizzly Conductonaut Extreme",
@@ -95,29 +160,44 @@
     "amount": 5
   },
   {
-    "name": "Thermal Grizzly Kryonaut Extreme",
-    "price": 99.99,
-    "amount": 33.84
-  },
-  {
-    "name": "Prolimatech PK-Zero",
-    "price": null,
-    "amount": 600
+    "name": "Thermal Grizzly Conductonaut Extreme",
+    "price": 16.75,
+    "amount": 1
   },
   {
     "name": "ARCTIC MX-4",
-    "price": null,
-    "amount": 4
+    "price": 36.5,
+    "amount": 20
   },
   {
-    "name": "ARCTIC MX-4 w/ Spatula",
-    "price": null,
+    "name": "ARCTIC MX-4",
+    "price": 11.99,
     "amount": 4
   },
   {
     "name": "Thermal Hero QUANTUM",
     "price": 107.99,
     "amount": 50
+  },
+  {
+    "name": "Thermal Hero QUANTUM",
+    "price": 37.99,
+    "amount": 4
+  },
+  {
+    "name": "Thermal Hero QUANTUM",
+    "price": 31.09,
+    "amount": 10
+  },
+  {
+    "name": "Thermal Hero QUANTUM",
+    "price": 11.64,
+    "amount": 1
+  },
+  {
+    "name": "Thermal Hero QUANTUM",
+    "price": 16.89,
+    "amount": 2
   },
   {
     "name": "Asus ROG RG-07 KIT",
@@ -128,11 +208,6 @@
     "name": "Corsair XTM50",
     "price": 14.99,
     "amount": 5
-  },
-  {
-    "name": "Thermal Grizzly Kryonaut",
-    "price": 21.99,
-    "amount": 5.5
   },
   {
     "name": "Cooler Master CryoFuze",
@@ -150,49 +225,29 @@
     "amount": 3.9
   },
   {
-    "name": "Thermal Grizzly Conductonaut Extreme",
-    "price": 16.75,
-    "amount": 1
-  },
-  {
     "name": "Thermal Grizzly Polartherm X-8",
     "price": 5.9,
     "amount": 2
   },
   {
-    "name": "Arctic Silver 5 High-Density Polysynthetic Silver",
-    "price": 25.99,
-    "amount": 12
+    "name": "Thermal Grizzly Polartherm X-8",
+    "price": 9.99,
+    "amount": 10
   },
   {
-    "name": "Thermal Grizzly Kryonaut",
-    "price": 27.75,
-    "amount": 11.1
+    "name": "Thermal Grizzly Polartherm X-8",
+    "price": 7.29,
+    "amount": 5
+  },
+  {
+    "name": "Thermal Grizzly Polartherm X-8",
+    "price": 16.98,
+    "amount": 40
   },
   {
     "name": "KINGPINcooling KPx",
     "price": 8.98,
     "amount": 1
-  },
-  {
-    "name": "Thermalright TF9",
-    "price": 4.88,
-    "amount": 1.5
-  },
-  {
-    "name": "ARCTIC MX-2",
-    "price": null,
-    "amount": 4
-  },
-  {
-    "name": "ID-COOLING Frost X45",
-    "price": null,
-    "amount": 4
-  },
-  {
-    "name": "Thermal Grizzly Hydronaut",
-    "price": 10.75,
-    "amount": 3.9
   },
   {
     "name": "KINGPINcooling KPx",
@@ -205,9 +260,64 @@
     "amount": 10
   },
   {
+    "name": "Thermalright TF9",
+    "price": 4.88,
+    "amount": 1.5
+  },
+  {
+    "name": "Thermalright TF9",
+    "price": 6.09,
+    "amount": 2.9
+  },
+  {
+    "name": "ARCTIC MX-2",
+    "price": 11.99,
+    "amount": 4
+  },
+  {
+    "name": "ARCTIC MX-2",
+    "price": 27.99,
+    "amount": 65
+  },
+  {
+    "name": "ARCTIC MX-2",
+    "price": 27.99,
+    "amount": 30
+  },
+  {
+    "name": "ARCTIC MX-2",
+    "price": 17.99,
+    "amount": 8
+  },
+  {
+    "name": "ID-COOLING Frost X45",
+    "price": 11.99,
+    "amount": 4
+  },
+  {
+    "name": "ID-COOLING Frost X45",
+    "price": 8.99,
+    "amount": 2
+  },
+  {
+    "name": "Thermal Grizzly Hydronaut",
+    "price": 10.75,
+    "amount": 3.9
+  },
+  {
     "name": "Prolimatech PK-3 Nano Aluminum High-Grade",
     "price": 39.99,
     "amount": 30
+  },
+  {
+    "name": "Prolimatech PK-3 Nano Aluminum High-Grade",
+    "price": 9.99,
+    "amount": 1.5
+  },
+  {
+    "name": "Prolimatech PK-3 Nano Aluminum High-Grade",
+    "price": 17.98,
+    "amount": 5
   },
   {
     "name": "Thermal Grizzly Conductonaut",
@@ -220,9 +330,14 @@
     "amount": 3.5
   },
   {
-    "name": "ARCTIC MX-4 (2019)",
-    "price": 7.99,
-    "amount": 8
+    "name": "Gelid Solutions GC-Extreme",
+    "price": 18.98,
+    "amount": 10
+  },
+  {
+    "name": "Gelid Solutions GC-Extreme",
+    "price": 8.99,
+    "amount": 1
   },
   {
     "name": "Zalman STC9",
@@ -230,39 +345,29 @@
     "amount": 4
   },
   {
-    "name": "ARCTIC MX-4",
-    "price": 36.5,
-    "amount": 20
-  },
-  {
-    "name": "Thermalright TF9",
-    "price": 6.09,
-    "amount": 2.9
-  },
-  {
     "name": "ARCTIC MX-5 Incl. Spatula",
-    "price": null,
+    "price": 8.99,
     "amount": 2
   },
   {
-    "name": "Prolimatech PK-3 Nano Aluminum High-Grade",
-    "price": 9.99,
-    "amount": 1.5
+    "name": "ARCTIC MX-5 Incl. Spatula",
+    "price": 27.99,
+    "amount": 20
+  },
+  {
+    "name": "ARCTIC MX-5 Incl. Spatula",
+    "price": 11.99,
+    "amount": 4
+  },
+  {
+    "name": "ARCTIC MX-5 Incl. Spatula",
+    "price": 17.99,
+    "amount": 8
   },
   {
     "name": "Cooler Master HTK-002",
     "price": 10.35,
     "amount": 0.01
-  },
-  {
-    "name": "ARCTIC MX-4",
-    "price": 13.99,
-    "amount": 20
-  },
-  {
-    "name": "ARCTIC MX-4 (2019)",
-    "price": 24.99,
-    "amount": 45
   },
   {
     "name": "be quiet! DC2",
@@ -275,29 +380,34 @@
     "amount": 2
   },
   {
+    "name": "Thermal Grizzly Polartherm X-10",
+    "price": 7.99,
+    "amount": 5
+  },
+  {
+    "name": "Thermal Grizzly Polartherm X-10",
+    "price": 12.84,
+    "amount": 10
+  },
+  {
+    "name": "Thermal Grizzly Polartherm X-10",
+    "price": 23.19,
+    "amount": 40
+  },
+  {
     "name": "StarTech Metal Oxide",
     "price": 9.99,
     "amount": 1.5
   },
   {
     "name": "Deepcool Z5",
-    "price": null,
+    "price": 11.99,
     "amount": 3
-  },
-  {
-    "name": "Prolimatech PK-3 Nano Aluminum High-Grade",
-    "price": 17.98,
-    "amount": 5
   },
   {
     "name": "Thermaltake CL-O004-GROSGM-A",
     "price": 12.98,
     "amount": 4
-  },
-  {
-    "name": "ID-COOLING Frost X45",
-    "price": null,
-    "amount": 2
   },
   {
     "name": "Cooler Master MasterGel Pro",
@@ -306,27 +416,27 @@
   },
   {
     "name": "Thermalright TF4",
-    "price": null,
+    "price": 8.99,
     "amount": 1.5
   },
   {
     "name": "Innovation Cooling Diamond \"7 Carat\"",
-    "price": null,
+    "price": 8.99,
     "amount": 1.5
   },
   {
-    "name": "Thermal Grizzly Polartherm X-8",
-    "price": 9.99,
-    "amount": 10
-  },
-  {
     "name": "Thermalright TFX",
-    "price": null,
+    "price": 8.99,
     "amount": 2
   },
   {
+    "name": "Thermalright TFX",
+    "price": 17.99,
+    "amount": 6.2
+  },
+  {
     "name": "Cooler Master IC ESSENTIAL E2",
-    "price": null,
+    "price": 11.99,
     "amount": 3.5
   },
   {
@@ -345,19 +455,14 @@
     "amount": 1.5
   },
   {
+    "name": "Cooler Master MasterGel Maker",
+    "price": 11.99,
+    "amount": 4
+  },
+  {
     "name": "Thermaltake CL-O002-GROSGM-A",
     "price": 12.99,
     "amount": 40
-  },
-  {
-    "name": "Thermal Grizzly Polartherm X-10",
-    "price": 7.99,
-    "amount": 5
-  },
-  {
-    "name": "Thermal Grizzly Polartherm X-8",
-    "price": 7.29,
-    "amount": 5
   },
   {
     "name": "StarTech HeatGrease",
@@ -375,9 +480,19 @@
     "amount": 50
   },
   {
-    "name": "Gelid Solutions GC-Extreme",
-    "price": 18.98,
+    "name": "Thermal Hero ULTRA",
+    "price": 12.9,
+    "amount": 4
+  },
+  {
+    "name": "Thermal Hero ULTRA",
+    "price": 19.89,
     "amount": 10
+  },
+  {
+    "name": "Thermal Hero ULTRA",
+    "price": 16.48,
+    "amount": 2
   },
   {
     "name": "Cooler Master CryoFuze Violet",
@@ -386,28 +501,28 @@
   },
   {
     "name": "be quiet! DC1",
-    "price": 42,
+    "price": 42.0,
     "amount": 3
   },
   {
-    "name": "Thermal Grizzly Polartherm X-10",
-    "price": 12.84,
-    "amount": 10
-  },
-  {
     "name": "Thermalright TF8",
-    "price": null,
+    "price": 8.99,
     "amount": 2
   },
   {
-    "name": "Thermal Grizzly Polartherm X-10",
-    "price": 23.19,
-    "amount": 40
+    "name": "Thermalright TF8",
+    "price": 17.99,
+    "amount": 5.8
   },
   {
     "name": "NZXT High-performance",
-    "price": null,
+    "price": 27.99,
     "amount": 15
+  },
+  {
+    "name": "NZXT High-performance",
+    "price": 11.99,
+    "amount": 3
   },
   {
     "name": "Zalman STC8",
@@ -416,7 +531,7 @@
   },
   {
     "name": "Coollaboratory Liquid Pro",
-    "price": null,
+    "price": 8.99,
     "amount": 0.15
   },
   {
@@ -425,39 +540,39 @@
     "amount": 2.5
   },
   {
-    "name": "Thermal Hero QUANTUM",
-    "price": 37.99,
+    "name": "ARCTIC MX-5",
+    "price": 11.99,
     "amount": 4
   },
   {
     "name": "ARCTIC MX-5",
-    "price": null,
-    "amount": 4
+    "price": 17.99,
+    "amount": 8
   },
   {
-    "name": "ARCTIC MX-4 (2019)",
-    "price": null,
+    "name": "ARCTIC MX-5",
+    "price": 8.99,
     "amount": 2
   },
   {
+    "name": "ARCTIC MX-5",
+    "price": 27.99,
+    "amount": 20
+  },
+  {
     "name": "Thermaltake TG-50",
-    "price": null,
+    "price": 11.99,
     "amount": 4
   },
   {
-    "name": "Thermal Grizzly Polartherm X-8",
-    "price": 16.98,
-    "amount": 40
-  },
-  {
-    "name": "Arctic Silver Ceramique 2 Tri-Linear",
-    "price": 14,
-    "amount": 25
+    "name": "Deepcool DM9",
+    "price": 8.99,
+    "amount": 1.5
   },
   {
     "name": "Deepcool DM9",
-    "price": null,
-    "amount": 1.5
+    "price": 11.99,
+    "amount": 4
   },
   {
     "name": "Prolimatech PK-2 Nano Aluminum High-Grade",
@@ -465,24 +580,24 @@
     "amount": 5
   },
   {
+    "name": "Prolimatech PK-2 Nano Aluminum High-Grade",
+    "price": 10.36,
+    "amount": 1.5
+  },
+  {
+    "name": "Prolimatech PK-2 Nano Aluminum High-Grade",
+    "price": 39.33,
+    "amount": 30
+  },
+  {
     "name": "Coollaboratory Liquid Ultra",
-    "price": null,
+    "price": 8.99,
     "amount": 0.15
   },
   {
-    "name": "ARCTIC MX-2",
-    "price": null,
-    "amount": 65
-  },
-  {
     "name": "ARCTIC MX-2 2019 Edition",
-    "price": null,
+    "price": 11.99,
     "amount": 4
-  },
-  {
-    "name": "NZXT High-performance",
-    "price": null,
-    "amount": 3
   },
   {
     "name": "Thermaltake TG-30",
@@ -500,14 +615,44 @@
     "amount": 50
   },
   {
+    "name": "Thermal Hero NEO",
+    "price": 14.49,
+    "amount": 4
+  },
+  {
+    "name": "Thermal Hero NEO",
+    "price": 24.99,
+    "amount": 10
+  },
+  {
+    "name": "Thermal Hero NEO",
+    "price": 8.99,
+    "amount": 2
+  },
+  {
     "name": "Thermal Hero METALLIQ",
     "price": 18.48,
     "amount": 1
   },
   {
+    "name": "Thermal Hero METALLIQ",
+    "price": 16.89,
+    "amount": 2
+  },
+  {
+    "name": "Thermal Hero METALLIQ",
+    "price": 34.9,
+    "amount": 5
+  },
+  {
     "name": "Arctic Silver Arctic Alumina Premium Ceramic Polysynthetic",
-    "price": null,
+    "price": 27.99,
     "amount": 14
+  },
+  {
+    "name": "Arctic Silver Arctic Alumina Premium Ceramic Polysynthetic",
+    "price": 8.99,
+    "amount": 1.75
   },
   {
     "name": "TUNIQ TX-4 Extreme Performance",
@@ -521,38 +666,18 @@
   },
   {
     "name": "EK EK-TIM Ectotherm",
-    "price": null,
+    "price": 17.99,
     "amount": 5
   },
   {
-    "name": "Thermalright TFX",
-    "price": null,
-    "amount": 6.2
-  },
-  {
     "name": "Iceberg Thermal FUZEIce Plus",
-    "price": null,
+    "price": 11.99,
     "amount": 3.5
   },
   {
-    "name": "Thermal Hero QUANTUM",
-    "price": 31.09,
-    "amount": 10
-  },
-  {
-    "name": "Thermal Hero METALLIQ",
-    "price": 16.89,
-    "amount": 2
-  },
-  {
-    "name": "Prolimatech PK-2 Nano Aluminum High-Grade",
-    "price": 10.36,
-    "amount": 1.5
-  },
-  {
-    "name": "Thermal Hero QUANTUM",
-    "price": 11.64,
-    "amount": 1
+    "name": "Iceberg Thermal FUZEIce Plus",
+    "price": 17.99,
+    "amount": 7
   },
   {
     "name": "Prolimatech PK-1",
@@ -560,84 +685,59 @@
     "amount": 5
   },
   {
-    "name": "Antec Formula 7 Nano Diamond",
-    "price": null,
-    "amount": 4
-  },
-  {
-    "name": "Prolimatech PK-2 Nano Aluminum High-Grade",
-    "price": 39.33,
-    "amount": 30
-  },
-  {
-    "name": "Rosewill RCX-TC001",
-    "price": 8,
-    "amount": 5
-  },
-  {
-    "name": "ARCTIC MX-2",
-    "price": null,
-    "amount": 65
-  },
-  {
     "name": "Prolimatech PK-1",
     "price": 38.99,
     "amount": 30
   },
   {
+    "name": "Prolimatech PK-1",
+    "price": 8.99,
+    "amount": 1.5
+  },
+  {
+    "name": "Antec Formula 7 Nano Diamond",
+    "price": 11.99,
+    "amount": 4
+  },
+  {
+    "name": "Rosewill RCX-TC001",
+    "price": 8.0,
+    "amount": 5
+  },
+  {
     "name": "Antec 77064",
-    "price": null,
+    "price": 8.99,
     "amount": 1
   },
   {
     "name": "Deepcool Z3",
-    "price": null,
+    "price": 8.99,
     "amount": 1.5
   },
   {
-    "name": "Prolimatech PK-Zero",
-    "price": 13.99,
-    "amount": 5
-  },
-  {
-    "name": "Cooler Master MasterGel Maker",
-    "price": null,
-    "amount": 4
-  },
-  {
     "name": "Phanteks PH-NDC_02",
-    "price": null,
+    "price": 8.99,
     "amount": 2
   },
   {
-    "name": "ARCTIC MX-2",
-    "price": null,
-    "amount": 30
-  },
-  {
-    "name": "Thermalright TF8",
-    "price": null,
-    "amount": 5.8
-  },
-  {
     "name": "Thermalright Silver King",
-    "price": null,
+    "price": 8.99,
     "amount": 1
-  },
-  {
-    "name": "ARCTIC MX-5",
-    "price": null,
-    "amount": 8
   },
   {
     "name": "Gelid Solutions GC-4",
-    "price": null,
+    "price": 11.99,
     "amount": 3.5
   },
   {
-    "name": "Gelid Solutions GC-Extreme",
-    "price": null,
+    "name": "Gelid Solutions GC-4",
+    "price": 8.99,
     "amount": 1
+  },
+  {
+    "name": "Gelid Solutions GC-4",
+    "price": 17.99,
+    "amount": 10
   },
   {
     "name": "Xilence ZUB-XPTP.X5",
@@ -645,68 +745,43 @@
     "amount": 3
   },
   {
-    "name": "Thermal Hero ULTRA",
-    "price": 12.9,
-    "amount": 4
-  },
-  {
-    "name": "Thermal Hero ULTRA",
-    "price": 19.89,
-    "amount": 10
-  },
-  {
-    "name": "Thermal Hero QUANTUM",
-    "price": 16.89,
-    "amount": 2
-  },
-  {
-    "name": "Thermal Hero METALLIQ",
-    "price": 34.9,
-    "amount": 5
-  },
-  {
     "name": "Masscool Stars-700",
     "price": 5.99,
     "amount": 0.5
   },
   {
-    "name": "Thermal Hero NEO",
-    "price": 14.49,
-    "amount": 4
-  },
-  {
     "name": "Cooler Master ThermalFusion 400",
-    "price": null,
+    "price": 11.99,
     "amount": 4
   },
   {
     "name": "Gelid Solutions GC-Supreme",
-    "price": null,
+    "price": 17.99,
     "amount": 7
   },
   {
     "name": "TUNIQ TX-2",
-    "price": null,
+    "price": 11.99,
     "amount": 3.5
   },
   {
     "name": "Zalman ZM-STG2",
-    "price": null,
+    "price": 11.99,
     "amount": 3.5
   },
   {
     "name": "Innovation Cooling ICD24",
-    "price": null,
+    "price": 17.99,
     "amount": 4.8
   },
   {
     "name": "Graphitene GTP-5",
-    "price": null,
+    "price": 11.99,
     "amount": 3.5
   },
   {
     "name": "NOX Thermal 880",
-    "price": null,
+    "price": 27.99,
     "amount": 23
   },
   {
@@ -715,148 +790,123 @@
     "amount": 5
   },
   {
-    "name": "ARCTIC MX-5",
-    "price": null,
-    "amount": 2
-  },
-  {
-    "name": "ARCTIC MX-5",
-    "price": null,
-    "amount": 20
-  },
-  {
-    "name": "ARCTIC MX-5 Incl. Spatula",
-    "price": null,
-    "amount": 20
-  },
-  {
     "name": "Iceberg Thermal FUZEIce",
-    "price": null,
+    "price": 11.99,
     "amount": 3.5
   },
   {
+    "name": "Iceberg Thermal FUZEIce",
+    "price": 17.99,
+    "amount": 7
+  },
+  {
     "name": "Deepcool DP-TIM-Z10-1",
-    "price": null,
+    "price": 17.99,
     "amount": 5
   },
   {
     "name": "Deepcool EX750",
-    "price": null,
+    "price": 17.99,
     "amount": 5
   },
   {
+    "name": "Deepcool EX750",
+    "price": 11.99,
+    "amount": 3
+  },
+  {
     "name": "Thermalright TF8 EX",
-    "price": null,
+    "price": 8.99,
     "amount": 1.5
   },
   {
+    "name": "Thermalright TF8 EX",
+    "price": 11.99,
+    "amount": 2.9
+  },
+  {
     "name": "Zalman STC7",
-    "price": null,
+    "price": 11.99,
     "amount": 4
-  },
-  {
-    "name": "Deepcool DM9",
-    "price": null,
-    "amount": 4
-  },
-  {
-    "name": "Thermal Hero NEO",
-    "price": 24.99,
-    "amount": 10
-  },
-  {
-    "name": "Thermal Hero ULTRA",
-    "price": 16.48,
-    "amount": 2
   },
   {
     "name": "Antec Formula 6 Nano Diamond",
-    "price": null,
+    "price": 11.99,
     "amount": 4
   },
   {
-    "name": "Arctic Silver Arctic Alumina Premium Ceramic Polysynthetic",
-    "price": null,
-    "amount": 1.75
-  },
-  {
     "name": "Zalman ZM - STG1",
-    "price": null,
+    "price": 11.99,
     "amount": 3.5
   },
   {
     "name": "Cooler Master IceFusion",
-    "price": null,
+    "price": 27.99,
     "amount": 40
   },
   {
-    "name": "Evercool TC-25",
-    "price": null,
-    "amount": 25
-  },
-  {
     "name": "Cooler Master IceFusion",
-    "price": null,
+    "price": 27.99,
     "amount": 200
   },
   {
+    "name": "Evercool TC-25",
+    "price": 27.99,
+    "amount": 25
+  },
+  {
     "name": "Xigmatek PTI-G4512",
-    "price": null,
+    "price": 11.99,
     "amount": 4
   },
   {
     "name": "TUNIQ TX-2 Extreme",
-    "price": null,
+    "price": 8.99,
     "amount": 1
   },
   {
     "name": "Masscool G751 Shin-Etsu",
-    "price": null,
+    "price": 8.99,
     "amount": 0.5
   },
   {
     "name": "Masscool Fanner-420",
-    "price": null,
+    "price": 8.99,
     "amount": 2
   },
   {
-    "name": "ARCTIC MX-2",
-    "price": null,
-    "amount": 30
-  },
-  {
     "name": "Arctic Silver Arctic Alumina",
-    "price": null,
+    "price": 17.99,
     "amount": 5
   },
   {
     "name": "Rosewill RCX-TC090PRO",
-    "price": null,
+    "price": 27.99,
     "amount": 20
   },
   {
     "name": "Xigmatek PTI-G3606",
-    "price": null,
+    "price": 11.99,
     "amount": 3
   },
   {
     "name": "Biostar TC-DIAMOND",
-    "price": null,
+    "price": 8.99,
     "amount": 1.5
   },
   {
     "name": "Thermaltake CL-O0028",
-    "price": null,
+    "price": 11.99,
     "amount": 4
   },
   {
     "name": "Xigmatek Freezing Point G4718",
-    "price": null,
+    "price": 11.99,
     "amount": 4
   },
   {
     "name": "Evercool STC-01",
-    "price": null,
+    "price": 11.99,
     "amount": 4
   },
   {
@@ -865,38 +915,33 @@
     "amount": 1.5
   },
   {
-    "name": "Prolimatech PK-1",
-    "price": null,
-    "amount": 1.5
-  },
-  {
     "name": "Sunbeam GI-1",
-    "price": null,
+    "price": 11.99,
     "amount": 3.5
   },
   {
     "name": "Sunbeam Iceberg TS-IB",
-    "price": null,
+    "price": 8.99,
     "amount": 1
   },
   {
     "name": "Thermene Graphene",
-    "price": null,
+    "price": 17.99,
     "amount": 9
   },
   {
     "name": "Deepcool Z9",
-    "price": null,
+    "price": 11.99,
     "amount": 3
   },
   {
     "name": "Evercool STC-02",
-    "price": null,
+    "price": 11.99,
     "amount": 3
   },
   {
     "name": "Logisys Z5",
-    "price": null,
+    "price": 11.99,
     "amount": 3
   },
   {
@@ -906,128 +951,53 @@
   },
   {
     "name": "Thermaltake CLZ0022",
-    "price": null,
-    "amount": 4
-  },
-  {
-    "name": "Xigmatek Freezing Point G4718",
-    "price": null,
+    "price": 11.99,
     "amount": 4
   },
   {
     "name": "Cooler Master Extreme Fusion X1",
-    "price": null,
+    "price": 8.99,
     "amount": 1.5
-  },
-  {
-    "name": "Prolimatech PK-Zero",
-    "price": null,
-    "amount": 1.5
-  },
-  {
-    "name": "Prolimatech PK-Zero",
-    "price": null,
-    "amount": 30
   },
   {
     "name": "CRYORIG CP15",
-    "price": null,
+    "price": 11.99,
     "amount": 4
   },
   {
     "name": "CRYORIG CP5",
-    "price": null,
+    "price": 11.99,
     "amount": 4
   },
   {
     "name": "CRYORIG CP7",
-    "price": null,
+    "price": 11.99,
     "amount": 4
   },
   {
     "name": "Thermalright Chill Factor 3",
-    "price": null,
+    "price": 11.99,
     "amount": 4
   },
   {
     "name": "Gelid Solutions GC-2",
-    "price": null,
+    "price": 17.99,
     "amount": 7
-  },
-  {
-    "name": "Cooler Master MasterGel Maker",
-    "price": null,
-    "amount": 1.5
   },
   {
     "name": "Cooler Master MasterGel Regular",
-    "price": null,
+    "price": 8.99,
     "amount": 1.5
   },
   {
-    "name": "ARCTIC MX-5 Incl. Spatula",
-    "price": null,
-    "amount": 4
-  },
-  {
-    "name": "ARCTIC MX-5 Incl. Spatula",
-    "price": null,
-    "amount": 8
-  },
-  {
-    "name": "Iceberg Thermal FUZEIce",
-    "price": null,
-    "amount": 7
-  },
-  {
-    "name": "Iceberg Thermal FUZEIce Plus",
-    "price": null,
-    "amount": 7
-  },
-  {
-    "name": "Gelid Solutions GC-4",
-    "price": null,
-    "amount": 1
-  },
-  {
-    "name": "Gelid Solutions GC-4",
-    "price": null,
-    "amount": 10
-  },
-  {
-    "name": "Gelid Solutions GC-Extreme",
-    "price": null,
-    "amount": 3.5
-  },
-  {
-    "name": "Gelid Solutions GC-Extreme",
-    "price": null,
-    "amount": 10
-  },
-  {
-    "name": "ARCTIC MX-2",
-    "price": null,
-    "amount": 8
-  },
-  {
-    "name": "Deepcool EX750",
-    "price": null,
-    "amount": 3
-  },
-  {
     "name": "Enermax ETC521",
-    "price": null,
+    "price": 11.99,
     "amount": 3
   },
   {
     "name": "YEYIAN YCT-PHTC-01",
-    "price": null,
+    "price": 8.99,
     "amount": 2
-  },
-  {
-    "name": "Thermalright TF8 EX",
-    "price": null,
-    "amount": 2.9
   },
   {
     "name": "Scythe Thermal Elixer 2",
@@ -1040,13 +1010,8 @@
     "amount": 1.5
   },
   {
-    "name": "Thermal Hero NEO",
-    "price": null,
-    "amount": 2
-  },
-  {
     "name": "Thermal Hero QUANTUM with paste gun",
-    "price": null,
+    "price": 27.99,
     "amount": 50
   }
 ]

@@ -116,7 +116,7 @@
   },
   {
     "name": "OBSBOT Tiny 2",
-    "price": 299,
+    "price": 299.0,
     "resolutions": [
       "4k",
       "2k",
@@ -257,7 +257,7 @@
   },
   {
     "name": "Insta360 Insta360 Link",
-    "price": 179,
+    "price": 179.0,
     "resolutions": [
       "4k",
       "1080p",
@@ -273,7 +273,7 @@
   },
   {
     "name": "Adesso Cybertrack H4",
-    "price": 28,
+    "price": 28.0,
     "resolutions": [
       "1080p"
     ],
@@ -301,21 +301,6 @@
       "Android"
     ],
     "fov": 65
-  },
-  {
-    "name": "Logitech MX BRIO",
-    "price": 194.99,
-    "resolutions": [
-      "4k",
-      "1080p"
-    ],
-    "connection": "USB 3.2 Gen 1 Type-C",
-    "focus_type": "Auto",
-    "os": [
-      "Windows",
-      "ChromeOS"
-    ],
-    "fov": 90
   },
   {
     "name": "Anker AnkerWork C310",
@@ -380,7 +365,7 @@
   },
   {
     "name": "Logitech StreamCam",
-    "price": 159,
+    "price": 159.0,
     "resolutions": [
       "1080p",
       "720p"
@@ -395,7 +380,7 @@
   },
   {
     "name": "OBSBOT MEET 2",
-    "price": 129,
+    "price": 129.0,
     "resolutions": [
       "4k",
       "1080p",
@@ -411,23 +396,8 @@
     "fov": 79.4
   },
   {
-    "name": "Logitech StreamCam",
-    "price": 168.95,
-    "resolutions": [
-      "1080p",
-      "720p"
-    ],
-    "connection": "USB 3.2 Gen 1 Type-C",
-    "focus_type": "Auto",
-    "os": [
-      "Windows",
-      "OS X"
-    ],
-    "fov": 78
-  },
-  {
     "name": "Logitech C925e",
-    "price": 74,
+    "price": 74.0,
     "resolutions": [
       "1080p",
       "720p"
@@ -487,21 +457,6 @@
       "Windows",
       "OS X",
       "Android"
-    ],
-    "fov": 90
-  },
-  {
-    "name": "Logitech MX BRIO",
-    "price": 199.99,
-    "resolutions": [
-      "4k",
-      "1080p"
-    ],
-    "connection": "USB 3.2 Gen 1 Type-C",
-    "focus_type": "Auto",
-    "os": [
-      "Windows",
-      "ChromeOS"
     ],
     "fov": 90
   },
@@ -566,25 +521,8 @@
     "fov": null
   },
   {
-    "name": "OBSBOT MEET 2",
-    "price": 129,
-    "resolutions": [
-      "4k",
-      "1080p",
-      "720p",
-      "480p"
-    ],
-    "connection": "USB 2.0 Type-C",
-    "focus_type": "Auto",
-    "os": [
-      "Windows",
-      "OS X"
-    ],
-    "fov": 79.4
-  },
-  {
     "name": "OBSBOT Tiny 4K",
-    "price": null,
+    "price": 69.99,
     "resolutions": [
       "4k",
       "1080p",
@@ -615,7 +553,7 @@
   },
   {
     "name": "Asus ROG EYE",
-    "price": null,
+    "price": 69.99,
     "resolutions": [
       "1080p"
     ],
@@ -644,40 +582,6 @@
     "fov": null
   },
   {
-    "name": "NexiGo N660P",
-    "price": 51.99,
-    "resolutions": [
-      "1080p",
-      "720p",
-      "480p"
-    ],
-    "connection": "USB 2.0 Type-A",
-    "focus_type": "Auto",
-    "os": [
-      "Windows",
-      "OS X",
-      "ChromeOS"
-    ],
-    "fov": null
-  },
-  {
-    "name": "NexiGo N660P",
-    "price": 55.19,
-    "resolutions": [
-      "1080p",
-      "720p",
-      "480p"
-    ],
-    "connection": "USB 2.0 Type-A",
-    "focus_type": "Auto",
-    "os": [
-      "Windows",
-      "OS X",
-      "ChromeOS"
-    ],
-    "fov": null
-  },
-  {
     "name": "Adesso Cybertrack H5",
     "price": 42.99,
     "resolutions": [
@@ -693,7 +597,7 @@
   },
   {
     "name": "Anker B600 Video Bar",
-    "price": null,
+    "price": 69.99,
     "resolutions": [
       "2k",
       "1080p",
@@ -709,7 +613,7 @@
   },
   {
     "name": "Creative Labs Live! Cam Sync 1080p",
-    "price": 62,
+    "price": 62.0,
     "resolutions": [
       "1080p",
       "720p"
@@ -741,7 +645,7 @@
   },
   {
     "name": "Wansview 106JD",
-    "price": null,
+    "price": 69.99,
     "resolutions": [
       "1080p"
     ],
@@ -801,7 +705,7 @@
   },
   {
     "name": "Logitech C310",
-    "price": null,
+    "price": 34.99,
     "resolutions": [
       "720p"
     ],
@@ -814,23 +718,6 @@
       "Android"
     ],
     "fov": 60
-  },
-  {
-    "name": "OBSBOT MEET 2",
-    "price": 129,
-    "resolutions": [
-      "4k",
-      "1080p",
-      "720p",
-      "480p"
-    ],
-    "connection": "USB 2.0 Type-C",
-    "focus_type": "Auto",
-    "os": [
-      "Windows",
-      "OS X"
-    ],
-    "fov": 79.4
   },
   {
     "name": "Microsoft LifeCam HD-3000",
@@ -893,7 +780,7 @@
   },
   {
     "name": "Anker PowerConf C302",
-    "price": null,
+    "price": 69.99,
     "resolutions": [
       "2k",
       "1080p",
@@ -909,7 +796,7 @@
   },
   {
     "name": "AUKEY PC-LM1",
-    "price": null,
+    "price": 69.99,
     "resolutions": [
       "1080p",
       "720p",
@@ -943,7 +830,7 @@
   },
   {
     "name": "Green Extreme T1000",
-    "price": 129,
+    "price": 129.0,
     "resolutions": [
       "1080p"
     ],
@@ -987,7 +874,7 @@
   },
   {
     "name": "Avermedia HD Webcam 310",
-    "price": null,
+    "price": 69.99,
     "resolutions": [
       "1080p",
       "720p",
@@ -1004,7 +891,7 @@
   },
   {
     "name": "Avermedia 4K UHD Webcam 510",
-    "price": null,
+    "price": 69.99,
     "resolutions": [
       "4k",
       "1080p",
@@ -1020,7 +907,7 @@
   },
   {
     "name": "Microsoft LifeCam Studio for Business",
-    "price": 89,
+    "price": 89.0,
     "resolutions": [
       "1080p",
       "720p"
@@ -1048,7 +935,7 @@
   },
   {
     "name": "Microsoft LifeCam HD-3000 L2",
-    "price": null,
+    "price": 34.99,
     "resolutions": [
       "720p"
     ],
@@ -1076,7 +963,7 @@
   },
   {
     "name": "Creative Labs BlasterX Senz3D",
-    "price": null,
+    "price": 69.99,
     "resolutions": [
       "1080p",
       "720p"
@@ -1090,7 +977,7 @@
   },
   {
     "name": "Creative Labs Live! Cam Sync HD",
-    "price": null,
+    "price": 34.99,
     "resolutions": [
       "720p"
     ],
@@ -1104,7 +991,7 @@
   },
   {
     "name": "Wansview 105JD",
-    "price": null,
+    "price": 69.99,
     "resolutions": [
       "1080p"
     ],
@@ -1119,7 +1006,7 @@
   },
   {
     "name": "Anker PowerConf C300",
-    "price": null,
+    "price": 69.99,
     "resolutions": [
       "1080p",
       "720p"
@@ -1134,7 +1021,7 @@
   },
   {
     "name": "OBSBOT Tiny",
-    "price": null,
+    "price": 69.99,
     "resolutions": [
       "1080p",
       "720p"
@@ -1149,7 +1036,7 @@
   },
   {
     "name": "Green Extreme T200 + Live Streaming Bundle",
-    "price": null,
+    "price": 69.99,
     "resolutions": [
       "1080p"
     ],
@@ -1164,7 +1051,7 @@
   },
   {
     "name": "Wansview 102JD",
-    "price": null,
+    "price": 69.99,
     "resolutions": [
       "1080p"
     ],
@@ -1179,7 +1066,7 @@
   },
   {
     "name": "Adesso Cybertrack H4P",
-    "price": null,
+    "price": 69.99,
     "resolutions": [
       "1080p"
     ],
@@ -1193,7 +1080,7 @@
   },
   {
     "name": "Green Extreme T300",
-    "price": null,
+    "price": 69.99,
     "resolutions": [
       "1080p",
       "720p",
