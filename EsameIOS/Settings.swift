@@ -13,11 +13,13 @@ struct Settings: View {
     var body: some View {
         NavigationStack{
             Form {
-                Section("User"){
+                Section("Utente"){
                     if(impostazioni.user_id == ""){
                         NavigationLink(destination: LoginView()) {
                             Text("Accedi o Registrati").foregroundColor(.cyan)
                         }
+                    } else {
+                        
                     }
                 }
                 Section("App") {
