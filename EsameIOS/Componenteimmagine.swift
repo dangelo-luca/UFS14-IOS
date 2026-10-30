@@ -2,12 +2,17 @@
 //  ComponenteImmagine.swift
 //  EsameIOS
 //
-//  Immagine di un componente:
-//   1. cerca una foto del PRODOTTO su Wikimedia Commons (gratis, senza chiave)
-//   2. se non trova nulla (o nel frattempo) mostra l'icona SF Symbol della categoria
+//  Mostra il LOGO DELLA MARCA del componente, sempre nitido.
+//  Fonti (tutte gratuite e senza chiave), provate in ordine:
+//   1. Simple Icons  -> logo vettoriale convertito in PNG da wsrv.nl (marche principali)
+//   2. Icon Horse    -> icona del sito della marca
+//  Un'immagine viene accettata SOLO se è abbastanza grande (>= 120 px sul lato corto).
+//  Se nessuna lo è, al posto di un logo sgranato si mostra un monogramma colorato
+//  con le iniziali della marca (sempre nitido).
 //
 
 import SwiftUI
+import UIKit
 
 // MARK: - Icona per categoria (chiave = nome del file json senza ".json")
 enum IconeCategoria {
@@ -42,105 +47,176 @@ enum IconeCategoria {
     }
 }
 
-// MARK: - Risposta delle API MediaWiki (Commons e Wikipedia)
-private struct RispostaWiki: Decodable {
-    struct Query: Decodable { let pages: [String: Pagina] }
-    struct Pagina: Decodable {
-        let index: Int?
-        let title: String?
-        let thumbnail: Thumb?           // Wikipedia
-        let imageinfo: [InfoImmagine]?  // Commons
+// MARK: - Marca: ricava sito e indirizzi del logo dal primo nome del prodotto
+enum Marca {
+    // marche scritte con più parole (controllate per prime)
+    private static let composte: [(String, String)] = [
+        ("western digital", "wdc.com"), ("cooler master", "coolermaster.com"),
+        ("be quiet", "bequiet.com"), ("lian li", "lian-li.com"),
+        ("silicon power", "silicon-power.com"), ("team group", "teamgroupinc.com"),
+        ("turtle beach", "turtlebeach.com"), ("in win", "inwin-style.com"),
+        ("fractal design", "fractal-design.com"), ("g.skill", "gskill.com"),
+        ("g skill", "gskill.com"), ("tp-link", "tp-link.com"),
+        ("audio-technica", "audio-technica.com"), ("hyper x", "hyperx.com"),
+        ("steel series", "steelseries.com")
+    ]
+
+    // marche il cui sito non è "nome.com"
+    private static let speciali: [String: String] = [
+        "wd": "wdc.com", "hp": "hp.com", "lg": "lg.com", "xfx": "xfxforce.com",
+        "sapphire": "sapphiretech.com", "teamgroup": "teamgroupinc.com",
+        "a-data": "adata.com", "cougar": "cougargaming.com",
+        "glorious": "gloriousgaming.com", "noctua": "noctua.at",
+        "arctic": "arctic.de", "creative": "creative.com", "gskill": "gskill.com"
+    ]
+
+    // Marche con logo vettoriale su Simple Icons (nomi verificati uno per uno).
+    // chiave = prima parola del nome in minuscolo, valore = nome del logo su Simple Icons
+    private static let simpleIcons: [String: String] = [
+        "asus": "asus", "corsair": "corsair", "msi": "msi", "kingston": "kingstontechnology",
+        "intel": "intel", "cooler": "coolermaster", "samsung": "samsung", "acer": "acer",
+        "seagate": "seagate", "hp": "hp", "lg": "lg", "amd": "amd", "nzxt": "nzxt",
+        "deepcool": "deepcool", "razer": "razer", "toshiba": "toshiba", "dell": "dell",
+        "sony": "sony", "steelseries": "steelseries", "hitachi": "hitachi",
+        "sennheiser": "sennheiser", "lenovo": "lenovo", "audio-technica": "audiotechnica",
+        "panasonic": "panasonic", "nec": "nec", "supermicro": "supermicro",
+        "tp-link": "tplink", "redragon": "redragon", "nvidia": "nvidia", "bose": "bose",
+        "apple": "apple", "denon": "denon", "netgear": "netgear", "jbl": "jbl",
+        "linksys": "linksys", "cisco": "cisco", "synology": "synology", "qnap": "qnap",
+        "fujitsu": "fujitsu", "huawei": "huawei", "elgato": "elgato", "sharp": "sharp",
+        "wacom": "wacom", "alienware": "alienware", "xiaomi": "xiaomi",
+        "motorola": "motorola", "hyperx": "hyperx"
+    ]
+
+    static func dominio(da nome: String) -> String? {
+        let minuscolo = nome.lowercased()
+        for (prefisso, dominio) in composte where minuscolo.hasPrefix(prefisso) {
+            return dominio
+        }
+        guard let prima = minuscolo.split(separator: " ").first else { return nil }
+        let chiave = String(prima)
+        if let d = speciali[chiave] { return d }
+        let pulita = chiave.filter { $0.isLetter || $0.isNumber || $0 == "-" }
+        guard pulita.count >= 2, pulita.first?.isLetter == true else { return nil }
+        return pulita + ".com"
     }
-    struct Thumb: Decodable { let source: String }
-    struct InfoImmagine: Decodable {
-        let thumburl: String?
-        let mime: String?
+
+    // Iniziali per il monogramma: "ASRock" -> "AS", "G.Skill" -> "GS"
+    static func iniziali(da nome: String) -> String {
+        let prima = nome.split(separator: " ").first.map(String.init) ?? ""
+        let lettere = prima.filter { $0.isLetter }
+        return lettere.isEmpty ? "?" : String(lettere.prefix(2)).uppercased()
     }
-    let query: Query?
+
+    // Gli indirizzi da provare, in ordine di qualità
+    static func urlLogo(da nome: String) -> [URL] {
+        var indirizzi: [String] = []
+
+        // 1. logo vettoriale nitido (se la marca è nella tabella)
+        let prima = nome.lowercased().split(separator: " ").first.map(String.init) ?? ""
+        if let slug = simpleIcons[prima] {
+            indirizzi.append("https://wsrv.nl/?url=cdn.simpleicons.org/\(slug)&output=png&w=256&h=256&fit=contain")
+        }
+
+        // 2. icona del sito della marca (di solito 180 px o più)
+        if let dominio = dominio(da: nome) {
+            indirizzi.append("https://icon.horse/icon/\(dominio)")
+        }
+        return indirizzi.compactMap { URL(string: $0) }
+    }
 }
 
-// MARK: - Servizio di ricerca (con cache su disco)
-actor ServizioImmagini {
-    static let shared = ServizioImmagini()
+// MARK: - Scarica i loghi, li controlla e li tiene in memoria (uno per marca)
+actor ServizioLoghi {
+    static let shared = ServizioLoghi()
 
-    // Chiave nuova: scarta la vecchia cache che aveva salvato solo "non trovato"
-    private let chiaveSalvataggio = "cacheImmaginiV3"
-    // nome prodotto -> url ("" = cercato ma non trovato)
-    private var cache: [String: String]
+    private let latoMinimo: CGFloat = 120          // sotto questa soglia il logo risulta sgranato
+    private var cache: [String: UIImage] = [:]
+    private var assenti: Set<String> = []
+    private var inCorso: [String: Task<(UIImage?, Bool), Never>] = [:]
 
-    init() {
-        cache = UserDefaults.standard.dictionary(forKey: "cacheImmaginiV3") as? [String: String] ?? [:]
+    func logo(per nome: String) async -> UIImage? {
+        guard let chiave = Marca.dominio(da: nome) else { return nil }
+        if let immagine = cache[chiave] { return immagine }
+        if assenti.contains(chiave) { return nil }
+
+        // se un'altra riga della stessa marca sta già scaricando, aspetta lo stesso risultato
+        let compito: Task<(UIImage?, Bool), Never>
+        if let esistente = inCorso[chiave] {
+            compito = esistente
+        } else {
+            let indirizzi = Marca.urlLogo(da: nome)
+            let minimo = latoMinimo
+            compito = Task { await Self.scarica(indirizzi, latoMinimo: minimo) }
+            inCorso[chiave] = compito
+        }
+
+        let (immagine, erroreRete) = await compito.value
+        inCorso[chiave] = nil
+
+        if let immagine {
+            cache[chiave] = immagine
+        } else if !erroreRete {
+            assenti.insert(chiave)      // nessuna fonte ha un logo abbastanza grande
+        }
+        return immagine
     }
 
-    func url(nome: String) async -> URL? {
-        if let salvato = cache[nome] {
-            return salvato.isEmpty ? nil : URL(string: salvato)
-        }
-        do {
-            let trovato = try await cercaSuCommons(nome)
-            cache[nome] = trovato ?? ""
-            UserDefaults.standard.set(cache, forKey: chiaveSalvataggio)
-            print("IMMAGINI: \(nome) -> \(trovato ?? "nessuna immagine")")
-            return trovato.flatMap { URL(string: $0) }
-        } catch {
-            // errore di rete o riga uscita dallo schermo: non salvo, riproverà
-            if !(error is CancellationError), (error as? URLError)?.code != .cancelled {
-                print("IMMAGINI: errore per \(nome): \(error)")
+    private static func scarica(_ indirizzi: [URL], latoMinimo: CGFloat) async -> (UIImage?, Bool) {
+        var erroreRete = false
+        for url in indirizzi {
+            do {
+                let (dati, risposta) = try await URLSession.shared.data(from: url)
+                guard (risposta as? HTTPURLResponse)?.statusCode == 200,
+                      let immagine = UIImage(data: dati) else { continue }
+                let lato = min(immagine.size.width, immagine.size.height) * immagine.scale
+                if lato >= latoMinimo { return (immagine, false) }
+            } catch {
+                erroreRete = true
             }
-            return nil
         }
+        return (nil, erroreRete)
+    }
+}
+
+// MARK: - Mostra il logo; se non c'è (o è troppo piccolo) mostra `alternativa`
+struct LogoMarca<Alternativa: View>: View {
+    let nome: String
+    var margine: CGFloat = 0
+    let alternativa: Alternativa
+
+    @State private var immagine: UIImage?
+    @State private var finito = false
+
+    init(nome: String, margine: CGFloat = 0, @ViewBuilder alternativa: () -> Alternativa) {
+        self.nome = nome
+        self.margine = margine
+        self.alternativa = alternativa()
     }
 
-    // Foto del prodotto vero. Un file è accettato solo se il suo titolo contiene
-    // TUTTE le sigle del modello (es. "a10" e "7800", oppure "5600x") e non parla
-    // di loghi, edifici, schemi ecc. Meglio un'icona che una foto sbagliata.
-    private func cercaSuCommons(_ nome: String) async throws -> String? {
-        let sigle = sigleModello(nome)
-        guard !sigle.isEmpty else { return nil }
-        let r = try await chiama(host: "commons.wikimedia.org", [
-            "action": "query", "format": "json",
-            "generator": "search", "gsrnamespace": "6",
-            "gsrsearch": nome, "gsrlimit": "10",
-            "prop": "imageinfo", "iiprop": "url|mime", "iiurlwidth": "400"
-        ])
-        let vietate = ["logo", "icon", "wordmark", "building", "headquarters", "campus",
-                       "diagram", "chart", "screenshot", "schematic", "map", "die shot", "benchmark"]
-        let pagine = (r.query?.pages.values.sorted { ($0.index ?? 99) < ($1.index ?? 99) }) ?? []
-        for p in pagine {
-            guard let titolo = p.title?.lowercased(),
-                  sigle.allSatisfy({ titolo.contains($0) }),
-                  !vietate.contains(where: { titolo.contains($0) }),
-                  let info = p.imageinfo?.first,
-                  let mime = info.mime, ["image/jpeg", "image/png"].contains(mime),
-                  let url = info.thumburl else { continue }
-            return url
+    var body: some View {
+        Group {
+            if let immagine {
+                Image(uiImage: immagine)
+                    .resizable()
+                    .interpolation(.high)
+                    .antialiased(true)
+                    .scaledToFit()
+                    .padding(margine)
+            } else if finito {
+                alternativa
+            } else {
+                Color.clear
+            }
         }
-        return nil
-    }
-
-    // Sigle del modello: le parole con un numero (almeno 3 caratteri) tra le prime
-    // tre dopo la marca. "AMD A10-7800" -> ["a10","7800"]; "AMD Ryzen 5 5600X" -> ["5600x"]
-    private func sigleModello(_ nome: String) -> [String] {
-        let parti = nome.lowercased()
-            .components(separatedBy: CharacterSet.alphanumerics.inverted)
-            .filter { !$0.isEmpty }
-        return Array(parti.dropFirst().prefix(3))
-            .filter { $0.count >= 3 && $0.contains(where: \.isNumber) }
-    }
-
-    private func chiama(host: String, _ parametri: [String: String]) async throws -> RispostaWiki {
-        var comp = URLComponents()
-        comp.scheme = "https"
-        comp.host = host
-        comp.path = "/w/api.php"
-        comp.queryItems = parametri.map { URLQueryItem(name: $0.key, value: $0.value) }
-        guard let url = comp.url else { throw URLError(.badURL) }
-
-        var richiesta = URLRequest(url: url)
-        // Wikimedia chiede uno User-Agent descrittivo
-        richiesta.setValue("EsameIOS/1.0 (progetto universitario)", forHTTPHeaderField: "User-Agent")
-        let (dati, _) = try await URLSession.shared.data(for: richiesta)
-        return try JSONDecoder().decode(RispostaWiki.self, from: dati)
+        .task(id: nome) {
+            immagine = nil
+            finito = false
+            let trovata = await ServizioLoghi.shared.logo(per: nome)
+            if Task.isCancelled { return }      // la riga è uscita dallo schermo
+            immagine = trovata
+            finito = true
+        }
     }
 }
 
@@ -148,46 +224,26 @@ actor ServizioImmagini {
 struct ComponenteImmagine: View {
     let categoria: String
     let nome: String
-    let modello: any Model
+    var modello: (any Model)? = nil   // non serve più, resta per compatibilità con Components
     var dimensione: CGFloat = 60
 
-    @State private var url: URL?
-
-    // Categorie dove i nomi hanno una sigla di modello riconoscibile.
-    // Per memory, hard disk, ecc. i nomi sono troppo generici: restano icone.
-    private let categorieOnline: Set<String> = [
-        "cpu", "video-card", "motherboard", "monitor", "keyboard", "mouse",
-        "headphones", "webcam", "speakers", "case", "cpu-cooler", "power-supply"
-    ]
-
     var body: some View {
-        Group {
-            if let url {
-                AsyncImage(url: url) { fase in
-                    switch fase {
-                    case .success(let immagine):
-                        immagine.resizable().scaledToFit()
-                    default:
-                        icona
-                    }
-                }
-            } else {
-                icona
-            }
+        LogoMarca(nome: nome, margine: dimensione * 0.14) {
+            monogramma
         }
         .frame(width: dimensione, height: dimensione)
-        .task(id: nome) {
-            url = nil
-            guard categorieOnline.contains(categoria) else { return }
-            url = await ServizioImmagini.shared.url(nome: nome)
-        }
     }
 
-    private var icona: some View {
-        Image(systemName: IconeCategoria.simbolo(per: categoria))
-            .resizable()
-            .scaledToFit()
-            .padding(dimensione * 0.2)
-            .foregroundStyle(.secondary)
+    // Quadrato colorato con le iniziali della marca (colore della categoria)
+    private var monogramma: some View {
+        let colore = ColoreCategoria.colore(per: categoria)
+        return ZStack {
+            RoundedRectangle(cornerRadius: dimensione * 0.2)
+                .fill(colore.gradient)
+            Text(Marca.iniziali(da: nome))
+                .font(.system(size: dimensione * 0.34, weight: .bold, design: .rounded))
+                .foregroundStyle(.white)
+        }
+        .padding(dimensione * 0.08)
     }
 }
