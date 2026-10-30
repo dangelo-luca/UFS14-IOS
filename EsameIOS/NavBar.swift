@@ -34,20 +34,7 @@ enum Scheda: Int, CaseIterable {
     }
 }
 
-// MARK: - Schermata profilo (segnaposto)
 
-struct ProfiloView: View {
-    var body: some View {
-        VStack(spacing: 12) {
-            Image(systemName: "person.crop.circle.fill")
-                .font(.system(size: 80))
-                .foregroundStyle(.secondary)
-            Text("Profilo")
-                .font(.largeTitle)
-                .bold()
-        }
-    }
-}
 
 // MARK: - Contenitore principale: TabView + barra personalizzata
 
@@ -80,7 +67,7 @@ struct MainTabView: View {
             .toolbar(.hidden, for: .tabBar)
 
             NavigationStack {
-                ProfiloView()
+                Settings()
             }
             .tag(Scheda.profilo)
             .toolbar(.hidden, for: .tabBar)
