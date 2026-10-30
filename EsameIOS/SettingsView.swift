@@ -10,6 +10,7 @@ import SwiftUI
 struct Settings: View {
     @ObservedObject private var impostazioni = UserSettings.shared
     @State var mostraPopupCancella = false
+    @State var mostraPopupDisconnettiti = false
 
     var body: some View {
         NavigationStack{
@@ -31,6 +32,27 @@ struct Settings: View {
                         }
                         
                         Button(action: {
+                            mostraPopupDisconnettiti = true
+                        }) {
+                            HStack {
+                                Text("Disconnettiti").foregroundColor(.orange)
+                                Spacer()
+                                Image(systemName: "rectangle.portrait.and.arrow.right")
+                                    .foregroundColor(.orange)
+                                    .font(.footnote)
+                                
+                            }
+                            
+                        }.alert("Vuoi disconnetterti?", isPresented: $mostraPopupDisconnettiti){
+                            Button("Annulla", role: .cancel){}
+                            Button("Disconnetti", role: .destructive){
+                                
+                            }
+                        } message: {
+                            Text("Uscirai dal profilo e dovrai riaccedere per tutte le funzionalità")
+                        }
+                        
+                        Button(action: {
                             mostraPopupCancella = true
                         }) {
                             HStack {
@@ -47,6 +69,8 @@ struct Settings: View {
                             Button("Elimina", role: .destructive){
                                 
                             }
+                        } message: {
+                            Text("Eliminerai il profilo e tutti i dati a sé connessi, perderai l'accesso e tutte le build salvate")
                         }
                     }
                 }
