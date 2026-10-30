@@ -14,7 +14,7 @@ struct Risultato: Identifiable {
     let categoria: String
     let nome: String
     let prezzo: Double?
-    let modello: any Model
+    let modello: Component
 
     var dettagli: [String: Any] { modello.getDetails() }
 }

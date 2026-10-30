@@ -1,24 +1,6 @@
 import SwiftUI
 
-// MARK: - Colore di ogni categoria (usato per sfondo, prezzo, pulsanti e chip)
-enum ColoreCategoria {
-    static func colore(per categoria: String) -> Color {
-        switch categoria {
-        case "cpu":                                   return .indigo
-        case "cpu-cooler", "case-fan", "fan-controller": return .cyan
-        case "motherboard":                           return .teal
-        case "video-card":                            return .green
-        case "memory":                                return .orange
-        case "internal-hard-drive", "external-hard-drive", "optical-drive": return .purple
-        case "power-supply", "ups":                   return .yellow
-        case "case", "case-accessory":                return .gray
-        case "monitor":                               return .pink
-        case "keyboard", "mouse", "headphones", "speakers", "webcam", "sound-card": return .red
-        case "wired-network-card", "wireless-network-card": return .mint
-        default:                                      return .blue
-        }
-    }
-}
+// (ColoreCategoria RIMOSSO: il colore ora sta in ogni modello, vedi Component.colore)
 
 // MARK: - Sfondo sfumato (stesso stile della Home e di Crea la tua build)
 struct SfondoSfumato: View {
@@ -51,6 +33,7 @@ struct SfondoSfumato: View {
 struct Components: View {
     var titolo: String = "Componenti"
     var fonti: [Fonte] = RicercaView.tutte
+    var colore: Color = .blue                    // colore dello sfondo (es. CPU.colore)
     var alSelezionare: ((Risultato) -> Void)? = nil
 
     @Environment(\.dismiss) private var dismiss
@@ -59,11 +42,6 @@ struct Components: View {
     @State private var caricato = false
     @State private var ordine: OrdineRicerca = .nomeAZ
     private let massimo = 100
-
-    // Se la pagina mostra una sola categoria, lo sfondo prende il suo colore
-    private var colorePagina: Color {
-        fonti.count == 1 ? ColoreCategoria.colore(per: fonti[0].categoria) : .blue
-    }
 
     private func ordinaRisultati(_ dati: [Risultato]) -> [Risultato] {
         dati.sorted { r1, r2 in
@@ -87,7 +65,7 @@ struct Components: View {
         let lista = Array(ordinati.prefix(massimo))
 
         ZStack {
-            SfondoSfumato(colore: colorePagina)
+            SfondoSfumato(colore: colore)
 
             VStack(spacing: 10) {
                 // Barra di ricerca e Filtro separati e affiancati
@@ -126,7 +104,6 @@ struct Components: View {
                                         nome: r.nome,
                                         prezzo: r.prezzo,
                                         details: r.dettagli,
-                                        categoria: r.categoria,
                                         modello: r.modello,
                                         titoloBottone: "Aggiungi",
                                         onSelect: alSelezionare == nil ? nil : {
@@ -170,12 +147,13 @@ struct ProductView: View {
     var nome: String
     var prezzo: Double?
     var details: [String: Any]
-    var categoria: String? = nil
-    var modello: (any Model)? = nil
+    var modello: Component? = nil               // da qui arriva il colore
     var titoloBottone: String = "Aggiungi"
     var onSelect: (() -> Void)? = nil
 
-    private var accento: Color { ColoreCategoria.colore(per: categoria ?? "") }
+    // accento = testi e dettagli (si adatta a chiaro/scuro); riempimento = tinta piena con testo bianco
+    private var accento: Color { modello?.accento ?? TipoComponente.generico.accento }
+    private var riempimento: Color { modello?.colore ?? TipoComponente.generico.colore }
 
     // Le prime caratteristiche utili, mostrate come "chip" sotto il nome
     private var chip: [String] {
@@ -190,8 +168,8 @@ struct ProductView: View {
         VStack(alignment: .leading, spacing: 14) {
             // Logo + nome + prezzo
             HStack(alignment: .center, spacing: 14) {
-                if let categoria, let modello {
-                    ComponenteImmagine(categoria: categoria, nome: nome, modello: modello, dimensione: 72)
+                if modello != nil {
+                    ComponenteImmagine(colore: riempimento, nome: nome, dimensione: 72)
                         .background(Color.white)
                         .clipShape(RoundedRectangle(cornerRadius: 20))
                         .overlay(
@@ -273,8 +251,8 @@ struct ProductView: View {
                             .foregroundStyle(.white)
                             .padding(.horizontal, 18)
                             .padding(.vertical, 10)
-                            .background(accento.gradient, in: Capsule())
-                            .shadow(color: accento.opacity(0.35), radius: 6, y: 3)
+                            .background(riempimento.gradient, in: Capsule())
+                            .shadow(color: riempimento.opacity(0.35), radius: 6, y: 3)
                     }
                     .buttonStyle(.plain)
                 }
@@ -310,6 +288,6 @@ struct ProductView: View {
 
 #Preview {
     NavigationStack {
-        Components(titolo: "CPU", fonti: [Fonte("cpu.json", CPU.self)])
+        Components(titolo: "CPU", fonti: [Fonte("cpu.json", CPU.self)], colore: CPU.colore)
     }
 }

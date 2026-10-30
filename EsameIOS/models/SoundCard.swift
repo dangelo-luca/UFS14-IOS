@@ -2,11 +2,10 @@
 //  SoundCard.swift
 //  EsameIOS
 //
+class SoundCard: Component {
 
-class SoundCard: Model, Codable, Identifiable {
-    var id: String { self.name }
-    let name: String
-    let price: Double?
+    override class var categoria: TipoComponente { .soundCard }
+
     let channels: Double?
     let digital_audio: Int?
     let snr: Int?
@@ -15,18 +14,18 @@ class SoundCard: Model, Codable, Identifiable {
     let interface: String?
 
     required init(from decoder: any Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.name = try container.decode(String.self, forKey: .name)
-        self.price = try container.decodeIfPresent(Double.self, forKey: .price)
-        self.channels = try container.decodeIfPresent(Double.self, forKey: .channels)
-        self.digital_audio = try container.decodeIfPresent(Int.self, forKey: .digital_audio)
-        self.snr = try container.decodeIfPresent(Int.self, forKey: .snr)
-        self.sample_rate = try container.decodeIfPresent(Double.self, forKey: .sample_rate)
-        self.chipset = try container.decodeIfPresent(String.self, forKey: .chipset)
-        self.interface = try container.decodeIfPresent(String.self, forKey: .interface)
+        let container = try decoder.container(keyedBy: Chiave.self)
+
+        self.channels = try container.decodeIfPresent(Double.self, forKey: "channels")
+        self.digital_audio = try container.decodeIfPresent(Int.self, forKey: "digital_audio")
+        self.snr = try container.decodeIfPresent(Int.self, forKey: "snr")
+        self.sample_rate = try container.decodeIfPresent(Double.self, forKey: "sample_rate")
+        self.chipset = try container.decodeIfPresent(String.self, forKey: "chipset")
+        self.interface = try container.decodeIfPresent(String.self, forKey: "interface")
+        try super.init(from: decoder)
     }
 
-    func getDetails() -> [String: Any] {
+    override func getDetails() -> [String: Any] {
         var details = [String: Any]()
 
         details["Canali"] = channels ?? "N/D"

@@ -222,9 +222,8 @@ struct LogoMarca<Alternativa: View>: View {
 
 // MARK: - Vista da usare nelle liste e nei dettagli
 struct ComponenteImmagine: View {
-    let categoria: String
+    var colore: Color = .blue          // colore della categoria (es. modello.colore)
     let nome: String
-    var modello: (any Model)? = nil   // non serve più, resta per compatibilità con Components
     var dimensione: CGFloat = 60
 
     var body: some View {
@@ -236,8 +235,7 @@ struct ComponenteImmagine: View {
 
     // Quadrato colorato con le iniziali della marca (colore della categoria)
     private var monogramma: some View {
-        let colore = ColoreCategoria.colore(per: categoria)
-        return ZStack {
+        ZStack {
             RoundedRectangle(cornerRadius: dimensione * 0.2)
                 .fill(colore.gradient)
             Text(Marca.iniziali(da: nome))
