@@ -6,10 +6,13 @@
 //
 
 import Foundation
+import SwiftUICore
+import SwiftUI
 
 class UserSettings : ObservableObject {
     static var shared = UserSettings()
     @Published var opzioni = Options()
+    @AppStorage("user_id") var user_id = ""
     
     private init(){
         
@@ -17,6 +20,16 @@ class UserSettings : ObservableObject {
 }
 
 struct Options {
-    var theme = "auto"
+    @Environment(\.colorScheme) var colorScheme
+    
+    @AppStorage("theme") var theme = "auto"
     var themesAvaiable = ["auto", "light", "dark"]
+    
+    func getTheme() -> ColorScheme {
+        switch theme {
+            case "light": return .light
+            case "dark":  return .dark
+            default:  return colorScheme
+            }
+    }
 }
