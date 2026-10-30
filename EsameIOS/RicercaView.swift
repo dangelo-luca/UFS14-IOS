@@ -1,9 +1,14 @@
 import SwiftUI
 
-// MARK: - Risultato di ricerca
-// Contiene il modello vero (Case, CPU, RAM...) così chi usa RicercaView
-// può fare ad esempio: risultato.modello as? CPU
+// MARK: - Opzioni di ordinamento
+enum OrdineRicerca: String, CaseIterable {
+    case nomeAZ = "Nome (A-Z)"
+    case nomeZA = "Nome (Z-A)"
+    case prezzoCrescente = "Prezzo crescente"
+    case prezzoDecrescente = "Prezzo decrescente"
+}
 
+// MARK: - Risultato di ricerca
 struct Risultato: Identifiable {
     let id = UUID()
     let categoria: String
@@ -14,7 +19,6 @@ struct Risultato: Identifiable {
     var dettagli: [String: Any] { modello.getDetails() }
 }
 
-// Trasforma un valore di getDetails() in testo (toglie "Optional(...)" e i ".0" inutili)
 func formattaValore(_ valore: Any) -> String {
     let specchio = Mirror(reflecting: valore)
     if specchio.displayStyle == .optional {
@@ -27,16 +31,46 @@ func formattaValore(_ valore: Any) -> String {
     return "\(valore)"
 }
 
-// MARK: - Barra di ricerca (usata da RicercaView e da Components)
+// MARK: - Componente Pulsante Filtro Separato
+struct PulsanteFiltro: View {
+    @Binding var ordine: OrdineRicerca
+    
+    private var haFiltroAttivo: Bool {
+        ordine != .nomeAZ
+    }
+
+    var body: some View {
+        Menu {
+            Picker("Ordina per", selection: $ordine) {
+                ForEach(OrdineRicerca.allCases, id: \.self) { opzione in
+                    Text(opzione.rawValue).tag(opzione)
+                }
+            }
+        } label: {
+            ZStack {
+                Circle()
+                    .fill(haFiltroAttivo ? Color.blue : Color.gray.opacity(0.2))
+                    .frame(width: 50, height: 50)
+                
+                Image(systemName: "line.3.horizontal.decrease")
+                    .font(.system(size: 18, weight: .bold))
+                    .foregroundStyle(haFiltroAttivo ? .white : .primary)
+            }
+        }
+    }
+}
+
+// MARK: - Barra di Ricerca Separata
 struct BarraRicerca: View {
     @Binding var testo: String
     var placeholder: String = "Cerca componenti"
 
     var body: some View {
-        HStack {
+        HStack(spacing: 8) {
             TextField(placeholder, text: $testo)
                 .autocorrectionDisabled()
                 .submitLabel(.search)
+
             if !testo.isEmpty {
                 Button {
                     testo = ""
@@ -45,21 +79,19 @@ struct BarraRicerca: View {
                         .foregroundStyle(.secondary)
                 }
             }
+
             Image(systemName: "magnifyingglass")
+                .foregroundStyle(.secondary)
         }
         .padding(.horizontal, 16)
-        .frame(height: 56)
+        .frame(height: 50)
         .background(Color.gray.opacity(0.2))
         .clipShape(Capsule())
-        .padding(.horizontal, 30)
-       
-       
     }
 }
 
 // MARK: - RicercaView
 struct RicercaView: View {
-    // Creata una sola volta: i json restano in memoria
     static let tutte: [Fonte] = [
         Fonte("case.json", Case.self),
         Fonte("cpu.json", CPU.self),
@@ -74,7 +106,6 @@ struct RicercaView: View {
         Fonte("wireless-network-card.json", WirelessNetworkCard.self)
     ]
 
-    // Prende dalle fonti condivise solo quelle dei file indicati
     static func fonti(_ files: String...) -> [Fonte] {
         tutte.filter { files.contains($0.file) }
     }
@@ -84,16 +115,36 @@ struct RicercaView: View {
     var alSelezionare: ((Risultato) -> Void)? = nil
 
     @State private var testo: String = ""
+    @State private var ordine: OrdineRicerca = .nomeAZ
+
+    func ordinaRisultati(_ dati: [Risultato]) -> [Risultato] {
+        dati.sorted { r1, r2 in
+            switch ordine {
+            case .nomeAZ:
+                return r1.nome.localizedCaseInsensitiveCompare(r2.nome) == .orderedAscending
+            case .nomeZA:
+                return r1.nome.localizedCaseInsensitiveCompare(r2.nome) == .orderedDescending
+            case .prezzoCrescente:
+                return (r1.prezzo ?? 0) < (r2.prezzo ?? 0)
+            case .prezzoDecrescente:
+                return (r1.prezzo ?? 0) > (r2.prezzo ?? 0)
+            }
+        }
+    }
 
     var body: some View {
-        // Massimo 50 risultati per tenere la lista leggera
-        let risultati = Array(cercaNeiFile(testo, in: cerca).prefix(50))
+        let trovati = cercaNeiFile(testo, in: cerca)
+        let ordinati = ordinaRisultati(trovati)
+        let risultati = Array(ordinati.prefix(50))
 
         return VStack(spacing: 12) {
-            // Barra di ricerca posizionata in alto
-            BarraRicerca(testo: $testo, placeholder: placeholder)
+            // Barra di ricerca e Filtro separati e affiancati
+            HStack(spacing: 12) {
+                BarraRicerca(testo: $testo, placeholder: placeholder)
+                PulsanteFiltro(ordine: $ordine)
+            }
+            .padding(.horizontal)
 
-            // Risultati o messaggi di stato
             if testo.isEmpty {
                 messaggio("Scrivi il nome di un componente")
             } else if risultati.isEmpty {
@@ -105,19 +156,21 @@ struct RicercaView: View {
                             riga(r)
                         }
                     }
+                    .padding(.horizontal)
                 }
             }
         }
-        
     }
 
     func messaggio(_ testo: String) -> some View {
-        Text(testo)
-            .foregroundStyle(.secondary)
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
+        VStack {
+            Spacer().frame(height: 40)
+            Text(testo)
+                .foregroundStyle(.secondary)
+            Spacer()
+        }
     }
 
-    // MARK: - Riga del risultato
     @ViewBuilder
     func riga(_ r: Risultato) -> some View {
         if let azione = alSelezionare {
@@ -161,7 +214,6 @@ struct RicercaView: View {
         }
     }
 
-    // Mostra i dettagli presi da getDetails() del modello
     func dettagliRiga(_ r: Risultato) -> some View {
         let d = r.dettagli
         return VStack(alignment: .leading, spacing: 4) {

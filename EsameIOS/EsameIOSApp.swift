@@ -9,10 +9,11 @@ import SwiftUI
 
 @main
 struct EsameIOSApp: App {
+    @State private var buildManager = BuildManager()
     var body: some Scene {
         WindowGroup {
             MainTabView()
-            
+                .environment(buildManager)
         }
     }
 }

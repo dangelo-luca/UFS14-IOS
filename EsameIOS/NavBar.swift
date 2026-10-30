@@ -58,7 +58,11 @@ struct MainTabView: View {
     var body: some View {
         TabView(selection: $selezione) {
             NavigationStack {
-                BuildPcView()
+                BuildPcView {
+                    withAnimation(.spring(duration: 0.35)) {
+                        selezione = .home
+                    }
+                }
             }
             .tag(Scheda.nuova)
             .toolbar(.hidden, for: .tabBar)
@@ -81,7 +85,7 @@ struct MainTabView: View {
             .tag(Scheda.profilo)
             .toolbar(.hidden, for: .tabBar)
         }
-        .safeAreaInset(edge: .bottom) {
+        .safeAreaInset(edge: .bottom, spacing: 0) {
             barra
         }
     }
@@ -96,13 +100,18 @@ struct MainTabView: View {
                 voce(.salvati)
             }
             .padding(6)
-            .background(.ultraThinMaterial, in: Capsule())
+            // più opaco di prima: le schede sotto non "sporcano" le icone
+            .background(.regularMaterial, in: Capsule())
             .shadow(color: .black.opacity(0.15), radius: 20, y: 5)
 
             bottoneProfilo
         }
         .padding(.horizontal)
+        .padding(.top, 8)
         .padding(.bottom, 8)
+        // quando si apre la tastiera (es. barra di ricerca) la barra resta in basso
+        // invece di salire sopra la tastiera e coprire i risultati
+        .ignoresSafeArea(.keyboard, edges: .bottom)
     }
 
     // Singola icona della capsula: quella selezionata ha la "pillola" evidenziata
@@ -153,4 +162,5 @@ struct MainTabView: View {
 
 #Preview {
     MainTabView()
+        .environment(BuildManager())
 }
