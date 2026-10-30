@@ -9,6 +9,7 @@ import SwiftUI
 
 struct Settings: View {
     @ObservedObject private var impostazioni = UserSettings.shared
+    @State var mostraPopupCancella = false
 
     var body: some View {
         NavigationStack{
@@ -19,7 +20,34 @@ struct Settings: View {
                             Text("Accedi o Registrati").foregroundColor(.cyan)
                         }
                     } else {
+                        NavigationLink(destination: LoginView()){
+                            HStack {
+                                Text("Modifica dati").foregroundColor(.blue)
+                                Spacer()
+                                Image(systemName: "pencil")
+                                    .foregroundColor(.blue)
+                                    .font(.footnote)
+                            }
+                        }
                         
+                        Button(action: {
+                            mostraPopupCancella = true
+                        }) {
+                            HStack {
+                                Text("Elimina profilo").foregroundColor(.red)
+                                Spacer()
+                                Image(systemName: "trash")
+                                    .foregroundColor(.red)
+                                    .font(.footnote)
+                                
+                            }
+                            
+                        }.alert("Sei sicuro di eliminare il profilo?", isPresented: $mostraPopupCancella){
+                            Button("Annulla", role: .cancel){}
+                            Button("Elimina", role: .destructive){
+                                
+                            }
+                        }
                     }
                 }
                 Section("App") {
