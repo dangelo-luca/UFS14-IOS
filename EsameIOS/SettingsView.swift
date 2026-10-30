@@ -46,7 +46,7 @@ struct Settings: View {
                         }.alert("Vuoi disconnetterti?", isPresented: $mostraPopupDisconnettiti){
                             Button("Annulla", role: .cancel){}
                             Button("Disconnetti", role: .destructive){
-                                
+                                impostazioni.user_id = ""
                             }
                         } message: {
                             Text("Uscirai dal profilo e dovrai riaccedere per tutte le funzionalità")

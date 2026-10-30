@@ -15,7 +15,9 @@ class UserSettings : ObservableObject {
     @AppStorage("user_id") var user_id = ""
     
     private init(){
-        
+        if(user_id != ""){
+            
+        }
     }
 }
 
