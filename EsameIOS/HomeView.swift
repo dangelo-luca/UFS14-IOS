@@ -21,6 +21,8 @@ struct SlideCarosello: Identifiable {
 
 struct HomeView: View {
     @State var pagina: Int = 0 // slide corrente del carosello
+    
+    @ObservedObject private var impostazioni = UserSettings.shared
    
     // Sezione 1: carosello
     let slide = [
@@ -52,7 +54,7 @@ struct HomeView: View {
                     .padding(.bottom, 20)
                 }
             }
-        }
+        }.preferredColorScheme(impostazioni.opzioni.getTheme())
     }
 
     // MARK: - Sfondo colorato con effetto sfocatura
