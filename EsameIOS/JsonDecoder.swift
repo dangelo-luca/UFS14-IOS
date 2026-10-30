@@ -49,28 +49,26 @@ func caricaSicuro<T: Decodable>(_ nomeFile: String) -> [T] {
 final class Fonte {
     let file: String
     let categoria: String
-    private let leggi: () -> [any Model]
+    private let leggi: () -> [Component]
 
     // Gli oggetti letti dal json
-    lazy var dati: [any Model] = leggi()
+    lazy var dati: [Component] = leggi()
 
     // Gli stessi oggetti come Risultato (nome e prezzo già estratti, id stabili)
     lazy var risultati: [Risultato] = creaRisultati()
 
-    init<T: Model & Decodable>(_ file: String, _ tipo: T.Type) {
+    init<T: Component>(_ file: String, _ tipo: T.Type) {
         self.file = file
         self.categoria = file.replacingOccurrences(of: ".json", with: "")
-        self.leggi = { () -> [any Model] in
+        self.leggi = { () -> [Component] in
             let lista: [T] = caricaSicuro(file)
-            return lista.map { $0 as any Model }
+            return lista.map { $0 as Component }
         }
     }
 
     private func creaRisultati() -> [Risultato] {
-        dati.compactMap { elemento in
-            guard let nome: String = leggiCampo(elemento, "name") else { return nil }
-            let prezzo: Double? = leggiCampo(elemento, "price")
-            return Risultato(categoria: categoria, nome: nome, prezzo: prezzo, modello: elemento)
+        dati.map { elemento in
+            Risultato(categoria: categoria, nome: elemento.name, prezzo: elemento.price, modello: elemento)
         }
     }
 }

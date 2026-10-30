@@ -4,9 +4,11 @@ struct ComponentePC: Identifiable {
     let id = UUID()
     let nome: String
     let immagine: String
-    var colore: Color = .gray
+    let tipo: Component.Type          // al posto della stringa/colore: da qui arriva il colore
     var fonti: [Fonte] = []
     var maxQuantita: Int = 1
+
+    var colore: Color { tipo.colore }
 }
 
 struct SelectedPart {
@@ -35,17 +37,17 @@ struct BuildPcView: View {
     }
     
     let componenti: [ComponentePC] = [
-        ComponentePC(nome: "CPU", immagine: "cpu", colore: .blue.opacity(0.8), fonti: RicercaView.fonti("cpu.json"),maxQuantita: 1),
-        ComponentePC(nome: "CPU Cooler", immagine: "fan", colore: .blue.opacity(0.8), fonti: RicercaView.fonti("cpu-cooler.json"),maxQuantita: 1),
-        ComponentePC(nome: "Motherboard", immagine: "rectangle.3.group", colore: .blue.opacity(0.8), fonti: RicercaView.fonti("motherboard.json"),maxQuantita: 1),
-        ComponentePC(nome: "GPU", immagine: "display", colore: .blue.opacity(0.8), fonti: RicercaView.fonti("video-card.json"),maxQuantita: 4),
-        ComponentePC(nome: "RAM", immagine: "memorychip", colore: .blue.opacity(0.8), fonti: RicercaView.fonti("memory.json"),maxQuantita: 4),
-        ComponentePC(nome: "Power Supply", immagine: "powerplug.fill", colore: .blue.opacity(0.8), fonti: RicercaView.fonti("power-supply.json"),maxQuantita: 1),
-        ComponentePC(nome: "Storage", immagine: "internaldrive", colore: .blue.opacity(0.8), fonti: RicercaView.fonti("internal-hard-drive.json"),maxQuantita: 10),
-        ComponentePC(nome: "Case", immagine: "macpro.gen3", colore: .blue.opacity(0.8), fonti: RicercaView.fonti("case.json"),maxQuantita: 1),
-        ComponentePC(nome: "OS", immagine: "gearshape.2", colore: .blue.opacity(0.8), fonti: RicercaView.fonti("os.json"),maxQuantita: 1),
-        ComponentePC(nome: "Sound Card", immagine: "waveform", colore: .blue.opacity(0.8), fonti: RicercaView.fonti("sound-card.json"),maxQuantita: 1),
-        ComponentePC(nome: "Network Card", immagine: "wifi", colore: .blue.opacity(0.8), fonti: RicercaView.fonti("wireless-network-card.json"),maxQuantita: 1)
+        ComponentePC(nome: "CPU", immagine: "cpu", tipo: CPU.self, fonti: RicercaView.fonti("cpu.json"), maxQuantita: 1),
+        ComponentePC(nome: "CPU Cooler", immagine: "fan", tipo: CPU_Fan.self, fonti: RicercaView.fonti("cpu-cooler.json"), maxQuantita: 1),
+        ComponentePC(nome: "Motherboard", immagine: "rectangle.3.group", tipo: Motherboard.self, fonti: RicercaView.fonti("motherboard.json"), maxQuantita: 1),
+        ComponentePC(nome: "GPU", immagine: "display", tipo: VideoCard.self, fonti: RicercaView.fonti("video-card.json"), maxQuantita: 2),
+        ComponentePC(nome: "RAM", immagine: "memorychip", tipo: RAM.self, fonti: RicercaView.fonti("memory.json"), maxQuantita: 1),
+        ComponentePC(nome: "Power Supply", immagine: "powerplug.fill", tipo: PSU.self, fonti: RicercaView.fonti("power-supply.json"), maxQuantita: 1),
+        ComponentePC(nome: "Storage", immagine: "internaldrive", tipo: HardDrive.self, fonti: RicercaView.fonti("internal-hard-drive.json"), maxQuantita: 10),
+        ComponentePC(nome: "Case", immagine: "macpro.gen3", tipo: Case.self, fonti: RicercaView.fonti("case.json"), maxQuantita: 1),
+        ComponentePC(nome: "OS", immagine: "gearshape.2", tipo: Os.self, fonti: RicercaView.fonti("os.json"), maxQuantita: 1),
+        ComponentePC(nome: "Sound Card", immagine: "waveform", tipo: SoundCard.self, fonti: RicercaView.fonti("sound-card.json"), maxQuantita: 1),
+        ComponentePC(nome: "Network Card", immagine: "wifi", tipo: WirelessNetworkCard.self, fonti: RicercaView.fonti("wireless-network-card.json"), maxQuantita: 1)
     ]
     
     var body: some View {
@@ -53,7 +55,7 @@ struct BuildPcView: View {
         ScrollView {
             LazyVStack(spacing: 16) {
                 ForEach(componenti) { comp in
-                    ComponentCardView(componente: comp, scelto: scelti[comp.nome],onQuantita: { scelti[comp.nome]?.quantita = $0 }) {
+                    ComponentCardView(componente: comp, scelto: scelti[comp.nome], onQuantita: { scelti[comp.nome]?.quantita = $0 }) {
                         componenteSelezionato = comp
                         apriDettaglio = true
                     }
@@ -110,7 +112,7 @@ struct BuildPcView: View {
             }
         .navigationDestination(isPresented: $apriDettaglio) {
             if let comp = componenteSelezionato {
-                Components(titolo: comp.nome, fonti: comp.fonti) { r in
+                Components(titolo: comp.nome, fonti: comp.fonti, colore: comp.colore) { r in
                     let quantita = scelti[comp.nome]?.quantita ?? 1
                     scelti[comp.nome] = Selezione(risultato: r, quantita: quantita)
                 }
@@ -125,6 +127,11 @@ struct ComponentCardView: View {
     var onQuantita: (Int) -> Void = { _ in }
     let action: () -> Void
 
+    // Blu finché non scegli nulla, poi il colore del modello scelto
+    private var coloreCard: Color {
+        scelto == nil ? TipoComponente.generico.colore : componente.colore
+    }
+
     var body: some View {
         VStack(spacing: 12) {
             Button(action: action) {
@@ -133,7 +140,7 @@ struct ComponentCardView: View {
                         .font(.system(size: 32))
                         .foregroundColor(.white)
                         .frame(width: 70, height: 70)
-                        .background(Color.cyan.opacity(0.9))
+                        .background(Color.white.opacity(0.25))   // era cyan: spariva sulle card cyan
                         .cornerRadius(100)
 
                     VStack(spacing: 6) {
@@ -157,7 +164,7 @@ struct ComponentCardView: View {
                 ) {
                     Text("Quantità: \(scelto.quantita)")
                         .fontWeight(.semibold)
-                }
+                }.colorScheme(.dark)
             }
         }
         .foregroundColor(.white)
@@ -165,8 +172,9 @@ struct ComponentCardView: View {
         .frame(maxWidth: .infinity, alignment: .leading)
         .background(
             RoundedRectangle(cornerRadius: 20)
-                .fill(componente.colore)
+                .fill(coloreCard)
         )
+        .animation(.easeInOut(duration: 0.3), value: scelto == nil)
     }
 }
 
