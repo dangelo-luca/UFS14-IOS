@@ -20,9 +20,15 @@ struct SlideCarosello: Identifiable {
 // MARK: - Home
 
 struct HomeView: View {
-    @State var pagina: Int = 0 // slide corrente del carosello
-    
+    @State var pagina: Int = 0
+    @Environment(BuildManager.self) private var buildStore
     @ObservedObject private var impostazioni = UserSettings.shared
+    
+    
+    private var ultimaBuild: SavedBuild? {
+        buildStore.savedBuilds.last
+    }
+
    
     // Sezione 1: carosello
     let slide = [
@@ -116,29 +122,23 @@ struct HomeView: View {
     // MARK: - Sezione 2: Ultima build + Importa (con titoli sopra e card quadrate)
     var sezioneAzioniBuild: some View {
         HStack(alignment: .top, spacing: 16) {
-            // Carta 1: Ultima build
             VStack(alignment: .leading, spacing: 8) {
                 Text("Ultima build")
                     .font(.headline)
                     .foregroundStyle(.primary)
 
-                Button {
-                    // Azione
-                } label: {
-                    VStack {
-                        Spacer()
-                        Image(systemName: "desktopcomputer")
-                            .font(.system(size: 40))
-                        Spacer()
+                if let build = ultimaBuild {
+                    NavigationLink {
+                        BuildDetailView(build: build)
+                    } label: {
+                        cardUltimaBuild
                     }
-                    .foregroundStyle(.white)
-                    .frame(maxWidth: .infinity)
-                    .aspectRatio(1, contentMode: .fit) // Rende la card quadrata
-                    .background(Color(red: 0.5, green: 0.2, blue: 0.95))
-                    .clipShape(RoundedRectangle(cornerRadius: 25))
-                    .shadow(color: Color(red: 0.5, green: 0.2, blue: 0.95).opacity(0.3), radius: 10, y: 5)
+                    .buttonStyle(.plain)
+                } else {
+                    // Nessuna build salvata: card visibile ma non cliccabile
+                    cardUltimaBuild
+                        .opacity(0.5)
                 }
-                .buttonStyle(.plain)
             }
 
             // Carta 2: Importa
@@ -213,6 +213,22 @@ struct HomeView: View {
             .shadow(color: Color.orange.opacity(0.3), radius: 10, y: 5)
         }
     }
+}
+
+
+private var cardUltimaBuild: some View {
+    VStack {
+        Spacer()
+        Image(systemName: "desktopcomputer")
+            .font(.system(size: 40))
+        Spacer()
+    }
+    .foregroundStyle(.white)
+    .frame(maxWidth: .infinity)
+    .aspectRatio(1, contentMode: .fit)
+    .background(Color(red: 0.5, green: 0.2, blue: 0.95))
+    .clipShape(RoundedRectangle(cornerRadius: 25))
+    .shadow(color: Color(red: 0.5, green: 0.2, blue: 0.95).opacity(0.3), radius: 10, y: 5)
 }
 
 #Preview {
