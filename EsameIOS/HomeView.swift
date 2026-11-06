@@ -41,15 +41,15 @@ struct HomeView: View {
         ColoreBuild.allCases[i % ColoreBuild.allCases.count].swiftUI
     }
 
-    // Ultime 5 build.
+    // Le ultime 5 build, dalla più recente (a sinistra) alla più vecchia.
     // - nessuna build: slide "Crea la tua prima build"
-    // - da 1 a 5 build: slide finale grigia "Tutte le build"
-    // - 6 o più build: la slide grigia sparisce
+    // - da 1 a 5 build: nessuna slide finale
+    // - 6 o più build: in fondo compare la slide grigia "Tutte le build"
     private var slide: [SlideCarosello] {
         let build = buildStore.savedBuilds
         var risultato: [SlideCarosello] = []
 
-        for (i, b) in Array(build.enumerated()).suffix(maxSlideBuild) {
+        for (i, b) in Array(build.enumerated()).suffix(maxSlideBuild).reversed() {
             risultato.append(
                 SlideCarosello(tipo: .build(b),
                                titolo: b.nome,
@@ -67,7 +67,7 @@ struct HomeView: View {
                                icona: "plus.circle.fill",
                                colore: .blue)
             )
-        } else if build.count <= maxSlideBuild {
+        } else if build.count > maxSlideBuild {
             risultato.append(
                 SlideCarosello(tipo: .tutte(build.count),
                                titolo: "Tutte le build",
