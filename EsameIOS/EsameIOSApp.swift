@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 @main
 struct EsameIOSApp: App {
@@ -14,6 +15,6 @@ struct EsameIOSApp: App {
         WindowGroup {
             MainTabView()
                 .environment(buildManager)
-        }
+        }.modelContainer(for:[User.self, Build.self])
     }
 }

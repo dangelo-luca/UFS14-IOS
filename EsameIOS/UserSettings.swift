@@ -8,16 +8,15 @@
 import Foundation
 
 import SwiftUI
+import SwiftData
 
 class UserSettings : ObservableObject {
     static var shared = UserSettings()
     @Published var opzioni = Options()
     @AppStorage("user_id") var user_id = ""
+    @AppStorage("psw_hash") var psw_hash = ""
     
     private init(){
-        if(user_id != ""){
-            
-        }
     }
 }
 

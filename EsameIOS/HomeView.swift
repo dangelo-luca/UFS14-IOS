@@ -1,4 +1,5 @@
 import SwiftUI
+import SwiftData
 
 // MARK: - Slide del carosello
 
@@ -30,6 +31,19 @@ struct HomeView: View {
     @State private var testoRicerca: String = ""
     @Environment(BuildManager.self) private var buildStore
     @ObservedObject private var impostazioni = UserSettings.shared
+    
+    @Environment(\.modelContext) private var modelContext
+    @Query var utenti: [User]
+    
+    private func firstCheck(){
+        if(impostazioni.user_id != "" && impostazioni.psw_hash != ""){
+            if(!utenti.contains {$0.id == impostazioni.user_id && $0.passwordHash == impostazioni.psw_hash}){
+                impostazioni.user_id = ""
+                impostazioni.psw_hash = ""
+            }
+        }
+    }
+    
 
     private var inRicerca: Bool {
         !testoRicerca.trimmingCharacters(in: .whitespaces).isEmpty
@@ -104,6 +118,9 @@ struct HomeView: View {
             }
         }
         .preferredColorScheme(impostazioni.opzioni.getTheme())
+        .task {
+            firstCheck()
+        }
     }
 
     // MARK: - Sfondo tinto dal colore della slide corrente
