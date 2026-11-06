@@ -62,6 +62,12 @@ struct BuildPcView: View {
             }
             .padding(.horizontal)
             .padding(.top, 16)
+            
+            
+        }
+        .safeAreaInset(edge: .bottom) {
+            Color.clear
+                .frame(height: 80) // Altezza approssimativa della tua navbar custom
         }
         .safeAreaInset(edge: .top, spacing: 0) {
             PriceHeader(
@@ -75,7 +81,7 @@ struct BuildPcView: View {
             .padding(.bottom, 12)
             .background(.bar)
         }
-        .navigationTitle("Crea la tua build")
+        .navigationTitle("Crea Build")
         .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
@@ -107,6 +113,7 @@ struct BuildPcView: View {
                     }
                 }
             }
+        
         .navigationDestination(isPresented: $apriDettaglio) {
             if let comp = componenteSelezionato {
                 Components(titolo: comp.nome, fonti: comp.fonti, colore: comp.colore) { r in
@@ -172,6 +179,7 @@ struct ComponentCardView: View {
         )
         .animation(.easeInOut(duration: 0.3), value: scelto == nil)
     }
+        
 }
 
 struct PriceHeader: View {
