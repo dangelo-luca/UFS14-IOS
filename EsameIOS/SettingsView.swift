@@ -69,9 +69,11 @@ struct Settings: View {
                         .alert("Sei sicuro di eliminare il profilo?", isPresented: $mostraPopupCancella) {
                             Button("Annulla", role: .cancel) { }
                             Button("Elimina", role: .destructive) {
+                                let currentUserId = impostazioni.user_id
+                                
                                 let descriptor = FetchDescriptor<User>(
                                     predicate: #Predicate<User> { utente in
-                                        utente.id == impostazioni.user_id
+                                        utente.email == currentUserId
                                     }
                                 )
                                 

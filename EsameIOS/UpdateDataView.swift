@@ -107,10 +107,13 @@ struct UpdateDataView: View {
     }
     
     private func onInit() {
+        let currentUserId = impostazioni.user_id
+        let currentPswHash = impostazioni.psw_hash
+        
         let descriptor = FetchDescriptor<User>(
             predicate: #Predicate<User> { utente in
-                utente.id == impostazioni.user_id
-                && utente.passwordHash == impostazioni.psw_hash
+                utente.email == currentUserId
+                && utente.passwordHash == currentPswHash
             }
         )
         
