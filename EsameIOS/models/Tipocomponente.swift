@@ -52,36 +52,36 @@ enum TipoComponente: CaseIterable {
     /// Tinta piena (testo bianco sopra).
     var colore: Color {
         switch self {
-        case .generico:    return Color(hex: 0x2B59C3)
-        case .cpu:         return Color(hex: 0x0A5FD6)
-        case .cpuFan:      return Color(hex: 0x00778A)
-        case .motherboard: return Color(hex: 0xC62828)
-        case .gpu:         return Color(hex: 0x1B7F3B)
-        case .ram:         return Color(hex: 0xB85400)
-        case .psu:         return Color(hex: 0x8A6D00)
-        case .storage:     return Color(hex: 0x4338CA)
-        case .pcCase:      return Color(hex: 0x7B4A2D)
-        case .os:          return Color(hex: 0x7B2FBE)
-        case .soundCard:   return Color(hex: 0xC2185B)
-        case .networkCard: return Color(hex: 0x00695C)
+        case .generico:    return Color(hex: 0x4B5563) // Grigio slate elegante
+        case .cpu:         return Color(hex: 0x3B82F6) // Blu classico bilanciato
+        case .cpuFan:      return Color(hex: 0x0EA5E9) // Azzurro cielo satinato
+        case .motherboard: return Color(hex: 0xEF4444) // Rosso corallo morbido
+        case .gpu:         return Color(hex: 0x10B981) // Verde smeraldo profondo
+        case .ram:         return Color(hex: 0xF97316) // Arancio calmo
+        case .psu:         return Color(hex: 0xEAB308) // Giallo ambrato
+        case .storage:     return Color(hex: 0x6366F1) // Indaco / Lavanda
+        case .pcCase:      return Color(hex: 0x475569) // Titanio medio
+        case .os:          return Color(hex: 0x9333EA) // Viola vellutato
+        case .soundCard:   return Color(hex: 0xEC4899) // Rosa lampone
+        case .networkCard: return Color(hex: 0x0D9488) // Ottanio opaco
         }
     }
 
     /// Tinta per testi e dettagli sullo sfondo di sistema (si adatta chiaro/scuro).
     var accento: Color {
         switch self {
-        case .generico:    return Color(chiaro: 0x2B59C3, scuro: 0x8FB0FF)
-        case .cpu:         return Color(chiaro: 0x0A5FD6, scuro: 0x6EA8FE)
-        case .cpuFan:      return Color(chiaro: 0x00778A, scuro: 0x5CD6EE)
-        case .motherboard: return Color(chiaro: 0xC62828, scuro: 0xFF8A80)
-        case .gpu:         return Color(chiaro: 0x1B7F3B, scuro: 0x66D98A)
-        case .ram:         return Color(chiaro: 0xB85400, scuro: 0xFFB366)
-        case .psu:         return Color(chiaro: 0x8A6D00, scuro: 0xE6C84A)
-        case .storage:     return Color(chiaro: 0x4338CA, scuro: 0xA5A0FF)
-        case .pcCase:      return Color(chiaro: 0x7B4A2D, scuro: 0xC9A27E)
-        case .os:          return Color(chiaro: 0x7B2FBE, scuro: 0xC79BFF)
-        case .soundCard:   return Color(chiaro: 0xC2185B, scuro: 0xFF8DB8)
-        case .networkCard: return Color(chiaro: 0x00695C, scuro: 0x4DD0C0)
+        case .generico:    return Color(chiaro: 0x4B5563, scuro: 0x9CA3AF)
+        case .cpu:         return Color(chiaro: 0x1D4ED8, scuro: 0x60A5FA)
+        case .cpuFan:      return Color(chiaro: 0x0369A1, scuro: 0x38BDF8)
+        case .motherboard: return Color(chiaro: 0xDC2626, scuro: 0xF87171)
+        case .gpu:         return Color(chiaro: 0x059669, scuro: 0x34D399)
+        case .ram:         return Color(chiaro: 0xEA580C, scuro: 0xFB923C)
+        case .psu:         return Color(chiaro: 0xCA8A04, scuro: 0xFBBF24)
+        case .storage:     return Color(chiaro: 0x4F46E5, scuro: 0x818CF8)
+        case .pcCase:      return Color(chiaro: 0x334155, scuro: 0x94A3B8)
+        case .os:          return Color(chiaro: 0x7E22CE, scuro: 0xC084FC)
+        case .soundCard:   return Color(chiaro: 0xDB2777, scuro: 0xF472B6)
+        case .networkCard: return Color(chiaro: 0x0F766E, scuro: 0x2DD4BF)
         }
     }
 }
