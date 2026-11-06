@@ -13,15 +13,15 @@ struct Settings: View {
     @State var mostraPopupDisconnettiti = false
 
     var body: some View {
-        NavigationStack{
+        NavigationStack {
             Form {
-                Section("Utente"){
-                    if(impostazioni.user_id == ""){
-                        NavigationLink(destination: LoginView()) {
+                Section("Utente") {
+                    if impostazioni.user_id == "" {
+                        NavigationLink(destination: AuthView()) {
                             Text("Accedi o Registrati").foregroundColor(.blue)
                         }
                     } else {
-                        NavigationLink(destination: LoginView()){
+                        NavigationLink(destination: UpdateDataView()) {
                             HStack {
                                 Text("Modifica dati").foregroundColor(.blue)
                                 Spacer()
@@ -40,12 +40,11 @@ struct Settings: View {
                                 Image(systemName: "rectangle.portrait.and.arrow.right")
                                     .foregroundColor(.orange)
                                     .font(.footnote)
-                                
                             }
-                            
-                        }.alert("Vuoi disconnetterti?", isPresented: $mostraPopupDisconnettiti){
-                            Button("Annulla", role: .cancel){}
-                            Button("Disconnetti", role: .destructive){
+                        }
+                        .alert("Vuoi disconnetterti?", isPresented: $mostraPopupDisconnettiti) {
+                            Button("Annulla", role: .cancel) { }
+                            Button("Disconnetti", role: .destructive) {
                                 impostazioni.user_id = ""
                             }
                         } message: {
@@ -61,30 +60,30 @@ struct Settings: View {
                                 Image(systemName: "trash")
                                     .foregroundColor(.red)
                                     .font(.footnote)
-                                
                             }
-                            
-                        }.alert("Sei sicuro di eliminare il profilo?", isPresented: $mostraPopupCancella){
-                            Button("Annulla", role: .cancel){}
-                            Button("Elimina", role: .destructive){
-                                
+                        }
+                        .alert("Sei sicuro di eliminare il profilo?", isPresented: $mostraPopupCancella) {
+                            Button("Annulla", role: .cancel) { }
+                            Button("Elimina", role: .destructive) {
+                                // Inserisci qui la logica di eliminazione del profilo
                             }
                         } message: {
                             Text("Eliminerai il profilo e tutti i dati a sé connessi, perderai l'accesso e tutte le build salvate")
                         }
                     }
                 }
+                
                 Section("App") {
-                    Picker("Tema dell'app",
-                           selection: $impostazioni.opzioni.theme) {
+                    Picker("Tema dell'app", selection: $impostazioni.opzioni.theme) {
                         ForEach(impostazioni.opzioni.themesAvaiable, id: \.self) { theme in
                             Text(theme.capitalized).tag(theme)
                         }
                     }
                 }
             }
-        }.navigationTitle("Impostazioni")
-            .preferredColorScheme(impostazioni.opzioni.getTheme())
+            .navigationTitle("Impostazioni")
+        }
+        .preferredColorScheme(impostazioni.opzioni.getTheme())
     }
 }
 
