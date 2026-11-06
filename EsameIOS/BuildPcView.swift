@@ -4,7 +4,7 @@ struct ComponentePC: Identifiable {
     let id = UUID()
     let nome: String
     let immagine: String
-    let tipo: Component.Type          // al posto della stringa/colore: da qui arriva il colore
+    let tipo: Component.Type
     var fonti: [Fonte] = []
     var maxQuantita: Int = 1
 
@@ -18,7 +18,7 @@ struct SelectedPart {
 
 struct BuildPcView: View {
     @Environment(BuildManager.self) private var buildManager
-    var onSalvato: () -> Void = {}   // <- nuova
+    var onSalvato: () -> Void = {}
     @State private var mostraNomeBuild = false
     @State private var nomeBuild = ""
     @State private var apriDettaglio = false
@@ -51,7 +51,6 @@ struct BuildPcView: View {
     ]
     
     var body: some View {
-        // Rimosso NavigationStack da qui
         ScrollView {
             LazyVStack(spacing: 16) {
                 ForEach(componenti) { comp in
@@ -79,8 +78,6 @@ struct BuildPcView: View {
         .navigationTitle("Crea la tua build")
         .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                // ToolbarItem "Indietro" RIMOSSO: essendo la radice dello stack
-                // non c'è nulla a cui tornare, la navigazione si fa con la barra in basso
                 ToolbarItem(placement: .topBarTrailing) {
                     Button("Salva") {
                         nomeBuild = ""
@@ -127,7 +124,6 @@ struct ComponentCardView: View {
     var onQuantita: (Int) -> Void = { _ in }
     let action: () -> Void
 
-    // Blu finché non scegli nulla, poi il colore del modello scelto
     private var coloreCard: Color {
         scelto == nil ? TipoComponente.generico.colore : componente.colore
     }
@@ -140,7 +136,7 @@ struct ComponentCardView: View {
                         .font(.system(size: 32))
                         .foregroundColor(.white)
                         .frame(width: 70, height: 70)
-                        .background(Color.white.opacity(0.25))   // era cyan: spariva sulle card cyan
+                        .background(Color.white.opacity(0.25))
                         .cornerRadius(100)
 
                     VStack(spacing: 6) {

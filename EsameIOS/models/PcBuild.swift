@@ -9,6 +9,7 @@ import Foundation
 
 class PcBuild {
     let id = UUID()
+    var color: ColoreBuild
     var os : Os?;
     var cpu: CPU?;
     var cpu_fan: CPU_Fan?;
@@ -21,7 +22,7 @@ class PcBuild {
     var gpu: VideoCard?;
     var wificard: WirelessNetworkCard?;
     
-    init(os: Os? = nil, cpu: CPU? = nil, cpu_fan: CPU_Fan? = nil, harddrive: HardDrive? = nil, motherboard: Motherboard? = nil, pc_case: Case? = nil, psu: PSU? = nil, ram: RAM? = nil, soundcard: SoundCard? = nil, gpu: VideoCard? = nil, wificard: WirelessNetworkCard? = nil) {
+    init(os: Os? = nil, cpu: CPU? = nil, cpu_fan: CPU_Fan? = nil, harddrive: HardDrive? = nil, motherboard: Motherboard? = nil, pc_case: Case? = nil, psu: PSU? = nil, ram: RAM? = nil, soundcard: SoundCard? = nil, gpu: VideoCard? = nil, wificard: WirelessNetworkCard? = nil, color: ColoreBuild = .blu) {
         self.os = os
         self.cpu = cpu
         self.cpu_fan = cpu_fan
@@ -33,5 +34,6 @@ class PcBuild {
         self.soundcard = soundcard
         self.gpu = gpu
         self.wificard = wificard
+        self.color = color
     }
 }
