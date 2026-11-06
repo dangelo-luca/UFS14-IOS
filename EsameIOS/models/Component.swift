@@ -1,11 +1,3 @@
-//
-//  Component.swift
-//  EsameIOS
-//
-//  Classe padre di tutti i modelli: campi comuni (name, price, id),
-//  categoria/colore, chiavi JSON condivise e getDetails().
-//
-
 import SwiftUI
 
 class Component: Codable, Identifiable {

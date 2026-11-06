@@ -1,8 +1,5 @@
 import SwiftUI
 
-// (ColoreCategoria RIMOSSO: il colore ora sta in ogni modello, vedi Component.colore)
-
-// MARK: - Sfondo sfumato (stesso stile della Home e di Crea la tua build)
 struct SfondoSfumato: View {
     var colore: Color = .blue
 
@@ -29,11 +26,10 @@ struct SfondoSfumato: View {
     }
 }
 
-// MARK: - Pagina con la lista dei componenti di UNA categoria
 struct Components: View {
     var titolo: String = "Componenti"
     var fonti: [Fonte] = RicercaView.tutte
-    var colore: Color = .blue                    // colore dello sfondo (es. CPU.colore)
+    var colore: Color = .blue
     var alSelezionare: ((Risultato) -> Void)? = nil
 
     @Environment(\.dismiss) private var dismiss
@@ -68,7 +64,6 @@ struct Components: View {
             SfondoSfumato(colore: colore)
 
             VStack(spacing: 10) {
-                // Barra di ricerca e Filtro separati e affiancati
                 HStack(spacing: 12) {
                     BarraRicerca(testo: $testo, placeholder: "Cerca in \(titolo)")
                     PulsanteFiltro(ordine: $ordine)
@@ -140,23 +135,21 @@ struct Components: View {
     }
 }
 
-// MARK: - Scheda di un prodotto
+
 struct ProductView: View {
     @State private var isShowingDetails: Bool = false
 
     var nome: String
     var prezzo: Double?
     var details: [String: Any]
-    var modello: Component? = nil               // da qui arriva il colore
+    var modello: Component? = nil
     var titoloBottone: String = "Aggiungi"
     var onSelect: (() -> Void)? = nil
 
-    // accento = testi e dettagli (si adatta a chiaro/scuro); riempimento = tinta piena con testo bianco
     private var accento: Color { modello?.accento ?? TipoComponente.generico.accento }
     private var riempimento: Color { modello?.colore ?? TipoComponente.generico.colore }
 
-    // Le prime caratteristiche utili, mostrate come "chip" sotto il nome
-    private var chip: [String] {
+    private var dettagli: [String] {
         details.sorted { $0.key < $1.key }
             .map { "\(formattaValore($0.value))" }
             .filter { !$0.isEmpty && $0 != "N/D" && $0 != "N/A" }
@@ -166,7 +159,6 @@ struct ProductView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 14) {
-            // Logo + nome + prezzo
             HStack(alignment: .center, spacing: 14) {
                 if modello != nil {
                     ComponenteImmagine(colore: riempimento, nome: nome, dimensione: 72)
@@ -200,10 +192,10 @@ struct ProductView: View {
             }
 
             // Caratteristiche principali
-            if !chip.isEmpty {
+            if !dettagli.isEmpty {
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 8) {
-                        ForEach(chip, id: \.self) { testo in
+                        ForEach(dettagli, id: \.self) { testo in
                             Text(testo)
                                 .font(.caption.weight(.semibold))
                                 .foregroundStyle(accento)
@@ -242,7 +234,6 @@ struct ProductView: View {
                 .transition(.opacity.combined(with: .move(edge: .top)))
             }
 
-            // Azioni
             HStack {
                 if let onSelect = onSelect {
                     Button(action: onSelect) {

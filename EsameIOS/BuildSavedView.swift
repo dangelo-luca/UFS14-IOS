@@ -44,7 +44,7 @@ struct BuildSavedView: View {
                     .onDelete(perform: buildStore.eliminaBuild)
                 }
                 .listStyle(.insetGrouped)
-                .contentMargins(.bottom, 90, for: .scrollContent) // spazio per la barra in basso
+                .contentMargins(.bottom, 90, for: .scrollContent) 
             }
         }
         .navigationTitle("Build salvate")
