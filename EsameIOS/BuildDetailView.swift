@@ -96,3 +96,5 @@ struct BuildDetailView: View {
         .contentMargins(.bottom, 90, for: .scrollContent)
     }
 }
+
+

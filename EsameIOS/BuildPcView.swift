@@ -18,24 +18,37 @@ struct SelectedPart {
 
 struct BuildPcView: View {
     @Environment(BuildManager.self) private var buildManager
-    var onSalvato: () -> Void = {}
+    @Environment(\.dismiss) private var dismiss
+
+    // Se valorizzata, la schermata modifica questa build invece di crearne una nuova
+    let buildDaModificare: SavedBuild?
+    var onSalvato: () -> Void
+
     @State private var mostraNomeBuild = false
     @State private var nomeBuild = ""
     @State private var apriDettaglio = false
     @State private var componenteSelezionato: ComponentePC?
     @State var testo: String = ""
     @State var risultati: [Risultato] = []
-    @State private var scelti: [String: Selezione] = [:]
+    @State private var scelti: [String: Selezione]
+
+    init(buildDaModificare: SavedBuild? = nil, onSalvato: @escaping () -> Void = {}) {
+        self.buildDaModificare = buildDaModificare
+        self.onSalvato = onSalvato
+        _scelti = State(initialValue: buildDaModificare?.componenti ?? [:])
+    }
+
+    private var isModifica: Bool { buildDaModificare != nil }
 
     private var total: Double {
         scelti.values.map(\.subtotale).reduce(0, +)
     }
-    
+
     private var progress: Double {
         guard !componenti.isEmpty else { return 0 }
         return Double(scelti.count) / Double(componenti.count)
     }
-    
+
     let componenti: [ComponentePC] = [
         ComponentePC(nome: "CPU", immagine: "cpu", tipo: CPU.self, fonti: RicercaView.fonti("cpu.json"), maxQuantita: 1),
         ComponentePC(nome: "CPU Cooler", immagine: "fan", tipo: CPU_Fan.self, fonti: RicercaView.fonti("cpu-cooler.json"), maxQuantita: 1),
@@ -49,7 +62,7 @@ struct BuildPcView: View {
         ComponentePC(nome: "Sound Card", immagine: "waveform", tipo: SoundCard.self, fonti: RicercaView.fonti("sound-card.json"), maxQuantita: 1),
         ComponentePC(nome: "Network Card", immagine: "wifi", tipo: WirelessNetworkCard.self, fonti: RicercaView.fonti("wireless-network-card.json"), maxQuantita: 1)
     ]
-    
+
     var body: some View {
         ScrollView {
             LazyVStack(spacing: 16) {
@@ -62,8 +75,6 @@ struct BuildPcView: View {
             }
             .padding(.horizontal)
             .padding(.top, 16)
-            
-            
         }
         .safeAreaInset(edge: .bottom) {
             Color.clear
@@ -81,39 +92,48 @@ struct BuildPcView: View {
             .padding(.bottom, 12)
             .background(.bar)
         }
-        .navigationTitle("Crea Build")
+        .navigationTitle(isModifica ? "Modifica Build" : "Crea Build")
         .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                Button("Salva") {
+                    // In modifica il nome parte da quello attuale
+                    nomeBuild = buildDaModificare?.nome ?? ""
+                    mostraNomeBuild = true
+                }
+                .fontWeight(.semibold)
+                .buttonStyle(.borderedProminent)
+                .buttonBorderShape(.capsule)
+                .tint(.pink)
+                .controlSize(.small)
+                .disabled(scelti.isEmpty)
+                .alert("Nome della build", isPresented: $mostraNomeBuild) {
+                    TextField(
+                        buildDaModificare?.nome ?? "Build #\(buildManager.savedBuilds.count + 1)",
+                        text: $nomeBuild
+                    )
+                    .textInputAutocapitalization(.words)
+
+                    Button("Annulla", role: .cancel) { }
+
                     Button("Salva") {
-                        nomeBuild = ""
-                        mostraNomeBuild = true
-                        
-                    }
-                    .fontWeight(.semibold)
-                    .buttonStyle(.borderedProminent)
-                    .buttonBorderShape(.capsule)
-                    .tint(.pink)
-                    .controlSize(.small)
-                    .disabled(scelti.isEmpty)
-                    .alert("Nome della build", isPresented: $mostraNomeBuild) {
-                        TextField("Build #\(buildManager.savedBuilds.count + 1)", text: $nomeBuild)
-                            .textInputAutocapitalization(.words)
-
-                        Button("Annulla", role: .cancel) { }
-
-                        Button("Salva") {
-                            let nome = nomeBuild.trimmingCharacters(in: .whitespacesAndNewlines)
+                        let nome = nomeBuild.trimmingCharacters(in: .whitespacesAndNewlines)
+                        if let b = buildDaModificare {
+                            buildManager.aggiornaBuild(id: b.id, scelti: scelti, nome: nome)
+                            dismiss()
+                        } else {
                             buildManager.aggiungiBuild(scelti: scelti, nomeCustom: nome)
                             scelti = [:]
                             onSalvato()
                         }
-                    } message: {
-                        Text("Scegli un nome per riconoscerla tra le build salvate.")
                     }
+                } message: {
+                    Text(isModifica
+                         ? "Puoi cambiare il nome oppure lasciarlo uguale."
+                         : "Scegli un nome per riconoscerla tra le build salvate.")
                 }
             }
-        
+        }
         .navigationDestination(isPresented: $apriDettaglio) {
             if let comp = componenteSelezionato {
                 Components(titolo: comp.nome, fonti: comp.fonti, colore: comp.colore) { r in
@@ -179,7 +199,6 @@ struct ComponentCardView: View {
         )
         .animation(.easeInOut(duration: 0.3), value: scelto == nil)
     }
-        
 }
 
 struct PriceHeader: View {
