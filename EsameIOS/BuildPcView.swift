@@ -18,8 +18,10 @@ struct SelectedPart {
 
 struct BuildPcView: View {
     @Environment(BuildManager.self) private var buildManager
+    @ObservedObject private var impostazioni = UserSettings.shared
     var onSalvato: () -> Void = {}
     @State private var mostraNomeBuild = false
+    @State private var mostraLogin = false
     @State private var nomeBuild = ""
     @State private var apriDettaglio = false
     @State private var componenteSelezionato: ComponentePC?
@@ -86,9 +88,12 @@ struct BuildPcView: View {
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button("Salva") {
-                        nomeBuild = ""
-                        mostraNomeBuild = true
-                        
+                        if impostazioni.isLogged {
+                            nomeBuild = ""
+                            mostraNomeBuild = true
+                        } else {
+                            mostraLogin = true
+                        }
                     }
                     .fontWeight(.semibold)
                     .buttonStyle(.borderedProminent)
@@ -119,6 +124,21 @@ struct BuildPcView: View {
                 Components(titolo: comp.nome, fonti: comp.fonti, colore: comp.colore) { r in
                     let quantita = scelti[comp.nome]?.quantita ?? 1
                     scelti[comp.nome] = Selezione(risultato: r, quantita: quantita)
+                }
+            }
+        }
+        .sheet(isPresented: $mostraLogin) {
+            NavigationStack {
+                AuthView {
+                    nomeBuild = ""
+                    mostraNomeBuild = true
+                }
+                .toolbar {
+                    ToolbarItem(placement: .topBarLeading) {
+                        Button("Annulla") {
+                            mostraLogin = false
+                        }
+                    }
                 }
             }
         }

@@ -39,7 +39,9 @@ enum Scheda: Int, CaseIterable {
 // MARK: - Contenitore principale: TabView + barra personalizzata
 
 struct MainTabView: View {
+    @ObservedObject private var impostazioni = UserSettings.shared
     @State private var selezione: Scheda = .home
+    @State private var mostraLogin = false
     @Namespace private var animazione
 
     var body: some View {
@@ -57,7 +59,11 @@ struct MainTabView: View {
             NavigationStack {
                 HomeView(
                     vaiASalvati: {
-                        withAnimation(.spring(duration: 0.35)) { selezione = .salvati }
+                        if impostazioni.isLogged {
+                            withAnimation(.spring(duration: 0.35)) { selezione = .salvati }
+                        } else {
+                            mostraLogin = true
+                        }
                     },
                     nuovaBuild: {
                         withAnimation(.spring(duration: 0.35)) { selezione = .nuova }
@@ -81,6 +87,22 @@ struct MainTabView: View {
         }
         .safeAreaInset(edge: .bottom, spacing: 0) {
             barra
+        }
+        .sheet(isPresented: $mostraLogin) {
+            NavigationStack {
+                AuthView {
+                    withAnimation(.spring(duration: 0.35)) {
+                        selezione = .salvati
+                    }
+                }
+                .toolbar {
+                    ToolbarItem(placement: .topBarLeading) {
+                        Button("Annulla") {
+                            mostraLogin = false
+                        }
+                    }
+                }
+            }
         }
     }
 
@@ -112,8 +134,12 @@ struct MainTabView: View {
     func voce(_ scheda: Scheda) -> some View {
         let attiva = selezione == scheda
         return Button {
-            withAnimation(.spring(duration: 0.35)) {
-                selezione = scheda
+            if scheda == .salvati && !impostazioni.isLogged {
+                mostraLogin = true
+            } else {
+                withAnimation(.spring(duration: 0.35)) {
+                    selezione = scheda
+                }
             }
         } label: {
             Image(systemName: attiva ? scheda.iconaAttiva : scheda.icona)

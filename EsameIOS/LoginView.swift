@@ -1,25 +1,33 @@
 import SwiftUI
+import SwiftData
 
 // Vista principale che gestisce lo scambio tra Login e Registrazione
 struct AuthView: View {
+    var onSuccess: (() -> Void)? = nil
     @State private var showLogin = true
     
     var body: some View {
         if showLogin {
-            LoginView(showLogin: $showLogin)
+            LoginView(showLogin: $showLogin, onSuccess: onSuccess)
                 .transition(.opacity)
         } else {
-            RegistrationView(showLogin: $showLogin)
+            RegistrationView(showLogin: $showLogin, onSuccess: onSuccess)
                 .transition(.opacity)
         }
     }
 }
 
 struct LoginView: View {
+    @Environment(\.modelContext) private var modelContext
+    @Environment(\.dismiss) private var dismiss
+    @ObservedObject private var impostazioni = UserSettings.shared
+    
     @State private var email = ""
     @State private var password = ""
+    @State private var mostraErrore = false
     
     @Binding var showLogin: Bool
+    var onSuccess: (() -> Void)? = nil
 
     var body: some View {
         VStack(spacing: 20) {
@@ -37,7 +45,7 @@ struct LoginView: View {
                 .textFieldStyle(.roundedBorder)
             
             Button("Accedi") {
-                // Logica di login
+                effettuaLogin()
             }
             .buttonStyle(.borderedProminent)
             .controlSize(.large)
@@ -62,9 +70,35 @@ struct LoginView: View {
             }
         }
         .padding()
+        .alert("Errore", isPresented: $mostraErrore) {
+            Button("OK", role: .cancel) { }
+        } message: {
+            Text("Email o password non corretti.")
+        }
+    }
+    
+    private func effettuaLogin() {
+        let cleanEmail = email.trimmingCharacters(in: .whitespacesAndNewlines)
+        let hash = hashPassword(psw: password)
+        
+        let descriptor = FetchDescriptor<User>(
+            predicate: #Predicate<User> { utente in
+                utente.email == cleanEmail && utente.passwordHash == hash
+            }
+        )
+        
+        if let utenteTrovato = try? modelContext.fetch(descriptor).first {
+            impostazioni.user_id = utenteTrovato.email
+            impostazioni.psw_hash = utenteTrovato.passwordHash
+            onSuccess?()
+            dismiss()
+        } else {
+            mostraErrore = true
+        }
     }
 }
 
 #Preview {
     AuthView()
+        .modelContainer(for: [User.self, Build.self], inMemory: true)
 }

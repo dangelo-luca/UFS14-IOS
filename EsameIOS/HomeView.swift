@@ -36,7 +36,7 @@ struct HomeView: View {
     @Query var utenti: [User]
     
     private func firstCheck(){
-        if(impostazioni.user_id != "" && impostazioni.psw_hash != ""){
+        if impostazioni.isLogged {
             if(!utenti.contains {$0.id == impostazioni.user_id && $0.passwordHash == impostazioni.psw_hash}){
                 impostazioni.user_id = ""
                 impostazioni.psw_hash = ""
@@ -60,6 +60,7 @@ struct HomeView: View {
     // - da 1 a 5 build: nessuna slide finale
     // - 6 o più build: in fondo compare la slide grigia "Tutte le build"
     private var slide: [SlideCarosello] {
+
         let build = buildStore.savedBuilds
         var risultato: [SlideCarosello] = []
 

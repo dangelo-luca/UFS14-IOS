@@ -13,8 +13,21 @@ import SwiftData
 class UserSettings : ObservableObject {
     static var shared = UserSettings()
     @Published var opzioni = Options()
-    @AppStorage("user_id") var user_id = ""
-    @AppStorage("psw_hash") var psw_hash = ""
+    @AppStorage("user_id") var user_id = "" {
+        didSet {
+            objectWillChange.send()
+        }
+    }
+    @AppStorage("psw_hash") var psw_hash = "" {
+        didSet {
+            objectWillChange.send()
+        }
+    }
+    
+    var isLogged: Bool {
+        !user_id.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty &&
+        !psw_hash.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+    }
     
     private init(){
     }

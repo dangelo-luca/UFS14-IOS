@@ -19,7 +19,7 @@ struct Settings: View {
         NavigationStack {
             Form {
                 Section("Utente") {
-                    if impostazioni.user_id == "" {
+                    if !impostazioni.isLogged {
                         NavigationLink(destination: AuthView()) {
                             Text("Accedi o Registrati").foregroundColor(.blue)
                         }
