@@ -6,8 +6,14 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct UpdateDataView: View {
+    @Environment(\.modelContext) var modelContext
+    @Query var utenti: [User]
+    
+    @State var user : User?
+    
     @State var nome = ""
     @State var cognome = ""
     
@@ -44,6 +50,10 @@ struct UpdateDataView: View {
             
             
         }.padding()
+    }
+    
+    private func onInit(){
+    
     }
 }
 
