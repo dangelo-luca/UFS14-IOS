@@ -55,11 +55,18 @@ struct MainTabView: View {
             .toolbar(.hidden, for: .tabBar)
 
             NavigationStack {
-                HomeView()
+                HomeView(
+                    vaiASalvati: {
+                        withAnimation(.spring(duration: 0.35)) { selezione = .salvati }
+                    },
+                    nuovaBuild: {
+                        withAnimation(.spring(duration: 0.35)) { selezione = .nuova }
+                    }
+                )
             }
             .tag(Scheda.home)
             .toolbar(.hidden, for: .tabBar)
-
+            
             NavigationStack {
                 BuildSavedView()
             }
@@ -82,9 +89,9 @@ struct MainTabView: View {
     var barra: some View {
         HStack(spacing: 10) {
             HStack(spacing: 4) {
-                voce(.nuova)
-                voce(.home)
                 voce(.salvati)
+                voce(.home)
+                voce(.nuova)
             }
             .padding(6)
             // più opaco di prima: le schede sotto non "sporcano" le icone
