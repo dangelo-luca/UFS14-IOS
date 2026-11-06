@@ -6,8 +6,11 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct Settings: View {
+    @Environment(\.modelContext) var modelContext
+    @Query var utenti: [User]
     @ObservedObject private var impostazioni = UserSettings.shared
     @State var mostraPopupCancella = false
     @State var mostraPopupDisconnettiti = false
@@ -46,6 +49,7 @@ struct Settings: View {
                             Button("Annulla", role: .cancel) { }
                             Button("Disconnetti", role: .destructive) {
                                 impostazioni.user_id = ""
+                                impostazioni.psw_hash = ""
                             }
                         } message: {
                             Text("Uscirai dal profilo e dovrai riaccedere per tutte le funzionalità")
@@ -65,7 +69,19 @@ struct Settings: View {
                         .alert("Sei sicuro di eliminare il profilo?", isPresented: $mostraPopupCancella) {
                             Button("Annulla", role: .cancel) { }
                             Button("Elimina", role: .destructive) {
-                                // Inserisci qui la logica di eliminazione del profilo
+                                let descriptor = FetchDescriptor<User>(
+                                    predicate: #Predicate<User> { utente in
+                                        utente.id == impostazioni.user_id
+                                    }
+                                )
+                                
+                                if let utenteTrovato = try? modelContext.fetch(descriptor).first {
+                                    modelContext.delete(utenteTrovato)
+                                    try? modelContext.save()
+                                    
+                                    impostazioni.user_id = ""
+                                    impostazioni.psw_hash = ""
+                                }
                             }
                         } message: {
                             Text("Eliminerai il profilo e tutti i dati a sé connessi, perderai l'accesso e tutte le build salvate")
