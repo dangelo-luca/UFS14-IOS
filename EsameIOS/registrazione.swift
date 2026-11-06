@@ -34,6 +34,7 @@ struct RegistrationView: View {
             }
             .buttonStyle(.borderedProminent)
             .controlSize(.large)
+            .disabled(nome.isEmpty || cognome.isEmpty || email.isEmpty || password.isEmpty)
             
             Spacer().frame(height: 20)
             

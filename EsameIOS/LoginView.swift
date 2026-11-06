@@ -41,6 +41,7 @@ struct LoginView: View {
             }
             .buttonStyle(.borderedProminent)
             .controlSize(.large)
+            .disabled(email.isEmpty || password.isEmpty)
             
             Spacer().frame(height: 20)
             
