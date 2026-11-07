@@ -1,6 +1,6 @@
 import SwiftUI
 
-// MARK: - Schede della TabView
+// MARK: - Schedes della TabView
 
 enum Scheda: Int, CaseIterable {
     case nuova, home, salvati, profilo
@@ -14,7 +14,6 @@ enum Scheda: Int, CaseIterable {
         }
     }
 
-    // Icona "vuota" (non selezionata) e "piena" (selezionata)
     var icona: String {
         switch self {
         case .nuova: return "plus.circle"
@@ -34,19 +33,24 @@ enum Scheda: Int, CaseIterable {
     }
 }
 
-
-
 // MARK: - Contenitore principale: TabView + barra personalizzata
 
 struct MainTabView: View {
+    @Environment(BuildManager.self) private var buildStore
     @State private var selezione: Scheda = .home
     @Namespace private var animazione
 
+    // ID per resettare la navigazione di Home e Salvati
+    @State private var homeStackID = UUID()
+    @State private var salvatiStackID = UUID()
+
     var body: some View {
         TabView(selection: $selezione) {
+            // Tab 1: Nuova build
             NavigationStack {
                 BuildPcView {
                     withAnimation(.spring(duration: 0.35)) {
+                        homeStackID = UUID() // Resetta la Home prima di tornarci
                         selezione = .home
                     }
                 }
@@ -54,30 +58,43 @@ struct MainTabView: View {
             .tag(Scheda.nuova)
             .toolbar(.hidden, for: .tabBar)
 
-            NavigationStack {
-                HomeView(
-                    vaiASalvati: {
-                        withAnimation(.spring(duration: 0.35)) { selezione = .salvati }
-                    },
-                    nuovaBuild: {
-                        withAnimation(.spring(duration: 0.35)) { selezione = .nuova }
+            // Tab 2: Home
+            HomeView(
+                vaiASalvati: {
+                    withAnimation(.spring(duration: 0.35)) {
+                        salvatiStackID = UUID()
+                        selezione = .salvati
                     }
-                )
-            }
+                },
+                nuovaBuild: {
+                    withAnimation(.spring(duration: 0.35)) {
+                        selezione = .nuova
+                    }
+                }
+            )
+            .id(homeStackID) // Collega l'ID allo stack della Home
             .tag(Scheda.home)
             .toolbar(.hidden, for: .tabBar)
             
+            // Tab 3: Salvati
             NavigationStack {
                 BuildSavedView()
             }
+            .id(salvatiStackID) // Collega l'ID allo stack di Salvati
             .tag(Scheda.salvati)
             .toolbar(.hidden, for: .tabBar)
 
+            // Tab 4: Profilo
             NavigationStack {
                 Settings()
             }
             .tag(Scheda.profilo)
             .toolbar(.hidden, for: .tabBar)
+        }
+        .onChange(of: buildStore.savedBuilds.count) { _, _ in
+            // Resetta entrambe le schermate se viene salvata o eliminata una build
+            homeStackID = UUID()
+            salvatiStackID = UUID()
         }
         .safeAreaInset(edge: .bottom, spacing: 0) {
             barra
@@ -94,7 +111,6 @@ struct MainTabView: View {
                 voce(.nuova)
             }
             .padding(6)
-            // più opaco di prima: le schede sotto non "sporcano" le icone
             .background(.regularMaterial, in: Capsule())
             .shadow(color: .black.opacity(0.15), radius: 20, y: 5)
 
@@ -103,16 +119,17 @@ struct MainTabView: View {
         .padding(.horizontal)
         .padding(.top, 8)
         .padding(.bottom, 8)
-        // quando si apre la tastiera (es. barra di ricerca) la barra resta in basso
-        // invece di salire sopra la tastiera e coprire i risultati
         .ignoresSafeArea(.keyboard, edges: .bottom)
     }
 
-    // Singola icona della capsula: quella selezionata ha la "pillola" evidenziata
     func voce(_ scheda: Scheda) -> some View {
         let attiva = selezione == scheda
         return Button {
             withAnimation(.spring(duration: 0.35)) {
+                // Genera un nuovo ID ogni volta che si preme il tasto della scheda
+                if scheda == .home { homeStackID = UUID() }
+                if scheda == .salvati { salvatiStackID = UUID() }
+
                 selezione = scheda
             }
         } label: {
@@ -133,7 +150,6 @@ struct MainTabView: View {
         .accessibilityLabel(scheda.nome)
     }
 
-    // Cerchio blu del profilo (a destra, separato dalla capsula)
     var bottoneProfilo: some View {
         let attiva = selezione == .profilo
         return Button {

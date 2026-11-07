@@ -32,6 +32,9 @@ struct HomeView: View {
     var vaiASalvati: () -> Void = {}
     var nuovaBuild: () -> Void = {}
 
+    // ID per resettare lo stack di navigazione al salvataggio
+    @State private var stackID = UUID()
+
     // Quante build mostra il carosello
     private let maxSlideBuild = 5
 
@@ -113,27 +116,33 @@ struct HomeView: View {
     }
 
     var body: some View {
-        ZStack(alignment: .top) {
-            sfondo
+        NavigationStack {
+            ZStack(alignment: .top) {
+                sfondo
 
-            VStack(spacing: 12) {
-                BarraRicerca(testo: $testoRicerca, placeholder: "Cerca componenti")
-                    .padding(.horizontal)
-                    .padding(.top, 8)
+                VStack(spacing: 12) {
+                    BarraRicerca(testo: $testoRicerca, placeholder: "Cerca Build")
+                        .padding(.horizontal)
+                        .padding(.top, 8)
 
-                if inRicerca {
-                    risultatiRicerca
-                } else {
-                    ScrollView {
-                        VStack(alignment: .leading, spacing: 24) {
-                            sezioneCarosello
-                            sezioneRiepilogo
-                            sezioneEsporta
+                    if inRicerca {
+                        risultatiRicerca
+                    } else {
+                        ScrollView {
+                            VStack(alignment: .leading, spacing: 24) {
+                                sezioneCarosello
+                                sezioneRiepilogo
+                                sezioneEsporta
+                            }
+                            .padding(.bottom, 100) // spazio per la navbar custom
                         }
-                        .padding(.bottom, 100) // spazio per la navbar custom
                     }
                 }
             }
+        }
+        .id(stackID) // Resetta la gerarchia di navigazione al cambio dell'ID
+        .onChange(of: buildStore.savedBuilds.count) { _, _ in
+            stackID = UUID() // Cambia l'ID quando viene salvata o eliminata una build
         }
         .preferredColorScheme(impostazioni.opzioni.getTheme())
         .task {
@@ -238,8 +247,6 @@ struct HomeView: View {
     }
 
     // MARK: - Carosello
-    // - 1 sola card: occupa tutta la larghezza (da margine a margine)
-    // - 2 o più card: la card è un po' più stretta, così spunta il bordo della successiva
 
     var sezioneCarosello: some View {
         let lista = slide
@@ -254,7 +261,6 @@ struct HomeView: View {
                                 larghezza * frazione
                             }
                             .frame(height: altezzaCard)
-                            // la card centrale è a grandezza piena, quella che spunta è un filo più piccola
                             .scrollTransition(axis: .horizontal) { content, phase in
                                 content.scaleEffect(phase.isIdentity ? 1 : 0.95)
                             }
@@ -278,14 +284,12 @@ struct HomeView: View {
             .scrollDisabled(lista.count <= 1)
             .frame(height: altezzaCard)
             .onPreferenceChange(PosizioneCard.self) { posizioni in
-                // La card corrente è quella più vicina al margine sinistro
                 guard let vicina = posizioni.min(by: {
                     abs($0.value - margineCarosello) < abs($1.value - margineCarosello)
                 })?.key else { return }
                 if vicina != pagina { pagina = vicina }
             }
 
-            // Indicatori di pagina
             if lista.count > 1 {
                 HStack(spacing: 6) {
                     ForEach(0..<lista.count, id: \.self) { i in
@@ -326,7 +330,6 @@ struct HomeView: View {
 
     private func contenutoSlide(_ s: SlideCarosello) -> some View {
         ZStack(alignment: .bottomTrailing) {
-            // Cerchi decorativi
             Circle()
                 .fill(.white.opacity(0.12))
                 .frame(width: 240, height: 240)
@@ -391,7 +394,6 @@ struct HomeView: View {
                         .font(.caption.weight(.semibold))
                         .foregroundStyle(.secondary)
 
-                    // Apre BuildPcView con la build selezionata già caricata
                     NavigationLink {
                         BuildPcView(buildDaModificare: b)
                     } label: {
@@ -405,37 +407,31 @@ struct HomeView: View {
                     .buttonStyle(.plain)
                 }
 
-                VStack(spacing: 0) {
-                    ForEach(Array(righe.enumerated()), id: \.offset) { i, r in
-                        let accento = r.selezione.risultato.modello.accento
-                        let nome = r.selezione.quantita > 1
-                            ? "\(r.selezione.quantita) × \(r.selezione.risultato.nome)"
-                            : r.selezione.risultato.nome
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(spacing: 8) {
+                        ForEach(righe, id: \.categoria) { r in
+                            let accento = r.selezione.risultato.modello.accento
+                            let nome = r.selezione.quantita > 1
+                                ? "\(r.selezione.quantita) × \(r.selezione.risultato.nome)"
+                                : r.selezione.risultato.nome
+                            let icon = icona(per: r.selezione.risultato.modello)
 
-                        HStack(spacing: 10) {
-                            // Badge colorato con il nome del componente
-                            Text(nome)
-                                .font(.footnote.weight(.semibold))
-                                .foregroundStyle(accento)
-                                .lineLimit(1)
-                                .truncationMode(.tail)
-                                .padding(.horizontal, 12)
-                                .padding(.vertical, 7)
-                                .background(accento.opacity(0.14), in: Capsule())
+                            HStack(spacing: 6) {
+                                Image(systemName: icon)
+                                    .font(.caption.weight(.bold))
 
-                            Spacer(minLength: 8)
-
-                            
-                        }
-                        .padding(.vertical, 10)
-
-                        if i < righe.count - 1 {
-                            Divider()
+                                Text(nome)
+                                    .font(.footnote.weight(.semibold))
+                                    .lineLimit(1)
+                            }
+                            .foregroundStyle(accento)
+                            .padding(.horizontal, 10)
+                            .padding(.vertical, 6)
+                            .background(accento.opacity(0.14), in: Capsule())
                         }
                     }
+                    .padding(.vertical, 4)
                 }
-
-                Divider()
 
                 HStack {
                     Text("Totale")
@@ -509,6 +505,24 @@ struct HomeView: View {
                 .padding(.horizontal)
             }
         }
+    }
+}
+
+func icona(per modello: Component?) -> String {
+    guard let modello = modello else { return "laptopcomputer" }
+    switch modello {
+    case is CPU: return "cpu"
+    case is CPU_Fan: return "fan"
+    case is Motherboard: return "rectangle.3.group"
+    case is VideoCard: return "display"
+    case is RAM: return "memorychip"
+    case is PSU: return "powerplug.fill"
+    case is HardDrive: return "internaldrive"
+    case is Case: return "macpro.gen3"
+    case is Os: return "gearshape.2"
+    case is SoundCard: return "waveform"
+    case is WirelessNetworkCard: return "wifi"
+    default: return "laptopcomputer"
     }
 }
 
