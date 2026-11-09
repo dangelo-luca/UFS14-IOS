@@ -28,31 +28,25 @@ private struct PosizioneCard: PreferenceKey {
 // MARK: - Home
 
 struct HomeView: View {
-    // Azioni fornite da MainTabView (cambio scheda)
+
     var vaiASalvati: () -> Void = {}
     var nuovaBuild: () -> Void = {}
-
-    // ID per resettare lo stack di navigazione al salvataggio
-    @State private var stackID = UUID()
-
-    // Quante build mostra il carosello
+    
     private let maxSlideBuild = 5
-
-    // Misure del carosello
     private let margineCarosello: CGFloat = 16
     private let altezzaCard: CGFloat = 300
-
-    // Stesso ordine usato in BuildDetailView
     private static let ordineComponenti = [
         "CPU", "CPU Cooler", "Motherboard", "GPU", "RAM", "Power Supply",
         "Storage", "Case", "OS", "Sound Card", "Network Card"
     ]
-
+    
+    @State private var buildDaEsportare: SavedBuild?
+    @State private var fileDaCondividere: FileCondivisibile?
+    @State private var stackID = UUID()
     @State private var pagina: Int = 0
     @State private var testoRicerca: String = ""
     @Environment(BuildManager.self) private var buildStore
     @ObservedObject private var impostazioni = UserSettings.shared
-
     @Environment(\.modelContext) private var modelContext
     @Query var utenti: [User]
 
@@ -114,6 +108,12 @@ struct HomeView: View {
         guard !lista.isEmpty else { return nil }
         return lista[min(pagina, lista.count - 1)]
     }
+    
+    private func esporta(_ build: SavedBuild, come formato: FormatoExport) {
+        if let url = BuildExporter.esporta(build, formato: formato) {
+            fileDaCondividere = FileCondivisibile(url: url)
+        }
+    }
 
     var body: some View {
         NavigationStack {
@@ -148,6 +148,22 @@ struct HomeView: View {
         .task {
             firstCheck()
         }
+        .confirmationDialog(
+            "Esporta \(buildDaEsportare?.nome ?? "")",
+            isPresented: Binding(
+                get: { buildDaEsportare != nil },
+                set: { if !$0 { buildDaEsportare = nil } }
+            ),
+            titleVisibility: .visible,
+            presenting: buildDaEsportare
+        ) { build in
+            Button("PDF") { esporta(build, come: .pdf) }
+            Button("Testo (.txt)") { esporta(build, come: .testo) }
+            Button("Annulla", role: .cancel) {}
+        }
+        .sheet(item: $fileDaCondividere) { file in
+            ShareSheet(url: file.url)
+        }
     }
 
     // MARK: - Sfondo tinto dal colore della slide corrente
@@ -176,26 +192,61 @@ struct HomeView: View {
         .animation(.easeInOut(duration: 0.6), value: pagina)
     }
 
-    // MARK: - Risultati della ricerca
+    // MARK: - Risultati della ricerca Build
 
     private var risultatiRicerca: some View {
-        let trovati = cercaNeiFile(testoRicerca, in: RicercaView.tutte)
-        let lista = Array(
-            trovati
-                .sorted { $0.nome.localizedCaseInsensitiveCompare($1.nome) == .orderedAscending }
-                .prefix(30)
-        )
+        let query = testoRicerca.trimmingCharacters(in: .whitespaces)
+        let trovate = buildStore.savedBuilds.filter { build in
+            let matchNome = build.nome.localizedCaseInsensitiveContains(query)
+            let matchComponente = build.componenti.values.contains { sel in
+                sel.risultato.nome.localizedCaseInsensitiveContains(query)
+            }
+            return matchNome || matchComponente
+        }
 
         return ScrollView {
-            if lista.isEmpty {
-                Text("Nessun risultato")
-                    .foregroundStyle(.secondary)
-                    .frame(maxWidth: .infinity)
-                    .padding(.top, 40)
+            if trovate.isEmpty {
+                VStack(spacing: 8) {
+                    Image(systemName: "magnifyingglass")
+                        .font(.system(size: 40))
+                    Text("Nessuna build trovata")
+                        .font(.headline)
+                }
+                .foregroundStyle(.secondary)
+                .frame(maxWidth: .infinity)
+                .padding(.top, 40)
             } else {
-                LazyVStack(spacing: 10) {
-                    ForEach(lista) { r in
-                        rigaRisultato(r)
+                LazyVStack(spacing: 12) {
+                    ForEach(trovate) { build in
+                        NavigationLink {
+                            BuildDetailView(build: build)
+                        } label: {
+                            HStack(spacing: 16) {
+                                Image(systemName: "desktopcomputer")
+                                    .font(.title2)
+                                    .foregroundColor(.pink)
+                                    .frame(width: 44, height: 44)
+                                    .background(Color.pink.opacity(0.12), in: Circle())
+
+                                VStack(alignment: .leading, spacing: 4) {
+                                    Text(build.nome)
+                                        .font(.headline)
+                                    Text("\(build.componenti.count) componenti")
+                                        .font(.caption)
+                                        .foregroundStyle(.secondary)
+                                }
+
+                                Spacer()
+
+                                Text(build.totale, format: .currency(code: "EUR"))
+                                    .font(.subheadline.weight(.bold))
+                                    .monospacedDigit()
+                            }
+                            .padding()
+                            .background(Color(.secondarySystemBackground))
+                            .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
+                        }
+                        .buttonStyle(.plain)
                     }
                 }
                 .padding(.horizontal)
@@ -203,47 +254,6 @@ struct HomeView: View {
             }
         }
         .scrollDismissesKeyboard(.interactively)
-    }
-
-    private func rigaRisultato(_ r: Risultato) -> some View {
-        DisclosureGroup {
-            dettagliRisultato(r)
-                .padding(.top, 6)
-        } label: {
-            HStack {
-                VStack(alignment: .leading, spacing: 2) {
-                    Text(r.nome)
-                        .font(.headline)
-                        .multilineTextAlignment(.leading)
-                    Text(r.categoria)
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
-                }
-                Spacer()
-                if let p = r.prezzo {
-                    Text(String(format: "%.2f €", p))
-                        .font(.subheadline)
-                }
-            }
-        }
-        .padding()
-        .background(Color(.secondarySystemBackground))
-        .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
-    }
-
-    private func dettagliRisultato(_ r: Risultato) -> some View {
-        let d = r.dettagli
-        return VStack(alignment: .leading, spacing: 4) {
-            ForEach(d.keys.sorted(), id: \.self) { chiave in
-                HStack {
-                    Text(chiave)
-                        .foregroundStyle(.secondary)
-                    Spacer()
-                    Text(formattaValore(d[chiave] ?? "N/D"))
-                }
-                .font(.caption)
-            }
-        }
     }
 
     // MARK: - Carosello
@@ -474,7 +484,7 @@ struct HomeView: View {
                 VStack(spacing: 10) {
                     ForEach(Array(buildStore.savedBuilds.enumerated()), id: \.offset) { _, build in
                         Button {
-                            // Azione esporta
+                            buildDaEsportare = build
                         } label: {
                             HStack(spacing: 14) {
                                 Image(systemName: "arrow.up.forward.app.fill")

@@ -3,14 +3,16 @@ import SwiftUI
 // Vista principale che gestisce lo scambio tra Login e Registrazione
 struct AuthView: View {
     @State private var showLogin = true
-    
+
     var body: some View {
-        if showLogin {
-            LoginView(showLogin: $showLogin)
-                .transition(.opacity)
-        } else {
-            RegistrationView(showLogin: $showLogin)
-                .transition(.opacity)
+        ZStack {
+            if showLogin {
+                LoginView(showLogin: $showLogin)
+                    .transition(.opacity)
+            } else {
+                RegistrationView(showLogin: $showLogin)
+                    .transition(.opacity)
+            }
         }
     }
 }
@@ -18,50 +20,54 @@ struct AuthView: View {
 struct LoginView: View {
     @State private var email = ""
     @State private var password = ""
-    
+
     @Binding var showLogin: Bool
 
     var body: some View {
-        VStack(spacing: 20) {
-            Text("Login")
-                .font(.largeTitle)
-                .fontWeight(.bold)
-                .padding(.bottom, 10)
-            
-            TextField("Email", text: $email)
-                .textFieldStyle(.roundedBorder)
-                .keyboardType(.emailAddress)
-                .autocapitalization(.none)
-            
-            SecureField("Password", text: $password)
-                .textFieldStyle(.roundedBorder)
-            
-            Button("Accedi") {
-                // Logica di login
-            }
-            .buttonStyle(.borderedProminent)
-            .controlSize(.large)
-            .disabled(email.isEmpty || password.isEmpty)
-            
-            Spacer().frame(height: 20)
-            
-            Button(action: {
-                withAnimation {
-                    showLogin = false
+        ScrollView {
+            VStack(spacing: 24) {
+                AuthHeader(
+                    title: "Accedi",
+                    subtitle: "Inserisci le tue credenziali per continuare."
+                )
+                .padding(.top, 48)
+
+                AuthFieldGroup {
+                    AuthField(
+                        placeholder: "Email",
+                        text: $email,
+                        keyboard: .emailAddress,
+                        contentType: .emailAddress,
+                        capitalization: .never
+                    )
+                    AuthDivider()
+                    AuthField(
+                        placeholder: "Password",
+                        text: $password,
+                        isSecure: true,
+                        contentType: .password
+                    )
                 }
-            }) {
-                HStack(spacing: 4) {
-                    Text("Non hai un account?")
-                        .foregroundColor(.secondary)
-                    
-                    Text("Registrati")
-                        .fontWeight(.bold)
-                        .foregroundColor(.blue)
+
+                Button {
+                    // Logica di login
+                } label: {
+                    Text("Accedi")
+                        .frame(maxWidth: .infinity)
                 }
-                .font(.callout)
+                .buttonStyle(.borderedProminent)
+                .controlSize(.large)
+                .disabled(email.isEmpty || password.isEmpty)
+
+                AuthSwitchLink(question: "Non hai un account?", action: "Registrati") {
+                    withAnimation { showLogin = false }
+                }
             }
+            .padding(.horizontal, 20)
+            .padding(.bottom, 32)
         }
-        .padding()
+        .scrollDismissesKeyboard(.interactively)
+        .background(Color(.systemGroupedBackground))
     }
 }
 
