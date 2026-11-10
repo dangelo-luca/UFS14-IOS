@@ -3,11 +3,27 @@ import SwiftUI
 // MARK: - Intestazione
 
 struct AuthHeader: View {
+    var icon: String? = nil
     let title: String
     let subtitle: String
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 6) {
+        VStack(alignment: .leading, spacing: 8) {
+            if let icon {
+                Image(systemName: icon)
+                    .font(.system(size: 30, weight: .semibold))
+                    .foregroundStyle(.white)
+                    .frame(width: 64, height: 64)
+                    .background(
+                        LinearGradient(colors: [.pink, .pink.opacity(0.7)],
+                                       startPoint: .topLeading,
+                                       endPoint: .bottomTrailing),
+                        in: RoundedRectangle(cornerRadius: 16, style: .continuous)
+                    )
+                    .shadow(color: .pink.opacity(0.3), radius: 10, y: 5)
+                    .padding(.bottom, 8)
+            }
+
             Text(title)
                 .font(.largeTitle.bold())
             Text(subtitle)
@@ -28,7 +44,7 @@ struct AuthFieldGroup<Content: View>: View {
             content
         }
         .background(Color(.secondarySystemGroupedBackground))
-        .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+        .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
     }
 }
 
@@ -41,6 +57,7 @@ struct AuthField: View {
     var keyboard: UIKeyboardType = .default
     var contentType: UITextContentType? = nil
     var capitalization: TextInputAutocapitalization = .sentences
+    var submitLabel: SubmitLabel = .next
 
     var body: some View {
         Group {
@@ -54,8 +71,9 @@ struct AuthField: View {
             }
         }
         .textContentType(contentType)
+        .submitLabel(submitLabel)
         .padding(.horizontal, 16)
-        .frame(height: 48)
+        .frame(height: 52)
     }
 }
 
@@ -63,6 +81,43 @@ struct AuthField: View {
 struct AuthDivider: View {
     var body: some View {
         Divider().padding(.leading, 16)
+    }
+}
+
+// MARK: - Pulsante principale
+
+struct AuthPrimaryButton: View {
+    let title: String
+    var isEnabled = true
+    let action: () -> Void
+
+    var body: some View {
+        Button(action: action) {
+            Text(title)
+                .font(.headline)
+                .frame(maxWidth: .infinity)
+                .frame(height: 28)
+        }
+        .buttonStyle(.borderedProminent)
+        .buttonBorderShape(.roundedRectangle(radius: 14))
+        .controlSize(.large)
+        .tint(.pink)
+        .disabled(!isEnabled)
+    }
+}
+
+// MARK: - Messaggio di errore
+
+struct AuthErrorLabel: View {
+    let message: String
+
+    var body: some View {
+        Label(message, systemImage: "exclamationmark.circle.fill")
+            .font(.footnote)
+            .foregroundStyle(.red)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(.horizontal, 4)
+            .transition(.opacity.combined(with: .move(edge: .top)))
     }
 }
 
@@ -78,6 +133,8 @@ struct AuthSwitchLink: View {
             Text(question)
                 .foregroundStyle(.secondary)
             Button(action, action: onTap)
+                .fontWeight(.semibold)
+                .tint(.pink)
         }
         .font(.subheadline)
     }

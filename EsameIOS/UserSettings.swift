@@ -1,26 +1,19 @@
-//
-//  UserSettings.swift
-//  EsameIOS
-//
-//  Created by s6 on 30/10/26.
-//
-
-import Foundation
-
 import SwiftUI
-import SwiftData
 
-class UserSettings : ObservableObject {
-    static var shared = UserSettings()
+class UserSettings: ObservableObject {
+    static let shared = UserSettings()
+    
     @Published var opzioni = Options()
-    @AppStorage("user_id") var user_id = "" {
+    
+    @Published var user_id: String {
         didSet {
-            objectWillChange.send()
+            UserDefaults.standard.set(user_id, forKey: "user_id")
         }
     }
-    @AppStorage("psw_hash") var psw_hash = "" {
+    
+    @Published var psw_hash: String {
         didSet {
-            objectWillChange.send()
+            UserDefaults.standard.set(psw_hash, forKey: "psw_hash")
         }
     }
     
@@ -29,7 +22,9 @@ class UserSettings : ObservableObject {
         !psw_hash.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
     }
     
-    private init(){
+    private init() {
+        self.user_id = UserDefaults.standard.string(forKey: "user_id") ?? ""
+        self.psw_hash = UserDefaults.standard.string(forKey: "psw_hash") ?? ""
     }
 }
 
@@ -37,12 +32,11 @@ struct Options {
     @AppStorage("theme") var theme = "auto"
     var themesAvaiable = ["auto", "light", "dark"]
     
-    func getTheme() -> ColorScheme {
+    func getTheme() -> ColorScheme? {
         switch theme {
-            case "light": return .light
-            case "dark":  return .dark
-            default:
-                let stileSistema = UITraitCollection.current.userInterfaceStyle
-                return stileSistema == .dark ? .dark : .light}
+        case "light": return .light
+        case "dark":  return .dark
+        default:      return nil // 'nil' affida a SwiftUI la gestione automatica del tema di sistema
+        }
     }
 }

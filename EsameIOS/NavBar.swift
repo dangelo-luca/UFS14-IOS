@@ -1,6 +1,6 @@
 import SwiftUI
 
-// MARK: - Schedes della TabView
+// MARK: - Schede della TabView
 
 enum Scheda: Int, CaseIterable {
     case nuova, home, salvati, profilo
@@ -36,6 +36,9 @@ enum Scheda: Int, CaseIterable {
 // MARK: - Contenitore principale: TabView + barra personalizzata
 
 struct MainTabView: View {
+    // Iniezione con @Observable (iOS 17+)
+    @Environment(BuildManager.self) private var buildStore
+
     @ObservedObject private var impostazioni = UserSettings.shared
     @State private var selezione: Scheda = .home
     @State private var mostraLogin = false
@@ -44,6 +47,7 @@ struct MainTabView: View {
     // ID per resettare la navigazione di Home e Salvati
     @State private var homeStackID = UUID()
     @State private var salvatiStackID = UUID()
+    @State private var profiloStackID = UUID()
 
     var body: some View {
         TabView(selection: $selezione) {
@@ -59,6 +63,7 @@ struct MainTabView: View {
             .tag(Scheda.nuova)
             .toolbar(.hidden, for: .tabBar)
 
+            // Tab 2: Home
             NavigationStack {
                 HomeView(
                     vaiASalvati: {
@@ -71,13 +76,8 @@ struct MainTabView: View {
                     nuovaBuild: {
                         withAnimation(.spring(duration: 0.35)) { selezione = .nuova }
                     }
-                },
-                nuovaBuild: {
-                    withAnimation(.spring(duration: 0.35)) {
-                        selezione = .nuova
-                    }
-                }
-            )
+                )
+            }
             .id(homeStackID) // Collega l'ID allo stack della Home
             .tag(Scheda.home)
             .toolbar(.hidden, for: .tabBar)
@@ -86,7 +86,7 @@ struct MainTabView: View {
             NavigationStack {
                 BuildSavedView()
             }
-            .id(salvatiStackID) // Collega l'ID allo stack di Salvati
+            .id(salvatiStackID)
             .tag(Scheda.salvati)
             .toolbar(.hidden, for: .tabBar)
 
@@ -94,13 +94,18 @@ struct MainTabView: View {
             NavigationStack {
                 Settings()
             }
+            .id(profiloStackID)
             .tag(Scheda.profilo)
             .toolbar(.hidden, for: .tabBar)
         }
         .onChange(of: buildStore.savedBuilds.count) { _, _ in
-            // Resetta entrambe le schermate se viene salvata o eliminata una build
             homeStackID = UUID()
             salvatiStackID = UUID()
+        }
+        .onChange(of: impostazioni.user_id) { _, _ in
+            profiloStackID = UUID()
+            salvatiStackID = UUID()
+            homeStackID = UUID()
         }
         .safeAreaInset(edge: .bottom, spacing: 0) {
             barra
@@ -175,6 +180,7 @@ struct MainTabView: View {
     var bottoneProfilo: some View {
         let attiva = selezione == .profilo
         return Button {
+            profiloStackID = UUID()
             withAnimation(.spring(duration: 0.35)) {
                 selezione = .profilo
             }

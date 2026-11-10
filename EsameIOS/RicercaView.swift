@@ -9,8 +9,8 @@ enum OrdineRicerca: String, CaseIterable {
 }
 
 // MARK: - Risultato di ricerca
-struct Risultato: Identifiable {
-    let id = UUID()
+struct Risultato: Identifiable, Codable {
+    var id = UUID()
     let categoria: String
     let nome: String
     let prezzo: Double?

@@ -17,9 +17,13 @@ struct SelectedPart {
 }
 
 struct BuildPcView: View {
+    @Environment(\.dismiss) private var dismiss
     @Environment(BuildManager.self) private var buildManager
     @ObservedObject private var impostazioni = UserSettings.shared
+    
+    let buildDaModificare: SavedBuild?
     var onSalvato: () -> Void = {}
+    
     @State private var mostraNomeBuild = false
     @State private var mostraLogin = false
     @State private var nomeBuild = ""
@@ -75,7 +79,7 @@ struct BuildPcView: View {
         }
         .safeAreaInset(edge: .bottom) {
             Color.clear
-                .frame(height: 80) // Altezza approssimativa della tua navbar custom
+                .frame(height: 80)
         }
         .safeAreaInset(edge: .top, spacing: 0) {
             PriceHeader(
@@ -94,7 +98,6 @@ struct BuildPcView: View {
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 Button("Salva") {
-                    // In modifica il nome parte da quello attuale
                     nomeBuild = buildDaModificare?.nome ?? ""
                     mostraNomeBuild = true
                 }
@@ -104,48 +107,36 @@ struct BuildPcView: View {
                 .tint(.pink)
                 .controlSize(.small)
                 .disabled(scelti.isEmpty)
-                .alert("Nome della build", isPresented: $mostraNomeBuild) {
-                    TextField(
-                        buildDaModificare?.nome ?? "Build #\(buildManager.savedBuilds.count + 1)",
-                        text: $nomeBuild
-                    )
-                    .textInputAutocapitalization(.words)
+            }
+        }
+        .alert("Nome della build", isPresented: $mostraNomeBuild) {
+            TextField(
+                buildDaModificare?.nome ?? "Build #\(buildManager.prossimoNumeroBuild(per: impostazioni.user_id))",
+                text: $nomeBuild
+            )
+            .textInputAutocapitalization(.words)
 
-                    Button("Annulla", role: .cancel) { }
+            Button("Annulla", role: .cancel) { }
 
-                    Button("Salva") {
-                        if impostazioni.isLogged {
-                            nomeBuild = ""
-                            mostraNomeBuild = true
-                        } else {
-                            mostraLogin = true
-                        }
+            Button("Salva") {
+                if impostazioni.isLogged {
+                    let nome = nomeBuild.trimmingCharacters(in: .whitespacesAndNewlines)
+                    if let build = buildDaModificare {
+                        buildManager.aggiornaBuild(id: build.id, scelti: scelti, nome: nome)
+                        dismiss()
+                    } else {
+                        buildManager.aggiungiBuild(scelti: scelti, nomeCustom: nome)
+                        scelti = [:]
                     }
-                    .fontWeight(.semibold)
-                    .buttonStyle(.borderedProminent)
-                    .buttonBorderShape(.capsule)
-                    .tint(.pink)
-                    .controlSize(.small)
-                    .disabled(scelti.isEmpty)
-                    .alert("Nome della build", isPresented: $mostraNomeBuild) {
-                        TextField("Build #\(buildManager.savedBuilds.count + 1)", text: $nomeBuild)
-                            .textInputAutocapitalization(.words)
-
-                        Button("Annulla", role: .cancel) { }
-
-                        Button("Salva") {
-                            let nome = nomeBuild.trimmingCharacters(in: .whitespacesAndNewlines)
-                            buildManager.aggiungiBuild(scelti: scelti, nomeCustom: nome)
-                            scelti = [:]
-                            onSalvato()
-                        }
-                    }
-                } message: {
-                    Text(isModifica
-                         ? "Puoi cambiare il nome oppure lasciarlo uguale."
-                         : "Scegli un nome per riconoscerla tra le build salvate.")
+                    onSalvato()
+                } else {
+                    mostraLogin = true
                 }
             }
+        } message: {
+            Text(isModifica
+                 ? "Puoi cambiare il nome oppure lasciarlo uguale."
+                 : "Scegli un nome per riconoscerla tra le build salvate.")
         }
         .navigationDestination(isPresented: $apriDettaglio) {
             if let comp = componenteSelezionato {
@@ -158,7 +149,7 @@ struct BuildPcView: View {
         .sheet(isPresented: $mostraLogin) {
             NavigationStack {
                 AuthView {
-                    nomeBuild = ""
+                    nomeBuild = buildDaModificare?.nome ?? ""
                     mostraNomeBuild = true
                 }
                 .toolbar {

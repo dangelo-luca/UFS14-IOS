@@ -50,13 +50,24 @@ struct HomeView: View {
     @Environment(\.modelContext) private var modelContext
     @Query var utenti: [User]
     
-    private func firstCheck(){
+    // Controlla che l'utente salvato in UserSettings esista ancora (user_id = email)
+    private func firstCheck() {
         if impostazioni.isLogged {
-            if(!utenti.contains {$0.id == impostazioni.user_id && $0.passwordHash == impostazioni.psw_hash}){
+            let valido = utenti.contains {
+                $0.email == impostazioni.user_id && $0.passwordHash == impostazioni.psw_hash
+            }
+            if !valido {
                 impostazioni.user_id = ""
                 impostazioni.psw_hash = ""
             }
         }
+    }
+
+    // Solo le build dell'utente attualmente loggato.
+    // Letta tramite `impostazioni`, che la vista osserva, così si aggiorna a login/logout.
+    private var buildDellUtente: [SavedBuild] {
+        guard impostazioni.isLogged else { return [] }
+        return buildStore.savedBuilds.filter { $0.userID == impostazioni.user_id }
     }
 
     private var inRicerca: Bool {
@@ -70,7 +81,7 @@ struct HomeView: View {
     // Le ultime 5 build, dalla più recente (a sinistra) alla più vecchia.
     private var slide: [SlideCarosello] {
 
-        let build = buildStore.savedBuilds
+        let build = buildDellUtente
         var risultato: [SlideCarosello] = []
 
         for (i, b) in Array(build.enumerated()).suffix(maxSlideBuild).reversed() {
@@ -145,6 +156,13 @@ struct HomeView: View {
         .onChange(of: buildStore.savedBuilds.count) { _, _ in
             stackID = UUID() // Cambia l'ID quando viene salvata o eliminata una build
         }
+        .onChange(of: impostazioni.user_id) { _, _ in
+            // Login/logout: torna alla home e riparti dalla prima card
+            stackID = UUID()
+            pagina = 0
+            testoRicerca = ""
+            buildDaEsportare = nil
+        }
         .preferredColorScheme(impostazioni.opzioni.getTheme())
         .task {
             firstCheck()
@@ -197,7 +215,7 @@ struct HomeView: View {
 
     private var risultatiRicerca: some View {
         let query = testoRicerca.trimmingCharacters(in: .whitespaces)
-        let trovate = buildStore.savedBuilds.filter { build in
+        let trovate = buildDellUtente.filter { build in
             let matchNome = build.nome.localizedCaseInsensitiveContains(query)
             let matchComponente = build.componenti.values.contains { sel in
                 sel.risultato.nome.localizedCaseInsensitiveContains(query)
@@ -476,14 +494,14 @@ struct HomeView: View {
                 .font(.title3.bold())
                 .padding(.horizontal)
 
-            if buildStore.savedBuilds.isEmpty {
+            if buildDellUtente.isEmpty {
                 Text("Quando salverai una build potrai esportarla da qui.")
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
                     .padding(.horizontal)
             } else {
                 VStack(spacing: 10) {
-                    ForEach(Array(buildStore.savedBuilds.enumerated()), id: \.offset) { _, build in
+                    ForEach(buildDellUtente) { build in
                         Button {
                             buildDaEsportare = build
                         } label: {
