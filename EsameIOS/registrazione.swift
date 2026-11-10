@@ -49,17 +49,23 @@ struct RegistrationView: View {
                 withAnimation {
                     showLogin = true
                 }
-            }) {
-                HStack(spacing: 4) {
-                    Text("Hai già un account?")
-                        .foregroundColor(.secondary)
-                    
-                    Text("Accedi")
-                        .fontWeight(.bold)
-                        .foregroundColor(.blue)
+
+                Button {
+                    // Logica di registrazione
+                } label: {
+                    Text("Registrati")
+                        .frame(maxWidth: .infinity)
                 }
-                .font(.callout)
+                .buttonStyle(.borderedProminent)
+                .controlSize(.large)
+                .disabled(nome.isEmpty || cognome.isEmpty || email.isEmpty || password.isEmpty)
+
+                AuthSwitchLink(question: "Hai già un account?", action: "Accedi") {
+                    withAnimation { showLogin = true }
+                }
             }
+            .padding(.horizontal, 20)
+            .padding(.bottom, 32)
         }
         .padding()
         .alert("Errore", isPresented: $mostraErroreEmail) {

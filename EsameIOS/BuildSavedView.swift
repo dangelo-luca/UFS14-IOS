@@ -2,6 +2,7 @@ import SwiftUI
 
 struct BuildSavedView: View {
     @Environment(BuildManager.self) private var buildStore
+    @State private var stackID = UUID()
 
     var body: some View {
         Group {
@@ -48,6 +49,10 @@ struct BuildSavedView: View {
             }
         }
         .navigationTitle("Build salvate")
+        .id(stackID) // Cambia l'identità della vista per resettare la navigazione
+                .onChange(of: buildStore.savedBuilds.count) { _, _ in
+                    stackID = UUID() // Forza il ritorno alla radice al salvataggio/eliminazione
+                }
     }
 }
 #Preview {

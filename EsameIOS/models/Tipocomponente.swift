@@ -60,7 +60,7 @@ enum TipoComponente: CaseIterable {
         case .ram:         return Color(hex: 0xF97316) // Arancio calmo
         case .psu:         return Color(hex: 0xEAB308) // Giallo ambrato
         case .storage:     return Color(hex: 0x6366F1) // Indaco / Lavanda
-        case .pcCase:      return Color(hex: 0x475569) // Titanio medio
+        case .pcCase:      return Color(hex: 0x06B6D4)
         case .os:          return Color(hex: 0x9333EA) // Viola vellutato
         case .soundCard:   return Color(hex: 0xEC4899) // Rosa lampone
         case .networkCard: return Color(hex: 0x0D9488) // Ottanio opaco
@@ -78,7 +78,7 @@ enum TipoComponente: CaseIterable {
         case .ram:         return Color(chiaro: 0xEA580C, scuro: 0xFB923C)
         case .psu:         return Color(chiaro: 0xCA8A04, scuro: 0xFBBF24)
         case .storage:     return Color(chiaro: 0x4F46E5, scuro: 0x818CF8)
-        case .pcCase:      return Color(chiaro: 0x334155, scuro: 0x94A3B8)
+        case .pcCase:      return Color(chiaro: 0x9333EA, scuro: 0xC084FC)
         case .os:          return Color(chiaro: 0x7E22CE, scuro: 0xC084FC)
         case .soundCard:   return Color(chiaro: 0xDB2777, scuro: 0xF472B6)
         case .networkCard: return Color(chiaro: 0x0F766E, scuro: 0x2DD4BF)

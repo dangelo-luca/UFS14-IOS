@@ -5,7 +5,7 @@ import SwiftData
 struct AuthView: View {
     var onSuccess: (() -> Void)? = nil
     @State private var showLogin = true
-    
+
     var body: some View {
         if showLogin {
             LoginView(showLogin: $showLogin, onSuccess: onSuccess)
@@ -57,17 +57,16 @@ struct LoginView: View {
                 withAnimation {
                     showLogin = false
                 }
-            }) {
-                HStack(spacing: 4) {
-                    Text("Non hai un account?")
-                        .foregroundColor(.secondary)
-                    
-                    Text("Registrati")
-                        .fontWeight(.bold)
-                        .foregroundColor(.blue)
+                .buttonStyle(.borderedProminent)
+                .controlSize(.large)
+                .disabled(email.isEmpty || password.isEmpty)
+
+                AuthSwitchLink(question: "Non hai un account?", action: "Registrati") {
+                    withAnimation { showLogin = false }
                 }
-                .font(.callout)
             }
+            .padding(.horizontal, 20)
+            .padding(.bottom, 32)
         }
         .padding()
         .alert("Errore", isPresented: $mostraErrore) {
