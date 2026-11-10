@@ -18,13 +18,10 @@ struct SelectedPart {
 
 struct BuildPcView: View {
     @Environment(BuildManager.self) private var buildManager
-    @Environment(\.dismiss) private var dismiss
-
-    // Se valorizzata, la schermata modifica questa build invece di crearne una nuova
-    let buildDaModificare: SavedBuild?
-    var onSalvato: () -> Void
-
+    @ObservedObject private var impostazioni = UserSettings.shared
+    var onSalvato: () -> Void = {}
     @State private var mostraNomeBuild = false
+    @State private var mostraLogin = false
     @State private var nomeBuild = ""
     @State private var apriDettaglio = false
     @State private var componenteSelezionato: ComponentePC?
@@ -117,11 +114,27 @@ struct BuildPcView: View {
                     Button("Annulla", role: .cancel) { }
 
                     Button("Salva") {
-                        let nome = nomeBuild.trimmingCharacters(in: .whitespacesAndNewlines)
-                        if let b = buildDaModificare {
-                            buildManager.aggiornaBuild(id: b.id, scelti: scelti, nome: nome)
-                            dismiss()
+                        if impostazioni.isLogged {
+                            nomeBuild = ""
+                            mostraNomeBuild = true
                         } else {
+                            mostraLogin = true
+                        }
+                    }
+                    .fontWeight(.semibold)
+                    .buttonStyle(.borderedProminent)
+                    .buttonBorderShape(.capsule)
+                    .tint(.pink)
+                    .controlSize(.small)
+                    .disabled(scelti.isEmpty)
+                    .alert("Nome della build", isPresented: $mostraNomeBuild) {
+                        TextField("Build #\(buildManager.savedBuilds.count + 1)", text: $nomeBuild)
+                            .textInputAutocapitalization(.words)
+
+                        Button("Annulla", role: .cancel) { }
+
+                        Button("Salva") {
+                            let nome = nomeBuild.trimmingCharacters(in: .whitespacesAndNewlines)
                             buildManager.aggiungiBuild(scelti: scelti, nomeCustom: nome)
                             scelti = [:]
                             onSalvato()
@@ -139,6 +152,21 @@ struct BuildPcView: View {
                 Components(titolo: comp.nome, fonti: comp.fonti, colore: comp.colore) { r in
                     let quantita = scelti[comp.nome]?.quantita ?? 1
                     scelti[comp.nome] = Selezione(risultato: r, quantita: quantita)
+                }
+            }
+        }
+        .sheet(isPresented: $mostraLogin) {
+            NavigationStack {
+                AuthView {
+                    nomeBuild = ""
+                    mostraNomeBuild = true
+                }
+                .toolbar {
+                    ToolbarItem(placement: .topBarLeading) {
+                        Button("Annulla") {
+                            mostraLogin = false
+                        }
+                    }
                 }
             }
         }

@@ -36,8 +36,9 @@ enum Scheda: Int, CaseIterable {
 // MARK: - Contenitore principale: TabView + barra personalizzata
 
 struct MainTabView: View {
-    @Environment(BuildManager.self) private var buildStore
+    @ObservedObject private var impostazioni = UserSettings.shared
     @State private var selezione: Scheda = .home
+    @State private var mostraLogin = false
     @Namespace private var animazione
 
     // ID per resettare la navigazione di Home e Salvati
@@ -58,12 +59,17 @@ struct MainTabView: View {
             .tag(Scheda.nuova)
             .toolbar(.hidden, for: .tabBar)
 
-            // Tab 2: Home
-            HomeView(
-                vaiASalvati: {
-                    withAnimation(.spring(duration: 0.35)) {
-                        salvatiStackID = UUID()
-                        selezione = .salvati
+            NavigationStack {
+                HomeView(
+                    vaiASalvati: {
+                        if impostazioni.isLogged {
+                            withAnimation(.spring(duration: 0.35)) { selezione = .salvati }
+                        } else {
+                            mostraLogin = true
+                        }
+                    },
+                    nuovaBuild: {
+                        withAnimation(.spring(duration: 0.35)) { selezione = .nuova }
                     }
                 },
                 nuovaBuild: {
@@ -99,6 +105,22 @@ struct MainTabView: View {
         .safeAreaInset(edge: .bottom, spacing: 0) {
             barra
         }
+        .sheet(isPresented: $mostraLogin) {
+            NavigationStack {
+                AuthView {
+                    withAnimation(.spring(duration: 0.35)) {
+                        selezione = .salvati
+                    }
+                }
+                .toolbar {
+                    ToolbarItem(placement: .topBarLeading) {
+                        Button("Annulla") {
+                            mostraLogin = false
+                        }
+                    }
+                }
+            }
+        }
     }
 
     // MARK: - Barra a capsula (+ / home / salvati) + cerchio profilo blu
@@ -125,12 +147,12 @@ struct MainTabView: View {
     func voce(_ scheda: Scheda) -> some View {
         let attiva = selezione == scheda
         return Button {
-            withAnimation(.spring(duration: 0.35)) {
-                // Genera un nuovo ID ogni volta che si preme il tasto della scheda
-                if scheda == .home { homeStackID = UUID() }
-                if scheda == .salvati { salvatiStackID = UUID() }
-
-                selezione = scheda
+            if scheda == .salvati && !impostazioni.isLogged {
+                mostraLogin = true
+            } else {
+                withAnimation(.spring(duration: 0.35)) {
+                    selezione = scheda
+                }
             }
         } label: {
             Image(systemName: attiva ? scheda.iconaAttiva : scheda.icona)

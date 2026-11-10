@@ -49,10 +49,10 @@ struct HomeView: View {
     @ObservedObject private var impostazioni = UserSettings.shared
     @Environment(\.modelContext) private var modelContext
     @Query var utenti: [User]
-
-    private func firstCheck() {
-        if impostazioni.user_id != "" && impostazioni.psw_hash != "" {
-            if !utenti.contains(where: { $0.id == impostazioni.user_id && $0.passwordHash == impostazioni.psw_hash }) {
+    
+    private func firstCheck(){
+        if impostazioni.isLogged {
+            if(!utenti.contains {$0.id == impostazioni.user_id && $0.passwordHash == impostazioni.psw_hash}){
                 impostazioni.user_id = ""
                 impostazioni.psw_hash = ""
             }
@@ -69,6 +69,7 @@ struct HomeView: View {
 
     // Le ultime 5 build, dalla più recente (a sinistra) alla più vecchia.
     private var slide: [SlideCarosello] {
+
         let build = buildStore.savedBuilds
         var risultato: [SlideCarosello] = []
 
