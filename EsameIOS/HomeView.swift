@@ -11,8 +11,8 @@ enum TipoSlide {
 
 struct SlideCarosello {
     let tipo: TipoSlide
-    let titolo: String
-    let sottotitolo: String
+    let titolo: LocalizedStringKey
+    let sottotitolo: LocalizedStringKey
     let icona: String
     let colore: Color
 }
@@ -87,7 +87,7 @@ struct HomeView: View {
         for (i, b) in Array(build.enumerated()).suffix(maxSlideBuild).reversed() {
             risultato.append(
                 SlideCarosello(tipo: .build(b),
-                               titolo: b.nome,
+                               titolo: LocalizedStringKey(b.nome),
                                sottotitolo: "Tocca per vedere i dettagli",
                                icona: "desktopcomputer",
                                colore: colore(perIndice: i))

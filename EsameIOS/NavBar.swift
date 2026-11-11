@@ -5,7 +5,7 @@ import SwiftUI
 enum Scheda: Int, CaseIterable {
     case nuova, home, salvati, profilo
 
-    var nome: String {
+    var nome: LocalizedStringKey {
         switch self {
         case .nuova: return "Nuova build"
         case .home: return "Home"
@@ -174,7 +174,7 @@ struct MainTabView: View {
                 }
         }
         .buttonStyle(.plain)
-        .accessibilityLabel(scheda.nome)
+        .accessibilityLabel(Text(scheda.nome))
     }
 
     var bottoneProfilo: some View {
@@ -194,7 +194,7 @@ struct MainTabView: View {
                 .shadow(color: .black.opacity(0.15), radius: 20, y: 5)
         }
         .buttonStyle(.plain)
-        .accessibilityLabel("Profilo")
+        .accessibilityLabel(Text("Profilo"))
     }
 }
 

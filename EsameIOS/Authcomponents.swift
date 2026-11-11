@@ -4,8 +4,8 @@ import SwiftUI
 
 struct AuthHeader: View {
     var icon: String? = nil
-    let title: String
-    let subtitle: String
+    let title: LocalizedStringKey
+    let subtitle: LocalizedStringKey
 
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
@@ -51,7 +51,7 @@ struct AuthFieldGroup<Content: View>: View {
 // MARK: - Campo
 
 struct AuthField: View {
-    let placeholder: String
+    let placeholder: LocalizedStringKey
     @Binding var text: String
     var isSecure = false
     var keyboard: UIKeyboardType = .default
@@ -87,7 +87,7 @@ struct AuthDivider: View {
 // MARK: - Pulsante principale
 
 struct AuthPrimaryButton: View {
-    let title: String
+    let title: LocalizedStringKey
     var isEnabled = true
     let action: () -> Void
 
@@ -109,7 +109,7 @@ struct AuthPrimaryButton: View {
 // MARK: - Messaggio di errore
 
 struct AuthErrorLabel: View {
-    let message: String
+    let message: LocalizedStringKey
 
     var body: some View {
         Label(message, systemImage: "exclamationmark.circle.fill")
@@ -124,8 +124,8 @@ struct AuthErrorLabel: View {
 // MARK: - Link di cambio schermata
 
 struct AuthSwitchLink: View {
-    let question: String
-    let action: String
+    let question: LocalizedStringKey
+    let action: LocalizedStringKey
     let onTap: () -> Void
 
     var body: some View {

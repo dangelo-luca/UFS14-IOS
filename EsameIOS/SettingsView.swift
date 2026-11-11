@@ -86,10 +86,16 @@ struct Settings: View {
             }
             
             Section("App") {
+                Picker("Lingua", selection: $impostazioni.opzioni.language) {
+                    Text("Italiano").tag("it")
+                    Text("English").tag("en")
+                }
+                .pickerStyle(.menu)
+
                 Picker("Tema dell'app", selection: $impostazioni.opzioni.theme) {
-                    ForEach(impostazioni.opzioni.themesAvaiable, id: \.self) { theme in
-                        Text(theme.capitalized).tag(theme)
-                    }
+                    Text("Automatico").tag("auto")
+                    Text("Chiaro").tag("light")
+                    Text("Scuro").tag("dark")
                 }
             }
         }

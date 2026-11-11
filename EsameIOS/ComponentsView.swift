@@ -124,7 +124,7 @@ struct Components: View {
                 }
             }
         }
-        .navigationTitle(titolo)
+        .navigationTitle(LocalizedStringKey(titolo))
         .navigationBarTitleDisplayMode(.inline)
         .task {
             guard !caricato else { return }
@@ -143,7 +143,7 @@ struct ProductView: View {
     var prezzo: Double?
     var details: [String: Any]
     var modello: Component? = nil
-    var titoloBottone: String = "Aggiungi"
+    var titoloBottone: LocalizedStringKey = "Aggiungi"
     var onSelect: (() -> Void)? = nil
 
     private var accento: Color { modello?.accento ?? TipoComponente.generico.accento }
@@ -196,7 +196,7 @@ struct ProductView: View {
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 8) {
                         ForEach(dettagli, id: \.self) { testo in
-                            Text(testo)
+                            Text(LocalizedStringKey(testo))
                                 .font(.caption.weight(.semibold))
                                 .foregroundStyle(accento)
                                 .padding(.horizontal, 12)
@@ -213,10 +213,10 @@ struct ProductView: View {
                     let righe = details.sorted(by: { $0.key < $1.key })
                     ForEach(Array(righe.enumerated()), id: \.element.key) { indice, riga in
                         HStack {
-                            Text(riga.key)
+                            Text(LocalizedStringKey(riga.key))
                                 .foregroundStyle(.secondary)
                             Spacer()
-                            Text(formattaValore(riga.value))
+                            Text(LocalizedStringKey(formattaValore(riga.value)))
                                 .fontWeight(.medium)
                         }
                         .font(.caption)
@@ -256,7 +256,7 @@ struct ProductView: View {
                     }
                 } label: {
                     HStack(spacing: 4) {
-                        Text(isShowingDetails ? "Nascondi" : "Dettagli")
+                        Text(isShowingDetails ? LocalizedStringKey("Nascondi") : LocalizedStringKey("Dettagli"))
                         Image(systemName: isShowingDetails ? "chevron.up" : "chevron.down")
                     }
                     .font(.subheadline.weight(.semibold))

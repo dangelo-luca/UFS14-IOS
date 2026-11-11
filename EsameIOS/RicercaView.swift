@@ -6,6 +6,15 @@ enum OrdineRicerca: String, CaseIterable {
     case nomeZA = "Nome (Z-A)"
     case prezzoCrescente = "Prezzo crescente"
     case prezzoDecrescente = "Prezzo decrescente"
+
+    var titoloLocalizzato: LocalizedStringKey {
+        switch self {
+        case .nomeAZ: return "Nome (A-Z)"
+        case .nomeZA: return "Nome (Z-A)"
+        case .prezzoCrescente: return "Prezzo crescente"
+        case .prezzoDecrescente: return "Prezzo decrescente"
+        }
+    }
 }
 
 // MARK: - Risultato di ricerca
@@ -43,7 +52,7 @@ struct PulsanteFiltro: View {
         Menu {
             Picker("Ordina per", selection: $ordine) {
                 ForEach(OrdineRicerca.allCases, id: \.self) { opzione in
-                    Text(opzione.rawValue).tag(opzione)
+                    Text(opzione.titoloLocalizzato).tag(opzione)
                 }
             }
         } label: {
@@ -63,7 +72,7 @@ struct PulsanteFiltro: View {
 // MARK: - Barra di Ricerca Separata
 struct BarraRicerca: View {
     @Binding var testo: String
-    var placeholder: String = "Cerca componenti"
+    var placeholder: LocalizedStringKey = "Cerca componenti"
 
     var body: some View {
         HStack(spacing: 8) {
@@ -111,7 +120,7 @@ struct RicercaView: View {
     }
 
     var cerca: [Fonte] = RicercaView.tutte
-    var placeholder: String = "Cerca componenti"
+    var placeholder: LocalizedStringKey = "Cerca componenti"
     var alSelezionare: ((Risultato) -> Void)? = nil
 
     @State private var testo: String = ""
@@ -162,7 +171,7 @@ struct RicercaView: View {
         }
     }
 
-    func messaggio(_ testo: String) -> some View {
+    func messaggio(_ testo: LocalizedStringKey) -> some View {
         VStack {
             Spacer().frame(height: 40)
             Text(testo)
@@ -202,7 +211,7 @@ struct RicercaView: View {
                 Text(r.nome)
                     .font(.headline)
                     .multilineTextAlignment(.leading)
-                Text(r.categoria)
+                Text(LocalizedStringKey(r.categoria))
                     .font(.caption)
                     .foregroundStyle(.secondary)
             }
@@ -219,10 +228,10 @@ struct RicercaView: View {
         return VStack(alignment: .leading, spacing: 4) {
             ForEach(d.keys.sorted(), id: \.self) { chiave in
                 HStack {
-                    Text(chiave)
+                    Text(LocalizedStringKey(chiave))
                         .foregroundStyle(.secondary)
                     Spacer()
-                    Text(formattaValore(d[chiave] ?? "N/D"))
+                    Text(LocalizedStringKey(formattaValore(d[chiave] ?? "N/D")))
                 }
                 .font(.caption)
             }

@@ -30,7 +30,9 @@ class UserSettings: ObservableObject {
 
 struct Options {
     @AppStorage("theme") var theme = "auto"
+    @AppStorage("language") var language = "it"
     var themesAvaiable = ["auto", "light", "dark"]
+    var languagesAvailable = ["it", "en"]
     
     func getTheme() -> ColorScheme? {
         switch theme {

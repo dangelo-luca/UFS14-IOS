@@ -93,7 +93,7 @@ struct BuildPcView: View {
             .padding(.bottom, 12)
             .background(.bar)
         }
-        .navigationTitle(isModifica ? "Modifica Build" : "Crea Build")
+        .navigationTitle(Text(isModifica ? "Modifica Build" : "Crea Build"))
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
@@ -110,11 +110,13 @@ struct BuildPcView: View {
             }
         }
         .alert("Nome della build", isPresented: $mostraNomeBuild) {
-            TextField(
-                buildDaModificare?.nome ?? "Build #\(buildManager.prossimoNumeroBuild(per: impostazioni.user_id))",
-                text: $nomeBuild
-            )
-            .textInputAutocapitalization(.words)
+            if let nomeEsistente = buildDaModificare?.nome {
+                TextField(nomeEsistente, text: $nomeBuild)
+                    .textInputAutocapitalization(.words)
+            } else {
+                TextField("Build #\(buildManager.prossimoNumeroBuild(per: impostazioni.user_id))", text: $nomeBuild)
+                    .textInputAutocapitalization(.words)
+            }
 
             Button("Annulla", role: .cancel) { }
 
@@ -135,8 +137,8 @@ struct BuildPcView: View {
             }
         } message: {
             Text(isModifica
-                 ? "Puoi cambiare il nome oppure lasciarlo uguale."
-                 : "Scegli un nome per riconoscerla tra le build salvate.")
+                 ? LocalizedStringKey("Puoi cambiare il nome oppure lasciarlo uguale.")
+                 : LocalizedStringKey("Scegli un nome per riconoscerla tra le build salvate."))
         }
         .navigationDestination(isPresented: $apriDettaglio) {
             if let comp = componenteSelezionato {
@@ -186,12 +188,17 @@ struct ComponentCardView: View {
                         .cornerRadius(100)
 
                     VStack(spacing: 6) {
-                        Text(componente.nome)
+                        Text(LocalizedStringKey(componente.nome))
                             .font(.title)
                             .bold()
 
-                        Text(scelto?.risultato.nome ?? "Seleziona il componente")
-                            .multilineTextAlignment(.leading)
+                        if let scelto {
+                            Text(scelto.risultato.nome)
+                                .multilineTextAlignment(.leading)
+                        } else {
+                            Text("Seleziona il componente")
+                                .multilineTextAlignment(.leading)
+                        }
                     }
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
