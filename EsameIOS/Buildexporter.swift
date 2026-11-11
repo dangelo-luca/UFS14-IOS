@@ -1,8 +1,6 @@
 import SwiftUI
 import UIKit
 
-// MARK: - Formati
-
 enum FormatoExport {
     case pdf
     case testo
@@ -15,13 +13,10 @@ enum FormatoExport {
     }
 }
 
-// File pronto da condividere (Identifiable per usarlo con .sheet(item:))
 struct FileCondivisibile: Identifiable {
     let id = UUID()
     let url: URL
 }
-
-// MARK: - Foglio di condivisione di sistema
 
 struct ShareSheet: UIViewControllerRepresentable {
     let url: URL
@@ -33,17 +28,14 @@ struct ShareSheet: UIViewControllerRepresentable {
     func updateUIViewController(_ uiViewController: UIActivityViewController, context: Context) {}
 }
 
-// MARK: - Export
-
 @MainActor
 enum BuildExporter {
-    // Stesso ordine usato in HomeView e BuildDetailView
+
     private static let ordineComponenti = [
         "CPU", "CPU Cooler", "Motherboard", "GPU", "RAM", "Power Supply",
         "Storage", "Case", "OS", "Sound Card", "Network Card"
     ]
 
-    /// Coppie (categoria, descrizione) ordinate come nel resto dell'app.
     static func righe(_ build: SavedBuild) -> [(categoria: String, descrizione: String)] {
         build.componenti
             .sorted { a, b in
@@ -62,7 +54,6 @@ enum BuildExporter {
         build.totale.formatted(.currency(code: "EUR"))
     }
 
-    /// Crea il file nella cartella temporanea e ne restituisce l'URL.
     static func esporta(_ build: SavedBuild, formato: FormatoExport) -> URL? {
         let url = FileManager.default.temporaryDirectory
             .appendingPathComponent(nomeFile(build, estensione: formato.estensione))
@@ -81,22 +72,35 @@ enum BuildExporter {
         }
     }
 
-    // MARK: Testo
-
     private static func testo(_ build: SavedBuild) -> String {
+        let isEn = UserDefaults.standard.string(forKey: "language") == "en"
+        let totalLabel = isEn ? "Total" : "Totale"
         var righeTesto = [build.nome, String(repeating: "-", count: max(build.nome.count, 8)), ""]
         for r in righe(build) {
-            righeTesto.append("\(r.categoria): \(r.descrizione)")
+            let cat = isEn ? categoriaInglese(r.categoria) : r.categoria
+            righeTesto.append("\(cat): \(r.descrizione)")
         }
         righeTesto.append("")
-        righeTesto.append("Totale: \(totaleFormattato(build))")
+        righeTesto.append("\(totalLabel): \(totaleFormattato(build))")
         return righeTesto.joined(separator: "\n")
     }
 
-    // MARK: PDF
+    private static func categoriaInglese(_ categoria: String) -> String {
+        switch categoria {
+        case "Dissipatore CPU": return "CPU Cooler"
+        case "Scheda madre": return "Motherboard"
+        case "Scheda video": return "GPU"
+        case "Alimentatore": return "Power Supply"
+        case "Archiviazione": return "Storage"
+        case "Sistema Operativo": return "Operating System"
+        case "Scheda audio": return "Sound Card"
+        case "Scheda di rete": return "Network Card"
+        default: return categoria
+        }
+    }
 
     private static func creaPDF(_ build: SavedBuild, in url: URL) -> URL? {
-        let larghezza: CGFloat = 595 // A4 a 72 dpi
+        let larghezza: CGFloat = 595
 
         let renderer = ImageRenderer(content: PaginaBuildPDF(build: build, larghezza: larghezza))
         renderer.proposedSize = ProposedViewSize(width: larghezza, height: nil)
@@ -114,8 +118,6 @@ enum BuildExporter {
         return riuscito ? url : nil
     }
 
-    // MARK: Nome file
-
     private static func nomeFile(_ build: SavedBuild, estensione: String) -> String {
         let vietati = CharacterSet(charactersIn: "/\\:?%*|\"<>")
         let pulito = build.nome
@@ -125,8 +127,6 @@ enum BuildExporter {
         return (pulito.isEmpty ? "Build" : pulito) + "." + estensione
     }
 }
-
-// MARK: - Pagina del PDF
 
 private struct PaginaBuildPDF: View {
     let build: SavedBuild
@@ -147,7 +147,7 @@ private struct PaginaBuildPDF: View {
             VStack(spacing: 0) {
                 ForEach(Array(BuildExporter.righe(build).enumerated()), id: \.offset) { indice, riga in
                     HStack(alignment: .firstTextBaseline) {
-                        Text(riga.categoria)
+                        Text(LocalizedStringKey(riga.categoria))
                             .font(.system(size: 12, weight: .semibold))
                             .foregroundStyle(.gray)
                             .frame(width: 120, alignment: .leading)

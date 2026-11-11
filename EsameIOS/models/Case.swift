@@ -1,7 +1,3 @@
-//
-//  Case.swift
-//  EsameIOS
-//
 class Case : Component {
 
     override class var categoria: TipoComponente { .pcCase }

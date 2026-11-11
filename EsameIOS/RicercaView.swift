@@ -1,14 +1,21 @@
 import SwiftUI
 
-// MARK: - Opzioni di ordinamento
 enum OrdineRicerca: String, CaseIterable {
     case nomeAZ = "Nome (A-Z)"
     case nomeZA = "Nome (Z-A)"
     case prezzoCrescente = "Prezzo crescente"
     case prezzoDecrescente = "Prezzo decrescente"
+
+    var titoloLocalizzato: LocalizedStringKey {
+        switch self {
+        case .nomeAZ: return "Nome (A-Z)"
+        case .nomeZA: return "Nome (Z-A)"
+        case .prezzoCrescente: return "Prezzo crescente"
+        case .prezzoDecrescente: return "Prezzo decrescente"
+        }
+    }
 }
 
-// MARK: - Risultato di ricerca
 struct Risultato: Identifiable, Codable {
     var id = UUID()
     let categoria: String
@@ -31,10 +38,9 @@ func formattaValore(_ valore: Any) -> String {
     return "\(valore)"
 }
 
-// MARK: - Componente Pulsante Filtro Separato
 struct PulsanteFiltro: View {
     @Binding var ordine: OrdineRicerca
-    
+
     private var haFiltroAttivo: Bool {
         ordine != .nomeAZ
     }
@@ -43,7 +49,7 @@ struct PulsanteFiltro: View {
         Menu {
             Picker("Ordina per", selection: $ordine) {
                 ForEach(OrdineRicerca.allCases, id: \.self) { opzione in
-                    Text(opzione.rawValue).tag(opzione)
+                    Text(opzione.titoloLocalizzato).tag(opzione)
                 }
             }
         } label: {
@@ -51,7 +57,7 @@ struct PulsanteFiltro: View {
                 Circle()
                     .fill(haFiltroAttivo ? Color.blue : Color.gray.opacity(0.2))
                     .frame(width: 50, height: 50)
-                
+
                 Image(systemName: "line.3.horizontal.decrease")
                     .font(.system(size: 18, weight: .bold))
                     .foregroundStyle(haFiltroAttivo ? .white : .primary)
@@ -60,10 +66,9 @@ struct PulsanteFiltro: View {
     }
 }
 
-// MARK: - Barra di Ricerca Separata
 struct BarraRicerca: View {
     @Binding var testo: String
-    var placeholder: String = "Cerca componenti"
+    var placeholder: LocalizedStringKey = "Cerca componenti"
 
     var body: some View {
         HStack(spacing: 8) {
@@ -90,7 +95,6 @@ struct BarraRicerca: View {
     }
 }
 
-// MARK: - RicercaView
 struct RicercaView: View {
     static let tutte: [Fonte] = [
         Fonte("case.json", Case.self),
@@ -111,7 +115,7 @@ struct RicercaView: View {
     }
 
     var cerca: [Fonte] = RicercaView.tutte
-    var placeholder: String = "Cerca componenti"
+    var placeholder: LocalizedStringKey = "Cerca componenti"
     var alSelezionare: ((Risultato) -> Void)? = nil
 
     @State private var testo: String = ""
@@ -138,7 +142,7 @@ struct RicercaView: View {
         let risultati = Array(ordinati.prefix(50))
 
         return VStack(spacing: 12) {
-            // Barra di ricerca e Filtro separati e affiancati
+
             HStack(spacing: 12) {
                 BarraRicerca(testo: $testo, placeholder: placeholder)
                 PulsanteFiltro(ordine: $ordine)
@@ -162,7 +166,7 @@ struct RicercaView: View {
         }
     }
 
-    func messaggio(_ testo: String) -> some View {
+    func messaggio(_ testo: LocalizedStringKey) -> some View {
         VStack {
             Spacer().frame(height: 40)
             Text(testo)
@@ -202,7 +206,7 @@ struct RicercaView: View {
                 Text(r.nome)
                     .font(.headline)
                     .multilineTextAlignment(.leading)
-                Text(r.categoria)
+                Text(LocalizedStringKey(r.categoria))
                     .font(.caption)
                     .foregroundStyle(.secondary)
             }
@@ -219,10 +223,10 @@ struct RicercaView: View {
         return VStack(alignment: .leading, spacing: 4) {
             ForEach(d.keys.sorted(), id: \.self) { chiave in
                 HStack {
-                    Text(chiave)
+                    Text(LocalizedStringKey(chiave))
                         .foregroundStyle(.secondary)
                     Spacer()
-                    Text(formattaValore(d[chiave] ?? "N/D"))
+                    Text(LocalizedStringKey(formattaValore(d[chiave] ?? "N/D")))
                 }
                 .font(.caption)
             }

@@ -1,7 +1,3 @@
-//
-//  WirelessNetworkCard.swift
-//  EsameIOS
-//
 class WirelessNetworkCard: Component {
 
     override class var categoria: TipoComponente { .networkCard }

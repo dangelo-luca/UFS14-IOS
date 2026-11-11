@@ -3,7 +3,6 @@ import SwiftUI
 struct BuildDetailView: View {
     let build: SavedBuild
 
-    
     private static let ordine = [
         "CPU", "CPU Cooler", "Motherboard", "GPU", "RAM", "Power Supply",
         "Storage", "Case", "OS", "Sound Card", "Network Card"
@@ -35,7 +34,7 @@ struct BuildDetailView: View {
                     let accento = riga.selezione.risultato.modello.accento
 
                     VStack(alignment: .leading, spacing: 6) {
-                        Text(riga.categoria)
+                        Text(LocalizedStringKey(riga.categoria))
                             .font(.caption)
                             .foregroundStyle(.secondary)
 
@@ -58,12 +57,11 @@ struct BuildDetailView: View {
                                 .foregroundStyle(.secondary)
                         }
 
-                        
                         if !chips.isEmpty {
                             ScrollView(.horizontal, showsIndicators: false) {
                                 HStack(spacing: 6) {
                                     ForEach(chips, id: \.self) { tag in
-                                        Text(tag)
+                                        Text(LocalizedStringKey(tag))
                                             .font(.caption2.weight(.semibold))
                                             .foregroundStyle(accento)
                                             .padding(.horizontal, 10)
@@ -96,5 +94,4 @@ struct BuildDetailView: View {
         .contentMargins(.bottom, 90, for: .scrollContent)
     }
 }
-
 

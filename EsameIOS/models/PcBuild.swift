@@ -1,10 +1,3 @@
-//
-//  PcBuild.swift
-//  EsameIOS
-//
-//  Created by s6 on 13/10/26.
-//
-
 import Foundation
 
 class PcBuild {
@@ -21,7 +14,7 @@ class PcBuild {
     var soundcard: SoundCard?;
     var gpu: VideoCard?;
     var wificard: WirelessNetworkCard?;
-    
+
     init(os: Os? = nil, cpu: CPU? = nil, cpu_fan: CPU_Fan? = nil, harddrive: HardDrive? = nil, motherboard: Motherboard? = nil, pc_case: Case? = nil, psu: PSU? = nil, ram: RAM? = nil, soundcard: SoundCard? = nil, gpu: VideoCard? = nil, wificard: WirelessNetworkCard? = nil, color: ColoreBuild = .blu) {
         self.os = os
         self.cpu = cpu

@@ -9,7 +9,7 @@ struct Selezione: Codable {
 
 struct SavedBuild: Identifiable, Codable {
     var id = UUID()
-    let userID: String // Collega la build all'email dell'utente
+    let userID: String
     var nome: String
     var dataCreazione: Date = Date()
     var componenti: [String: Selezione]
@@ -30,30 +30,28 @@ class BuildManager {
             salvaSuDisco()
         }
     }
-    
+
     private let keyStorage = "salvati_builds_app"
 
     init() {
         caricaDaDisco()
     }
 
-    // Restituisce solo le build dell'utente attualmente loggato
     var buildUtenteCorrente: [SavedBuild] {
         let currentId = UserSettings.shared.user_id
         guard !currentId.isEmpty else { return [] }
         return savedBuilds.filter { $0.userID == currentId }
     }
-    
+
     func prossimoNumeroBuild(per userID: String) -> Int {
         savedBuilds.filter { $0.userID == userID }.count + 1
     }
-
 
     func aggiungiBuild(scelti: [String: Selezione], nomeCustom: String? = nil) {
         let currentId = UserSettings.shared.user_id
         let numero = prossimoNumeroBuild(per: currentId)
         let titolo = nomeCustom?.isEmpty == false ? nomeCustom! : "Build #\(numero)"
-        
+
         let nuovaBuild = SavedBuild(
             userID: currentId,
             nome: titolo,
@@ -83,12 +81,10 @@ class BuildManager {
         }
     }
 
-    // Elimina definitivamente le build dal disco quando l'utente cancella il profilo
     func eliminaTutteBuildUtente(userID: String) {
         savedBuilds.removeAll(where: { $0.userID == userID })
     }
 
-    // MARK: - Salvataggio e Caricamento Persistente
     private func salvaSuDisco() {
         if let encoded = try? JSONEncoder().encode(savedBuilds) {
             UserDefaults.standard.set(encoded, forKey: keyStorage)

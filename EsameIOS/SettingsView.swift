@@ -26,7 +26,7 @@ struct Settings: View {
                                 .font(.footnote)
                         }
                     }
-                    
+
                     Button(action: {
                         mostraPopupDisconnettiti = true
                     }) {
@@ -47,7 +47,7 @@ struct Settings: View {
                     } message: {
                         Text("Uscirai dal profilo e dovrai riaccedere per vedere le tue build e tutte le funzionalità.")
                     }
-                    
+
                     Button(action: {
                         mostraPopupCancella = true
                     }) {
@@ -63,17 +63,17 @@ struct Settings: View {
                         Button("Annulla", role: .cancel) { }
                         Button("Elimina", role: .destructive) {
                             let currentUserId = impostazioni.user_id
-                            
+
                             let descriptor = FetchDescriptor<User>(
                                 predicate: #Predicate<User> { utente in
                                     utente.email == currentUserId
                                 }
                             )
-                            
+
                             if let utenteTrovato = try? modelContext.fetch(descriptor).first {
                                 modelContext.delete(utenteTrovato)
                                 try? modelContext.save()
-                                
+
                                 buildManager.eliminaTutteBuildUtente(userID: currentUserId)
                                 impostazioni.user_id = ""
                                 impostazioni.psw_hash = ""
@@ -84,12 +84,18 @@ struct Settings: View {
                     }
                 }
             }
-            
+
             Section("App") {
+                Picker("Lingua", selection: $impostazioni.opzioni.language) {
+                    Text("Italiano").tag("it")
+                    Text("English").tag("en")
+                }
+                .pickerStyle(.menu)
+
                 Picker("Tema dell'app", selection: $impostazioni.opzioni.theme) {
-                    ForEach(impostazioni.opzioni.themesAvaiable, id: \.self) { theme in
-                        Text(theme.capitalized).tag(theme)
-                    }
+                    Text("Automatico").tag("auto")
+                    Text("Chiaro").tag("light")
+                    Text("Scuro").tag("dark")
                 }
             }
         }

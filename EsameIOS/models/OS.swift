@@ -1,7 +1,3 @@
-//
-//  OS.swift
-//  EsameIOS
-//
 import Foundation
 
 class Os: Component {

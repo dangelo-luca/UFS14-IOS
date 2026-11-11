@@ -1,6 +1,5 @@
 import SwiftUI
 
-// Colore di una build: salvabile (Codable) e convertibile in Color
 enum ColoreBuild: String, Codable, CaseIterable {
     case blu, viola, arancione, verde, rosa, indaco
 

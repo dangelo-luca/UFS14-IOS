@@ -1,11 +1,9 @@
 import SwiftUI
 
-// MARK: - Intestazione
-
 struct AuthHeader: View {
     var icon: String? = nil
-    let title: String
-    let subtitle: String
+    let title: LocalizedStringKey
+    let subtitle: LocalizedStringKey
 
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
@@ -34,8 +32,6 @@ struct AuthHeader: View {
     }
 }
 
-// MARK: - Gruppo di campi (stile impostazioni di iOS)
-
 struct AuthFieldGroup<Content: View>: View {
     @ViewBuilder var content: Content
 
@@ -48,10 +44,8 @@ struct AuthFieldGroup<Content: View>: View {
     }
 }
 
-// MARK: - Campo
-
 struct AuthField: View {
-    let placeholder: String
+    let placeholder: LocalizedStringKey
     @Binding var text: String
     var isSecure = false
     var keyboard: UIKeyboardType = .default
@@ -77,17 +71,14 @@ struct AuthField: View {
     }
 }
 
-// Separatore tra i campi di un gruppo
 struct AuthDivider: View {
     var body: some View {
         Divider().padding(.leading, 16)
     }
 }
 
-// MARK: - Pulsante principale
-
 struct AuthPrimaryButton: View {
-    let title: String
+    let title: LocalizedStringKey
     var isEnabled = true
     let action: () -> Void
 
@@ -106,10 +97,8 @@ struct AuthPrimaryButton: View {
     }
 }
 
-// MARK: - Messaggio di errore
-
 struct AuthErrorLabel: View {
-    let message: String
+    let message: LocalizedStringKey
 
     var body: some View {
         Label(message, systemImage: "exclamationmark.circle.fill")
@@ -121,11 +110,9 @@ struct AuthErrorLabel: View {
     }
 }
 
-// MARK: - Link di cambio schermata
-
 struct AuthSwitchLink: View {
-    let question: String
-    let action: String
+    let question: LocalizedStringKey
+    let action: LocalizedStringKey
     let onTap: () -> Void
 
     var body: some View {

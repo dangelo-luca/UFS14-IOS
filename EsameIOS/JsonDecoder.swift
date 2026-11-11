@@ -1,12 +1,5 @@
-//
-//  JsonDecoder.swift
-//  EsameIOS
-//
-
 import SwiftUI
 
-// MARK: - Lettura base di un file json (ritorna T, di solito un array)
-// Uso:  let cpu: [CPU] = caricaJson("cpu.json")
 func caricaJson<T: Decodable>(_ nomeFile: String) -> T {
     guard let url = Bundle.main.url(forResource: nomeFile, withExtension: nil) else {
         fatalError("impossibile trovare il file \(nomeFile) nel progetto")
@@ -21,14 +14,10 @@ func caricaJson<T: Decodable>(_ nomeFile: String) -> T {
     }
 }
 
-// MARK: - UN file -> TUTTI i dati (vettore)
-// Uso:  let cpu: [CPU] = caricaTutti("cpu.json")
 func caricaTutti<T: Decodable>(_ nomeFile: String) -> [T] {
     return caricaJson(nomeFile)
 }
 
-// Come caricaTutti, ma se il file non si legge o non rispetta il modello
-// NON chiude l'app: stampa l'errore in console (righe "RICERCA:") e ritorna [].
 func caricaSicuro<T: Decodable>(_ nomeFile: String) -> [T] {
     guard let url = Bundle.main.url(forResource: nomeFile, withExtension: nil),
           let dati = try? Data(contentsOf: url) else {
@@ -43,18 +32,13 @@ func caricaSicuro<T: Decodable>(_ nomeFile: String) -> [T] {
     }
 }
 
-// MARK: - Fonte = un file json + la classe con cui si legge
-// Uso:  Fonte("cpu.json", CPU.self)
-// Il file viene letto UNA volta sola, la prima volta che serve, poi resta in memoria.
 final class Fonte {
     let file: String
     let categoria: String
     private let leggi: () -> [Component]
 
-    // Gli oggetti letti dal json
     lazy var dati: [Component] = leggi()
 
-    // Gli stessi oggetti come Risultato (nome e prezzo già estratti, id stabili)
     lazy var risultati: [Risultato] = creaRisultati()
 
     init<T: Component>(_ file: String, _ tipo: T.Type) {
@@ -73,22 +57,16 @@ final class Fonte {
     }
 }
 
-// MARK: - PIÙ file -> TUTTI i dati (vettore)
-// Da usare al caricamento di una pagina (es. Components):
-//   let tutti = caricaRisultati(da: [Fonte("cpu.json", CPU.self)])
 func caricaRisultati(da fonti: [Fonte]) -> [Risultato] {
     return fonti.flatMap { $0.risultati }
 }
 
-// MARK: - PIÙ file -> SOLO quelli cercati
-// Uso:  let trovati = cercaNeiFile("ryzen", in: [Fonte("cpu.json", CPU.self)])
 func cercaNeiFile(_ testo: String, in fonti: [Fonte]) -> [Risultato] {
     let query = testo.trimmingCharacters(in: .whitespaces)
     guard !query.isEmpty else { return [] }
     return caricaRisultati(da: fonti).filter { $0.nome.localizedCaseInsensitiveContains(query) }
 }
 
-// Legge il campo `nome` di un qualsiasi oggetto (es. "name", "price")
 func leggiCampo<V>(_ oggetto: Any, _ nome: String) -> V? {
     Mirror(reflecting: oggetto).children.first { $0.label == nome }?.value as? V
 }

@@ -1,7 +1,3 @@
-//
-//  Motherboard.swift
-//  EsameIOS
-//
 class Motherboard : Component {
 
     override class var categoria: TipoComponente { .motherboard }

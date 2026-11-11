@@ -1,20 +1,6 @@
-//
-//  ComponenteImmagine.swift
-//  EsameIOS
-//
-//  Mostra il LOGO DELLA MARCA del componente, sempre nitido.
-//  Fonti (tutte gratuite e senza chiave), provate in ordine:
-//   1. Simple Icons  -> logo vettoriale convertito in PNG da wsrv.nl (marche principali)
-//   2. Icon Horse    -> icona del sito della marca
-//  Un'immagine viene accettata SOLO se è abbastanza grande (>= 120 px sul lato corto).
-//  Se nessuna lo è, al posto di un logo sgranato si mostra un monogramma colorato
-//  con le iniziali della marca (sempre nitido).
-//
-
 import SwiftUI
 import UIKit
 
-// MARK: - Icona per categoria (chiave = nome del file json senza ".json")
 enum IconeCategoria {
     static func simbolo(per categoria: String) -> String {
         switch categoria {
@@ -47,9 +33,8 @@ enum IconeCategoria {
     }
 }
 
-// MARK: - Marca: ricava sito e indirizzi del logo dal primo nome del prodotto
 enum Marca {
-    // marche scritte con più parole (controllate per prime)
+
     private static let composte: [(String, String)] = [
         ("western digital", "wdc.com"), ("cooler master", "coolermaster.com"),
         ("be quiet", "bequiet.com"), ("lian li", "lian-li.com"),
@@ -61,7 +46,6 @@ enum Marca {
         ("steel series", "steelseries.com")
     ]
 
-    // marche il cui sito non è "nome.com"
     private static let speciali: [String: String] = [
         "wd": "wdc.com", "hp": "hp.com", "lg": "lg.com", "xfx": "xfxforce.com",
         "sapphire": "sapphiretech.com", "teamgroup": "teamgroupinc.com",
@@ -70,8 +54,6 @@ enum Marca {
         "arctic": "arctic.de", "creative": "creative.com", "gskill": "gskill.com"
     ]
 
-    // Marche con logo vettoriale su Simple Icons (nomi verificati uno per uno).
-    // chiave = prima parola del nome in minuscolo, valore = nome del logo su Simple Icons
     private static let simpleIcons: [String: String] = [
         "asus": "asus", "corsair": "corsair", "msi": "msi", "kingston": "kingstontechnology",
         "intel": "intel", "cooler": "coolermaster", "samsung": "samsung", "acer": "acer",
@@ -101,24 +83,20 @@ enum Marca {
         return pulita + ".com"
     }
 
-    // Iniziali per il monogramma: "ASRock" -> "AS", "G.Skill" -> "GS"
     static func iniziali(da nome: String) -> String {
         let prima = nome.split(separator: " ").first.map(String.init) ?? ""
         let lettere = prima.filter { $0.isLetter }
         return lettere.isEmpty ? "?" : String(lettere.prefix(2)).uppercased()
     }
 
-    // Gli indirizzi da provare, in ordine di qualità
     static func urlLogo(da nome: String) -> [URL] {
         var indirizzi: [String] = []
 
-        // 1. logo vettoriale nitido (se la marca è nella tabella)
         let prima = nome.lowercased().split(separator: " ").first.map(String.init) ?? ""
         if let slug = simpleIcons[prima] {
             indirizzi.append("https://wsrv.nl/?url=cdn.simpleicons.org/\(slug)&output=png&w=256&h=256&fit=contain")
         }
 
-        // 2. icona del sito della marca (di solito 180 px o più)
         if let dominio = dominio(da: nome) {
             indirizzi.append("https://icon.horse/icon/\(dominio)")
         }
@@ -126,11 +104,10 @@ enum Marca {
     }
 }
 
-// MARK: - Scarica i loghi, li controlla e li tiene in memoria (uno per marca)
 actor ServizioLoghi {
     static let shared = ServizioLoghi()
 
-    private let latoMinimo: CGFloat = 120          // sotto questa soglia il logo risulta sgranato
+    private let latoMinimo: CGFloat = 120
     private var cache: [String: UIImage] = [:]
     private var assenti: Set<String> = []
     private var inCorso: [String: Task<(UIImage?, Bool), Never>] = [:]
@@ -140,7 +117,6 @@ actor ServizioLoghi {
         if let immagine = cache[chiave] { return immagine }
         if assenti.contains(chiave) { return nil }
 
-        // se un'altra riga della stessa marca sta già scaricando, aspetta lo stesso risultato
         let compito: Task<(UIImage?, Bool), Never>
         if let esistente = inCorso[chiave] {
             compito = esistente
@@ -157,7 +133,7 @@ actor ServizioLoghi {
         if let immagine {
             cache[chiave] = immagine
         } else if !erroreRete {
-            assenti.insert(chiave)      // nessuna fonte ha un logo abbastanza grande
+            assenti.insert(chiave)
         }
         return immagine
     }
@@ -179,7 +155,6 @@ actor ServizioLoghi {
     }
 }
 
-// MARK: - Mostra il logo; se non c'è (o è troppo piccolo) mostra `alternativa`
 struct LogoMarca<Alternativa: View>: View {
     let nome: String
     var margine: CGFloat = 0
@@ -213,16 +188,15 @@ struct LogoMarca<Alternativa: View>: View {
             immagine = nil
             finito = false
             let trovata = await ServizioLoghi.shared.logo(per: nome)
-            if Task.isCancelled { return }      // la riga è uscita dallo schermo
+            if Task.isCancelled { return }
             immagine = trovata
             finito = true
         }
     }
 }
 
-// MARK: - Vista da usare nelle liste e nei dettagli
 struct ComponenteImmagine: View {
-    var colore: Color = .blue          // colore della categoria (es. modello.colore)
+    var colore: Color = .blue
     let nome: String
     var dimensione: CGFloat = 60
 
@@ -233,7 +207,6 @@ struct ComponenteImmagine: View {
         .frame(width: dimensione, height: dimensione)
     }
 
-    // Quadrato colorato con le iniziali della marca (colore della categoria)
     private var monogramma: some View {
         ZStack {
             RoundedRectangle(cornerRadius: dimensione * 0.2)

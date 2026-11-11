@@ -9,7 +9,7 @@ struct BuildSavedView: View {
     var body: some View {
         Group {
             if !impostazioni.isLogged {
-                // STATO 1: Utente non loggato
+
                 ContentUnavailableView {
                     Label("Accesso Richiesto", systemImage: "person.crop.circle.badge.exclamationmark")
                 } description: {
@@ -22,14 +22,14 @@ struct BuildSavedView: View {
                     .tint(.pink)
                 }
             } else if buildStore.buildUtenteCorrente.isEmpty {
-                // STATO 2: Loggato ma nessuna build creata
+
                 ContentUnavailableView(
                     "Nessuna build salvata",
                     systemImage: "desktopcomputer",
                     description: Text("Crea e salva una nuova configurazione per vederla apparire qui.")
                 )
             } else {
-                // STATO 3: Loggato con build salvate
+
                 List {
                     ForEach(buildStore.buildUtenteCorrente) { build in
                         NavigationLink {
@@ -70,7 +70,7 @@ struct BuildSavedView: View {
         .navigationTitle("Build salvate")
         .id(stackID)
         .onChange(of: impostazioni.user_id) { _, _ in
-            stackID = UUID() // Forza il refresh quando l'utente fa login/logout
+            stackID = UUID()
         }
         .onChange(of: buildStore.savedBuilds.count) { _, _ in
             stackID = UUID()

@@ -1,7 +1,3 @@
-//
-//  HardDrive.swift
-//  EsameIOS
-//
 import Foundation
 
 class HardDrive : Component {
@@ -10,9 +6,9 @@ class HardDrive : Component {
 
     let capacity: Double
     let price_per_gb: Double?
-    let type: DriveType?          // nel JSON può essere null
+    let type: DriveType?
     let cache: Double?
-    let form_factor: String?      // stringa ("M.2-2280") oppure numero (2.5, 3.5)
+    let form_factor: String?
     let interface: String?
 
     required init(from decoder: any Decoder) throws {
@@ -58,7 +54,6 @@ class HardDrive : Component {
     }
 }
 
-// Rinominato da "Type": quel nome entra in conflitto con il metatipo ".Type" di Swift
 enum DriveType: Codable {
     case intero(Int)
     case stringa(String)

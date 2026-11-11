@@ -16,7 +16,6 @@ final class Build {
     var soundCard: String?
     var wirelessNetworkCard: String?
 
-    // Riferimento all'utente proprietario
     var user: User?
 
     init(
