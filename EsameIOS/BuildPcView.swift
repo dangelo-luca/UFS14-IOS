@@ -20,10 +20,10 @@ struct BuildPcView: View {
     @Environment(\.dismiss) private var dismiss
     @Environment(BuildManager.self) private var buildManager
     @ObservedObject private var impostazioni = UserSettings.shared
-    
+
     let buildDaModificare: SavedBuild?
     var onSalvato: () -> Void = {}
-    
+
     @State private var mostraNomeBuild = false
     @State private var mostraLogin = false
     @State private var nomeBuild = ""

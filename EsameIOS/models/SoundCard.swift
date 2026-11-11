@@ -1,7 +1,3 @@
-//
-//  SoundCard.swift
-//  EsameIOS
-//
 class SoundCard: Component {
 
     override class var categoria: TipoComponente { .soundCard }

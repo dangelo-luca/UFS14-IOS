@@ -1,7 +1,5 @@
 import SwiftUI
 
-// MARK: - Schede della TabView
-
 enum Scheda: Int, CaseIterable {
     case nuova, home, salvati, profilo
 
@@ -33,10 +31,8 @@ enum Scheda: Int, CaseIterable {
     }
 }
 
-// MARK: - Contenitore principale: TabView + barra personalizzata
-
 struct MainTabView: View {
-    // Iniezione con @Observable (iOS 17+)
+
     @Environment(BuildManager.self) private var buildStore
 
     @ObservedObject private var impostazioni = UserSettings.shared
@@ -44,18 +40,17 @@ struct MainTabView: View {
     @State private var mostraLogin = false
     @Namespace private var animazione
 
-    // ID per resettare la navigazione di Home e Salvati
     @State private var homeStackID = UUID()
     @State private var salvatiStackID = UUID()
     @State private var profiloStackID = UUID()
 
     var body: some View {
         TabView(selection: $selezione) {
-            // Tab 1: Nuova build
+
             NavigationStack {
                 BuildPcView {
                     withAnimation(.spring(duration: 0.35)) {
-                        homeStackID = UUID() // Resetta la Home prima di tornarci
+                        homeStackID = UUID()
                         selezione = .home
                     }
                 }
@@ -63,7 +58,6 @@ struct MainTabView: View {
             .tag(Scheda.nuova)
             .toolbar(.hidden, for: .tabBar)
 
-            // Tab 2: Home
             NavigationStack {
                 HomeView(
                     vaiASalvati: {
@@ -78,11 +72,10 @@ struct MainTabView: View {
                     }
                 )
             }
-            .id(homeStackID) // Collega l'ID allo stack della Home
+            .id(homeStackID)
             .tag(Scheda.home)
             .toolbar(.hidden, for: .tabBar)
-            
-            // Tab 3: Salvati
+
             NavigationStack {
                 BuildSavedView()
             }
@@ -90,7 +83,6 @@ struct MainTabView: View {
             .tag(Scheda.salvati)
             .toolbar(.hidden, for: .tabBar)
 
-            // Tab 4: Profilo
             NavigationStack {
                 Settings()
             }
@@ -127,8 +119,6 @@ struct MainTabView: View {
             }
         }
     }
-
-    // MARK: - Barra a capsula (+ / home / salvati) + cerchio profilo blu
 
     var barra: some View {
         HStack(spacing: 10) {

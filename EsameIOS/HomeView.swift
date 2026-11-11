@@ -1,12 +1,10 @@
 import SwiftUI
 import SwiftData
 
-// MARK: - Slide del carosello
-
 enum TipoSlide {
-    case build(SavedBuild)   // una build salvata
-    case tutte(Int)          // "Vedi tutte le build"
-    case nuova               // nessuna build: invito a crearne una
+    case build(SavedBuild)
+    case tutte(Int)
+    case nuova
 }
 
 struct SlideCarosello {
@@ -17,7 +15,6 @@ struct SlideCarosello {
     let colore: Color
 }
 
-// Posizione orizzontale di ogni card, per capire quale è quella corrente
 private struct PosizioneCard: PreferenceKey {
     static var defaultValue: [Int: CGFloat] = [:]
     static func reduce(value: inout [Int: CGFloat], nextValue: () -> [Int: CGFloat]) {
@@ -25,13 +22,11 @@ private struct PosizioneCard: PreferenceKey {
     }
 }
 
-// MARK: - Home
-
 struct HomeView: View {
 
     var vaiASalvati: () -> Void = {}
     var nuovaBuild: () -> Void = {}
-    
+
     private let maxSlideBuild = 5
     private let margineCarosello: CGFloat = 16
     private let altezzaCard: CGFloat = 300
@@ -39,7 +34,7 @@ struct HomeView: View {
         "CPU", "CPU Cooler", "Motherboard", "GPU", "RAM", "Power Supply",
         "Storage", "Case", "OS", "Sound Card", "Network Card"
     ]
-    
+
     @State private var buildDaEsportare: SavedBuild?
     @State private var fileDaCondividere: FileCondivisibile?
     @State private var stackID = UUID()
@@ -49,8 +44,7 @@ struct HomeView: View {
     @ObservedObject private var impostazioni = UserSettings.shared
     @Environment(\.modelContext) private var modelContext
     @Query var utenti: [User]
-    
-    // Controlla che l'utente salvato in UserSettings esista ancora (user_id = email)
+
     private func firstCheck() {
         if impostazioni.isLogged {
             let valido = utenti.contains {
@@ -63,8 +57,6 @@ struct HomeView: View {
         }
     }
 
-    // Solo le build dell'utente attualmente loggato.
-    // Letta tramite `impostazioni`, che la vista osserva, così si aggiorna a login/logout.
     private var buildDellUtente: [SavedBuild] {
         guard impostazioni.isLogged else { return [] }
         return buildStore.savedBuilds.filter { $0.userID == impostazioni.user_id }
@@ -78,7 +70,6 @@ struct HomeView: View {
         ColoreBuild.allCases[i % ColoreBuild.allCases.count].swiftUI
     }
 
-    // Le ultime 5 build, dalla più recente (a sinistra) alla più vecchia.
     private var slide: [SlideCarosello] {
 
         let build = buildDellUtente
@@ -114,13 +105,12 @@ struct HomeView: View {
         return risultato
     }
 
-    // Slide attualmente visibile
     private var slideCorrente: SlideCarosello? {
         let lista = slide
         guard !lista.isEmpty else { return nil }
         return lista[min(pagina, lista.count - 1)]
     }
-    
+
     private func esporta(_ build: SavedBuild, come formato: FormatoExport) {
         if let url = BuildExporter.esporta(build, formato: formato) {
             fileDaCondividere = FileCondivisibile(url: url)
@@ -146,18 +136,18 @@ struct HomeView: View {
                                 sezioneRiepilogo
                                 sezioneEsporta
                             }
-                            .padding(.bottom, 100) // spazio per la navbar custom
+                            .padding(.bottom, 100)
                         }
                     }
                 }
             }
         }
-        .id(stackID) // Resetta la gerarchia di navigazione al cambio dell'ID
+        .id(stackID)
         .onChange(of: buildStore.savedBuilds.count) { _, _ in
-            stackID = UUID() // Cambia l'ID quando viene salvata o eliminata una build
+            stackID = UUID()
         }
         .onChange(of: impostazioni.user_id) { _, _ in
-            // Login/logout: torna alla home e riparti dalla prima card
+
             stackID = UUID()
             pagina = 0
             testoRicerca = ""
@@ -185,8 +175,6 @@ struct HomeView: View {
         }
     }
 
-    // MARK: - Sfondo tinto dal colore della slide corrente
-
     var sfondo: some View {
         let c = slideCorrente?.colore ?? .blue
         return ZStack(alignment: .top) {
@@ -210,8 +198,6 @@ struct HomeView: View {
         .ignoresSafeArea()
         .animation(.easeInOut(duration: 0.6), value: pagina)
     }
-
-    // MARK: - Risultati della ricerca Build
 
     private var risultatiRicerca: some View {
         let query = testoRicerca.trimmingCharacters(in: .whitespaces)
@@ -274,8 +260,6 @@ struct HomeView: View {
         }
         .scrollDismissesKeyboard(.interactively)
     }
-
-    // MARK: - Carosello
 
     var sezioneCarosello: some View {
         let lista = slide
@@ -396,8 +380,6 @@ struct HomeView: View {
         .shadow(color: s.colore.opacity(0.35), radius: 16, y: 8)
     }
 
-    // MARK: - Riepilogo della build selezionata nel carosello
-
     private func righeRiepilogo(_ b: SavedBuild)
         -> [(categoria: String, selezione: Selezione)] {
         b.componenti
@@ -485,8 +467,6 @@ struct HomeView: View {
                 .padding(.horizontal)
         }
     }
-
-    // MARK: - Esporta (lista neutra)
 
     var sezioneEsporta: some View {
         VStack(alignment: .leading, spacing: 12) {

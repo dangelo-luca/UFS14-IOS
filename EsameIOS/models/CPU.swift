@@ -1,7 +1,3 @@
-//
-//  CPU.swift
-//  EsameIOS
-//
 class CPU : Component {
 
     override class var categoria: TipoComponente { .cpu }

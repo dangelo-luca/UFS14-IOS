@@ -1,8 +1,6 @@
 import SwiftUI
 import UIKit
 
-// MARK: - Formati
-
 enum FormatoExport {
     case pdf
     case testo
@@ -15,13 +13,10 @@ enum FormatoExport {
     }
 }
 
-// File pronto da condividere (Identifiable per usarlo con .sheet(item:))
 struct FileCondivisibile: Identifiable {
     let id = UUID()
     let url: URL
 }
-
-// MARK: - Foglio di condivisione di sistema
 
 struct ShareSheet: UIViewControllerRepresentable {
     let url: URL
@@ -33,17 +28,14 @@ struct ShareSheet: UIViewControllerRepresentable {
     func updateUIViewController(_ uiViewController: UIActivityViewController, context: Context) {}
 }
 
-// MARK: - Export
-
 @MainActor
 enum BuildExporter {
-    // Stesso ordine usato in HomeView e BuildDetailView
+
     private static let ordineComponenti = [
         "CPU", "CPU Cooler", "Motherboard", "GPU", "RAM", "Power Supply",
         "Storage", "Case", "OS", "Sound Card", "Network Card"
     ]
 
-    /// Coppie (categoria, descrizione) ordinate come nel resto dell'app.
     static func righe(_ build: SavedBuild) -> [(categoria: String, descrizione: String)] {
         build.componenti
             .sorted { a, b in
@@ -62,7 +54,6 @@ enum BuildExporter {
         build.totale.formatted(.currency(code: "EUR"))
     }
 
-    /// Crea il file nella cartella temporanea e ne restituisce l'URL.
     static func esporta(_ build: SavedBuild, formato: FormatoExport) -> URL? {
         let url = FileManager.default.temporaryDirectory
             .appendingPathComponent(nomeFile(build, estensione: formato.estensione))
@@ -80,8 +71,6 @@ enum BuildExporter {
             return creaPDF(build, in: url)
         }
     }
-
-    // MARK: Testo
 
     private static func testo(_ build: SavedBuild) -> String {
         let isEn = UserDefaults.standard.string(forKey: "language") == "en"
@@ -110,10 +99,8 @@ enum BuildExporter {
         }
     }
 
-    // MARK: PDF
-
     private static func creaPDF(_ build: SavedBuild, in url: URL) -> URL? {
-        let larghezza: CGFloat = 595 // A4 a 72 dpi
+        let larghezza: CGFloat = 595
 
         let renderer = ImageRenderer(content: PaginaBuildPDF(build: build, larghezza: larghezza))
         renderer.proposedSize = ProposedViewSize(width: larghezza, height: nil)
@@ -131,8 +118,6 @@ enum BuildExporter {
         return riuscito ? url : nil
     }
 
-    // MARK: Nome file
-
     private static func nomeFile(_ build: SavedBuild, estensione: String) -> String {
         let vietati = CharacterSet(charactersIn: "/\\:?%*|\"<>")
         let pulito = build.nome
@@ -142,8 +127,6 @@ enum BuildExporter {
         return (pulito.isEmpty ? "Build" : pulito) + "." + estensione
     }
 }
-
-// MARK: - Pagina del PDF
 
 private struct PaginaBuildPDF: View {
     let build: SavedBuild

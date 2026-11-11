@@ -1,10 +1,3 @@
-//
-//  EsameIOSApp.swift
-//  EsameIOS
-//
-//  Created by d14 on 13/10/26.
-//
-
 import SwiftUI
 import SwiftData
 

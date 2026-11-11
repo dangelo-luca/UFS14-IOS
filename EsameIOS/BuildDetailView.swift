@@ -3,7 +3,6 @@ import SwiftUI
 struct BuildDetailView: View {
     let build: SavedBuild
 
-    
     private static let ordine = [
         "CPU", "CPU Cooler", "Motherboard", "GPU", "RAM", "Power Supply",
         "Storage", "Case", "OS", "Sound Card", "Network Card"
@@ -58,7 +57,6 @@ struct BuildDetailView: View {
                                 .foregroundStyle(.secondary)
                         }
 
-                        
                         if !chips.isEmpty {
                             ScrollView(.horizontal, showsIndicators: false) {
                                 HStack(spacing: 6) {
@@ -96,5 +94,4 @@ struct BuildDetailView: View {
         .contentMargins(.bottom, 90, for: .scrollContent)
     }
 }
-
 

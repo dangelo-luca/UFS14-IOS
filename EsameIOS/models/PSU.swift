@@ -1,7 +1,3 @@
-//
-//  PSU.swift
-//  EsameIOS
-//
 class PSU : Component {
 
     override class var categoria: TipoComponente { .psu }
@@ -9,7 +5,7 @@ class PSU : Component {
     let type: String?
     let efficiency: String?
     let wattage: Double?
-    let modular: String?     // nel JSON è "Full", "Semi", "Full / Side" oppure false
+    let modular: String?
     let color: String?
 
     required init(from decoder: any Decoder) throws {

@@ -1,7 +1,3 @@
-//
-//  VideoCard.swift
-//  EsameIOS
-//
 class VideoCard: Component {
 
     override class var categoria: TipoComponente { .gpu }

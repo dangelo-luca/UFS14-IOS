@@ -1,6 +1,5 @@
 import SwiftUI
 
-// MARK: - Opzioni di ordinamento
 enum OrdineRicerca: String, CaseIterable {
     case nomeAZ = "Nome (A-Z)"
     case nomeZA = "Nome (Z-A)"
@@ -17,7 +16,6 @@ enum OrdineRicerca: String, CaseIterable {
     }
 }
 
-// MARK: - Risultato di ricerca
 struct Risultato: Identifiable, Codable {
     var id = UUID()
     let categoria: String
@@ -40,10 +38,9 @@ func formattaValore(_ valore: Any) -> String {
     return "\(valore)"
 }
 
-// MARK: - Componente Pulsante Filtro Separato
 struct PulsanteFiltro: View {
     @Binding var ordine: OrdineRicerca
-    
+
     private var haFiltroAttivo: Bool {
         ordine != .nomeAZ
     }
@@ -60,7 +57,7 @@ struct PulsanteFiltro: View {
                 Circle()
                     .fill(haFiltroAttivo ? Color.blue : Color.gray.opacity(0.2))
                     .frame(width: 50, height: 50)
-                
+
                 Image(systemName: "line.3.horizontal.decrease")
                     .font(.system(size: 18, weight: .bold))
                     .foregroundStyle(haFiltroAttivo ? .white : .primary)
@@ -69,7 +66,6 @@ struct PulsanteFiltro: View {
     }
 }
 
-// MARK: - Barra di Ricerca Separata
 struct BarraRicerca: View {
     @Binding var testo: String
     var placeholder: LocalizedStringKey = "Cerca componenti"
@@ -99,7 +95,6 @@ struct BarraRicerca: View {
     }
 }
 
-// MARK: - RicercaView
 struct RicercaView: View {
     static let tutte: [Fonte] = [
         Fonte("case.json", Case.self),
@@ -147,7 +142,7 @@ struct RicercaView: View {
         let risultati = Array(ordinati.prefix(50))
 
         return VStack(spacing: 12) {
-            // Barra di ricerca e Filtro separati e affiancati
+
             HStack(spacing: 12) {
                 BarraRicerca(testo: $testo, placeholder: placeholder)
                 PulsanteFiltro(ordine: $ordine)

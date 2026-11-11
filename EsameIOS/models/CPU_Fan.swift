@@ -1,13 +1,9 @@
-//
-//  CPU_Fan.swift
-//  EsameIOS
-//
 class CPU_Fan : Component {
 
     override class var categoria: TipoComponente { .cpuFan }
 
-    let rpm: RPM?                    // nel JSON può essere null
-    let noise_level: NoiseLevel?     // nel JSON può essere null
+    let rpm: RPM?
+    let noise_level: NoiseLevel?
     let color: String?
     let size: Double?
 

@@ -1,15 +1,3 @@
-//
-//  TipoComponente.swift
-//  EsameIOS
-//
-//  Unico posto in cui si decidono i colori delle categorie.
-//
-//  - colore  : tinta piena per sfondi/bottoni con sopra testo BIANCO.
-//              Tutte le tinte hanno contrasto >= 4.5:1 con il bianco (WCAG AA),
-//              quindi vanno bene sia in modalità chiara sia scura.
-//  - accento : per testi, bordi e chip appoggiati sullo sfondo di sistema.
-//              Chiaro = tinta scura (leggibile su bianco), scuro = tinta chiara (leggibile su nero).
-//
 import SwiftUI
 import UIKit
 
@@ -23,7 +11,7 @@ extension UIColor {
 }
 
 extension Color {
-    /// Colore che cambia da solo tra modalità chiara e scura.
+
     init(chiaro: UInt32, scuro: UInt32) {
         self.init(uiColor: UIColor { trait in
             UIColor(hex: trait.userInterfaceStyle == .dark ? scuro : chiaro)
@@ -49,25 +37,23 @@ enum TipoComponente: CaseIterable {
     case soundCard
     case networkCard
 
-    /// Tinta piena (testo bianco sopra).
     var colore: Color {
         switch self {
-        case .generico:    return Color(hex: 0x4B5563) // Grigio slate elegante
-        case .cpu:         return Color(hex: 0x3B82F6) // Blu classico bilanciato
-        case .cpuFan:      return Color(hex: 0x0EA5E9) // Azzurro cielo satinato
-        case .motherboard: return Color(hex: 0xEF4444) // Rosso corallo morbido
-        case .gpu:         return Color(hex: 0x10B981) // Verde smeraldo profondo
-        case .ram:         return Color(hex: 0xF97316) // Arancio calmo
-        case .psu:         return Color(hex: 0xEAB308) // Giallo ambrato
-        case .storage:     return Color(hex: 0x6366F1) // Indaco / Lavanda
+        case .generico:    return Color(hex: 0x4B5563)
+        case .cpu:         return Color(hex: 0x3B82F6)
+        case .cpuFan:      return Color(hex: 0x0EA5E9)
+        case .motherboard: return Color(hex: 0xEF4444)
+        case .gpu:         return Color(hex: 0x10B981)
+        case .ram:         return Color(hex: 0xF97316)
+        case .psu:         return Color(hex: 0xEAB308)
+        case .storage:     return Color(hex: 0x6366F1)
         case .pcCase:      return Color(hex: 0x06B6D4)
-        case .os:          return Color(hex: 0x9333EA) // Viola vellutato
-        case .soundCard:   return Color(hex: 0xEC4899) // Rosa lampone
-        case .networkCard: return Color(hex: 0x0D9488) // Ottanio opaco
+        case .os:          return Color(hex: 0x9333EA)
+        case .soundCard:   return Color(hex: 0xEC4899)
+        case .networkCard: return Color(hex: 0x0D9488)
         }
     }
 
-    /// Tinta per testi e dettagli sullo sfondo di sistema (si adatta chiaro/scuro).
     var accento: Color {
         switch self {
         case .generico:    return Color(chiaro: 0x4B5563, scuro: 0x9CA3AF)

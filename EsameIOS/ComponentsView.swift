@@ -135,7 +135,6 @@ struct Components: View {
     }
 }
 
-
 struct ProductView: View {
     @State private var isShowingDetails: Bool = false
 
@@ -191,7 +190,6 @@ struct ProductView: View {
                 Spacer(minLength: 0)
             }
 
-            // Caratteristiche principali
             if !dettagli.isEmpty {
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 8) {
@@ -207,7 +205,6 @@ struct ProductView: View {
                 }
             }
 
-            // Dettagli completi
             if isShowingDetails {
                 VStack(spacing: 0) {
                     let righe = details.sorted(by: { $0.key < $1.key })

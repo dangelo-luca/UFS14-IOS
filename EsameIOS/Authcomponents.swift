@@ -1,7 +1,5 @@
 import SwiftUI
 
-// MARK: - Intestazione
-
 struct AuthHeader: View {
     var icon: String? = nil
     let title: LocalizedStringKey
@@ -34,8 +32,6 @@ struct AuthHeader: View {
     }
 }
 
-// MARK: - Gruppo di campi (stile impostazioni di iOS)
-
 struct AuthFieldGroup<Content: View>: View {
     @ViewBuilder var content: Content
 
@@ -47,8 +43,6 @@ struct AuthFieldGroup<Content: View>: View {
         .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
     }
 }
-
-// MARK: - Campo
 
 struct AuthField: View {
     let placeholder: LocalizedStringKey
@@ -77,14 +71,11 @@ struct AuthField: View {
     }
 }
 
-// Separatore tra i campi di un gruppo
 struct AuthDivider: View {
     var body: some View {
         Divider().padding(.leading, 16)
     }
 }
-
-// MARK: - Pulsante principale
 
 struct AuthPrimaryButton: View {
     let title: LocalizedStringKey
@@ -106,8 +97,6 @@ struct AuthPrimaryButton: View {
     }
 }
 
-// MARK: - Messaggio di errore
-
 struct AuthErrorLabel: View {
     let message: LocalizedStringKey
 
@@ -120,8 +109,6 @@ struct AuthErrorLabel: View {
             .transition(.opacity.combined(with: .move(edge: .top)))
     }
 }
-
-// MARK: - Link di cambio schermata
 
 struct AuthSwitchLink: View {
     let question: LocalizedStringKey

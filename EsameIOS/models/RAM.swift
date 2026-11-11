@@ -1,13 +1,9 @@
-//
-//  RAM.swift
-//  EsameIOS
-//
 class RAM : Component {
 
     override class var categoria: TipoComponente { .ram }
 
-    let speed: [Double]       // [generazione DDR, MHz]; in rari casi è un solo numero
-    let module: [Double]      // [numero moduli, GB per modulo]
+    let speed: [Double]
+    let module: [Double]
     let color: String?
     let first_word_latency: Double?
 
@@ -20,7 +16,6 @@ class RAM : Component {
             self.speed = [try container.decode(Double.self, forKey: "speed")]
         }
 
-        // nel JSON la chiave si chiama "modules", non "module"
         self.module = try container.decode([Double].self, forKey: "modules")
         self.color = try container.decodeIfPresent(String.self, forKey: "color")
         self.first_word_latency = try container.decodeIfPresent(Double.self, forKey: "first_word_latency")
